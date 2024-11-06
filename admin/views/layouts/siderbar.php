@@ -61,7 +61,7 @@
 <!--                </li>-->
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="?act=categories" role="button" aria-expanded="false">
+                    <a class="nav-link menu-link" href="?act=danhmuc/list" role="button" aria-expanded="false">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
                     </a>
                 </li>

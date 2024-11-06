@@ -72,42 +72,43 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=update_category" method="post">
+                                        <form id="updateForm" action="?act=danhmuc/update" method="post">
+                                            <input type="hidden" name="id" value="<?= $danh_muc['id'] ?>">
 
-                                            <input type="hidden" name="id" value="<?= $category['category_id'] ?>">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="citynameInput" class="form-label">Tên Danh Mục</label>
-                                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="category_name" value="<?= $category['category_name'] ?>">
-                                                        <span class="text-danger">
-                                                            <?= !empty($_SESSION['errors']['category_name']) ? $_SESSION['errors']['category_name'] : '' ?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="ForminputState" class="form-label">Trạng Thái</label>
-                                                        <select class="form-select" name="category_status">
-                                                            <option selected disabled>Chọn trạng thái</option>
-                                                            <option value="1" <?= $category['status'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                            <option value="2" <?= $category['status'] == 2 ? 'selected' : '' ?> >Không hiển thị</option>
-                                                        </select>
-                                                        <span class="text-danger">
-                                                            <?= !empty($_SESSION['errors']['category_status']) ? $_SESSION['errors']['category_status'] : '' ?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
-                                                <div class="col-lg-12">
-                                                    <div class="text-end">
-                                                        <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Tên danh mục</label>
+                                                <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc" value="<?= $danh_muc['ten_danh_muc'] ?>">
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
+                                                </span>
                                             </div>
-                                            <!--end row-->
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Mô tả</label>
+                                                <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $danh_muc['mo_ta'] ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Ngày tạo</label>
+                                                <input type="date" class="form-control" name="ngay_tao" value="<?= $danh_muc['ngay_tao'] ?>">
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['ngay_tao']) ? $_SESSION['errors']['ngay_tao'] : '' ?>
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ForminputState" class="form-label">Trạng thái</label>
+                                                <select class="form-select" name="trang_thai">
+                                                    <option selected disabled>Chọn trạng thái</option>
+                                                    <option value="1" <?= $danh_muc['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
+                                                    <option value="2" <?= $danh_muc['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                </select>
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
+                                                </span>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="text-end">
+                                                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

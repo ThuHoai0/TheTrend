@@ -7,12 +7,12 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
-require_once 'controllers/CategoryController.php';
-require_once 'controllers/ProductController.php';
+require_once 'controllers/DanhmucsController.php';
+//require_once 'controllers/ProductController.php';
 
 // Require toàn bộ file Models
-require_once 'models/Category.php';
-require_once 'models/Product.php';
+require_once 'models/Danhmuc.php';
+//require_once 'models/Product.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -24,20 +24,20 @@ match ($act) {
     '/' => (new DashboardController())->index(),
 
     // Quan ly danh muc san pham
-    'categories' => (new CategoryController())->index(),
-    'form_add_category' => (new CategoryController())->create(),
-    'add_category' => (new CategoryController())->add(),
-    'form_edit_category' => (new CategoryController())->edit(),
-    'update_category' => (new CategoryController())->update(),
-    'delete_category' => (new CategoryController())->delete(),
+    'danhmuc/list' => (new DanhmucsController())->index(),
+    'danhmuc/create' => (new DanhmucsController())->create(),
+    'danhmuc/store' => (new DanhmucsController())->store(),
+    'danhmuc/edit' => (new DanhmucsController())->edit(),
+    'danhmuc/update' => (new DanhmucsController())->update(),
+    'danhmuc/delete' => (new DanhmucsController())->delete(),
 
     // Quan ly san pham
-    'products' => (new ProductController())->index(),
-    'form_add_product' => (new ProductController())->create(),
-    'add_product' => (new ProductController())->add(),
-    'form_edit_product' => (new ProductController())->edit(),
-    'update_product' => (new ProductController())->update(),
-    'delete_product' => (new ProductController())->delete(),
+//    'products' => (new ProductController())->index(),
+//    'form_add_product' => (new ProductController())->create(),
+//    'add_product' => (new ProductController())->add(),
+//    'form_edit_product' => (new ProductController())->edit(),
+//    'update_product' => (new ProductController())->update(),
+//    'delete_product' => (new ProductController())->delete(),
 
 
 };

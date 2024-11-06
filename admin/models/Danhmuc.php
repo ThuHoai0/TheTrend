@@ -1,6 +1,6 @@
 <?php
 
-class Category
+class Danhmuc
 {
     public $conn;
     // ket noi CSDL
@@ -9,29 +9,31 @@ class Category
     }
 
     // danh sach danh muc
-    public function getAllCategory() {
+    public function getAll() {
         try {
-            $sql = "SELECT * FROM `categories`";
+            $sql = "SELECT * FROM `danh_mucs`";
 
             $stmt = $this->conn->prepare($sql);
 
             $stmt->execute();
 
-            return $stmt->fetchAll();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();
         }
     }
     // them du lieu vao CSDL
-    public function postData($category_name, $category_status) {
+    public function postData($ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai) {
         try {
-            $sql = "INSERT INTO `categories`(`category_name`, `status`) VALUES (:category_name, :status)";
+            $sql = "INSERT INTO `danh_mucs`(`ten_danh_muc`, `mo_ta`, `ngay_tao`, `trang_thai`) VALUES (:ten_danh_muc, :mo_ta, :ngay_tao, :trang_thai)";
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
-            $stmt->bindParam(':category_name', $category_name);
-            $stmt->bindParam(':status', $category_status);
+            $stmt->bindParam(':ten_danh_muc', $ten_danh_muc);
+            $stmt->bindParam(':mo_ta', $mo_ta);
+            $stmt->bindParam(':ngay_tao', $ngay_tao);
+            $stmt->bindParam(':trang_thai', $trang_thai);
 
             $stmt->execute();
 
@@ -41,18 +43,20 @@ class Category
         }
     }
 
-    // cap nhat du lieu vao CSDL
-    public function updateData($id, $category_name, $category_status) {
+//    // cap nhat du lieu vao CSDL
+    public function updateData($id, $ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai) {
         try {
 
-            $sql = "UPDATE categories SET category_name = :category_name, status = :status WHERE category_id = :id";
+            $sql = "UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc, mo_ta = :mo_ta, ngay_tao = :ngay_tao, trang_thai = :trang_thai WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':category_name', $category_name);
-            $stmt->bindParam(':status', $category_status);
+            $stmt->bindParam(':ten_danh_muc', $ten_danh_muc);
+            $stmt->bindParam(':mo_ta', $mo_ta);
+            $stmt->bindParam(':ngay_tao', $ngay_tao);
+            $stmt->bindParam(':trang_thai', $trang_thai);
 
             $stmt->execute();
 
@@ -66,7 +70,7 @@ class Category
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT * FROM `categories` WHERE category_id = :id";
+            $sql = "SELECT * FROM `danh_mucs` WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -83,7 +87,7 @@ class Category
     // xoa du lieu trong CSDL
     public function deleteData($id) {
         try {
-            $sql = "DELETE FROM `categories` WHERE category_id = :id";
+            $sql = "DELETE FROM `danh_mucs` WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -100,5 +104,12 @@ class Category
     // huy ket noi CSDL
     public function __destruct() {
         $this->conn = null;
+    }
+
+    public function searchDanhMuc($keyword) {
+        // Truy vấn cơ sở dữ liệu để lấy các kết quả khớp với từ khóa
+        $stmt = $this->conn->prepare("SELECT * FROM danh_mucs WHERE ten_danh_muc LIKE :keyword");
+        $stmt->execute(['keyword' => "%$keyword%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
