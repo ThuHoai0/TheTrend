@@ -54,12 +54,11 @@
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link menu-link" href="?act=categories" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">-->
-<!--                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Nguoi dung</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=danhmuc/list" role="button" aria-expanded="false">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
@@ -72,12 +71,27 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Gio hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Đơn hàng</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài viết</span>
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Chi tiet dơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Hinh anh san pham</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Khuyen mai</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -87,7 +101,43 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh sách người dùng</span>
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh gia</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Banner</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Tin tuc</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Lien he</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Bài viết</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">San pham yeu thich</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Trang thai don hang</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Chi tiet san pham</span>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -72,8 +72,8 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=danhmuc/update" method="post">
-                                            <input type="hidden" name="id" value="<?= $danh_muc['id'] ?>">
+                                        <form id="updateForm" action="?act=danhmuc/update&id=<?= $danh_muc['id'] ?>" method="post">
+<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
 
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên danh mục</label>
@@ -86,13 +86,13 @@
                                                 <label for="citynameInput" class="form-label">Mô tả</label>
                                                 <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $danh_muc['mo_ta'] ?>">
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Ngày tạo</label>
-                                                <input type="date" class="form-control" name="ngay_tao" value="<?= $danh_muc['ngay_tao'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ngay_tao']) ? $_SESSION['errors']['ngay_tao'] : '' ?>
-                                                </span>
-                                            </div>
+<!--                                            <div class="mb-3">-->
+<!--                                                <label for="citynameInput" class="form-label">Ngày tạo</label>-->
+<!--                                                <input type="date" class="form-control" name="ngay_tao" value="--><?php //= $danh_muc['ngay_tao'] ?><!--">-->
+<!--                                                <span class="text-danger">-->
+<!--                                                    --><?php //= !empty($_SESSION['errors']['ngay_tao']) ? $_SESSION['errors']['ngay_tao'] : '' ?>
+<!--                                                </span>-->
+<!--                                            </div>-->
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
@@ -222,3 +222,5 @@ require_once "views/layouts/libs_js.php";
 </body>
 
 </html><?php
+
+unset($_SESSION['errors']);

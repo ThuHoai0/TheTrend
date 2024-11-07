@@ -98,10 +98,10 @@
                                                     <th scope="col" class="flex align-items-center">
                                                         Ngày tạo
                                                         <!-- Sort Button for Ngày tạo -->
-                                                        <div class="dropdown ms-2">
                                                             <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <i class="ri-sort-asc" aria-hidden="true"></i>
                                                             </button>
+                                                        <div class="dropdown ms-2">
                                                             <ul class="dropdown-menu" aria-labelledby="statusFilter">
                                                                 <li><a class="dropdown-item" href="?filter=date_desc">Mới nhất</a></li>
                                                                 <li><a class="dropdown-item" href="?filter=date_asc">Cũ nhất</a></li>
@@ -114,12 +114,12 @@
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
                                                         <!-- Dropdown Filter Button -->
-                                                        <div class="dropdown ms-2">
                                                             <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <i class="ri-filter-2-line" aria-hidden="true"></i>
                                                             </button>
+                                                        <div class="dropdown ms-2">
                                                             <ul class="dropdown-menu" aria-labelledby="statusFilter">
-                                                                <li><a class="dropdown-item" href="?filter=all">Tất cả</a></li>
+                                                                <li><a class="dropdown-item" href="?filter=all">Mac dinh</a></li>
                                                                 <li><a class="dropdown-item" href="?filter=show">Hiển thị</a></li>
                                                                 <li><a class="dropdown-item" href="?filter=hide">Không hiển thị</a></li>
                                                             </ul>
@@ -151,11 +151,11 @@
                                                         </td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=danhmuc/edit&danhmuc_id=<?= $danh_muc['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <a href="?act=danhmuc/edit&id=<?= $danh_muc['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
                                                                 <form action="?act=danhmuc/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="danhmuc_id" value="<?= $danh_muc['id'] ?>">
+                                                                    <input type="hidden" name="id" value="<?= $danh_muc['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>
                                                                     </button>

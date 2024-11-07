@@ -44,10 +44,10 @@ class Danhmuc
     }
 
 //    // cap nhat du lieu vao CSDL
-    public function updateData($id, $ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai) {
+    public function updateData($id, $ten_danh_muc, $mo_ta, $trang_thai) {
         try {
 
-            $sql = "UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc, mo_ta = :mo_ta, ngay_tao = :ngay_tao, trang_thai = :trang_thai WHERE id = :id";
+            $sql = "UPDATE danh_mucs SET ten_danh_muc = :ten_danh_muc, mo_ta = :mo_ta, trang_thai = :trang_thai WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -55,7 +55,6 @@ class Danhmuc
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':ten_danh_muc', $ten_danh_muc);
             $stmt->bindParam(':mo_ta', $mo_ta);
-            $stmt->bindParam(':ngay_tao', $ngay_tao);
             $stmt->bindParam(':trang_thai', $trang_thai);
 
             $stmt->execute();

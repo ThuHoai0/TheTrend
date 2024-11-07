@@ -30,10 +30,13 @@ class DanhmucsController
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Set timezone to Vietnam
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+
             // lay ra du lieu
             $ten_danh_muc = $_POST['ten_danh_muc'];
             $mo_ta = $_POST['mo_ta'];
-            $ngay_tao = $_POST['ngay_tao'];
+            $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); // Use current date & time in Vietnam
             $trang_thai = $_POST['trang_thai'];
 
             // validate
@@ -41,11 +44,8 @@ class DanhmucsController
             if (empty($ten_danh_muc)) {
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
             }
-            if (empty($ngay_tao)) {
-                $errors['ngay_tao'] = "Ngày tạo là bắt buộc";
-            }
             if (empty($trang_thai)) {
-                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
+                $errors['trang_thai'] = "Trạng thái là bắt buộc";
             }
 
             // them du lieu
@@ -61,16 +61,16 @@ class DanhmucsController
                 header('Location: ?act=danhmuc/create');
                 exit();
             }
-        } else {
-
         }
     }
+
+
 
     // Ham hien thi form sua
     public function edit()
     {
         // lay id
-        $id = $_GET['danhmuc_id'];
+        $id = $_GET['id'];
         // lay thong tin chi tiet cua danh muc
         $danh_muc = $this->modelDanhmuc->getDetailData($id);
 
@@ -83,10 +83,9 @@ class DanhmucsController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay ra du lieu
-            $id = $_POST['id'];
+            $id = $_GET['id'];
             $ten_danh_muc = $_POST['ten_danh_muc'];
             $mo_ta = $_POST['mo_ta'];
-            $ngay_tao = $_POST['ngay_tao'];
             $trang_thai = $_POST['trang_thai'];
 
             // die($category_status  );
@@ -94,9 +93,6 @@ class DanhmucsController
             $errors = [];
             if (empty($ten_danh_muc)) {
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
-            }
-            if (empty($ngay_tao)) {
-                $errors['ngay_tao'] = "Ngày tạo là bắt buộc";
             }
             if (empty($trang_thai)) {
                 $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
@@ -106,13 +102,13 @@ class DanhmucsController
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelDanhmuc->updateData($id, $ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai);
+                $this->modelDanhmuc->updateData($id, $ten_danh_muc, $mo_ta, $trang_thai);
                 unset($_SESSION['errors']);
                 header('Location: ?act=danhmuc/list');
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
-                header('Location: ?act=danhmuc/edit/' . $id);
+                header('Location: ?act=danhmuc/edit&id=' . $id);
                 exit();
             }
         } else {
