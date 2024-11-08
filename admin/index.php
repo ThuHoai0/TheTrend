@@ -8,13 +8,11 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhmucsController.php';
-require_once 'controllers/SanphamsController.php';
-require_once 'controllers/KhuyenmaisController.php';
+//require_once 'controllers/ProductController.php';
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
-require_once 'models/Sanpham.php';
-require_once 'models/Khuyenmai.php';
+//require_once 'models/Product.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -47,5 +45,10 @@ match ($act) {
 
 
 
-
+    'tintuc/list' => (new TintucsController())->index(),
+    'tintuc/create' => (new TintucsController())->create(),
+    'tintuc/store' => (new TintucsController())->store(),
+    'tintuc/edit' => (new TintucsController())->edit(),
+    'tintuc/update' => (new TintucsController())->update(),
+    'tintuc/delete' => (new TintucsController())->delete(),
 };
