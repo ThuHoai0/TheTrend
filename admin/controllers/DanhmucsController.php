@@ -45,7 +45,7 @@ class DanhmucsController
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
             }
             if (empty($trang_thai)) {
-                $errors['trang_thai'] = "Trạng thái là bắt buộc";
+                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
             }
 
             // them du lieu

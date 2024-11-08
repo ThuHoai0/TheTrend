@@ -32,12 +32,7 @@ match ($act) {
     'danhmuc/delete' => (new DanhmucsController())->delete(),
 
     // Quan ly san pham
-//    'products' => (new ProductController())->index(),
-//    'form_add_product' => (new ProductController())->create(),
-//    'add_product' => (new ProductController())->add(),
-//    'form_edit_product' => (new ProductController())->edit(),
-//    'update_product' => (new ProductController())->update(),
-//    'delete_product' => (new ProductController())->delete(),
+
 
 
 };
