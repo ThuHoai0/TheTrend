@@ -44,6 +44,12 @@ class DanhmucsController
             if (empty($ten_danh_muc)) {
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
             }
+<<<<<<< Updated upstream
+=======
+            if (empty($trang_thai) && $trang_thai != 0) {
+                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
+            }
+>>>>>>> Stashed changes
 
             // them du lieu
             if (empty($errors)) {
@@ -91,6 +97,12 @@ class DanhmucsController
             if (empty($ten_danh_muc)) {
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
             }
+<<<<<<< Updated upstream
+=======
+            if (empty($trang_thai) && $trang_thai != 0) {
+                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
+            }
+>>>>>>> Stashed changes
 
             // Cap nhat du lieu
             if (empty($errors)) {

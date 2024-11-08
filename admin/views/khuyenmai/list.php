@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Danh Sách Khuyến mại | The Trend</title>
+    <title>Khuyến Mại | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -49,7 +49,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Khuyến Mại</li>
+                                    <li class="breadcrumb-item active">Khuyến Mại</li>
                                 </ol>
                             </div>
 
@@ -65,7 +65,7 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=khuyemai/create" class="btn btn-primary material-shadow-none">
+                                    <a href="?act=khuyenmai/create" class="btn btn-primary material-shadow-none">
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Khuyến Mại
                                     </a>
 

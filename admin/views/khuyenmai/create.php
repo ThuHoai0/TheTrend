@@ -68,7 +68,7 @@
                                 <div class="card-header align-items-center d-flex">
                                     <h3 class="card-title mb-0 flex-grow-1">Thêm Khuyến mại</h3>
                                 </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=khuyenmai/store" method="post">
+                                <form class="container-fluid mt-3 mb-3" action="?act=khuyenmai/store" method="POST">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên khuyến mại</h5>
                                         <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_danh_muc">
