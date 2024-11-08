@@ -9,10 +9,12 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhmucsController.php';
 require_once 'controllers/SanphamsController.php';
+require_once 'controllers/TintucsController.php';
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
+require_once 'models/Tintuc.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
