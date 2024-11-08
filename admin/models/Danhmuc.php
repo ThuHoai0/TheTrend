@@ -105,10 +105,4 @@ class Danhmuc
         $this->conn = null;
     }
 
-    public function searchDanhMuc($keyword) {
-        // Truy vấn cơ sở dữ liệu để lấy các kết quả khớp với từ khóa
-        $stmt = $this->conn->prepare("SELECT * FROM danh_mucs WHERE ten_danh_muc LIKE :keyword");
-        $stmt->execute(['keyword' => "%$keyword%"]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 }

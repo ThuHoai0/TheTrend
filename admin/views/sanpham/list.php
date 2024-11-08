@@ -65,7 +65,7 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=danhmuc/create" class="btn btn-primary material-shadow-none">
+                                    <a href="?act=sanpham/create" class="btn btn-primary material-shadow-none">
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Sản Phẩm
                                     </a>
 
@@ -98,8 +98,6 @@
                                                     <th scope="col">Giá bán</th>
                                                     <th scope="col">Giá nhập</th>
                                                     <th scope="col">Danh mục</th>
-                                                    <th scope="col">Khuyến mại</th>
-
 
                                                     <!-- Ngày tạo with Sort Button -->
                                                     <th scope="col" class="flex align-items-center">
@@ -142,13 +140,12 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $san_pham['ten_san_pham'] ?></td>
-                                                        <td><img src="<?= $san_pham['hinh_anh'] ?>" alt=""></td>
+                                                        <td><img src="<?= $san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
                                                         <td><?= $san_pham['mo_ta'] ?></td>
                                                         <td><?= $san_pham['so_luong'] ?></td>
                                                         <td><?= $san_pham['gia'] ?></td>
                                                         <td><?= $san_pham['gia_nhap'] ?></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td><?= $san_pham['ten_danh_muc'] ?></td>
                                                         <td><?= $san_pham['ngay_tao'] ?></td>
                                                         <td>
                                                             <?php

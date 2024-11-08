@@ -44,9 +44,6 @@ class DanhmucsController
             if (empty($ten_danh_muc)) {
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
             }
-            if (empty($trang_thai)) {
-                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
-            }
 
             // them du lieu
             if (empty($errors)) {
@@ -94,9 +91,6 @@ class DanhmucsController
             if (empty($ten_danh_muc)) {
                 $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
             }
-            if (empty($trang_thai)) {
-                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
-            }
 
             // Cap nhat du lieu
             if (empty($errors)) {
@@ -125,18 +119,6 @@ class DanhmucsController
             header('Location: ?act=danhmuc/list');
             exit();
         }
-    }
-
-    public function search() {
-        // Lấy từ khóa từ yêu cầu AJAX
-        $keyword = isset($_GET['query']) ? $_GET['query'] : '';
-
-        // Lấy kết quả từ model
-        $results = $this->modelDanhmuc->searchDanhMuc($keyword);
-
-        // Trả về kết quả dưới dạng JSON
-        header('Content-Type: application/json');
-        echo json_encode($results);
     }
 
 }

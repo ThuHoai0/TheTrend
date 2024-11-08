@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 
@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm Danh Mục | The Trend</title>
+    <title>Thêm Sản Phẩm  | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,12 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Danh Mục Sản Phẩm</h2>
+                            <h2 class="mb-sm-0">Quản Lý Danh Sách Sản Phẩm</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Mục Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
                                 </ol>
                             </div>
 
@@ -66,12 +66,12 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h3 class="card-title mb-0 flex-grow-1">Thêm Danh Mục</h3>
+                                    <h3 class="card-title mb-0 flex-grow-1">Thêm Sản Phẩm</h3>
                                 </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=danhmuc/store" method="post">
+                                <form class="container-fluid mt-3 mb-3" action="?act=sanpham/store" method="post">
                                     <div class="mb-3">
-                                        <h5 class="form-label">Tên danh mục</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc">
+                                        <h5 class="form-label">Tên sản phẩm</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ten_danh_muc">
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
                                         </span>
@@ -81,10 +81,33 @@
                                         <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta">
                                     </div>
                                     <div class="mb-3">
+                                        <h5 class="form-label">Giá</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập giá..." name="mo_ta">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Hình ảnh</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập hình ảnh..." name="mo_ta">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Giá nhập</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="mo_ta">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Số lượng</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập số lượng..." name="mo_ta">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Danh mục</h5>
+                                        <select class="form-select" name="">
+                                            <option value="">Chọn danh muc</option>
+                                            <option value="1" selected>Danh muc 1</option>
+                                            <option value="0">Danh muc 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai">
-                                            <option selected disabled>Chọn trạng thái</option>
-                                            <option value="1">Hiển thị</option>
+                                            <option value="1" selected>Hiển thị</option>
                                             <option value="0">Không hiển thị</option>
                                         </select>
                                         <span class="text-danger">

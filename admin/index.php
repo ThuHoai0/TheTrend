@@ -18,7 +18,6 @@ require_once 'models/Khuyenmai.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
-
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
 match ($act) {
@@ -35,18 +34,18 @@ match ($act) {
 
     // Quan ly san pham
     'sanpham/list' => (new SanphamsController())->index(),
-//    'sanpham/create' => (new SanphamsController())->create(),
-//    'sanpham/store' => (new SanphamsController())->store(),
-//    'sanpham/edit' => (new SanphamsController())->edit(),
-//    'sanpham/update' => (new SanphamsController())->update(),
-//    'sanpham/delete' => (new SanphamsController())->delete(),
+    'sanpham/create' => (new SanphamsController())->create(),
+    'sanpham/store' => (new SanphamsController())->store(),
+    'sanpham/edit' => (new SanphamsController())->edit(),
+    'sanpham/update' => (new SanphamsController())->update(),
+    'sanpham/delete' => (new SanphamsController())->delete(),
 
     // Khuyen mai
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
-//    'khuyenmai/list' => (new KhuyenmaisController())->store(),
+    'khuyenmai/store' => (new KhuyenmaisController())->store(),
 
 
-    default => 'Action không hợp lệ hoặc chưa được định nghĩa',
+
 
 };

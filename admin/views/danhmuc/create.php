@@ -83,8 +83,7 @@
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai">
-                                            <option selected disabled>Chọn trạng thái</option>
-                                            <option value="1">Hiển thị</option>
+                                            <option value="1" selected>Hiển thị</option>
                                             <option value="0">Không hiển thị</option>
                                         </select>
                                         <span class="text-danger">
