@@ -60,8 +60,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="?act=products" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                    <a class="nav-link menu-link" href="?act=sanpham/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh sách sản phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=khuyenmai/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Khuyến mại</span>
                     </a>
                 </li>
                 <li class="nav-item">

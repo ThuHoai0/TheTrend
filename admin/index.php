@@ -8,11 +8,13 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhmucsController.php';
-//require_once 'controllers/ProductController.php';
+require_once 'controllers/SanphamsController.php';
+require_once 'controllers/KhuyenmaisController.php';
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
-//require_once 'models/Product.php';
+require_once 'models/Sanpham.php';
+require_once 'models/Khuyenmai.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -32,7 +34,19 @@ match ($act) {
     'danhmuc/delete' => (new DanhmucsController())->delete(),
 
     // Quan ly san pham
+    'sanpham/list' => (new SanphamsController())->index(),
+//    'sanpham/create' => (new SanphamsController())->create(),
+//    'sanpham/store' => (new SanphamsController())->store(),
+//    'sanpham/edit' => (new SanphamsController())->edit(),
+//    'sanpham/update' => (new SanphamsController())->update(),
+//    'sanpham/delete' => (new SanphamsController())->delete(),
+
+    // Khuyen mai
+    'khuyenmai/list' => (new KhuyenmaisController())->index(),
+    'khuyenmai/create' => (new KhuyenmaisController())->create(),
+//    'khuyenmai/list' => (new KhuyenmaisController())->store(),
 
 
+    default => 'Action không hợp lệ hoặc chưa được định nghĩa',
 
 };

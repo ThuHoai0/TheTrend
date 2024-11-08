@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Danh Sách Sản Phẩm | The Trend</title>
+    <title>Danh Sách Khuyến mại | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -44,12 +44,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Danh Sách Sản Phẩm</h2>
+                            <h2 class="mb-sm-0">Quản Lý Khuyến Mại</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Danh Sách Khuyến Mại</li>
                                 </ol>
                             </div>
 
@@ -65,8 +65,8 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=danhmuc/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Sản Phẩm
+                                    <a href="?act=khuyemai/create" class="btn btn-primary material-shadow-none">
+                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Khuyến Mại
                                     </a>
 
                                     <!-- Search Form and Select aligned to the right -->
@@ -91,23 +91,19 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Tên sản phẩm</th>
-                                                    <th scope="col">Hình ảnh</th>
+                                                    <th scope="col">Tên khuyến mại</th>
                                                     <th scope="col">Mô tả</th>
-                                                    <th scope="col">Số lượng</th>
-                                                    <th scope="col">Giá bán</th>
-                                                    <th scope="col">Giá nhập</th>
-                                                    <th scope="col">Danh mục</th>
-                                                    <th scope="col">Khuyến mại</th>
-
+                                                    <th scope="col">Phần trăm giảm</th>
+                                                    <th scope="col">Ngày bắt đầu</th>
+                                                    <th scope="col">Ngày kết thúc</th>
 
                                                     <!-- Ngày tạo with Sort Button -->
                                                     <th scope="col" class="flex align-items-center">
                                                         Ngày tạo
                                                         <!-- Sort Button for Ngày tạo -->
-                                                        <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="ri-sort-asc" aria-hidden="true"></i>
-                                                        </button>
+                                                            <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="ri-sort-asc" aria-hidden="true"></i>
+                                                            </button>
                                                         <div class="dropdown ms-2">
                                                             <ul class="dropdown-menu" aria-labelledby="statusFilter">
                                                                 <li><a class="dropdown-item" href="?filter=date_desc">Mới nhất</a></li>
@@ -121,9 +117,9 @@
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
                                                         <!-- Dropdown Filter Button -->
-                                                        <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="ri-filter-2-line" aria-hidden="true"></i>
-                                                        </button>
+                                                            <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="ri-filter-2-line" aria-hidden="true"></i>
+                                                            </button>
                                                         <div class="dropdown ms-2">
                                                             <ul class="dropdown-menu" aria-labelledby="statusFilter">
                                                                 <li><a class="dropdown-item" href="?filter=all">Mặc định</a></li>
@@ -138,22 +134,19 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <?php foreach ($san_phams as $i => $san_pham) : ?>
+                                                <?php foreach ($khuyen_mais as $i => $khuyen_mai) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><?= $san_pham['ten_san_pham'] ?></td>
-                                                        <td><img src="<?= $san_pham['hinh_anh'] ?>" alt=""></td>
-                                                        <td><?= $san_pham['mo_ta'] ?></td>
-                                                        <td><?= $san_pham['so_luong'] ?></td>
-                                                        <td><?= $san_pham['gia'] ?></td>
-                                                        <td><?= $san_pham['gia_nhap'] ?></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><?= $san_pham['ngay_tao'] ?></td>
+                                                        <td><?= $khuyen_mai['ten_khuyen_mai'] ?></td>
+                                                        <td><?= $khuyen_mai['mo_ta'] ?></td>
+                                                        <td><?= $khuyen_mai['phan_tram_giam'] ?> %</td>
+                                                        <td><?= $khuyen_mai['ngay_bat_dau'] ?></td>
+                                                        <td><?= $khuyen_mai['ngay_ket_thuc'] ?></td>
+                                                        <td><?= $khuyen_mai['ngay_tao'] ?></td>
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
-                                                            if ($san_pham['trang_thai'] == '1') { ?>
+                                                            if ($khuyen_mai['trang_thai'] == '1') { ?>
                                                                 <span class="badge bg-success">Hiển Thị</span>
                                                                 <?php
                                                             } else { ?>
@@ -164,11 +157,11 @@
                                                         </td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=sanpham/edit&id=<?= $san_pham['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <a href="?act=khuyenmai/edit&id=<?= $khuyen_mai['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
-                                                                <form action="?act=sanpham/delete" method="POST"
+                                                                <form action="?act=khuyenmai/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $san_pham['id'] ?>">
+                                                                    <input type="hidden" name="id" value="<?= $khuyen_mai['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>
                                                                     </button>
