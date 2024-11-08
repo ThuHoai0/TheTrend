@@ -42,6 +42,27 @@ class SanphamsController
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = "Tên sản phẩm là bắt buộc";
             }
+            if (empty($gia)) {
+                $errors['gia'] = "Giá sản phẩm là bắt buộc";
+            } elseif (!is_numeric($gia) || $gia <= 0) {
+                $errors['gia'] = "Giá sản phẩm phải là số dương";
+            }
+            if (empty($gia_nhap)) {
+                $errors['gia_nhap'] = "Giá nhập là bắt buộc";
+            } elseif (!is_numeric($gia_nhap) || $gia_nhap <= 0) {
+                $errors['gia_nhap'] = "Giá nhập phải là số dương";
+            }
+            if (isset($gia) && isset($gia_nhap) && $gia < $gia_nhap) {
+                $errors['gia_vs_gia_nhap'] = "Giá bán phải lớn hơn giá nhập";
+            }
+            if (empty($so_luong)) {
+                $errors['so_luong'] = "Số lượng là bắt buộc";
+            } elseif (!is_numeric($so_luong) || $so_luong < 0) {
+                $errors['so_luong'] = "Số lượng phải là số không âm";
+            }
+//            if (empty($danh_muc)) {
+//                $errors['danh_muc'] = "Danh mục là bắt buộc";
+//            }
 
             // them du lieu
             if (empty($errors)) {
@@ -94,6 +115,27 @@ class SanphamsController
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = "Tên sản phẩm là bắt buộc";
             }
+            if (empty($gia)) {
+                $errors['gia'] = "Giá sản phẩm là bắt buộc";
+            } elseif (!is_numeric($gia) || $gia <= 0) {
+                $errors['gia'] = "Giá sản phẩm phải là số dương";
+            }
+            if (empty($gia_nhap)) {
+                $errors['gia_nhap'] = "Giá nhập là bắt buộc";
+            } elseif (!is_numeric($gia_nhap) || $gia_nhap <= 0) {
+                $errors['gia_nhap'] = "Giá nhập phải là số dương";
+            }
+            if (isset($gia) && isset($gia_nhap) && $gia < $gia_nhap) {
+                $errors['gia_vs_gia_nhap'] = "Giá bán phải lớn hơn giá nhập";
+            }
+            if (empty($so_luong)) {
+                $errors['so_luong'] = "Số lượng là bắt buộc";
+            } elseif (!is_numeric($so_luong) || $so_luong < 0) {
+                $errors['so_luong'] = "Số lượng phải là số không âm";
+            }
+//            if (empty($danh_muc)) {
+//                $errors['danh_muc'] = "Danh mục là bắt buộc";
+//            }
 
             // Cap nhat du lieu
             if (empty($errors)) {

@@ -23,7 +23,7 @@ class Lienhe
         }
     }
     // them du lieu vao CSDL
-    public function postData($ten_lien_he, $mo_ta, $ngay_tao,) {
+    public function postData($ten_lien_he, $mo_ta, $ngay_tao) {
         try {
             $sql = "INSERT INTO `lien_hes`(`ten_lien_he,`, `mo_ta`, `ngay_tao`,) VALUES (:ten_lien_he, :mo_ta, :ngay_tao)";
 

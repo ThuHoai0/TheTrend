@@ -14,16 +14,16 @@ class LienhesController
     public function index()
     {
         // lay ra toan bo lien he
-        $lienhes = $this->modelLienhe->getAll();
+        $lien_hes = $this->modelLienhe->getAll();
 
 
         // dua du lieu ra view
-        require_once './views/Lienhe/list.php';
+        require_once './views/lienhe/list.php';
     }
 
     // ham hien thi form them lien he  public function create()
     public function create(){
-        require_once './views/Lienhe/create.php';
+        require_once './views/lienhe/create.php';
     }
 
     // ham xu ly them vao CSDL
@@ -49,7 +49,7 @@ class LienhesController
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
                 // them vao CSDL
-                $this->modelLienhe->postData($ten_lien_he, $mo_ta, $ngay_tao,);
+                $this->modelLienhe->postData($ten_lien_he, $mo_ta, $ngay_tao);
                 unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();

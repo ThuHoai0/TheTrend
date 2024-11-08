@@ -111,7 +111,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <?php foreach ($lienhes as $i => $lien_he) : ?>
+                                                <?php foreach ($lien_hes as $i => $lien_he) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $lien_he['ten_lien_he'] ?></td>
