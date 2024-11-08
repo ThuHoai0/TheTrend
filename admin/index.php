@@ -10,11 +10,13 @@ require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhmucsController.php';
 require_once 'controllers/SanphamsController.php';
 require_once 'controllers/TintucsController.php';
+require_once 'controllers/KhuyenmaisController.php';
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
+require_once 'models/Khuyenmai.php';
 
 // Route
 $act = $_GET['act'] ?? '/';

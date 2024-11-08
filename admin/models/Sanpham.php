@@ -24,7 +24,7 @@ class Sanpham {
         }
     }
 
-<<<<<<< Updated upstream
+
     public function postData($ten_san_pham, $mo_ta, $gia, $hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao) {
         try {
             $sql = "INSERT INTO `danh_mucs`(`ten_san_pham`, `mo_ta`,`gia`, `hinh_anh`, `gia_nhap`, `so_luong`, `danh_muc_id`, `trang_thai`, `ngay_tao`) 
@@ -119,7 +119,5 @@ class Sanpham {
     public function __destruct() {
         $this->conn = null;
     }
-=======
->>>>>>> Stashed changes
 
 }
