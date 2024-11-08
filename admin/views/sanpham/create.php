@@ -68,7 +68,7 @@
                                 <div class="card-header align-items-center d-flex">
                                     <h3 class="card-title mb-0 flex-grow-1">Thêm Sản Phẩm</h3>
                                 </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=sanpham/store" method="post">
+                                <form class="container-fluid mt-3 mb-3" action="?act=sanpham/store" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên sản phẩm</h5>
                                         <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ten_danh_muc">
@@ -82,19 +82,19 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập giá..." name="mo_ta">
+                                        <input type="text" class="form-control" placeholder="Nhập giá..." name="gia_ban">
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Hình ảnh</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập hình ảnh..." name="mo_ta">
+                                        <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="hinh_anh">
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá nhập</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="mo_ta">
+                                        <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap">
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Số lượng</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập số lượng..." name="mo_ta">
+                                        <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_luong">
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Danh mục</h5>
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
-                                            <button type="submit" class="btn btn-primary">Thêm Danh Mục</button>
+                                            <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
                                         </div>
                                     </div>
                                 </form>

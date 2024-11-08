@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Sửa Sản Phẩm | The Trend</title>
+    <title>Cập Nhật Sản Phẩm | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -84,11 +84,31 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Hình ảnh</label> <br>
-                                                <input type="file">
+                                                <input type="hidden" class="form-control" name="img_h" value="<?= $san_pham['hinh_anh']?>">
+                                                <input type="file" class="form-control" name="hinh_anh">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Mô tả</label>
                                                 <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $san_pham['mo_ta'] ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Số lượng</label>
+                                                <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_luong" value="<?= $san_pham['so_luong'] ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Giá bán</label>
+                                                <input type="text" class="form-control" placeholder="Nhập giá bán..." name="gia" value="<?= $san_pham['gia'] ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Giá nhập</label>
+                                                <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap" value="<?= $san_pham['gia_nhap'] ?>">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Danh mục</label>
+                                                <select class="form-select" name="">
+                                                    <option value="1" selected>Danh muc 1</option>
+                                                    <option value="0">Danh muc 2</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
@@ -99,7 +119,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                                                    <button type="submit" class="btn btn-primary">Cập Nhật Sản Phẩm</button>
                                                 </div>
                                             </div>
                                         </form>

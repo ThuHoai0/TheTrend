@@ -22,15 +22,16 @@ function connectDB() {
     }
 }
 
-function uploadFile($file, $folderUpload = 'admin/uploads/') {
+function uploadFile($file, $folderUpload = 'admin/uploads/')
+{
     // Thêm time() vào để chống trùng file name
     $fileName = time() . $file['name'];
     $pathStorage = $folderUpload . $fileName;
     // echo $pathStorage;
     // die();
 
-    $from   = $file['tmp_name'];
-    $to     = $pathStorage; // Đường dẫn tuong đối
+    $from = $file['tmp_name'];
+    $to = $pathStorage; // Đường dẫn tuong đối
 
     // function move_uploaded_file(string $from, string $to): bool { }
     // @param string $from — The filename of the uploaded file.
