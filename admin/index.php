@@ -11,12 +11,14 @@ require_once 'controllers/DanhmucsController.php';
 require_once 'controllers/SanphamsController.php';
 require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
+require_once 'controllers/LienhesController.php';
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
+require_once 'models/Lienhe.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -55,4 +57,8 @@ match ($act) {
     'tintuc/edit' => (new TintucsController())->edit(),
     'tintuc/update' => (new TintucsController())->update(),
     'tintuc/delete' => (new TintucsController())->delete(),
+
+    //
+    'lienhe/list' => (new LienhesController())->index(),
+    'lienhe/store' => (new LienhesController())->store(),
 };
