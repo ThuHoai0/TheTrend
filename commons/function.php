@@ -22,7 +22,7 @@ function connectDB() {
     }
 }
 
-function uploadFile($file, $folderUpload = 'admin/uploads/')
+function uploadFile($file, $folderUpload = '../admin/uploads/')
 {
     // Thêm time() vào để chống trùng file name
     $fileName = time() . $file['name'];

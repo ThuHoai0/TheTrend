@@ -73,7 +73,6 @@
                                 <div class="card-body">
                                     <div class="live-preview">
                                         <form id="updateForm" action="?act=sanpham/update&id=<?= $san_pham['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
 
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên sản phẩm</label>
@@ -120,9 +119,13 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Danh mục</label>
-                                                <select class="form-select" name="">
-                                                    <option value="1" selected>Danh muc 1</option>
-                                                    <option value="0">Danh muc 2</option>
+                                                <select class="form-select" name="danh_muc_id">
+                                                    <?php
+                                                    foreach ($sp as $value) {?>
+                                                        <option value="<?= $value['id'] ?>" <?= $san_pham['danh_muc_id'] === $value['id'] ? 'selected' : '' ?>><?= $value['ten_danh_muc'] ?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </select>
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['danh_muc']) ? $_SESSION['errors']['danh_muc'] : '' ?>

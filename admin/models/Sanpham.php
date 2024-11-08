@@ -24,6 +24,16 @@ class Sanpham {
         }
     }
 
+    public function getCategory() {
+        $sql = "SELECT * FROM danh_mucs";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao) {
         try {

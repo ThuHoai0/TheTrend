@@ -140,7 +140,7 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $san_pham['ten_san_pham'] ?></td>
-                                                        <td><img src="<?= $san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
+                                                        <td><img src="<?= './../admin/uploads/'.$san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
                                                         <td><?= $san_pham['mo_ta'] ?></td>
                                                         <td><?= $san_pham['so_luong'] ?></td>
                                                         <td><?= $san_pham['gia'] ?></td>

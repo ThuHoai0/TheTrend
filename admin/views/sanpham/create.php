@@ -29,6 +29,7 @@
     require_once "views/layouts/header.php";
 
     require_once "views/layouts/siderbar.php";
+
     ?>
 
     <!-- Left Sidebar End -->
@@ -113,10 +114,14 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Danh mục</h5>
-                                        <select class="form-select" name="danh_muc">
-                                            <option value="">Chọn danh muc</option>
-                                            <option value="1" selected>Danh muc 1</option>
-                                            <option value="0">Danh muc 2</option>
+                                        <select class="form-select" name="danh_muc_id">
+                                            <option value="" selected disabled>Chọn danh muc</option>
+                                            <?php
+                                                foreach ($sp as $value) {?>
+                                                    <option value="<?= $value['id'] ?>"><?= $value['ten_danh_muc'] ?></option>
+                                                    <?php
+                                                }
+                                            ?>
                                         </select>
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['danh_muc']) ? $_SESSION['errors']['danh_muc'] : '' ?>

@@ -9,11 +9,11 @@ class SanphamsController
 
     public function index() {
         $san_phams = $this->modelSanpham->getAll();
-         //var_dump($san_phams);
         require_once './views/sanpham/list.php';
     }
 
     public function create(){
+        $sp = $this->modelSanpham->getCategory();
         require_once './views/sanpham/create.php';
     }
 
@@ -84,6 +84,8 @@ class SanphamsController
         $id = $_GET['id'];
         // lay thong tin chi tiet cua danh muc
         $san_pham = $this->modelSanpham->getDetailData($id);
+
+        $sp = $this->modelSanpham->getCategory();
 
         // do du lieu ra form
         require_once './views/sanpham/edit.php';
