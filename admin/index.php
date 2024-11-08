@@ -44,10 +44,6 @@ match ($act) {
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
     'khuyenmai/store' => (new KhuyenmaisController())->store(),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 
 
