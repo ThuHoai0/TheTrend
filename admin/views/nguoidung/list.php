@@ -143,19 +143,23 @@
                                                         <td><?= $nguoi_dung['email'] ?></td>
                                                         <td><?= $nguoi_dung['so_dien_thoai'] ?></td>
                                                         <td><?= $nguoi_dung['ngay_sinh'] ?></td>
-                                                        <td><?= $nguoi_dung['gioi_tinh'] ?></td>
+                                                        <td>
+                                                            <?= $nguoi_dung['gioi_tinh'] == 1 ? 'Nam' : ($nguoi_dung['gioi_tinh'] == 2 ? 'Nữ' : 'Khác') ?>
+                                                        </td>
                                                         <td><?= $nguoi_dung['dia_chi'] ?></td>
-                                                        <td><?= $nguoi_dung['vai_tro'] ?></td>
+                                                        <td>
+                                                            <?= $nguoi_dung['vai_tro'] == 0 ? 'Admin' : 'Khách hàng' ?>
+                                                        </td>
                                                         <td><?= $nguoi_dung['ngay_tao'] ?></td>
 
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
                                                             if ($nguoi_dung['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
+                                                                <span class="badge bg-success">Hoat động</span>
                                                                 <?php
                                                             } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
+                                                                <span class="badge bg-danger">Không Hoat động</span>
                                                                 <?php
                                                             }
                                                             ?>

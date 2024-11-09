@@ -139,8 +139,8 @@
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
                                                     <option selected disabled>Chọn trạng thái</option>
-                                                    <option value="1" <?= $nguoi_dung['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="2" <?= $nguoi_dung['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="1" <?= $nguoi_dung['trang_thai'] == 1 ? 'selected' : '' ?> >Hoat động</option>
+                                                    <option value="2" <?= $nguoi_dung['trang_thai'] == 0 ? 'selected' : '' ?> >Không Hoat động</option>
                                                 </select>
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
