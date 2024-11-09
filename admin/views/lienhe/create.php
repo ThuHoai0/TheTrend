@@ -77,20 +77,28 @@
                                         </span>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">email</h5>
+                                        <h5 class="form-label">Email</h5>
                                         <input type="text" class="form-control" placeholder="Nhập email..." name="email">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Số điện thoai</h5>
                                         <input type="text" class="form-control" placeholder="Nhập số điện thoại..." name="so_dien_thoai">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['so_dien_thoai']) ? $_SESSION['errors']['so_dien_thoai'] : '' ?>
+                                        </span>
                                     </div>
-
-
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Nội dung</h5>
+                                        <textarea type="text" class="form-control" placeholder="Nhập nội dung..." name="noi_dung"></textarea>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai">
-                                            <option value="1" selected>Hiển thị</option>
-                                            <option value="0">Không hiển thị</option>
+                                            <option value="1">Đã liên hệ</option>
+                                            <option value="0" selected>Chưa liên hệ</option>
                                         </select>
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>

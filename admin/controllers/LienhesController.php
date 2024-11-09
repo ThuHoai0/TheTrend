@@ -38,16 +38,30 @@ class LienhesController
             $email = $_POST['email'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $trang_thai = $_POST['trang_thai'];
+            $noi_dung = $_POST['noi_dung'];
             // validate
             $errors = [];
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
             }
+            // Kiểm tra email
+            if (empty($email)) {
+                $errors['email'] = "Email là bắt buộc";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Định dạng email không hợp lệ";
+            }
+
+            // Kiểm tra số điện thoại
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
+            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
+            }
             // them du lieu
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
                 // them vao CSDL
-                $this->modelLienhe->postData($ho_ten,$email,$so_dien_thoai,$trang_thai);
+                $this->modelLienhe->postData($ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
                 unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
@@ -91,6 +105,19 @@ class LienhesController
             $errors = [];
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
+            }
+            // Kiểm tra email
+            if (empty($email)) {
+                $errors['email'] = "Email là bắt buộc";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Định dạng email không hợp lệ";
+            }
+
+// Kiểm tra số điện thoại
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
+            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
             }
 
             // Cap nhat du lieu

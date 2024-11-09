@@ -82,7 +82,7 @@
                                                     <th scope="col">Tên liên hệ</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Số điện thoại</th>
-                                                    <th scope="col">Mô tả</th>
+                                                    <th scope="col">Nội dung</th>
 
                                                     <!-- Ngày tạo with Sort Button -->
 
@@ -111,10 +111,10 @@
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
                                                             if ($lien_he['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
+                                                                <span class="badge bg-success">Đã liên hệ</span>
                                                                 <?php
                                                             } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
+                                                                <span class="badge bg-danger">Chưa liên hệ</span>
                                                                 <?php
                                                             }
                                                             ?>
