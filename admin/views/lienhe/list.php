@@ -102,10 +102,10 @@
                                                 <?php foreach ($lien_hes as $i => $lien_he) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><?= $lien_he['ten_lien_he'] ?></td>
+                                                        <td><?= $lien_he['ho_ten'] ?></td>
                                                         <td><?= $lien_he['email'] ?></td>
                                                         <td><?= $lien_he['so_dien_thoai'] ?></td>
-                                                        <td><?= $lien_he['mo_ta'] ?></td>
+                                                        <td><?= $lien_he['noi_dung'] ?></td>
                                 
                                                         <td>
                                                             <?php

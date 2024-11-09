@@ -71,9 +71,9 @@
                                 <form class="container-fluid mt-3 mb-3" action="?act=lienhe/store" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên liên hệ</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tên liên hệ..." name="ten_lien_he">
+                                        <input type="text" class="form-control" placeholder="Nhập tên liên hệ..." name="ho_ten">
                                         <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['ten_lien_he']) ? $_SESSION['errors']['ten_lien_he'] : '' ?>
+                                            <?= !empty($_SESSION['errors']['ho_ten']) ? $_SESSION['errors']['ho_ten'] : '' ?>
                                         </span>
                                     </div>
                                     <div class="mb-3">

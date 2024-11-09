@@ -34,20 +34,20 @@ class LienhesController
             date_default_timezone_set('Asia/Ho_Chi_Minh');
 
             // lay ra du lieu
-            $ten_lien_he = $_POST['ten_lien_he'];
+            $ho_ten = $_POST['ho_ten'];
             $email = $_POST['email'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $trang_thai = $_POST['trang_thai'];
             // validate
             $errors = [];
-            if (empty($ten_lien_he)) {
-                $errors['ten_lien_he'] = "Tên người liên hệ là bắt buộc";
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
             }
             // them du lieu
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
                 // them vao CSDL
-                $this->modelLienhe->postData($ten_lien_he,$email,$so_dien_thoai,$trang_thai);
+                $this->modelLienhe->postData($ho_ten,$email,$so_dien_thoai,$trang_thai);
                 unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
@@ -79,25 +79,25 @@ class LienhesController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay ra du lieu
             $id = $_GET['id'];
-            $ten_lien_he = $_POST['ten_lien_he'];
+            $ho_ten = $_POST['ho_ten'];
             $email = $_POST['email'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
-            $mo_ta = $_POST['mo_ta'];
+            $noi_dung = $_POST['noi_dung'];
             $trang_thai = $_POST['trang_thai'];
 
 
             // die($category_status  );
             // validate
             $errors = [];
-            if (empty($ten_lien_he)) {
-                $errors['ten_lien_he'] = "Tên người liên hệ là bắt buộc";
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
             }
 
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelLienhe->updateData($id,$ten_lien_he,$email,$so_dien_thoai,$mo_ta,$trang_thai);
+                $this->modelLienhe->updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();

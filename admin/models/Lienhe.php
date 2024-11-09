@@ -23,15 +23,15 @@ class Lienhe
         }
     }
     // them du lieu vao CSDL
-    public function postData($ten_lien_he,$email,$so_dien_thoai,$trang_thai) {
+    public function postData($ho_ten,$email,$so_dien_thoai,$trang_thai) {
 
 
         try {
-            $sql = "INSERT INTO `lien_hes`(`ten_lien_he`, `email`, `so_dien_thoai`, `trang_thai`) VALUES (:ten_lien_he, :email, :so_dien_thoai, :trang_thai)";
+            $sql = "INSERT INTO `lien_hes`(`ho_ten`, `email`, `so_dien_thoai`, `trang_thai`) VALUES (:ho_ten, :email, :so_dien_thoai, :trang_thai)";
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
-            $stmt->bindParam(':ten_lien_he', $ten_lien_he);
+            $stmt->bindParam(':ho_ten', $ho_ten);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
             $stmt->bindParam(':trang_thai', $trang_thai);
@@ -43,19 +43,19 @@ class Lienhe
     }
 
 //    // cap nhat du lieu vao CSDL
-    public function updateData($id,$ten_lien_he,$email,$so_dien_thoai,$mo_ta,$trang_thai) {
+    public function updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai) {
         try {
 
-            $sql = "UPDATE lien_hes SET ten_lien_he = :ten_lien_he, mo_ta = :mo_ta, so_dien_thoai = :so_dien_thoai, trang_thai = :trang_thai, email = :email WHERE id = :id";
+            $sql = "UPDATE lien_hes SET ho_ten = :ho_ten, noi_dung = :noi_dung, so_dien_thoai = :so_dien_thoai, trang_thai = :trang_thai, email = :email WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
-            $stmt->bindParam(':ten_lien_he', $ten_lien_he);
+            $stmt->bindParam(':ho_ten', $ho_ten);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':mo_ta', $mo_ta);
+            $stmt->bindParam(':noi_dung', $noi_dung);
             $stmt->bindParam(':trang_thai', $trang_thai);
 
 
