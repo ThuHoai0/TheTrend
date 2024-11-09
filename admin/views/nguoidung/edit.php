@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm Danh Mục | The Trend</title>
+    <title>Thêm Người Dùng | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,12 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h4 class="mb-sm-0">Quản Lý Danh Mục Sản Phẩm</h4>
+                            <h4 class="mb-sm-0">Quản Lý Người DÙng</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Mục Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Danh Sách Người Dùng</li>
                                 </ol>
                             </div>
 
@@ -67,37 +67,80 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Danh Mục</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Người Dùng</h4>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=danhmuc/update&id=<?= $danh_muc['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
+                                        <form id="updateForm" action="?act=nguoidung/update&id=<?= $nguoi_dung['id'] ?>" method="post">
+<!--                                            <input type="hidden" name="id" value="--><?php //= $nguoi_dung['id'] ?><!--">-->
 
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên danh mục</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc" value="<?= $danh_muc['ten_danh_muc'] ?>">
+                                                <label for="citynameInput" class="form-label">Tên người dùng</label>
+                                                <input type="text" class="form-control" placeholder="Nhập tên người dùng..." name="ten"  value="<?= isset($nguoi_dung['ten']) ? $nguoi_dung['ten'] : '' ?>" required>
+
                                                 <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
+                                                    <?= !empty($_SESSION['errors']['ten']) ? $_SESSION['errors']['ten'] : '' ?>
                                                 </span>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Mô tả</label>
-                                                <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $danh_muc['mo_ta'] ?>">
+                                                <label for="citynameInput" class="form-label">Email</label>
+                                                <input type="email" class="form-control" placeholder="Nhập email..." name="email" value="<?= isset($nguoi_dung['email']) ? $nguoi_dung['email'] : '' ?>" required>
                                             </div>
-<!--                                            <div class="mb-3">-->
-<!--                                                <label for="citynameInput" class="form-label">Ngày tạo</label>-->
-<!--                                                <input type="date" class="form-control" name="ngay_tao" value="--><?php //= $danh_muc['ngay_tao'] ?><!--">-->
-<!--                                                <span class="text-danger">-->
-<!--                                                    --><?php //= !empty($_SESSION['errors']['ngay_tao']) ? $_SESSION['errors']['ngay_tao'] : '' ?>
-<!--                                                </span>-->
-<!--                                            </div>-->
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Số Điện Thoại</h5>
+                                                    <input type="text" class="form-control" id="so_dien_thoai" name="so_dien_thoai" value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>" >
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['so_dien_thoai']) ? $_SESSION['errors']['so_dien_thoai'] : '' ?>
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Ngày Sinh</h5>
+                                                <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh" value="<?= isset($nguoi_dung['ngay_sinh']) ? $nguoi_dung['ngay_sinh'] : '' ?>">
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['ngay_sinh']) ? $_SESSION['errors']['ngay_sinh'] : '' ?>
+                                                </span>
+                                            </div>  
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Giới Tính</h5>
+                                                <div style="display:flex;" >
+                                                    <label style="margin-right: 15px">
+                                                        <input type="radio" name="gioi_tinh" value="1" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 1 ? 'checked' : '' ?>> Nam<br>
+                                                    </label>
+                                                    <label style="margin-right: 15px">
+                                                        <input type="radio" name="gioi_tinh" value="2" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 2 ? 'checked' : '' ?>> Nữ<br>
+                                                    </label>
+                                                    <label for="">
+                                                        <input type="radio" name="gioi_tinh" value="0" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 0 ? 'checked' : '' ?>> Khác<br>
+                                                    </label>
+                                                </div>
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['gioi_tinh']) ? $_SESSION['errors']['gioi_tinh'] : '' ?>
+                                                </span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Địa Chỉ</h5>
+                                                <textarea id="dia_chi" class="form-control" name="dia_chi" rows="4" cols="50" required><?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?></textarea>
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['dia_chi']) ? $_SESSION['errors']['dia_chi'] : '' ?>
+                                                </span>
+                                            </div>  
+                                            <div class="mb-3">
+                                                <label for="ForminputState" class="form-label">Vai Trò</label>
+                                                    <select id="form-select" class="form-control" name="vai_tro" required>
+                                                        <option value="1">Khách hàng</option>
+                                                        <option value="0">Quản Trị Viên</option>
+                                                    </select>
+                                                    <span class="text-danger">
+                                                        <?= !empty($_SESSION['errors']['vai_tro']) ? $_SESSION['errors']['vai_tro'] : '' ?>
+                                                    </span>
+                                                </div> 
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $danh_muc['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $danh_muc['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option selected disabled>Chọn trạng thái</option>
+                                                    <option value="1" <?= $nguoi_dung['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
+                                                    <option value="2" <?= $nguoi_dung['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
                                                 </select>
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
@@ -105,7 +148,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                                                    <button type="submit" class="btn btn-primary">Cập Nhật Người Dùng</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -175,7 +218,7 @@ require_once "views/layouts/libs_js.php";
 
 <script>
     function submitForm() {
-        console.log("Nút 'Cập Nhật Danh Mục' đã được nhấn.");
+        console.log("Nút 'Cập Nhật Người Dùng' đã được nhấn.");
 
         const form = document.getElementById("updateForm");
         const formData = new FormData(form);
@@ -185,9 +228,9 @@ require_once "views/layouts/libs_js.php";
         const categoryStatus = formData.get("category_status");
         console.log("categoryName=>",categoryName);
         console.log("categoryStatus=>",categoryStatus);
-        console.log("formData",formData)           
+        console.log("formData",formData)
         if (!categoryName) {
-            alert("Tên danh mục là bắt buộc.");
+            alert("Tên người dùng là bắt buộc.");
             return;
         }
 
@@ -208,7 +251,7 @@ require_once "views/layouts/libs_js.php";
 
                 // Thông báo thành công hoặc cập nhật giao diện
                 if (data.success) {
-                    alert("Cập nhật danh mục thành công!");
+                    alert("Cập nhật người dùng thành công!");
                 } else {
                     alert("Cập nhật không thành công. Vui lòng thử lại.");
                 }
