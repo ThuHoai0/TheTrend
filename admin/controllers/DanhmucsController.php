@@ -118,7 +118,7 @@ class DanhmucsController
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['danhmuc_id'];
+            $id = $_POST['id'];
             $this->modelDanhmuc->deleteData($id);
             header('Location: ?act=danhmuc/list');
             exit();
