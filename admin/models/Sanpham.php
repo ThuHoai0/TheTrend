@@ -95,11 +95,11 @@ class Sanpham {
     }
 
 
-    public function updateData($id, $ten_san_pham, $mo_ta, $load_hinh_anh, $trang_thai, $so_luong, $gia, $gia_nhap, $danh_muc_id) {
+    public function updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai) {
         try {
 
-            $sql = "UPDATE san_phams SET ten_san_pham = :ten_san_pham, mo_ta = :mo_ta, trang_thai = :trang_thai, 
-                    hinh_anh = :hinh_anh, so_luong = :so_luong, gia = :gia, gia_nhap = :gia_nhap, danh_muc_id = :danh_muc_id 
+            $sql = "UPDATE san_phams SET ten_san_pham = :ten_san_pham, mo_ta = :mo_ta, gia = :gia, 
+                    hinh_anh = :hinh_anh, gia_nhap = :gia_nhap, so_luong = :so_luong, danh_muc_id = :danh_muc_id, trang_thai = :trang_thai
                     WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
@@ -108,12 +108,12 @@ class Sanpham {
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':ten_san_pham', $ten_san_pham);
             $stmt->bindParam(':mo_ta', $mo_ta);
-            $stmt->bindParam(':trang_thai', $trang_thai);
-            $stmt->bindParam(':hinh_anh', $load_hinh_anh);
-            $stmt->bindParam(':so_luong', $so_luong);
             $stmt->bindParam(':gia', $gia);
+            $stmt->bindParam(':hinh_anh', $load_hinh_anh);
             $stmt->bindParam(':gia_nhap', $gia_nhap);
+            $stmt->bindParam(':so_luong', $so_luong);
             $stmt->bindParam(':danh_muc_id', $danh_muc_id);
+            $stmt->bindParam(':trang_thai', $trang_thai);
 
             $stmt->execute();
 

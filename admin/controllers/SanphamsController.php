@@ -99,18 +99,27 @@ class SanphamsController
             $id = $_GET['id'];
             $ten_san_pham = $_POST['ten_san_pham'];
             $mo_ta = $_POST['mo_ta'];
-            $trang_thai = $_POST['trang_thai'];
-            $hinh_anh = $_FILES['hinh_anh'];
-            $so_luong = $_POST['so_luong'];
             $gia = $_POST['gia'];
-            $danh_muc_id = $_POST['danh_muc_id'];
+            $hinh_anh = $_FILES['hinh_anh'];
             $gia_nhap = $_POST['gia_nhap'];
-            $load_hinh_anh = $_POST['hinh_anh'];
+            $so_luong = $_POST['so_luong'];
+            $danh_muc_id = $_POST['danh_muc_id'];
+            $trang_thai = $_POST['trang_thai'];
 
-            if ($hinh_anh['size'] > 0) {
-                $load_hinh_anh = uploadFile($hinh_anh);
-            }
+            $load_hinh_anh = uploadFile($hinh_anh);
+            
 
+            // $ten_san_pham = $_POST['ten_san_pham'];
+            // $mo_ta = $_POST['mo_ta'];
+            // $gia = $_POST['gia'];
+            // $hinh_anh = $_FILES['hinh_anh'];
+            // $gia_nhap = $_POST['gia_nhap'];
+            // $so_luong = $_POST['so_luong'];
+            // $danh_muc_id = $_POST['danh_muc_id'];
+            // $trang_thai = $_POST['trang_thai'];
+            // $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); 
+
+            // $load_hinh_anh = uploadFile($hinh_anh);
             // die($category_status  );
             // validate
             $errors = [];
@@ -143,7 +152,7 @@ class SanphamsController
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $load_hinh_anh, $trang_thai, $so_luong, $gia, $gia_nhap, $danh_muc_id);
+                $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai);
                 unset($_SESSION['errors']);
                 header('Location: ?act=sanpham/list');
                 exit();

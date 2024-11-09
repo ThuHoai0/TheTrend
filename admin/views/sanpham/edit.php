@@ -72,7 +72,7 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=sanpham/update&id=<?= $san_pham['id'] ?>" method="post">
+                                        <form id="updateForm" action="?act=sanpham/update&id=<?= $san_pham['id'] ?>" method="post" enctype="multipart/form-data">
 
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên sản phẩm</label>
