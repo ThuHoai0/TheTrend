@@ -77,9 +77,9 @@
 
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên liên hệ</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ten_lien_he" value="<?= $lien_he['ten_lien_he'] ?>">
+                                                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ho_ten" value="<?= $lien_he['ho_ten'] ?>">
                                                 <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_lien_he']) ? $_SESSION['errors']['ten_lien_he'] : '' ?>
+                                                    <?= !empty($_SESSION['errors']['ho_ten']) ? $_SESSION['errors']['ho_ten'] : '' ?>
                                                 </span>
                                             </div>
                                         
@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">mô tả</label>
-                                                <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $lien_he['mo_ta'] ?>">
+                                                <input type="text" class="form-control" placeholder="Nhập mô tả..." name="noi_dung" value="<?= $lien_he['noi_dung'] ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>

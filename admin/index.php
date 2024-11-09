@@ -8,7 +8,7 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhmucsController.php';
-<<<<<<< Updated upstream
+
 require_once 'controllers/SanphamsController.php';
 require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
@@ -20,7 +20,7 @@ require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
 require_once 'models/Lienhe.php';
-=======
+
 require_once 'controllers/NguoidungsController.php';
 //require_once 'controllers/ProductController.php';
 
@@ -28,7 +28,6 @@ require_once 'controllers/NguoidungsController.php';
 require_once 'models/Danhmuc.php';
 //require_once 'models/Product.php';
 require_once 'models/Nguoidung.php';
->>>>>>> Stashed changes
 
 // Route
 $act = $_GET['act'] ?? '/';
