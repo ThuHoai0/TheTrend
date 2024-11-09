@@ -43,6 +43,26 @@ class LienhesController
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
             }
+            // Validate email
+            if (empty($email)) {
+                $errors['email'] = "Email là bắt buộc";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Email không hợp lệ";
+            }
+
+// Validate so_dien_thoai
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
+            } elseif (!preg_match('/^[0-9]{10,11}$/', $so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại không hợp lệ";
+            }
+
+// Validate noi_dung
+            if (empty($noi_dung)) {
+                $errors['noi_dung'] = "Nội dung là bắt buộc";
+            } elseif (strlen($noi_dung) < 10) {
+                $errors['noi_dung'] = "Nội dung phải có ít nhất 10 ký tự";
+            }
             // them du lieu
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
@@ -86,11 +106,31 @@ class LienhesController
             $trang_thai = $_POST['trang_thai'];
 
 
-            // die($category_status  );
+            // die($category_status);
             // validate
             $errors = [];
             if (empty($ho_ten)) {
                 $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
+            }
+            // Validate email
+            if (empty($email)) {
+                $errors['email'] = "Email là bắt buộc";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Email không hợp lệ";
+            }
+
+// Validate so_dien_thoai
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
+            } elseif (!preg_match('/^[0-9]{10,11}$/', $so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại không hợp lệ";
+            }
+
+// Validate noi_dung
+            if (empty($noi_dung)) {
+                $errors['noi_dung'] = "Nội dung là bắt buộc";
+            } elseif (strlen($noi_dung) < 10) {
+                $errors['noi_dung'] = "Nội dung phải có ít nhất 10 ký tự";
             }
 
             // Cap nhat du lieu

@@ -84,22 +84,31 @@
                                             </div>
                                         
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">email</label>
+                                                <label for="citynameInput" class="form-label">Email</label>
                                                 <input type="text" class="form-control" placeholder="Nhập email..." name="email" value="<?= $lien_he['email'] ?>">
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : '' ?>
+                                                </span>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Số điện thoại</label>
                                                 <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_dien_thoai" value="<?= $lien_he['so_dien_thoai'] ?>">
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['so_dien_thoai']) ? $_SESSION['errors']['so_dien_thoai'] : '' ?>
+                                                </span>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">mô tả</label>
+                                                <label for="citynameInput" class="form-label">Nội dung</label>
                                                 <input type="text" class="form-control" placeholder="Nhập mô tả..." name="noi_dung" value="<?= $lien_he['noi_dung'] ?>">
+                                                <span class="text-danger">
+                                                    <?= !empty($_SESSION['errors']['noi_dung']) ? $_SESSION['errors']['noi_dung'] : '' ?>
+                                                </span>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $lien_he['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $lien_he['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="1" <?= $lien_he['trang_thai'] == 1 ? 'selected' : '' ?> >Chưa liên hệ</option>
+                                                    <option value="0" <?= $lien_he['trang_thai'] == 0 ? 'selected' : '' ?> >Đã liên hệ</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-12">

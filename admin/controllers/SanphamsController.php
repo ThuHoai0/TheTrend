@@ -107,6 +107,8 @@ class SanphamsController
             $gia_nhap = $_POST['gia_nhap'];
             $load_hinh_anh = $_POST['hinh_anh'];
 
+            $load_hinh_anh = uploadFile($hinh_anh);
+
             if ($hinh_anh['size'] > 0) {
                 $load_hinh_anh = uploadFile($hinh_anh);
             }
