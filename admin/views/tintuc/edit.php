@@ -82,9 +82,14 @@
                                                     <?= !empty($_SESSION['errors']['tieu_de']) ? $_SESSION['errors']['tieu_de'] : '' ?>
                                                 </span>
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Nội dung</label>
                                                 <input type="text" class="form-control" placeholder="Nhập nội dung..." name="noi_dung" value="<?= $tin_tuc['noi_dung'] ?>">
+                                            </div> -->
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Nội dung</h5>
+                                                <textarea class="form-control" placeholder="Nhập nội dung..." name="noi_dung" value="<?= $tin_tuc['noi_dung'] ?>"></textarea>
+                                                <!-- <input type="text" class="form-control" placeholder="Nhập nội dung..." name="noi_dung"> -->
                                             </div>
 <!--                                            <div class="mb-3">-->
 <!--                                                <label for="citynameInput" class="form-label">Ngày tạo</label>-->
