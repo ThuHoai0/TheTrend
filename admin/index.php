@@ -57,6 +57,8 @@ match ($act) {
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
     'khuyenmai/store' => (new KhuyenmaisController())->store(),
+    'khuyenmai/edit' => (new SanphamsController())->edit(),
+
 
 // Quan ly người dùng
     'nguoidung/list' => (new NguoidungsController())->index(),

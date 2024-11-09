@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Mô tả</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta">
+                                        <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
