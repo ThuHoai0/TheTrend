@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Danh sách liên hệ | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -44,12 +43,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Danh Sách Liên hệ</h2>
+                            <h2 class="mb-sm-0">Quản Lý Danh Sách Liên Hệ</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Liên hệ</li>
+                                    <li class="breadcrumb-item active">Danh Sách Liên Hệ</li>
                                 </ol>
                             </div>
 
@@ -66,16 +65,9 @@
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
                                     <a href="?act=lienhe/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên hệ
+                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
                                     </a>
 
-                                    <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-
-                                    </form>
                                 </div><!-- end card header -->
 
 
@@ -87,41 +79,50 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên liên hệ</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Số điện thoại</th>
                                                     <th scope="col">Mô tả</th>
 
                                                     <!-- Ngày tạo with Sort Button -->
-                                                    <th scope="col" class="flex align-items-center">
-                                                        Ngày tạo
-                                                        <!-- Sort Button for Ngày tạo -->
-                                                            <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <i class="ri-sort-asc" aria-hidden="true"></i>
-                                                            </button>
-                                                        <div class="dropdown ms-2">
-                                                            <ul class="dropdown-menu" aria-labelledby="statusFilter">
-                                                                <li><a class="dropdown-item" href="?filter=date_desc">Mới nhất</a></li>
-                                                                <li><a class="dropdown-item" href="?filter=date_asc">Cũ nhất</a></li>
-                                                            </ul>
-                                                        </div>
+
+
+                                                    <!-- Trạng thái with Sort Button -->
+                                                    <th scope="col" class="align-items-center">
+                                                        Trạng thái
+                                                        <!-- Dropdown Filter Button -->
+
                                                     </th>
-
-
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
 
-                                                <?php foreach ($lienhes as $i => $lien_he) : ?>
+                                                <?php foreach ($lien_hes as $i => $lien_he) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $lien_he['ten_lien_he'] ?></td>
+                                                        <td><?= $lien_he['email'] ?></td>
+                                                        <td><?= $lien_he['so_dien_thoai'] ?></td>
                                                         <td><?= $lien_he['mo_ta'] ?></td>
-                                                        <td><?= $lien_he['ngay_tao'] ?></td>
+                                
+                                                        <td>
+                                                            <?php
+                                                            // Check the 'status' field instead of 'category_name'
+                                                            if ($lien_he['trang_thai'] == '1') { ?>
+                                                                <span class="badge bg-success">Hiển Thị</span>
+                                                                <?php
+                                                            } else { ?>
+                                                                <span class="badge bg-danger">Không Hiển Thị</span>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=lien_he/edit&id=<?= $lien_he['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <a href="?act=lienhe/edit&id=<?= $lien_he['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
-                                                                <form action="?act=lien_he/delete" method="POST"
+                                                                <form action="?act=lienhe/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
                                                                     <input type="hidden" name="id" value="<?= $lien_he['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">

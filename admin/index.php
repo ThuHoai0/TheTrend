@@ -58,7 +58,11 @@ match ($act) {
     'tintuc/update' => (new TintucsController())->update(),
     'tintuc/delete' => (new TintucsController())->delete(),
 
-    //
+    //lienhe
     'lienhe/list' => (new LienhesController())->index(),
     'lienhe/store' => (new LienhesController())->store(),
+    'lienhe/create' => (new LienhesController())->create(),
+    'lienhe/edit' => (new LienhesController())->edit(),
+    'lienhe/update' => (new LienhesController())->update(),
+    'lienhe/delete' => (new LienhesController())->delete(),
 };

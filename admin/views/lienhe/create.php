@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm liên hệ | The Trend</title>
+    <title>Thêm Sản Phẩm  | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -52,7 +52,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Liên hệ</li>
+                                    <li class="breadcrumb-item active">Danh Sách Liên Hệ</li>
                                 </ol>
                             </div>
 
@@ -68,19 +68,33 @@
                                 <div class="card-header align-items-center d-flex">
                                     <h3 class="card-title mb-0 flex-grow-1">Thêm Liên Hệ</h3>
                                 </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=lienhe/store" method="post">
+                                <form class="container-fluid mt-3 mb-3" action="?act=lienhe/store" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên liên hệ</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tên Liên hệ" name="ten_lien_he">
+                                        <input type="text" class="form-control" placeholder="Nhập tên liên hệ..." name="ten_lien_he">
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['ten_lien_he']) ? $_SESSION['errors']['ten_lien_he'] : '' ?>
                                         </span>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Mô tả</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta">
+                                        <h5 class="form-label">email</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập email..." name="email">
                                     </div>
                                     <div class="mb-3">
+                                        <h5 class="form-label">Số điện thoai</h5>
+                                        <input type="text" class="form-control" placeholder="Nhập số điện thoại..." name="so_dien_thoai">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="ForminputState" class="form-label">Trạng thái</label>
+                                        <select class="form-select" name="trang_thai">
+                                            <option value="1" selected>Hiển thị</option>
+                                            <option value="0">Không hiển thị</option>
+                                        </select>
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
