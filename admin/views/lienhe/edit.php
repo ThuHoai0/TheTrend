@@ -104,8 +104,8 @@
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $lien_he['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $lien_he['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="1" <?= $lien_he['trang_thai'] == 1 ? 'selected' : '' ?> >Đã liên hệ</option>
+                                                    <option value="0" <?= $lien_he['trang_thai'] == 0 ? 'selected' : '' ?> >Chưa liên hệ</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-12">
