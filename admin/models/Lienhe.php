@@ -24,6 +24,8 @@ class Lienhe
     }
     // them du lieu vao CSDL
     public function postData($ten_lien_he,$email,$so_dien_thoai,$trang_thai) {
+
+
         try {
             $sql = "INSERT INTO `lien_hes`(`ten_lien_he`, `email`, `so_dien_thoai`, `trang_thai`) VALUES (:ten_lien_he, :email, :so_dien_thoai, :trang_thai)";
             $stmt = $this->conn->prepare($sql);

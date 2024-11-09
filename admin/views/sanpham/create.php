@@ -29,6 +29,7 @@
     require_once "views/layouts/header.php";
 
     require_once "views/layouts/siderbar.php";
+
     ?>
 
     <!-- Left Sidebar End -->
@@ -71,9 +72,9 @@
                                 <form class="container-fluid mt-3 mb-3" action="?act=sanpham/store" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên sản phẩm</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ten_danh_muc">
+                                        <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ten_san_pham">
                                         <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
+                                            <?= !empty($_SESSION['errors']['ten_san_pham']) ? $_SESSION['errors']['ten_san_pham'] : '' ?>
                                         </span>
                                     </div>
                                     <div class="mb-3">
@@ -82,7 +83,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập giá..." name="gia_ban">
+                                        <input type="text" class="form-control" placeholder="Nhập giá..." name="gia">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['gia']) ? $_SESSION['errors']['gia'] : '' ?>
+                                        </span>
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['gia_vs_gia_nhap']) ? $_SESSION['errors']['gia_vs_gia_nhap'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Hình ảnh</h5>
@@ -91,18 +98,34 @@
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá nhập</h5>
                                         <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['gia_nhap']) ? $_SESSION['errors']['gia_nhap'] : '' ?>
+                                        </span>
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['gia_vs_gia_nhap']) ? $_SESSION['errors']['gia_vs_gia_nhap'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Số lượng</h5>
                                         <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_luong">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['so_luong']) ? $_SESSION['errors']['so_luong'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Danh mục</h5>
-                                        <select class="form-select" name="">
-                                            <option value="">Chọn danh muc</option>
-                                            <option value="1" selected>Danh muc 1</option>
-                                            <option value="0">Danh muc 2</option>
+                                        <select class="form-select" name="danh_muc_id">
+                                            <option value="" selected disabled>Chọn danh muc</option>
+                                            <?php
+                                                foreach ($sp as $value) {?>
+                                                    <option value="<?= $value['id'] ?>"><?= $value['ten_danh_muc'] ?></option>
+                                                    <?php
+                                                }
+                                            ?>
                                         </select>
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['danh_muc']) ? $_SESSION['errors']['danh_muc'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
