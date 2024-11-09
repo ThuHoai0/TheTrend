@@ -44,9 +44,6 @@ class TintucsController
             if (empty($tieu_de)) {
                 $errors['tieu_de'] = "Tên tiêu đề là bắt buộc";
             }
-            if (empty($trang_thai)) {
-                $errors['trang_thai'] = "Trạng thái là bắt buộc";
-            }
 
             // them du lieu
             if (empty($errors)) {
@@ -93,9 +90,6 @@ class TintucsController
             $errors = [];
             if (empty($tieu_de)) {
                 $errors['tieu_de'] = "Tên tiêu đề là bắt buộc";
-            }
-            if (empty($trang_thai)) {
-                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
             }
 
             // Cap nhat du lieu

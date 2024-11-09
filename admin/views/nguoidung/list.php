@@ -65,8 +65,8 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=nguoidung/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Người Dùng
+                                    <a href="#" class="#">
+                                        <!-- <i class="ri-add-circle-line align-middle me-1"></i> Thêm Người Dùng -->
                                     </a>
 
                                     <!-- Search Form and Select aligned to the right -->
