@@ -105,4 +105,17 @@ class Danhmuc
         $this->conn = null;
     }
 
+    public function search($keyword) {
+        try {
+            $sql = "SELECT * FROM `danh_mucs` WHERE ten_danh_muc LIKE :keyword OR mo_ta LIKE :keyword";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':keyword', '%' . $keyword . '%');
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
 }
