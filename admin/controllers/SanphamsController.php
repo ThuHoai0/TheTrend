@@ -106,6 +106,10 @@ class SanphamsController
             $danh_muc_id = $_POST['danh_muc_id'];
             $trang_thai = $_POST['trang_thai'];
 
+            $load_hinh_anh = uploadFile($hinh_anh);
+
+            // validate
+
             // Kiểm tra và tải lên ảnh nếu có
             $load_hinh_anh = null;
             if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
@@ -118,6 +122,7 @@ class SanphamsController
             }
 
             // Validate dữ liệu
+
             $errors = [];
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = "Tên sản phẩm là bắt buộc";

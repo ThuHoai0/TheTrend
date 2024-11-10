@@ -13,6 +13,7 @@ require_once 'controllers/SanphamsController.php';
 require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
 require_once 'controllers/LienhesController.php';
+require_once 'controllers/BannersController.php';
 
 require_once 'controllers/TrangthaidonhangsController.php';
 
@@ -22,6 +23,7 @@ require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
 require_once 'models/Lienhe.php';
+require_once 'models/Banner.php';
 
 require_once 'models/Trangthaidonhang.php';
 
@@ -87,11 +89,20 @@ match ($act) {
     'lienhe/update' => (new LienhesController())->update(),
     'lienhe/delete' => (new LienhesController())->delete(),
 
+    //banner
+    'banner/list' => (new BannersController())->index(),
+    'banner/store' => (new BannersController())->store(),
+    'banner/create' => (new BannersController())->create(),
+    'banner/edit' => (new BannersController())->edit(),
+    'banner/update' => (new BannersController())->update(),
+    'banner/delete' => (new BannersController())->delete(),
+
+
     // Trạng thái đơn hàng
     'trangthaidonhang/list' => (new TrangthaidonhangsController())->index(),
     'trangthaidonhang/store' => (new TrangthaidonhangsController())->store(),
     'trangthaidonhang/edit' => (new TrangthaidonhangsController())->edit(),
     'trangthaidonhang/update' => (new TrangthaidonhangsController())->update(),
     'trangthaidonhang/delete' => (new TrangthaidonhangsController())->delete(),
-   
+
 };
