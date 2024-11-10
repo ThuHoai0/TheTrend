@@ -95,7 +95,7 @@ class BannersController
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelBanner->updateData($id,$duong_dan_hinh_anh,$mo_ta,$trang_thai);
+                $this->modelBanner->updateData($id,$load_duong_dan_hinh_anh,$mo_ta,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=banner/list');
                 exit();
