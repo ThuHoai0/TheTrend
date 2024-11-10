@@ -88,7 +88,7 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <h5 class="form-label">Nội dung</h5>
-                                                <textarea class="form-control" placeholder="Nhập nội dung..." name="noi_dung" value="<?= $tin_tuc['noi_dung'] ?>"></textarea>
+                                                <textarea class="form-control" placeholder="Nhập nội dung..." name="noi_dung"><?= $tin_tuc['noi_dung'] ?></textarea>
                                                 <!-- <input type="text" class="form-control" placeholder="Nhập nội dung..." name="noi_dung"> -->
                                             </div>
 <!--                                            <div class="mb-3">-->
