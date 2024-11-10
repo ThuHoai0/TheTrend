@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Cập Nhật Sản Phẩm | The Trend</title>
+    <title>Cập Nhật Banner | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,12 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h4 class="mb-sm-0">Quản Lý Danh Sách Sản Phẩm</h4>
+                            <h4 class="mb-sm-0">Quản Lý Danh Sách Banner</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Danh Sách Banner</li>
                                 </ol>
                             </div>
 
@@ -67,80 +67,35 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Sản Phẩm</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Banner</h4>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=sanpham/update&id=<?= $san_pham['id'] ?>" method="post" enctype="multipart/form-data">
-
+                                        <form id="updateForm" action="?act=banner/update&id=<?= $banner['id'] ?>" method="post">
+<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên sản phẩm</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ten_san_pham" value="<?= $san_pham['ten_san_pham'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_san_pham']) ? $_SESSION['errors']['ten_san_pham'] : '' ?>
-                                                </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Hình ảnh</label> <br>
-                                                <input type="hidden" class="form-control" name="img" value="<?= $san_pham['hinh_anh']?>">
-                                                <input type="file" class="form-control" name="hinh_anh">
+                                                <h5 class="form-label">Hình ảnh</h5>
+                                                <input type="hidden" class="form-control" name="img" value="<?= $banner['duong_dan_hinh_anh']?>">
+                                                <input type="file" class="form-control" name="duong_dan_hinh_anh">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Mô tả</label>
-                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $san_pham['mo_ta'] ?></textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Số lượng</label>
-                                                <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_luong" value="<?= $san_pham['so_luong'] ?>">
+                                                <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $banner['mo_ta'] ?>">
                                                 <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['so_luong']) ? $_SESSION['errors']['so_luong'] : '' ?>
-                                                </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Giá bán</label>
-                                                <input type="text" class="form-control" placeholder="Nhập giá bán..." name="gia" value="<?= $san_pham['gia'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['gia_nhap']) ? $_SESSION['errors']['gia_nhap'] : '' ?>
-                                                </span>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['gia_vs_gia_nhap']) ? $_SESSION['errors']['gia_vs_gia_nhap'] : '' ?>
-                                                </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Giá nhập</label>
-                                                <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap" value="<?= $san_pham['gia_nhap'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['gia_nhap']) ? $_SESSION['errors']['gia_nhap'] : '' ?>
-                                                </span>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['gia_vs_gia_nhap']) ? $_SESSION['errors']['gia_vs_gia_nhap'] : '' ?>
-                                                </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Danh mục</label>
-                                                <select class="form-select" name="danh_muc_id">
-                                                    <?php
-                                                    foreach ($sp as $value) {?>
-                                                        <option value="<?= $value['id'] ?>" <?= $san_pham['danh_muc_id'] === $value['id'] ? 'selected' : '' ?>><?= $value['ten_danh_muc'] ?></option>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['danh_muc']) ? $_SESSION['errors']['danh_muc'] : '' ?>
+                                                    <?= !empty($_SESSION['errors']['mo_ta']) ? $_SESSION['errors']['mo_ta'] : '' ?>
                                                 </span>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $san_pham['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $san_pham['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="1" <?= $banner['trang_thai'] == 1 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="0" <?= $banner['trang_thai'] == 0 ? 'selected' : '' ?> >Hiển thị</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Sản Phẩm</button>
+                                                    <button type="submit" class="btn btn-primary">Cập Nhật Banner</button>
                                                 </div>
                                             </div>
                                         </form>

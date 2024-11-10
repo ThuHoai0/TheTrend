@@ -14,6 +14,13 @@
     require_once "views/layouts/libs_css.php";
     ?>
 
+    <style>
+        /* Ẩn các cột bổ sung ban đầu */
+        .extra-column {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -69,18 +76,12 @@
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Khuyến Mại
                                     </a>
 
-                                    <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-                                        <!-- Select Dropdown for Visibility Options -->
-                                        <select class="form-select" aria-label="Visibility Filter" style="width: 130px;">
-                                            <option value="hidden" disabled selected>Tất cả</option>
-                                            <option value="show">Hiển thị</option>
-                                            <option value="hide">Không hiển thị</option>
-                                        </select>
-                                    </form>
+                                    <div class="d-flex align-items-center">
+                                        <form class="d-flex" role="search">
+                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                                        </form>
+                                        <button class="btn btn-success ms-2" onclick="toggleColumns()" id="toggleButton">Hiện tất cả</button>
+                                    </div>
                                 </div><!-- end card header -->
 
 
@@ -92,13 +93,13 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên khuyến mại</th>
-                                                    <th scope="col">Mô tả</th>
+                                                    <th scope="col" class="extra-column">Mô tả</th>
                                                     <th scope="col">Phần trăm giảm</th>
                                                     <th scope="col">Ngày bắt đầu</th>
                                                     <th scope="col">Ngày kết thúc</th>
 
                                                     <!-- Ngày tạo with Sort Button -->
-                                                    <th scope="col" class="flex align-items-center">
+                                                    <th scope="col" class="flex align-items-center extra-column">
                                                         Ngày tạo
                                                         <!-- Sort Button for Ngày tạo -->
                                                             <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
@@ -138,19 +139,19 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $khuyen_mai['ten_khuyen_mai'] ?></td>
-                                                        <td><?= $khuyen_mai['mo_ta'] ?></td>
+                                                        <td class="extra-column"><?= $khuyen_mai['mo_ta'] ?></td>
                                                         <td><?= $khuyen_mai['phan_tram_giam'] ?> %</td>
                                                         <td><?= $khuyen_mai['ngay_bat_dau'] ?></td>
                                                         <td><?= $khuyen_mai['ngay_ket_thuc'] ?></td>
-                                                        <td><?= $khuyen_mai['ngay_tao'] ?></td>
+                                                        <td class="extra-column"><?= $khuyen_mai['ngay_tao'] ?></td>
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
                                                             if ($khuyen_mai['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
+                                                                <span class="badge bg-success">Đang diễn ra</span>
                                                                 <?php
                                                             } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
+                                                                <span class="badge bg-danger">Kết thúc</span>
                                                                 <?php
                                                             }
                                                             ?>
@@ -236,6 +237,25 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
+
+<script>
+    function toggleColumns() {
+        // Find all extra columns in headers and rows
+        var extraColumns = document.querySelectorAll('.extra-column');
+
+        // Determine if columns are currently hidden
+        var isHidden = extraColumns[0].style.display === 'none';
+
+        // Toggle display style for all extra columns in headers and rows
+        extraColumns.forEach(function(column) {
+            column.style.display = isHidden ? 'table-cell' : 'none';
+        });
+
+        // Update button text
+        var toggleButton = document.getElementById('toggleButton');
+        toggleButton.textContent = isHidden ? 'Ẩn bớt' : 'Hiện tất cả';
+    }
+</script>
 
 </body>
 

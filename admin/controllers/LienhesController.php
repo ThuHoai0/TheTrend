@@ -34,22 +34,34 @@ class LienhesController
             date_default_timezone_set('Asia/Ho_Chi_Minh');
 
             // lay ra du lieu
-            $ten_lien_he = $_POST['ten_lien_he'];
-            $mo_ta = $_POST['mo_ta'];
-            $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); // Use current date & time in Vietnam
-
+            $ho_ten = $_POST['ho_ten'];
+            $email = $_POST['email'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
+            $trang_thai = $_POST['trang_thai'];
+            $noi_dung = $_POST['noi_dung'];
             // validate
             $errors = [];
-            if (empty($ten_lien_he)) {
-                $errors['ten_lien_he'] = "Tên người liên hệ là bắt buộc";
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
+            }
+            // Kiểm tra email
+            if (empty($email)) {
+                $errors['email'] = "Email là bắt buộc";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Định dạng email không hợp lệ";
             }
 
-
+            // Kiểm tra số điện thoại
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
+            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
+            }
             // them du lieu
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
                 // them vao CSDL
-                $this->modelLienhe->postData($ten_lien_he, $mo_ta, $ngay_tao);
+                $this->modelLienhe->postData($ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
                 unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
@@ -81,23 +93,39 @@ class LienhesController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay ra du lieu
             $id = $_GET['id'];
-            $ten_lien_he = $_POST['ten_lien_he'];
-            $mo_ta = $_POST['mo_ta'];
+            $ho_ten = $_POST['ho_ten'];
+            $email = $_POST['email'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
+            $noi_dung = $_POST['noi_dung'];
+            $trang_thai = $_POST['trang_thai'];
 
 
             // die($category_status  );
             // validate
             $errors = [];
-            if (empty($ten_lien_he)) {
-                $errors['ten_lien_he'] = "Tên người liên hệ là bắt buộc";
+            if (empty($ho_ten)) {
+                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
+            }
+            // Kiểm tra email
+            if (empty($email)) {
+                $errors['email'] = "Email là bắt buộc";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Định dạng email không hợp lệ";
+            }
+
+// Kiểm tra số điện thoại
+            if (empty($so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
+            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
+                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
             }
 
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelLienhe->updateData($id,$ten_lien_he, $mo_ta,);
-                unset($_SESSION['errors']);
+                $this->modelLienhe->updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
+                // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
             } else {
@@ -114,7 +142,7 @@ class LienhesController
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['lienhe_id'];
+            $id = $_POST['id'];
             $this->modelLienhe->deleteData($id);
             header('Location: ?act=lienhe/list');
             exit();

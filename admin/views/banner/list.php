@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Danh Sách Sản Phẩm | The Trend</title>
+    <title>Danh Sách Banner | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -13,12 +13,6 @@
     <?php
     require_once "views/layouts/libs_css.php";
     ?>
-    <style>
-        /* Ẩn các cột bổ sung ban đầu */
-        .extra-column {
-            display: none;
-        }
-    </style>
 
 </head>
 
@@ -50,12 +44,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Danh Sách Sản Phẩm</h2>
+                            <h2 class="mb-sm-0">Quản Lý Danh Sách Banner</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Danh Sách Banner</li>
                                 </ol>
                             </div>
 
@@ -71,18 +65,12 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=sanpham/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Sản Phẩm
+                                    <a href="?act=banner/create" class="btn btn-primary material-shadow-none">
+                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Banner
                                     </a>
 
-                                    <!-- Search and Button in a single row -->
-                                    <div class="d-flex align-items-center">
-                                        <form class="d-flex" role="search">
-                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-                                        </form>
-                                        <button class="btn btn-success ms-2" onclick="toggleColumns()" id="toggleButton">Hiện tất cả</button>
-                                    </div>
                                 </div><!-- end card header -->
+
 
                                 <div class="card-body">
                                     <div class="live-preview">
@@ -91,42 +79,12 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Tên sản phẩm</th>
                                                     <th scope="col">Hình ảnh</th>
-                                                    <th scope="col" class="extra-column">Mô tả</th>
-                                                    <th scope="col" class="extra-column">Số lượng</th>
-                                                    <th scope="col">Giá bán</th>
-                                                    <th scope="col" class="extra-column">Giá nhập</th>
-                                                    <th scope="col" class="extra-column">Danh mục</th>
+                                                    <th scope="col">Mô tả</th>
 
-                                                    <th scope="col" class="flex align-items-center extra-column">
-                                                        Ngày tạo
-                                                        <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="ri-sort-asc" aria-hidden="true"></i>
-                                                        </button>
-                                                        <div class="dropdown ms-2">
-                                                            <ul class="dropdown-menu" aria-labelledby="statusFilter">
-                                                                <li><a class="dropdown-item" href="?filter=date_desc">Mới nhất</a></li>
-                                                                <li><a class="dropdown-item" href="?filter=date_asc">Cũ nhất</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </th>
-
-
-                                                    <!-- Trạng thái with Sort Button -->
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
-                                                        <!-- Dropdown Filter Button -->
-                                                        <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="ri-filter-2-line" aria-hidden="true"></i>
-                                                        </button>
-                                                        <div class="dropdown ms-2">
-                                                            <ul class="dropdown-menu" aria-labelledby="statusFilter">
-                                                                <li><a class="dropdown-item" href="?filter=all">Mặc định</a></li>
-                                                                <li><a class="dropdown-item" href="?filter=show">Hiển thị</a></li>
-                                                                <li><a class="dropdown-item" href="?filter=hide">Không hiển thị</a></li>
-                                                            </ul>
-                                                        </div>
+
                                                     </th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
@@ -134,36 +92,32 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <?php foreach ($san_phams as $i => $san_pham) : ?>
+                                                <?php foreach ($banners as $i => $banner) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><?= $san_pham['ten_san_pham'] ?></td>
-                                                        <td><img src="<?= './../admin/uploads/'.$san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
-                                                        <td class="extra-column"><?= $san_pham['mo_ta'] ?></td>
-                                                        <td class="extra-column"><?= $san_pham['so_luong'] ?></td>
-                                                        <td><?= $san_pham['gia'] ?></td>
-                                                        <td class="extra-column"><?= $san_pham['gia_nhap'] ?></td>
-                                                        <td class="extra-column"><?= $san_pham['ten_danh_muc'] ?></td>
-                                                        <td class="extra-column"><?= $san_pham['ngay_tao'] ?></td>
+                                                        <td><img src="<?= './../admin/uploads/'.$banner['duong_dan_hinh_anh'] ?>" alt="" width="150px"></td>
+                                                        <td><?= $banner['mo_ta'] ?></td>
+                                
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
-                                                            if ($san_pham['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
+                                                            if ($banner['trang_thai'] == '1') { ?>
+                                                                <span class="badge bg-success">hiển thị</span>
+                                                                
                                                                 <?php
                                                             } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
+                                                                <span class="badge bg-danger">Không hiển thị</span>
                                                                 <?php
                                                             }
                                                             ?>
                                                         </td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=sanpham/edit&id=<?= $san_pham['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <a href="?act=banner/edit&id=<?= $banner['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
-                                                                <form action="?act=sanpham/delete" method="POST"
+                                                                <form action="?act=banner/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $san_pham['id'] ?>">
+                                                                    <input type="hidden" name="id" value="<?= $banner['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>
                                                                     </button>
@@ -238,26 +192,6 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
-
-<script>
-    function toggleColumns() {
-        // Find all extra columns in headers and rows
-        var extraColumns = document.querySelectorAll('.extra-column');
-
-        // Determine if columns are currently hidden
-        var isHidden = extraColumns[0].style.display === 'none';
-
-        // Toggle display style for all extra columns in headers and rows
-        extraColumns.forEach(function(column) {
-            column.style.display = isHidden ? 'table-cell' : 'none';
-        });
-
-        // Update button text
-        var toggleButton = document.getElementById('toggleButton');
-        toggleButton.textContent = isHidden ? 'Ẩn bớt' : 'Hiện tất cả';
-    }
-</script>
-
 
 </body>
 

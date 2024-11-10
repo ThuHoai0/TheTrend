@@ -1,6 +1,6 @@
 <?php
 
-class Lienhe
+class Trangthaidonhang
 {
     public $conn;
     // ket noi CSDL
@@ -8,10 +8,10 @@ class Lienhe
         $this->conn = connectDB();
     }
 
-    // danh sach người liên hệ
+    // danh sach danh muc
     public function getAll() {
         try {
-            $sql = "SELECT * FROM `lien_hes`";
+            $sql = "SELECT * FROM `trang_thai_don_hangs`";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -23,57 +23,50 @@ class Lienhe
         }
     }
     // them du lieu vao CSDL
-    public function postData($ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai) {
-
-
+    public function postData($ten_trang_thai, $mo_ta) {
         try {
-            $sql = "INSERT INTO `lien_hes`(`ho_ten`, `email`, `so_dien_thoai`,`noi_dung`, `trang_thai`) VALUES (:ho_ten, :email, :so_dien_thoai,:noi_dung, :trang_thai)";
+            $sql = "INSERT INTO `trang_thai_don_hangs`(`ten_trang_thai`, `mo_ta`) VALUES (:ten_trang_thai, :mo_ta)";
+
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
-            $stmt->bindParam(':ho_ten', $ho_ten);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':noi_dung', $noi_dung);
-            $stmt->bindParam(':trang_thai', $trang_thai);
+            $stmt->bindParam(':ten_trang_thai', $ten_trang_thai);
+            $stmt->bindParam(':mo_ta', $mo_ta);
+
             $stmt->execute();
 
+            return true;
         } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();
         }
     }
 
 //    // cap nhat du lieu vao CSDL
-    public function updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai) {
+    public function updateData($id, $ten_trang_thai, $mo_ta) {
         try {
 
-            $sql = "UPDATE lien_hes SET ho_ten = :ho_ten, noi_dung = :noi_dung, so_dien_thoai = :so_dien_thoai, trang_thai = :trang_thai, email = :email WHERE id = :id";
+            $sql = "UPDATE trang_thai_don_hangs SET ten_trang_thai = :ten_trang_thai, mo_ta = :mo_ta WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
-            $stmt->bindParam(':ho_ten', $ho_ten);
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':noi_dung', $noi_dung);
-            $stmt->bindParam(':trang_thai', $trang_thai);
-
-
+            $stmt->bindParam(':ten_trang_thai', $ten_trang_thai);
+            $stmt->bindParam(':mo_ta', $mo_ta);
 
             $stmt->execute();
 
             return true;
         } catch (PDOException $e) {
-           die($e->getMessage());
-            // echo 'Error: ' .$e->getMessage();
+//            die($e->getMessage());
+            echo 'Error: ' .$e->getMessage();
         }
     }
 
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT * FROM `lien_hes` WHERE id = :id";
+            $sql = "SELECT * FROM `trang_thai_don_hangs` WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -90,7 +83,7 @@ class Lienhe
     // xoa du lieu trong CSDL
     public function deleteData($id) {
         try {
-            $sql = "DELETE FROM `lien_hes` WHERE id = :id";
+            $sql = "DELETE FROM `trang_thai_don_hangs` WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 

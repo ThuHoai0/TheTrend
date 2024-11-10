@@ -1,29 +1,29 @@
 <?php
 
-class DanhmucsController
+class TrangthaidonhangsController
 {
     // ham ket noi den Model
-    public $modelDanhmuc;
+    public $modelTrangthaidonhang;
 
     public function __construct()
     {
-        $this->modelDanhmuc = new Danhmuc();
+        $this->modelTrangthaidonhang = new Trangthaidonhang();
     }
 
     // ham hien thi danh sach
     public function index()
     {
         // lay ra toan bo danh muc
-        $danh_mucs = $this->modelDanhmuc->getAll();
+        $trang_thai_don_hangs = $this->modelTrangthaidonhang->getAll();
         // var_dump($danh_mucs);
 
         // dua du lieu ra view
-        require_once './views/danhmuc/list.php';
+        require_once './views/trangthaidonhang/list.php';
     }
 
     // ham hien thi form them danh muc  public function create()
     public function create(){
-        require_once './views/danhmuc/create.php';
+        require_once './views/trangthaidonhang/create.php';
     }
 
     // ham xu ly them vao CSDL
@@ -34,32 +34,26 @@ class DanhmucsController
             date_default_timezone_set('Asia/Ho_Chi_Minh');
 
             // lay ra du lieu
-            $ten_danh_muc = $_POST['ten_danh_muc'];
+            $ten_trang_thai = $_POST['ten_trang_thai'];
             $mo_ta = $_POST['mo_ta'];
-            $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); // Use current date & time in Vietnam
-            $trang_thai = $_POST['trang_thai'];
 
             // validate
             $errors = [];
-            if (empty($ten_danh_muc)) {
-                $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
-            }
-
-            if (empty($trang_thai) && $trang_thai != 0) {
-                $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
+            if (empty($ten_trang_thai)) {
+                $errors['ten_trang_thai'] = "Tên trạng thái là bắt buộc";
             }
 
             // them du lieu
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
                 // them vao CSDL
-                $this->modelDanhmuc->postData($ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai);
+                $this->modelTrangthaidonhang->postData($ten_trang_thai, $mo_ta);
                 unset($_SESSION['errors']);
-                header('Location: ?act=danhmuc/list');
+                header('Location: ?act=trangthaidonhang/list');
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
-                header('Location: ?act=danhmuc/create');
+                header('Location: ?act=trangthaidonhang/create');
                 exit();
             }
         }
@@ -73,10 +67,10 @@ class DanhmucsController
         // lay id
         $id = $_GET['id'];
         // lay thong tin chi tiet cua danh muc
-        $danh_muc = $this->modelDanhmuc->getDetailData($id);
+        $trang_thai_don_hang = $this->modelTrangthaidonhang->getDetailData($id);
 
         // do du lieu ra form
-        require_once './views/danhmuc/edit.php';
+        require_once './views/trangthaidonhang/edit.php';
     }
 
     // Ham xu ly cap nhat du lieu vao CSDL
@@ -85,28 +79,27 @@ class DanhmucsController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay ra du lieu
             $id = $_GET['id'];
-            $ten_danh_muc = $_POST['ten_danh_muc'];
+            $ten_trang_thai = $_POST['ten_trang_thai'];
             $mo_ta = $_POST['mo_ta'];
-            $trang_thai = $_POST['trang_thai'];
 
             // die($category_status  );
             // validate
             $errors = [];
-            if (empty($ten_danh_muc)) {
-                $errors['ten_danh_muc'] = "Tên danh mục là bắt buộc";
+            if (empty($ten_trang_thai)) {
+                $errors['ten_trang_thai'] = "Tên trạng thái là bắt buộc";
             }
 
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelDanhmuc->updateData($id, $ten_danh_muc, $mo_ta, $trang_thai);
+                $this->modelTrangthaidonhang->updateData($id, $ten_trang_thai, $mo_ta);
                 unset($_SESSION['errors']);
-                header('Location: ?act=danhmuc/list');
+                header('Location: ?act=trangthaidonhang/list');
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
-                header('Location: ?act=danhmuc/edit&id=' . $id);
+                header('Location: ?act=trangthaidonhang/edit&id=' . $id);
                 exit();
             }
         } else {
@@ -119,8 +112,8 @@ class DanhmucsController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
-            $this->modelDanhmuc->deleteData($id);
-            header('Location: ?act=danhmuc/list');
+            $this->modelTrangthaidonhang->deleteData($id);
+            header('Location: ?act=trangthaidonhang/list');
             exit();
         }
     }

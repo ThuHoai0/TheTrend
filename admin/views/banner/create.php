@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm Tin Mới | The Trend</title>
+    <title>Thêm Liên Hệ  | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,12 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Tin Tức</h2>
+                            <h2 class="mb-sm-0">Quản Lý Danh Sách Banner</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Tin Tức</li>
+                                    <li class="breadcrumb-item active">Danh Sách Banner</li>
                                 </ol>
                             </div>
 
@@ -66,34 +66,30 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h3 class="card-title mb-0 flex-grow-1">Thêm Tin Mới</h3>
+                                    <h3 class="card-title mb-0 flex-grow-1">Thêm Banner</h3>
                                 </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=tintuc/store" method="post">
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Tiêu đề</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tiêu đề..." name="tieu_de">
+                                <form class="container-fluid mt-3 mb-3" action="?act=banner/store" method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                        <h5 class="form-label">Hình ảnh</h5>
+                                        <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="duong_dan_hinh_anh">
+                                </div>   
+                                <div class="mb-3">
+                                        <label for="citynameInput" class="form-label">Mô tả</label>
+                                        <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"></textarea>
                                         <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['tieu_de']) ? $_SESSION['errors']['tieu_de'] : '' ?>
+                                            <?= !empty($_SESSION['errors']['mo_ta']) ? $_SESSION['errors']['mo_ta'] : '' ?>
                                         </span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Nội dung</h5>
-                                        <textarea class="form-control" placeholder="Nhập nội dung..." name="noi_dung" ></textarea>
-                                        <!-- <input type="text" class="form-control" placeholder="Nhập nội dung..." name="noi_dung"> -->
                                     </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai">
-                                            <option value="1">Hiển thị</option>
-                                            <option value="0" selected>Không hiển thị</option>
+                                            <option value="1" selected>Hiển thị</option>
+                                            <option value="0"> Không hiển thị</option>
                                         </select>
-                                        <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
-                                        </span>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
-                                            <button type="submit" class="btn btn-primary">Thêm Tin Mới</button>
+                                            <button type="submit" class="btn btn-primary">Thêm Banner</button>
                                         </div>
                                     </div>
                                 </form>

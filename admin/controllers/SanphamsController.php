@@ -95,40 +95,36 @@ class SanphamsController
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // lay ra du lieu
+            // Lấy dữ liệu từ form
             $id = $_GET['id'];
             $ten_san_pham = $_POST['ten_san_pham'];
             $mo_ta = $_POST['mo_ta'];
-            $trang_thai = $_POST['trang_thai'];
-            $hinh_anh = $_FILES['hinh_anh'];
-            $so_luong = $_POST['so_luong'];
             $gia = $_POST['gia'];
-            $danh_muc_id = $_POST['danh_muc_id'];
+            $hinh_anh = $_FILES['hinh_anh'];
             $gia_nhap = $_POST['gia_nhap'];
-            $load_hinh_anh = $_POST['hinh_anh'];
+            $so_luong = $_POST['so_luong'];
+            $danh_muc_id = $_POST['danh_muc_id'];
+            $trang_thai = $_POST['trang_thai'];
 
-<<<<<<< Updated upstream
+
             if ($hinh_anh['size'] > 0) {
-                $load_hinh_anh = uploadFile($hinh_anh);
-            }
 
-            // die($category_status  );
+            $load_hinh_anh = uploadFile($hinh_anh);
+
             // validate
-=======
-            // Lấy dữ liệu hiện tại để dùng khi không có hình ảnh mới
-            $currentData = $this->modelSanpham->getDetailData($id);
 
             // Kiểm tra và tải lên ảnh nếu có
+            $load_hinh_anh = null;
             if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // Có ảnh mới, thực hiện tải lên
+
                 $load_hinh_anh = uploadFile($hinh_anh);
             } else {
-                // Không có ảnh mới, giữ nguyên ảnh cũ
+                // Không có ảnh mới, lấy ảnh cũ từ cơ sở dữ liệu
+                $currentData = $this->modelSanpham->getDetailData($id); // Giả sử có hàm getById để lấy dữ liệu hiện tại
                 $load_hinh_anh = $currentData['hinh_anh'];
             }
-
-            // Validate dữ liệu
->>>>>>> Stashed changes
+              
             $errors = [];
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = "Tên sản phẩm là bắt buộc";
@@ -151,15 +147,10 @@ class SanphamsController
             } elseif (!is_numeric($so_luong) || $so_luong < 0) {
                 $errors['so_luong'] = "Số lượng phải là số không âm";
             }
-//            if (empty($danh_muc)) {
-//                $errors['danh_muc'] = "Danh mục là bắt buộc";
-//            }
 
-            // Cap nhat du lieu
+            // Cập nhật dữ liệu nếu không có lỗi
             if (empty($errors)) {
-                // Neu khong co loi thi them du lieu
-                // Them vao CSDL
-                $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $load_hinh_anh, $trang_thai, $so_luong, $gia, $gia_nhap, $danh_muc_id);
+                $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai);
                 unset($_SESSION['errors']);
                 header('Location: ?act=sanpham/list');
                 exit();
@@ -169,9 +160,10 @@ class SanphamsController
                 exit();
             }
         } else {
-
+            // Xử lý nếu phương thức không phải là POST
         }
     }
+
 
     public function delete()
     {

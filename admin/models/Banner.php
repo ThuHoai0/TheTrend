@@ -1,6 +1,6 @@
 <?php
 
-class Lienhe
+class Banner
 {
     public $conn;
     // ket noi CSDL
@@ -11,7 +11,7 @@ class Lienhe
     // danh sach người liên hệ
     public function getAll() {
         try {
-            $sql = "SELECT * FROM `lien_hes`";
+            $sql = "SELECT * FROM `banners`";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -23,18 +23,16 @@ class Lienhe
         }
     }
     // them du lieu vao CSDL
-    public function postData($ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai) {
+    public function postData($duong_dan_hinh_anh,$mo_ta,$trang_thai) {
 
 
         try {
-            $sql = "INSERT INTO `lien_hes`(`ho_ten`, `email`, `so_dien_thoai`,`noi_dung`, `trang_thai`) VALUES (:ho_ten, :email, :so_dien_thoai,:noi_dung, :trang_thai)";
+            $sql = "INSERT INTO `banners`(`duong_dan_hinh_anh`, `mo_ta`, `trang_thai`) VALUES (:duong_dan_hinh_anh, :mo_ta, :trang_thai)";
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
-            $stmt->bindParam(':ho_ten', $ho_ten);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':noi_dung', $noi_dung);
+            $stmt->bindParam(':duong_dan_hinh_anh', $duong_dan_hinh_anh);
+            $stmt->bindParam(':mo_ta', $mo_ta);
             $stmt->bindParam(':trang_thai', $trang_thai);
             $stmt->execute();
 
@@ -44,19 +42,17 @@ class Lienhe
     }
 
 //    // cap nhat du lieu vao CSDL
-    public function updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai) {
+    public function updateData($id,$load_duong_dan_hinh_anh,$mo_ta,$trang_thai) {
         try {
 
-            $sql = "UPDATE lien_hes SET ho_ten = :ho_ten, noi_dung = :noi_dung, so_dien_thoai = :so_dien_thoai, trang_thai = :trang_thai, email = :email WHERE id = :id";
+            $sql = "UPDATE banners SET duong_dan_hinh_anh = :duong_dan_hinh_anh, mo_ta = :mo_ta, trang_thai = :trang_thai WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
-            // gan gia tri vao cac tham so
-            $stmt->bindParam(':ho_ten', $ho_ten);
+            // gan gia tri vao cac tham so         
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
-            $stmt->bindParam(':noi_dung', $noi_dung);
+            $stmt->bindParam(':duong_dan_hinh_anh', $load_duong_dan_hinh_anh);
+            $stmt->bindParam(':mo_ta', $mo_ta);
             $stmt->bindParam(':trang_thai', $trang_thai);
 
 
@@ -73,7 +69,7 @@ class Lienhe
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT * FROM `lien_hes` WHERE id = :id";
+            $sql = "SELECT * FROM `banners` WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -90,7 +86,7 @@ class Lienhe
     // xoa du lieu trong CSDL
     public function deleteData($id) {
         try {
-            $sql = "DELETE FROM `lien_hes` WHERE id = :id";
+            $sql = "DELETE FROM `banners` WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
