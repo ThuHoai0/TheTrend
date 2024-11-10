@@ -106,6 +106,9 @@ class SanphamsController
             $danh_muc_id = $_POST['danh_muc_id'];
             $trang_thai = $_POST['trang_thai'];
 
+
+            if ($hinh_anh['size'] > 0) {
+
             $load_hinh_anh = uploadFile($hinh_anh);
 
             // validate
@@ -114,15 +117,14 @@ class SanphamsController
             $load_hinh_anh = null;
             if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // Có ảnh mới, thực hiện tải lên
+
                 $load_hinh_anh = uploadFile($hinh_anh);
             } else {
                 // Không có ảnh mới, lấy ảnh cũ từ cơ sở dữ liệu
                 $currentData = $this->modelSanpham->getDetailData($id); // Giả sử có hàm getById để lấy dữ liệu hiện tại
                 $load_hinh_anh = $currentData['hinh_anh'];
             }
-
-            // Validate dữ liệu
-
+              
             $errors = [];
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = "Tên sản phẩm là bắt buộc";
