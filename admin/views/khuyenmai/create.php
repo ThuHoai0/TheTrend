@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Mô tả</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta">
+                                        <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Phần trăm giảm</h5>
@@ -95,8 +95,8 @@
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai">
-                                            <option value="1">Hiển thị</option>
-                                            <option value="0">Không hiển thị</option>
+                                            <option value="1">Đang diễn ra</option>
+                                            <option value="0" selected>Kết thúc</option>
                                         </select>
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
