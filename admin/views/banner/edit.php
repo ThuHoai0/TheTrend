@@ -72,7 +72,7 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=banner/update&id=<?= $banner['id'] ?>" method="post">
+                                        <form id="updateForm" action="?act=banner/update&id=<?= $banner['id'] ?>" method="post" enctype="multipart/form-data">
 <!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
                                             <div class="mb-3">
                                                 <h5 class="form-label">Hình ảnh</h5>

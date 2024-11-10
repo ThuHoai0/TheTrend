@@ -82,20 +82,23 @@ class BannersController
             $mo_ta = $_POST['mo_ta'];
             $trang_thai = $_POST['trang_thai'];
 
-            $load_duong_dan_hinh_anh = uploadFile($duong_dan_hinh_anh);
+            // Lấy dữ liệu hiện tại để dùng khi không có hình ảnh mới
+            $currentData = $this->modelBanner->getDetailData($id);
 
-            // die($category_status);
-            $errors = [];
-            // Validate mo_ta
-            if (empty($mo_ta)) {
-                $errors['mo_ta'] = "Nội dung là bắt buộc";
+            // Kiểm tra và tải lên ảnh nếu có
+            if ($duong_dan_hinh_anh['error'] == UPLOAD_ERR_OK) {
+                // Có ảnh mới, thực hiện tải lên
+                $load_hinh_anh = uploadFile($duong_dan_hinh_anh);
+            } else {
+                // Không có ảnh mới, giữ nguyên ảnh cũ
+                $load_hinh_anh = $currentData['duong_dan_hinh_anh'];
             }
 
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelBanner->updateData($id,$duong_dan_hinh_anh,$mo_ta,$trang_thai);
+                $this->modelBanner->updateData($id,$load_hinh_anh,$mo_ta,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=banner/list');
                 exit();
