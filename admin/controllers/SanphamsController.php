@@ -107,20 +107,7 @@ class SanphamsController
             $trang_thai = $_POST['trang_thai'];
 
             $load_hinh_anh = uploadFile($hinh_anh);
-            
 
-            // $ten_san_pham = $_POST['ten_san_pham'];
-            // $mo_ta = $_POST['mo_ta'];
-            // $gia = $_POST['gia'];
-            // $hinh_anh = $_FILES['hinh_anh'];
-            // $gia_nhap = $_POST['gia_nhap'];
-            // $so_luong = $_POST['so_luong'];
-            // $danh_muc_id = $_POST['danh_muc_id'];
-            // $trang_thai = $_POST['trang_thai'];
-            // $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); 
-
-            // $load_hinh_anh = uploadFile($hinh_anh);
-            // die($category_status  );
             // validate
             $errors = [];
             if (empty($ten_san_pham)) {

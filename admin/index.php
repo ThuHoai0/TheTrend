@@ -13,6 +13,7 @@ require_once 'controllers/SanphamsController.php';
 require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
 require_once 'controllers/LienhesController.php';
+require_once 'controllers/BannersController.php';
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
@@ -20,6 +21,7 @@ require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
 require_once 'models/Lienhe.php';
+require_once 'models/Banner.php';
 
 require_once 'controllers/NguoidungsController.php';
 //require_once 'controllers/ProductController.php';
@@ -81,4 +83,11 @@ match ($act) {
     'lienhe/edit' => (new LienhesController())->edit(),
     'lienhe/update' => (new LienhesController())->update(),
     'lienhe/delete' => (new LienhesController())->delete(),
+    //banner
+    'banner/list' => (new BannersController())->index(),
+    'banner/store' => (new BannersController())->store(),
+    'banner/create' => (new BannersController())->create(),
+    'banner/edit' => (new BannersController())->edit(),
+    'banner/update' => (new BannersController())->update(),
+    'banner/delete' => (new BannersController())->delete(),
 };
