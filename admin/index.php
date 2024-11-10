@@ -14,12 +14,17 @@ require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
 require_once 'controllers/LienhesController.php';
 
+require_once 'controllers/TrangthaidonhangsController.php';
+
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
 require_once 'models/Lienhe.php';
+
+require_once 'models/Trangthaidonhang.php';
+
 
 require_once 'controllers/NguoidungsController.php';
 //require_once 'controllers/ProductController.php';
@@ -81,4 +86,12 @@ match ($act) {
     'lienhe/edit' => (new LienhesController())->edit(),
     'lienhe/update' => (new LienhesController())->update(),
     'lienhe/delete' => (new LienhesController())->delete(),
+
+    // Trạng thái đơn hàng
+    'trangthaidonhang/list' => (new TrangthaidonhangsController())->index(),
+    'trangthaidonhang/store' => (new TrangthaidonhangsController())->store(),
+    'trangthaidonhang/edit' => (new TrangthaidonhangsController())->edit(),
+    'trangthaidonhang/update' => (new TrangthaidonhangsController())->update(),
+    'trangthaidonhang/delete' => (new TrangthaidonhangsController())->delete(),
+   
 };
