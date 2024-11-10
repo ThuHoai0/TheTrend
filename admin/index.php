@@ -57,6 +57,9 @@ match ($act) {
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
     'khuyenmai/store' => (new KhuyenmaisController())->store(),
+    'khuyenmai/edit' => (new KhuyenmaisController())->edit(),
+    'khuyenmai/update' => (new KhuyenmaisController())->update(),
+    'khuyenmai/delete' => (new KhuyenmaisController())->delete(),
 
 // Quan ly người dùng
     'nguoidung/list' => (new NguoidungsController())->index(),
@@ -66,7 +69,7 @@ match ($act) {
     'nguoidung/update' => (new NguoidungsController())->update(),
     'nguoidung/delete' => (new NguoidungsController())->delete(),
 
-
+// Quan ly tin tuc
     'tintuc/list' => (new TintucsController())->index(),
     'tintuc/create' => (new TintucsController())->create(),
     'tintuc/store' => (new TintucsController())->store(),

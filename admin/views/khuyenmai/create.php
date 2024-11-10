@@ -71,7 +71,7 @@
                                 <form class="container-fluid mt-3 mb-3" action="?act=khuyenmai/store" method="POST">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên khuyến mại</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_danh_muc">
+                                        <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_khuyen_mai">
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['ten_khuyen_mai']) ? $_SESSION['errors']['ten_khuyen_mai'] : '' ?>
                                         </span>
@@ -86,16 +86,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày bắt đầu</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập ngày bắt đầu..." name="ngay_bat_dau">
+                                        <input type="date" class="form-control" placeholder="Nhập ngày bắt đầu..." name="ngay_bat_dau">
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày kết thúc</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập ngày kết thúc..." name="ngay_ket_thuc">
+                                        <input type="date" class="form-control" placeholder="Nhập ngày kết thúc..." name="ngay_ket_thuc">
                                     </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai">
-                                            <option selected disabled>Chọn trạng thái</option>
                                             <option value="1">Hiển thị</option>
                                             <option value="0">Không hiển thị</option>
                                         </select>
