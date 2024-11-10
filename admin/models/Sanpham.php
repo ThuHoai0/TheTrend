@@ -95,7 +95,12 @@ class Sanpham {
     }
 
 
+<<<<<<< Updated upstream
     public function updateData($id, $ten_san_pham, $mo_ta, $load_hinh_anh, $trang_thai, $so_luong, $gia, $gia_nhap, $danh_muc_id) {
+=======
+
+    public function updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai) {
+>>>>>>> Stashed changes
         try {
 
             $sql = "UPDATE san_phams SET ten_san_pham = :ten_san_pham, mo_ta = :mo_ta, trang_thai = :trang_thai, 

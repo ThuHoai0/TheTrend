@@ -107,12 +107,28 @@ class SanphamsController
             $gia_nhap = $_POST['gia_nhap'];
             $load_hinh_anh = $_POST['hinh_anh'];
 
+<<<<<<< Updated upstream
             if ($hinh_anh['size'] > 0) {
                 $load_hinh_anh = uploadFile($hinh_anh);
             }
 
             // die($category_status  );
             // validate
+=======
+            // Lấy dữ liệu hiện tại để dùng khi không có hình ảnh mới
+            $currentData = $this->modelSanpham->getDetailData($id);
+
+            // Kiểm tra và tải lên ảnh nếu có
+            if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
+                // Có ảnh mới, thực hiện tải lên
+                $load_hinh_anh = uploadFile($hinh_anh);
+            } else {
+                // Không có ảnh mới, giữ nguyên ảnh cũ
+                $load_hinh_anh = $currentData['hinh_anh'];
+            }
+
+            // Validate dữ liệu
+>>>>>>> Stashed changes
             $errors = [];
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = "Tên sản phẩm là bắt buộc";
