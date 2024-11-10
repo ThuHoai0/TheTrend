@@ -14,12 +14,7 @@
     require_once "views/layouts/libs_css.php";
     ?>
 
-    <style>
-        /* Ẩn các cột bổ sung ban đầu */
-        .extra-column {
-            display: none;
-        }
-    </style>
+
 
 </head>
 
@@ -80,7 +75,6 @@
                                         <form class="d-flex" role="search">
                                             <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
                                         </form>
-                                        <button class="btn btn-success ms-2" onclick="toggleColumns()" id="toggleButton">Hiện tất cả</button>
                                     </div>
                                 </div><!-- end card header -->
 
@@ -93,7 +87,7 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên khuyến mại</th>
-                                                    <th scope="col" class="extra-column">Mô tả</th>
+                                                    <th scope="col">Mô tả</th>
                                                     <th scope="col">Phần trăm giảm</th>
                                                     <th scope="col">Ngày bắt đầu</th>
                                                     <th scope="col">Ngày kết thúc</th>
@@ -143,19 +137,28 @@
                                                         <td><?= $khuyen_mai['phan_tram_giam'] ?> %</td>
                                                         <td><?= $khuyen_mai['ngay_bat_dau'] ?></td>
                                                         <td><?= $khuyen_mai['ngay_ket_thuc'] ?></td>
-                                                        <td class="extra-column"><?= $khuyen_mai['ngay_tao'] ?></td>
+                                                        <td><?= $khuyen_mai['ngay_tao'] ?></td>
                                                         <td>
                                                             <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($khuyen_mai['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Đang diễn ra</span>
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-danger">Kết thúc</span>
-                                                                <?php
+                                                            // Lấy ngày hiện tại
+                                                            $current_date = date('Y-m-d');
+                                                            $ngay_bat_dau = $khuyen_mai['ngay_bat_dau'];
+                                                            $ngay_ket_thuc = $khuyen_mai['ngay_ket_thuc'];
+
+                                                            // Kiểm tra trạng thái khuyến mãi
+                                                            if ($current_date < $ngay_bat_dau) {
+                                                                // Trạng thái "Sắp diễn ra"
+                                                                echo '<span class="badge bg-warning">Sắp diễn ra</span>';
+                                                            } elseif ($current_date >= $ngay_bat_dau && $current_date <= $ngay_ket_thuc) {
+                                                                // Trạng thái "Đang diễn ra"
+                                                                echo '<span class="badge bg-success">Đang diễn ra</span>';
+                                                            } else {
+                                                                // Trạng thái "Kết thúc"
+                                                                echo '<span class="badge bg-danger">Kết thúc</span>';
                                                             }
                                                             ?>
                                                         </td>
+
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
                                                                 <a href="?act=khuyenmai/edit&id=<?= $khuyen_mai['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
@@ -237,25 +240,6 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
-
-<script>
-    function toggleColumns() {
-        // Find all extra columns in headers and rows
-        var extraColumns = document.querySelectorAll('.extra-column');
-
-        // Determine if columns are currently hidden
-        var isHidden = extraColumns[0].style.display === 'none';
-
-        // Toggle display style for all extra columns in headers and rows
-        extraColumns.forEach(function(column) {
-            column.style.display = isHidden ? 'table-cell' : 'none';
-        });
-
-        // Update button text
-        var toggleButton = document.getElementById('toggleButton');
-        toggleButton.textContent = isHidden ? 'Ẩn bớt' : 'Hiện tất cả';
-    }
-</script>
 
 </body>
 
