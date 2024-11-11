@@ -65,6 +65,9 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
+                                    <a href="?act=trangthaidonhang/create" class="btn btn-primary material-shadow-none">
+                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Trạng Thái
+                                    </a>
                                     <!-- <a href="?act=trangthaidonhang/create" class="btn btn-primary material-shadow-none">
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Đơn Hàng
                                     </a> -->
