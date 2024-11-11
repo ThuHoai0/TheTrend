@@ -14,7 +14,7 @@ require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
 require_once 'controllers/LienhesController.php';
 require_once 'controllers/BannersController.php';
-
+require_once 'controllers/DanhgiasController.php';
 require_once 'controllers/TrangthaidonhangsController.php';
 
 // Require toàn bộ file Models
@@ -24,7 +24,7 @@ require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
 require_once 'models/Lienhe.php';
 require_once 'models/Banner.php';
-
+require_once 'models/Danhgia.php';
 require_once 'models/Trangthaidonhang.php';
 
 
@@ -104,5 +104,13 @@ match ($act) {
     'trangthaidonhang/edit' => (new TrangthaidonhangsController())->edit(),
     'trangthaidonhang/update' => (new TrangthaidonhangsController())->update(),
     'trangthaidonhang/delete' => (new TrangthaidonhangsController())->delete(),
+
+    // quản lý đánh giá 
+    'danhgia/list' => (new DanhgiasController())->index(),
+    'danhgia/store' => (new DanhgiasController())->store(),
+    'danhgia/create' => (new DanhgiasController())->create(),
+    'danhgia/edit' => (new DanhgiasController())->edit(),
+    'danhgia/update' => (new DanhgiasController())->update(),
+    'danhgia/delete' => (new DanhgiasController())->delete(),
 
 };
