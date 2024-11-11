@@ -13,6 +13,12 @@
     <?php
     require_once "views/layouts/libs_css.php";
     ?>
+    <style>
+        /* Ẩn các cột bổ sung ban đầu */
+        .extra-column {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -69,20 +75,14 @@
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Sản Phẩm
                                     </a>
 
-                                    <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-                                        <!-- Select Dropdown for Visibility Options -->
-                                        <select class="form-select" aria-label="Visibility Filter" style="width: 130px;">
-                                            <option value="hidden" disabled selected>Tất cả</option>
-                                            <option value="show">Hiển thị</option>
-                                            <option value="hide">Không hiển thị</option>
-                                        </select>
-                                    </form>
+                                    <!-- Search and Button in a single row -->
+                                    <div class="d-flex align-items-center">
+                                        <form class="d-flex" role="search">
+                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                                        </form>
+                                        <button class="btn btn-success ms-2" onclick="toggleColumns()" id="toggleButton">Hiện tất cả</button>
+                                    </div>
                                 </div><!-- end card header -->
-
 
                                 <div class="card-body">
                                     <div class="live-preview">
@@ -93,16 +93,14 @@
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên sản phẩm</th>
                                                     <th scope="col">Hình ảnh</th>
-                                                    <th scope="col">Mô tả</th>
-                                                    <th scope="col">Số lượng</th>
+                                                    <th scope="col" class="extra-column">Mô tả</th>
+                                                    <th scope="col" class="extra-column">Số lượng</th>
                                                     <th scope="col">Giá bán</th>
-                                                    <th scope="col">Giá nhập</th>
-                                                    <th scope="col">Danh mục</th>
+                                                    <th scope="col" class="extra-column">Giá nhập</th>
+                                                    <th scope="col" class="extra-column">Danh mục</th>
 
-                                                    <!-- Ngày tạo with Sort Button -->
-                                                    <th scope="col" class="flex align-items-center">
+                                                    <th scope="col" class="flex align-items-center extra-column">
                                                         Ngày tạo
-                                                        <!-- Sort Button for Ngày tạo -->
                                                         <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="ri-sort-asc" aria-hidden="true"></i>
                                                         </button>
@@ -141,12 +139,12 @@
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $san_pham['ten_san_pham'] ?></td>
                                                         <td><img src="<?= './../admin/uploads/'.$san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
-                                                        <td><?= $san_pham['mo_ta'] ?></td>
-                                                        <td><?= $san_pham['so_luong'] ?></td>
+                                                        <td class="extra-column"><?= $san_pham['mo_ta'] ?></td>
+                                                        <td class="extra-column"><?= $san_pham['so_luong'] ?></td>
                                                         <td><?= $san_pham['gia'] ?></td>
-                                                        <td><?= $san_pham['gia_nhap'] ?></td>
-                                                        <td><?= $san_pham['ten_danh_muc'] ?></td>
-                                                        <td><?= $san_pham['ngay_tao'] ?></td>
+                                                        <td class="extra-column"><?= $san_pham['gia_nhap'] ?></td>
+                                                        <td class="extra-column"><?= $san_pham['ten_danh_muc'] ?></td>
+                                                        <td class="extra-column"><?= $san_pham['ngay_tao'] ?></td>
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
@@ -240,6 +238,26 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
+
+<script>
+    function toggleColumns() {
+        // Find all extra columns in headers and rows
+        var extraColumns = document.querySelectorAll('.extra-column');
+
+        // Determine if columns are currently hidden
+        var isHidden = extraColumns[0].style.display === 'none';
+
+        // Toggle display style for all extra columns in headers and rows
+        extraColumns.forEach(function(column) {
+            column.style.display = isHidden ? 'table-cell' : 'none';
+        });
+
+        // Update button text
+        var toggleButton = document.getElementById('toggleButton');
+        toggleButton.textContent = isHidden ? 'Ẩn bớt' : 'Hiện tất cả';
+    }
+</script>
+
 
 </body>
 
