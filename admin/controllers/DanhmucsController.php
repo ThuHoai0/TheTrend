@@ -15,8 +15,6 @@ class DanhmucsController
     {
         // lay ra toan bo danh muc
         $danh_mucs = $this->modelDanhmuc->getAll();
-        // var_dump($danh_mucs);
-
         // dua du lieu ra view
         require_once './views/danhmuc/list.php';
     }
@@ -25,6 +23,8 @@ class DanhmucsController
     public function create(){
         require_once './views/danhmuc/create.php';
     }
+
+
 
     // ham xu ly them vao CSDL
     public function store()
@@ -55,7 +55,7 @@ class DanhmucsController
                 // them vao CSDL
                 $this->modelDanhmuc->postData($ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai);
                 unset($_SESSION['errors']);
-                header('Location: ?act=danhmuc/list');
+                header('Location: ?act=danh-muc-list');
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
@@ -102,7 +102,7 @@ class DanhmucsController
                 // Them vao CSDL
                 $this->modelDanhmuc->updateData($id, $ten_danh_muc, $mo_ta, $trang_thai);
                 unset($_SESSION['errors']);
-                header('Location: ?act=danhmuc/list');
+                header('Location: ?act=danh-muc-list');
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
@@ -120,11 +120,15 @@ class DanhmucsController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $this->modelDanhmuc->deleteData($id);
-            header('Location: ?act=danhmuc/list');
+            header('Location: ?act=danh-muc-list');
             exit();
         }
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }
 
 

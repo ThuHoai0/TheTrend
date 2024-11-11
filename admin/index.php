@@ -36,6 +36,7 @@ require_once 'models/Nguoidung.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
+//die;
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
 match ($act) {
@@ -43,7 +44,7 @@ match ($act) {
     '/' => (new DashboardController())->index(),
 
     // Quan ly danh muc san pham
-    'danhmuc/list' => (new DanhmucsController())->index(),
+    'danh-muc-list' => (new DanhmucsController())->index(),
     'danhmuc/create' => (new DanhmucsController())->create(),
     'danhmuc/store' => (new DanhmucsController())->store(),
     'danhmuc/edit' => (new DanhmucsController())->edit(),

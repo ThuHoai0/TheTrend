@@ -113,12 +113,8 @@
                                                             </ul>
                                                         </div>
                                                     </th>
-
-
-                                                    <!-- Trạng thái with Sort Button -->
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
-                                                        <!-- Dropdown Filter Button -->
                                                         <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="ri-filter-2-line" aria-hidden="true"></i>
                                                         </button>
@@ -132,10 +128,8 @@
                                                     </th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
-
                                                 </thead>
                                                 <tbody>
-
                                                 <?php foreach ($san_phams as $i => $san_pham) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>

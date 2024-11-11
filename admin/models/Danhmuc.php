@@ -22,6 +22,23 @@ class Danhmuc
             echo 'Error: ' .$e->getMessage();
         }
     }
+
+    function search($ten_danh_muc)
+    {
+        try {
+            $sql = "SELECT * 
+                    FROM danh_mucs 
+                    WHERE ten_danh_muc LIKE '%ten_cua_san_pham%'";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' .$e->getMessage();
+        }
+    }
     // them du lieu vao CSDL
     public function postData($ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai) {
         try {
@@ -105,4 +122,8 @@ class Danhmuc
         $this->conn = null;
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }

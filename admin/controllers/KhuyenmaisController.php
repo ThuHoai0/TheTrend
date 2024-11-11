@@ -33,26 +33,26 @@
              $phan_tram_giam = $_POST['phan_tram_giam'];
              $ngay_bat_dau = $_POST['ngay_bat_dau'];
              $ngay_ket_thuc = $_POST['ngay_ket_thuc'];
-             $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); // Use current date & time in Vietnam
+             $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s');
              $trang_thai = $_POST['trang_thai'];
 
              // validate
              $errors = [];
-             if (empty($ten_khuyen_mai)) {
-                 $errors['ten_khuyen_mai'] = "Tên khuyến mại là bắt buộc";
-             }
-             if (empty($phan_tram_giam)) {
-                $errors['phan_tram_giam'] = "Phần trăm giảm là bắt buộc";
-             }
-             if (empty($ngay_bat_dau)) {
-                 $errors['ngay_bat_dau'] = "Ngày bắt đầu là bắt buộc";
-             }
-             if (empty($ngay_ket_thuc)) {
-                 $errors['ngay_ket_thuc'] = "Ngày kết thúc là bắt buộc";
-             }
-              if (empty($trang_thai)) {
-                 $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
-             }
+//             if (empty($ten_khuyen_mai)) {
+//                 $errors['ten_khuyen_mai'] = "Tên khuyến mại là bắt buộc";
+//             }
+//             if (empty($phan_tram_giam)) {
+//                $errors['phan_tram_giam'] = "Phần trăm giảm là bắt buộc";
+//             }
+//             if (empty($ngay_bat_dau)) {
+//                 $errors['ngay_bat_dau'] = "Ngày bắt đầu là bắt buộc";
+//             }
+//             if (empty($ngay_ket_thuc)) {
+//                 $errors['ngay_ket_thuc'] = "Ngày kết thúc là bắt buộc";
+//             }
+//              if (empty($trang_thai)) {
+//                 $errors['trang_thai'] = "Trạng thái tạo là bắt buộc";
+//             }
 
              // them du lieu
              if (empty($errors)) {

@@ -60,13 +60,15 @@ class SanphamsController
             } elseif (!is_numeric($so_luong) || $so_luong < 0) {
                 $errors['so_luong'] = "Số lượng phải là số không âm";
             }
-//            if (empty($danh_muc)) {
-//                $errors['danh_muc'] = "Danh mục là bắt buộc";
-//            }
-
+            $anh_phu = $_FILES['anh_phu'];
             // them du lieu
             if (empty($errors)) {
-                $this->modelSanpham->postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao);
+                $anhs = $this->modelSanpham->postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao);
+                if(is_array($anh_phu)) {
+                $data_anh = uploadFiles($anh_phu, $anhs);
+                var_dump($data_anh);
+                die;
+                }
                 unset($_SESSION['errors']);
                 header('Location: ?act=sanpham/list');
                 exit();

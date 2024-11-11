@@ -55,7 +55,9 @@ class Sanpham {
 
             $stmt->execute();
 
-            return true;
+            $lastInsertId = $this->conn->lastInsertId();
+
+            return $lastInsertId; // Trả về ID của sản phẩm vừa thêm
         } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();
         }

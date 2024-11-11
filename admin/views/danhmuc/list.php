@@ -70,8 +70,9 @@
                                     </a>
 
                                     <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
+                                    <form class="d-flex" action="?act=danh-muc-list" method="get">
                                         <!-- Expanded Search Input -->
+<<<<<<< Updated upstream
                                         <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
 
                                         <!-- Select Dropdown for Visibility Options -->
@@ -80,6 +81,9 @@
                                             <option value="show">Hiển thị</option>
                                             <option value="hide">Không hiển thị</option>
                                         </select>
+=======
+                                        <input type="text" placeholder="Tìm kiếm..." class="form-control me-2 flex-grow-1" name="search">
+>>>>>>> Stashed changes
                                     </form>
                                 </div><!-- end card header -->
 

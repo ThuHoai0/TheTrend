@@ -96,6 +96,10 @@
                                         <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="hinh_anh">
                                     </div>
                                     <div class="mb-3">
+                                        <h5 class="form-label">Ảnh phụ</h5>
+                                        <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="anh_phu[]" multiple>
+                                    </div>
+                                    <div class="mb-3">
                                         <h5 class="form-label">Giá nhập</h5>
                                         <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap">
                                         <span class="text-danger">
