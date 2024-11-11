@@ -64,6 +64,9 @@ match ($act) {
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
     'khuyenmai/store' => (new KhuyenmaisController())->store(),
+    'khuyenmai/edit' => (new SanphamsController())->edit(),
+    'khuyenmai/update' => (new SanphamsController())->update(),
+    'khuyenmai/delete' => (new SanphamsController())->delete(),
 
 // Quan ly người dùng
     'nguoidung/list' => (new NguoidungsController())->index(),

@@ -52,7 +52,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Mục Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Khuyến mại</li>
                                 </ol>
                             </div>
 
@@ -67,49 +67,42 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Danh Mục</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Khuyến Mại</h4>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=danhmuc/update&id=<?= $danh_muc['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
-
+                                        <form class="container-fluid mt-3 mb-3" action="?act=khuyenmai/store" method="POST">
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên danh mục</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc" value="<?= $danh_muc['ten_danh_muc'] ?>">
+                                                <h5 class="form-label">Tên khuyến mại</h5>
+                                                <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_khuyen_mai">
                                                 <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
+                                                    <?= !empty($_SESSION['errors']['ten_khuyen_mai']) ? $_SESSION['errors']['ten_khuyen_mai'] : '' ?>
                                                 </span>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Mô tả</label>
-                                                <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta" value="<?= $danh_muc['mo_ta'] ?>">
+                                                <h5 class="form-label">Mô tả</h5>
+                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"></textarea>
                                             </div>
-<!--                                            <div class="mb-3">-->
-<!--                                                <label for="citynameInput" class="form-label">Ngày tạo</label>-->
-<!--                                                <input type="date" class="form-control" name="ngay_tao" value="--><?php //= $danh_muc['ngay_tao'] ?><!--">-->
-<!--                                                <span class="text-danger">-->
-<!--                                                    --><?php //= !empty($_SESSION['errors']['ngay_tao']) ? $_SESSION['errors']['ngay_tao'] : '' ?>
-<!--                                                </span>-->
-<!--                                            </div>-->
                                             <div class="mb-3">
-                                                <label for="ForminputState" class="form-label">Trạng thái</label>
-                                                <select class="form-select" name="trang_thai">
-                                                    <option selected disabled>Chọn trạng thái</option>
-                                                    <option value="1" <?= $danh_muc['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="2" <?= $danh_muc['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
-                                                </select>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
-                                                </span>
+                                                <h5 class="form-label">Phần trăm giảm</h5>
+                                                <input type="text" class="form-control" placeholder="Nhập phần trăm giảm..." name="phan_tram_giam">
+                                            </div>
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Ngày bắt đầu</h5>
+                                                <input type="date" class="form-control" name="ngay_bat_dau">
+                                            </div>
+                                            <div class="mb-3">
+                                                <h5 class="form-label">Ngày kết thúc</h5>
+                                                <input type="date" class="form-control" name="ngay_ket_thuc">
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                                                    <button type="submit" class="btn btn-primary">Thêm Khuyến mại</button>
                                                 </div>
                                             </div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
