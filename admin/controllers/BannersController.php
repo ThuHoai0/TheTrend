@@ -38,11 +38,7 @@ class BannersController
             $load_duong_dan_hinh_anh = uploadFile($duong_dan_hinh_anh);
 
 
-// Validate mo_ta
-            if (empty($mo_ta)) {
-                $errors['mo_ta'] = "Nội dung là bắt buộc";
-            }
-            // them du lieu
+
             if (empty($errors)) {
                 // neu khong co loi thi them du lieu
                 // them vao CSDL
