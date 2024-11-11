@@ -77,7 +77,7 @@
 
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên liên hệ</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên liên hệ..." name="ho_ten" value="<?= $lien_he['ho_ten'] ?>">
+                                                <input type="text" disabled class="form-control" placeholder="Nhập tên liên hệ..." name="ho_ten" value="<?= $lien_he['ho_ten'] ?>">
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['ho_ten']) ? $_SESSION['errors']['ho_ten'] : '' ?>
                                                 </span>

@@ -93,24 +93,17 @@ class LienhesController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay ra du lieu
             $id = $_GET['id'];
-            $ho_ten = $_POST['ho_ten'];
             $trang_thai = $_POST['trang_thai'];
 
 
             // die($category_status  );
             // validate
             $errors = [];
-            if (empty($ho_ten)) {
-                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
-            }
-            // Kiểm tra email
-// Kiểm tra số điện thoại
-
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelLienhe->updateData($id,$ho_ten,$trang_thai);
+                $this->modelLienhe->updateData($id,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
