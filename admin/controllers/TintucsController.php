@@ -11,11 +11,19 @@ class TintucsController
     }
 
     // ham hien thi danh sach
+
+
     public function index()
     {
-        // lay ra toan bo danh muc
-        $tin_tucs = $this->modelTintuc->getAll();
-        // var_dump($tin_tucs);
+        $tin_tucs = null;
+
+        if (isset($_GET['search'])) {
+            $tin_tucs = $this->modelTintuc->getBySearch($_GET['search']);
+        } else {
+            $tin_tucs = $this->modelTintuc->getAll();
+        }
+
+
 
         // dua du lieu ra view
         require_once './views/tintuc/list.php';

@@ -22,6 +22,25 @@ class Danhmuc
             echo 'Error: ' .$e->getMessage();
         }
     }
+
+    public function getBySearch($search) {
+        // Chuẩn bị câu lệnh SQL với dấu phần trăm bao quanh biến tìm kiếm
+        $sql = "SELECT * FROM danh_mucs WHERE ten_danh_muc LIKE :search";
+
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $this->conn->prepare($sql);
+
+        // Thực hiện binding tham số (thêm % vào chuỗi tìm kiếm)
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+
+        // Thực thi câu lệnh
+        $stmt->execute();
+
+        // Lấy tất cả kết quả dưới dạng mảng
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     // them du lieu vao CSDL
     public function postData($ten_danh_muc, $mo_ta, $ngay_tao, $trang_thai) {
         try {
@@ -103,19 +122,6 @@ class Danhmuc
     // huy ket noi CSDL
     public function __destruct() {
         $this->conn = null;
-    }
-
-    public function search($keyword) {
-        try {
-            $sql = "SELECT * FROM `danh_mucs` WHERE ten_danh_muc LIKE :keyword OR mo_ta LIKE :keyword";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindValue(':keyword', '%' . $keyword . '%');
-            $stmt->execute();
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
     }
 
 }

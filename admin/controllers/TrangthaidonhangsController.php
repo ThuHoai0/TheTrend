@@ -10,12 +10,18 @@ class TrangthaidonhangsController
         $this->modelTrangthaidonhang = new Trangthaidonhang();
     }
 
-    // ham hien thi danh sach
+
     public function index()
     {
-        // lay ra toan bo danh muc
-        $trang_thai_don_hangs = $this->modelTrangthaidonhang->getAll();
-        // var_dump($danh_mucs);
+        $trang_thai_don_hangs = null;
+
+        if (isset($_GET['search'])) {
+            $trang_thai_don_hangs = $this->modelTrangthaidonhang->getBySearch($_GET['search']);
+        } else {
+            $trang_thai_don_hangs = $this->modelTrangthaidonhang->getAll();
+        }
+
+
 
         // dua du lieu ra view
         require_once './views/trangthaidonhang/list.php';

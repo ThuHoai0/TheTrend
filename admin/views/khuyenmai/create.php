@@ -73,8 +73,8 @@
                                         <h5 class="form-label">Tên khuyến mại</h5>
                                         <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_khuyen_mai">
                                         <span class="text-danger">
-            <?= !empty($_SESSION['errors']['ten_khuyen_mai']) ? $_SESSION['errors']['ten_khuyen_mai'] : '' ?>
-        </span>
+                                            <?= !empty($_SESSION['errors']['ten_khuyen_mai']) ? $_SESSION['errors']['ten_khuyen_mai'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Mô tả</h5>
@@ -83,14 +83,23 @@
                                     <div class="mb-3">
                                         <h5 class="form-label">Phần trăm giảm</h5>
                                         <input type="text" class="form-control" placeholder="Nhập phần trăm giảm..." name="phan_tram_giam">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['phan_tram_giam']) ? $_SESSION['errors']['phan_tram_giam'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày bắt đầu</h5>
                                         <input type="date" class="form-control" name="ngay_bat_dau">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['ngay_bat_dau']) ? $_SESSION['errors']['ngay_bat_dau'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày kết thúc</h5>
                                         <input type="date" class="form-control" name="ngay_ket_thuc">
+                                        <span class="text-danger">
+                                            <?= !empty($_SESSION['errors']['ngay_ket_thuc']) ? $_SESSION['errors']['ngay_ket_thuc'] : '' ?>
+                                        </span>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">

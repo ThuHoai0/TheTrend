@@ -24,6 +24,23 @@ class Sanpham {
         }
     }
 
+    public function getBySearch($search) {
+        // Chuẩn bị câu lệnh SQL với dấu phần trăm bao quanh biến tìm kiếm
+        $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE :search";
+
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $this->conn->prepare($sql);
+
+        // Thực hiện binding tham số (thêm % vào chuỗi tìm kiếm)
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+
+        // Thực thi câu lệnh
+        $stmt->execute();
+
+        // Lấy tất cả kết quả dưới dạng mảng
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getCategory() {
         $sql = "SELECT * FROM danh_mucs";
 
@@ -80,7 +97,7 @@ class Sanpham {
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT * FROM `san_phams` WHERE id = :id";
+            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM `san_phams` inner JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id WHERE san_phams.id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -93,6 +110,8 @@ class Sanpham {
             echo 'Error: ' .$e->getMessage();
         }
     }
+
+
     public function updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai) {
         try {
 

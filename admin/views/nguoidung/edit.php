@@ -77,70 +77,56 @@
 
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên người dùng</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên người dùng..." name="ten"  value="<?= isset($nguoi_dung['ten']) ? $nguoi_dung['ten'] : '' ?>" required>
+                                                <input disabled type="text" class="form-control" placeholder="Nhập tên người dùng..." name="ten"  value="<?= isset($nguoi_dung['ten']) ? $nguoi_dung['ten'] : '' ?>" required>
 
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten']) ? $_SESSION['errors']['ten'] : '' ?>
-                                                </span>
+
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Email</label>
-                                                <input type="email" class="form-control" placeholder="Nhập email..." name="email" value="<?= isset($nguoi_dung['email']) ? $nguoi_dung['email'] : '' ?>" required>
+                                                <input disabled type="email" class="form-control" placeholder="Nhập email..." name="email" value="<?= isset($nguoi_dung['email']) ? $nguoi_dung['email'] : '' ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <h5 class="form-label">Số Điện Thoại</h5>
-                                                    <input type="text" class="form-control" id="so_dien_thoai" name="so_dien_thoai" value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>" >
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['so_dien_thoai']) ? $_SESSION['errors']['so_dien_thoai'] : '' ?>
-                                                </span>
+                                                    <input disabled type="text" class="form-control" id="so_dien_thoai" name="so_dien_thoai" value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>" >
+
                                             </div>
                                             <div class="mb-3">
                                                 <h5 class="form-label">Ngày Sinh</h5>
-                                                <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh" value="<?= isset($nguoi_dung['ngay_sinh']) ? $nguoi_dung['ngay_sinh'] : '' ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ngay_sinh']) ? $_SESSION['errors']['ngay_sinh'] : '' ?>
-                                                </span>
+                                                <input disabled type="date" class="form-control" id="ngay_sinh" name="ngay_sinh" value="<?= isset($nguoi_dung['ngay_sinh']) ? $nguoi_dung['ngay_sinh'] : '' ?>">
+
                                             </div>  
                                             <div class="mb-3">
                                                 <h5 class="form-label">Giới Tính</h5>
                                                 <div style="display:flex;" >
                                                     <label style="margin-right: 15px">
-                                                        <input type="radio" name="gioi_tinh" value="1" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 1 ? 'checked' : '' ?>> Nam<br>
+                                                        <input disabled type="radio" name="gioi_tinh" value="1" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 1 ? 'checked' : '' ?>> Nam<br>
                                                     </label>
                                                     <label style="margin-right: 15px">
-                                                        <input type="radio" name="gioi_tinh" value="2" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 2 ? 'checked' : '' ?>> Nữ<br>
+                                                        <input disabled type="radio" name="gioi_tinh" value="2" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 2 ? 'checked' : '' ?>> Nữ<br>
                                                     </label>
                                                     <label for="">
-                                                        <input type="radio" name="gioi_tinh" value="0" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 0 ? 'checked' : '' ?>> Khác<br>
+                                                        <input disabled type="radio" name="gioi_tinh" value="0" <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] == 0 ? 'checked' : '' ?>> Khác<br>
                                                     </label>
                                                 </div>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['gioi_tinh']) ? $_SESSION['errors']['gioi_tinh'] : '' ?>
-                                                </span>
+
                                             </div>
                                             <div class="mb-3">
                                                 <h5 class="form-label">Địa Chỉ</h5>
-                                                <textarea id="dia_chi" class="form-control" name="dia_chi" rows="4" cols="50" required><?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?></textarea>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['dia_chi']) ? $_SESSION['errors']['dia_chi'] : '' ?>
-                                                </span>
+                                                <textarea disabled id="dia_chi" class="form-control" name="dia_chi" rows="4" cols="50" required><?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?></textarea>
+
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Vai Trò</label>
-                                                    <select id="form-select" class="form-control" name="vai_tro" required>
+                                                    <select disabled id="form-select" class="form-control" name="vai_tro" required>
                                                         <option value="1">Khách hàng</option>
                                                         <option value="0">Quản Trị Viên</option>
                                                     </select>
-                                                    <span class="text-danger">
-                                                        <?= !empty($_SESSION['errors']['vai_tro']) ? $_SESSION['errors']['vai_tro'] : '' ?>
-                                                    </span>
                                                 </div> 
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option selected disabled>Chọn trạng thái</option>
                                                     <option value="1" <?= $nguoi_dung['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="2" <?= $nguoi_dung['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="0" <?= $nguoi_dung['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
                                                 </select>
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>

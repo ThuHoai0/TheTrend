@@ -11,10 +11,17 @@ class LienhesController
     }
 
     // ham hien thi danh sach
+
     public function index()
     {
-        // lay ra toan bo lien he
-        $lien_hes = $this->modelLienhe->getAll();
+        $lien_hes = null;
+
+        if (isset($_GET['search'])) {
+            $lien_hes = $this->modelLienhe->getBySearch($_GET['search']);
+        } else {
+            $lien_hes = $this->modelLienhe->getAll();
+        }
+
 
 
         // dua du lieu ra view

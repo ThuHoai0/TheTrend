@@ -7,8 +7,17 @@ class SanphamsController
         $this->modelSanpham = new Sanpham();
     }
 
-    public function index() {
-        $san_phams = $this->modelSanpham->getAll();
+    public function index()
+    {
+        $san_phams = null;
+
+        if (isset($_GET['search'])) {
+            $san_phams = $this->modelSanpham->getBySearch($_GET['search']);
+        } else {
+            $san_phams = $this->modelSanpham->getAll();
+        }
+
+        // dua du lieu ra view
         require_once './views/sanpham/list.php';
     }
 
@@ -78,6 +87,15 @@ class SanphamsController
         }
     }
 
+    public function chitiet()
+    {
+        $id = $_GET['id'];
+
+        $san_pham = $this->modelSanpham->getDetailData($id);
+        $sp = $this->modelSanpham->getCategory();
+
+        require_once './views/sanpham/chitiet.php';
+    }
     public function edit()
     {
         // lay id

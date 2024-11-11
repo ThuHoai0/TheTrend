@@ -70,9 +70,8 @@
                                     </a>
 
                                     <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input type="text" id="searchInput-input" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
+                                    <form class="d-flex" role="search" method="get" id="searchForm">
+                                        <input type="text" name="search" id="searchInput" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
                                     </form>
                                 </div><!-- end card header -->
 
@@ -225,19 +224,33 @@ require_once "views/layouts/libs_js.php";
 ?>
 
 <script>
-    // JavaScript để tìm kiếm tự động
-    document.getElementById('searchInput').addEventListener('input', function() {
-        const keyword = this.value;
+    // Lấy phần tử input
+    const searchInput = document.getElementById('searchInput');
+    const searchForm = document.getElementById('searchForm');
 
-        // Sử dụng fetch API để gọi controller tìm kiếm
-        fetch(`?act=danhmuc/search&keyword=${keyword}`)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('tableBody').innerHTML = data;
-            })
-            .catch(error => console.error('Error:', error));
+    // Bắt sự kiện khi nhấn phím Enter trong input
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {  // Kiểm tra xem phím nhấn có phải là Enter không
+            event.preventDefault();  // Ngừng hành động mặc định của form (không reload ngay lập tức)
+
+            // Lấy giá trị trong ô input
+            const query = searchInput.value.trim();
+
+            // Kiểm tra nếu có giá trị trong ô input
+            if (query) {
+                // Cập nhật URL với tham số search và giá trị của input
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', query);  // Thêm giá trị vào query string mà không mã hóa
+
+                // Đổi URL của trang hiện tại mà không reload
+                window.location.href = currentUrl.href;  // Reload trang với URL mới
+            }
+        }
     });
 </script>
+
+
+
 
 </body>
 

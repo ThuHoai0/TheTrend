@@ -109,4 +109,21 @@ class Lienhe
         $this->conn = null;
     }
 
+    public function getBySearch($search) {
+        // Chuẩn bị câu lệnh SQL với dấu phần trăm bao quanh biến tìm kiếm
+        $sql = "SELECT * FROM lien_hes WHERE ho_ten LIKE :search";
+
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $this->conn->prepare($sql);
+
+        // Thực hiện binding tham số (thêm % vào chuỗi tìm kiếm)
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+
+        // Thực thi câu lệnh
+        $stmt->execute();
+
+        // Lấy tất cả kết quả dưới dạng mảng
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

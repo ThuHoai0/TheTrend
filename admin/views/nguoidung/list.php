@@ -70,11 +70,8 @@
                                     </a>
 
                                     <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-                                        <!-- Select Dropdown for Visibility Options -->
+                                    <form class="d-flex" role="search" method="get" id="searchForm">
+                                        <input type="text" name="search" id="searchInput" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
                                     </form>
                                 </div><!-- end card header -->
 
@@ -87,27 +84,10 @@
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên người dùng</th>
                                                     <th scope="col">Email</th>
-                                                    <th scope="col">Số điện thoại</th>
-                                                    <th scope="col">Ngày sinh</th>
-                                                    <th scope="col">Giới Tính</th>                                        
-                                                    <th scope="col">Địa chỉ</th>
                                                     <th scope="col">Vai Trò</th>
 
 
                                                     <!-- Ngày tạo with Sort Button -->
-                                                    <th scope="col" class="flex align-items-center">
-                                                        Ngày tạo
-                                                        <!-- Sort Button for Ngày tạo -->
-                                                            <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <i class="ri-sort-asc" aria-hidden="true"></i>
-                                                            </button>
-                                                        <div class="dropdown ms-2">
-                                                            <ul class="dropdown-menu" aria-labelledby="statusFilter">
-                                                                <li><a class="dropdown-item" href="?filter=date_desc">Mới nhất</a></li>
-                                                                <li><a class="dropdown-item" href="?filter=date_asc">Cũ nhất</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </th>
 
 
                                                     <!-- Trạng thái with Sort Button -->
@@ -136,18 +116,9 @@
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $nguoi_dung['ten'] ?></td>
                                                         <td><?= $nguoi_dung['email'] ?></td>
-                                                        <td><?= $nguoi_dung['so_dien_thoai'] ?></td>
-                                                        <td><?= $nguoi_dung['ngay_sinh'] ?></td>
-                                                        <td>
-                                                            <?= $nguoi_dung['gioi_tinh'] == 1 ? 'Nam' : ($nguoi_dung['gioi_tinh'] == 2 ? 'Nữ' : ($nguoi_dung['gioi_tinh'] == 0 ? 'Khác' : 'Không xác định')) ?>
-                                                        </td>
-
-                                                        <td><?= $nguoi_dung['dia_chi'] ?></td>
                                                         <td>
                                                             <?= $nguoi_dung['vai_tro'] == 1 ? 'Admin' : 'Khách hàng' ?>
                                                         </td>
-                                                        <td><?= $nguoi_dung['ngay_tao'] ?></td>
-
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
@@ -242,6 +213,32 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
+<script>
+    // Lấy phần tử input
+    const searchInput = document.getElementById('searchInput');
+    const searchForm = document.getElementById('searchForm');
+
+    // Bắt sự kiện khi nhấn phím Enter trong input
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {  // Kiểm tra xem phím nhấn có phải là Enter không
+            event.preventDefault();  // Ngừng hành động mặc định của form (không reload ngay lập tức)
+
+            // Lấy giá trị trong ô input
+            const query = searchInput.value.trim();
+
+            // Kiểm tra nếu có giá trị trong ô input
+            if (query) {
+                // Cập nhật URL với tham số search và giá trị của input
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', query);  // Thêm giá trị vào query string mà không mã hóa
+
+                // Đổi URL của trang hiện tại mà không reload
+                window.location.href = currentUrl.href;  // Reload trang với URL mới
+            }
+        }
+    });
+</script>
+
 
 </body>
 

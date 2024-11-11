@@ -59,19 +59,21 @@ match ($act) {
     'sanpham/edit' => (new SanphamsController())->edit(),
     'sanpham/update' => (new SanphamsController())->update(),
     'sanpham/delete' => (new SanphamsController())->delete(),
+    'sanpham/chitiet' => (new SanphamsController())->chitiet(),
 
     // Khuyen mai
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
     'khuyenmai/store' => (new KhuyenmaisController())->store(),
-    'khuyenmai/edit' => (new SanphamsController())->edit(),
-    'khuyenmai/update' => (new SanphamsController())->update(),
-    'khuyenmai/delete' => (new SanphamsController())->delete(),
+    'khuyenmai/edit' => (new KhuyenmaisController())->edit(),
+    'khuyenmai/update' => (new KhuyenmaisController())->update(),
+    'khuyenmai/delete' => (new KhuyenmaisController())->delete(),
+    'khuyenmai/chitiet' => (new KhuyenmaisController())->chitiet(),
+
 
 // Quan ly người dùng
     'nguoidung/list' => (new NguoidungsController())->index(),
     'nguoidung/create' => (new NguoidungsController())->create(),
-    'nguoidung/store' => (new NguoidungsController())->store(),
     'nguoidung/edit' => (new NguoidungsController())->edit(),
     'nguoidung/update' => (new NguoidungsController())->update(),
     'nguoidung/delete' => (new NguoidungsController())->delete(),

@@ -13,9 +13,15 @@ class DanhmucsController
     // ham hien thi danh sach
     public function index()
     {
-        // lay ra toan bo danh muc
-        $danh_mucs = $this->modelDanhmuc->getAll();
-        // var_dump($danh_mucs);
+        $danh_mucs = null;
+
+        if (isset($_GET['search'])) {
+            $danh_mucs = $this->modelDanhmuc->getBySearch($_GET['search']);
+        } else {
+            $danh_mucs = $this->modelDanhmuc->getAll();
+        }
+
+
 
         // dua du lieu ra view
         require_once './views/danhmuc/list.php';
@@ -125,25 +131,7 @@ class DanhmucsController
         }
     }
 
-    public function search() {
-        $keyword = $_GET['keyword'] ?? '';
-        $danh_mucs = $this->modelDanhmuc->search($keyword);
-        require_once './views/danhmuc/list.php';
-        foreach ($danh_mucs as $i => $danh_muc) {
-            echo "<tr>
-                <td>" . ($i + 1) . "</td>
-                <td>" . $danh_muc['ten_danh_muc'] . "</td>
-                <td>" . $danh_muc['mo_ta'] . "</td>
-                <td>" . $danh_muc['ngay_tao'] . "</td>
-                <td>" . ($danh_muc['trang_thai'] == 1 ? 'Hiển Thị' : 'Ẩn') . "</td>
-                <td>
-                    <a href='?act=danhmuc/edit&id=" . $danh_muc['id'] . "' class='btn btn-warning btn-sm'>Sửa</a>
-                    <a href='?act=danhmuc/delete&id=" . $danh_muc['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc muốn xóa?\")'>Xóa</a>
-                </td>
-                
-            </tr>";
-        }
-    }
+
 
 }
 

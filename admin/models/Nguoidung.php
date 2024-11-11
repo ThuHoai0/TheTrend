@@ -50,25 +50,16 @@ class Nguoidung
     }
 
 //    // cap nhat du lieu vao CSDL
-public function updateData($id, $ten, $email, $so_dien_thoai, $ngay_sinh, $gioi_tinh, $dia_chi, $vai_tro, $trang_thai) {
-    var_dump(4455);
+public function updateData($id, $trang_thai) {
+
     try { 
         $sql = "UPDATE nguoi_dungs 
-                SET ten = :ten, email = :email, so_dien_thoai = :so_dien_thoai, 
-                    ngay_sinh = :ngay_sinh, dia_chi = :dia_chi, vai_tro = :vai_tro, 
-                    ngay_tao = :ngay_tao, trang_thai = :trang_thai, gioi_tinh = :gioi_tinh 
+                SET trang_thai = :trang_thai
                 WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         // Gán giá trị vào các tham số
         $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':ten', $ten);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':so_dien_thoai', $so_dien_thoai); 
-        $stmt->bindParam(':ngay_sinh', $ngay_sinh);
-        $stmt->bindParam(':dia_chi', $dia_chi);
-        $stmt->bindParam(':gioi_tinh', $gioi_tinh);
-        $stmt->bindParam(':vai_tro', $vai_tro);
-        $stmt->bindParam(':ngay_tao', $ngay_tao);
+
         $stmt->bindParam(':trang_thai', $trang_thai);
 
          $stmt->execute(); 
@@ -119,6 +110,23 @@ public function getDetailData($id) {
     // huy ket noi CSDL
     public function __destruct() {
         $this->conn = null;
+    }
+
+    public function getBySearch($search) {
+        // Chuẩn bị câu lệnh SQL với dấu phần trăm bao quanh biến tìm kiếm
+        $sql = "SELECT * FROM nguoi_dungs WHERE ten LIKE :search";
+
+        // Chuẩn bị câu lệnh SQL
+        $stmt = $this->conn->prepare($sql);
+
+        // Thực hiện binding tham số (thêm % vào chuỗi tìm kiếm)
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+
+        // Thực thi câu lệnh
+        $stmt->execute();
+
+        // Lấy tất cả kết quả dưới dạng mảng
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
