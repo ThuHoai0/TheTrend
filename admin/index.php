@@ -89,6 +89,7 @@ match ($act) {
 
     // Trạng thái đơn hàng
     'trangthaidonhang/list' => (new TrangthaidonhangsController())->index(),
+    'trangthaidonhang/create' => (new TrangthaidonhangsController())->create(),
     'trangthaidonhang/store' => (new TrangthaidonhangsController())->store(),
     'trangthaidonhang/edit' => (new TrangthaidonhangsController())->edit(),
     'trangthaidonhang/update' => (new TrangthaidonhangsController())->update(),
