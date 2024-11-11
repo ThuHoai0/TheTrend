@@ -94,9 +94,6 @@ class LienhesController
             // lay ra du lieu
             $id = $_GET['id'];
             $ho_ten = $_POST['ho_ten'];
-            $email = $_POST['email'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
-            $noi_dung = $_POST['noi_dung'];
             $trang_thai = $_POST['trang_thai'];
 
 
@@ -107,24 +104,13 @@ class LienhesController
                 $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
             }
             // Kiểm tra email
-            if (empty($email)) {
-                $errors['email'] = "Email là bắt buộc";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors['email'] = "Định dạng email không hợp lệ";
-            }
-
 // Kiểm tra số điện thoại
-            if (empty($so_dien_thoai)) {
-                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
-            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
-                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
-            }
 
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelLienhe->updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
+                $this->modelLienhe->updateData($id,$ho_ten,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
