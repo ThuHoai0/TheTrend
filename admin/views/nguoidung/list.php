@@ -75,11 +75,6 @@
                                         <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
 
                                         <!-- Select Dropdown for Visibility Options -->
-                                        <select class="form-select" aria-label="Visibility Filter" style="width: 130px;">
-                                            <option value="hidden" disabled selected>Tất cả</option>
-                                            <option value="show">Hiển thị</option>
-                                            <option value="hide">Không hiển thị</option>
-                                        </select>
                                     </form>
                                 </div><!-- end card header -->
 
@@ -143,9 +138,14 @@
                                                         <td><?= $nguoi_dung['email'] ?></td>
                                                         <td><?= $nguoi_dung['so_dien_thoai'] ?></td>
                                                         <td><?= $nguoi_dung['ngay_sinh'] ?></td>
-                                                        <td><?= $nguoi_dung['gioi_tinh'] ?></td>
+                                                        <td>
+                                                            <?= $nguoi_dung['gioi_tinh'] == 1 ? 'Nam' : ($nguoi_dung['gioi_tinh'] == 2 ? 'Nữ' : ($nguoi_dung['gioi_tinh'] == 0 ? 'Khác' : 'Không xác định')) ?>
+                                                        </td>
+
                                                         <td><?= $nguoi_dung['dia_chi'] ?></td>
-                                                        <td><?= $nguoi_dung['vai_tro'] ?></td>
+                                                        <td>
+                                                            <?= $nguoi_dung['vai_tro'] == 1 ? 'Admin' : 'Khách hàng' ?>
+                                                        </td>
                                                         <td><?= $nguoi_dung['ngay_tao'] ?></td>
 
                                                         <td>

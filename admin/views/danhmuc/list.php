@@ -72,25 +72,14 @@
                                     <!-- Search Form and Select aligned to the right -->
                                     <form class="d-flex" action="?act=danh-muc-list" method="get">
                                         <!-- Expanded Search Input -->
-<<<<<<< Updated upstream
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-                                        <!-- Select Dropdown for Visibility Options -->
-                                        <select class="form-select" aria-label="Visibility Filter" style="width: 130px;">
-                                            <option value="hidden" disabled selected>Tất cả</option>
-                                            <option value="show">Hiển thị</option>
-                                            <option value="hide">Không hiển thị</option>
-                                        </select>
-=======
-                                        <input type="text" placeholder="Tìm kiếm..." class="form-control me-2 flex-grow-1" name="search">
->>>>>>> Stashed changes
+                                        <input type="text" id="searchInput-input" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
                                     </form>
                                 </div><!-- end card header -->
 
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" id="search-results">
                                             <table class="table table-striped table-nowrap align-middle mb-0">
                                                 <thead>
                                                 <tr>
@@ -133,7 +122,7 @@
                                                 </tr>
 
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="tableBody">
 
                                                 <?php foreach ($danh_mucs as $i => $danh_muc) : ?>
                                                     <tr>
@@ -234,6 +223,21 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
+
+<script>
+    // JavaScript để tìm kiếm tự động
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const keyword = this.value;
+
+        // Sử dụng fetch API để gọi controller tìm kiếm
+        fetch(`?act=danhmuc/search&keyword=${keyword}`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('tableBody').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 
 </body>
 

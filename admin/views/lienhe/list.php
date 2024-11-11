@@ -68,6 +68,11 @@
                                     <a href="?act=lienhe/create" class="btn btn-primary material-shadow-none">
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
                                     </a>
+                                    <div class="d-flex align-items-center">
+                                        <form class="d-flex" role="search">
+                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                                        </form>
+                                    </div>
 
                                 </div><!-- end card header -->
 

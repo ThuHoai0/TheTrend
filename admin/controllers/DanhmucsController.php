@@ -124,11 +124,6 @@ class DanhmucsController
             exit();
         }
     }
-
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
 
 

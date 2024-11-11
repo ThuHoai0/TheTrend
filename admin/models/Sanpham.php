@@ -95,8 +95,6 @@ class Sanpham {
             echo 'Error: ' .$e->getMessage();
         }
     }
-
-
     public function updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai) {
         try {
 

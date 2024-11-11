@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Mô tả</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta">
+                                        <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá</h5>
@@ -119,7 +119,7 @@
                                     <div class="mb-3">
                                         <h5 class="form-label">Danh mục</h5>
                                         <select class="form-select" name="danh_muc_id">
-                                            <option value="" selected disabled>Chọn danh muc</option>
+                                            <option value="" selected disabled>Chọn danh mục</option>
                                             <?php
                                                 foreach ($sp as $value) {?>
                                                     <option value="<?= $value['id'] ?>"><?= $value['ten_danh_muc'] ?></option>

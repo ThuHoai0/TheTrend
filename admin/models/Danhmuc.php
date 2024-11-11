@@ -121,9 +121,4 @@ class Danhmuc
     public function __destruct() {
         $this->conn = null;
     }
-
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }

@@ -69,20 +69,13 @@
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Sản Phẩm
                                     </a>
 
-                                    <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-                                        <!-- Select Dropdown for Visibility Options -->
-                                        <select class="form-select" aria-label="Visibility Filter" style="width: 130px;">
-                                            <option value="hidden" disabled selected>Tất cả</option>
-                                            <option value="show">Hiển thị</option>
-                                            <option value="hide">Không hiển thị</option>
-                                        </select>
-                                    </form>
+                                    <!-- Search and Button in a single row -->
+                                    <div class="d-flex align-items-center">
+                                        <form class="d-flex" role="search">
+                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                                        </form>
+                                    </div>
                                 </div><!-- end card header -->
-
 
                                 <div class="card-body">
                                     <div class="live-preview">
@@ -99,10 +92,8 @@
                                                     <th scope="col">Giá nhập</th>
                                                     <th scope="col">Danh mục</th>
 
-                                                    <!-- Ngày tạo with Sort Button -->
                                                     <th scope="col" class="flex align-items-center">
                                                         Ngày tạo
-                                                        <!-- Sort Button for Ngày tạo -->
                                                         <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="ri-sort-asc" aria-hidden="true"></i>
                                                         </button>
@@ -234,6 +225,8 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
+
+
 
 </body>
 

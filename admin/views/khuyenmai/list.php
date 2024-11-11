@@ -14,6 +14,8 @@
     require_once "views/layouts/libs_css.php";
     ?>
 
+
+
 </head>
 
 <body>
@@ -69,18 +71,11 @@
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Khuyến Mại
                                     </a>
 
-                                    <!-- Search Form and Select aligned to the right -->
-                                    <form class="d-flex" role="search">
-                                        <!-- Expanded Search Input -->
-                                        <input class="form-control me-2 flex-grow-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-
-                                        <!-- Select Dropdown for Visibility Options -->
-                                        <select class="form-select" aria-label="Visibility Filter" style="width: 130px;">
-                                            <option value="hidden" disabled selected>Tất cả</option>
-                                            <option value="show">Hiển thị</option>
-                                            <option value="hide">Không hiển thị</option>
-                                        </select>
-                                    </form>
+                                    <div class="d-flex align-items-center">
+                                        <form class="d-flex" role="search">
+                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                                        </form>
+                                    </div>
                                 </div><!-- end card header -->
 
 
@@ -98,7 +93,7 @@
                                                     <th scope="col">Ngày kết thúc</th>
 
                                                     <!-- Ngày tạo with Sort Button -->
-                                                    <th scope="col" class="flex align-items-center">
+                                                    <th scope="col" class="flex align-items-center extra-column">
                                                         Ngày tạo
                                                         <!-- Sort Button for Ngày tạo -->
                                                             <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
@@ -138,23 +133,32 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td><?= $khuyen_mai['ten_khuyen_mai'] ?></td>
-                                                        <td><?= $khuyen_mai['mo_ta'] ?></td>
+                                                        <td class="extra-column"><?= $khuyen_mai['mo_ta'] ?></td>
                                                         <td><?= $khuyen_mai['phan_tram_giam'] ?> %</td>
                                                         <td><?= $khuyen_mai['ngay_bat_dau'] ?></td>
                                                         <td><?= $khuyen_mai['ngay_ket_thuc'] ?></td>
                                                         <td><?= $khuyen_mai['ngay_tao'] ?></td>
                                                         <td>
                                                             <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($khuyen_mai['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
-                                                                <?php
+                                                            // Lấy ngày hiện tại
+                                                            $current_date = date('Y-m-d');
+                                                            $ngay_bat_dau = $khuyen_mai['ngay_bat_dau'];
+                                                            $ngay_ket_thuc = $khuyen_mai['ngay_ket_thuc'];
+
+                                                            // Kiểm tra trạng thái khuyến mãi
+                                                            if ($current_date < $ngay_bat_dau) {
+                                                                // Trạng thái "Sắp diễn ra"
+                                                                echo '<span class="badge bg-warning">Sắp diễn ra</span>';
+                                                            } elseif ($current_date >= $ngay_bat_dau && $current_date <= $ngay_ket_thuc) {
+                                                                // Trạng thái "Đang diễn ra"
+                                                                echo '<span class="badge bg-success">Đang diễn ra</span>';
+                                                            } else {
+                                                                // Trạng thái "Kết thúc"
+                                                                echo '<span class="badge bg-danger">Kết thúc</span>';
                                                             }
                                                             ?>
                                                         </td>
+
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
                                                                 <a href="?act=khuyenmai/edit&id=<?= $khuyen_mai['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
