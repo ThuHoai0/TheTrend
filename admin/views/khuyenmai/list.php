@@ -118,7 +118,7 @@
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
                                                         <!-- Dropdown Filter Button -->
-                                                            <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <!-- <button class="btn btn-link p-0" type="button" id="statusFilter" data-bs-toggle="dropdown" aria-expanded="false">
                                                                 <i class="ri-filter-2-line" aria-hidden="true"></i>
                                                             </button>
                                                         <div class="dropdown ms-2">
@@ -127,7 +127,7 @@
                                                                 <li><a class="dropdown-item" href="?filter=show">Hiển thị</a></li>
                                                                 <li><a class="dropdown-item" href="?filter=hide">Không hiển thị</a></li>
                                                             </ul>
-                                                        </div>
+                                                        </div> -->
                                                     </th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>

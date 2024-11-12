@@ -91,7 +91,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Tên đơn hàng</th>
+                                                    <th scope="col">Trạng thái đơn hàng</th>
                                                     <th scope="col">Mô tả</th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
