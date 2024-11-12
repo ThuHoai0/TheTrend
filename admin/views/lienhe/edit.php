@@ -73,33 +73,13 @@
                                 <div class="card-body">
                                     <div class="live-preview">
                                         <form id="updateForm" action="?act=lienhe/update&id=<?= $lien_he['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
-
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên liên hệ</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="ho_ten" value="<?= $lien_he['ho_ten'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ho_ten']) ? $_SESSION['errors']['ho_ten'] : '' ?>
-                                                </span>
-                                            </div>
-                                        
+<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->                                        
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Email</label>
-                                                <input type="text" class="form-control" placeholder="Nhập email..." name="email" value="<?= $lien_he['email'] ?>">
+                                                <input type="text" class="form-control" disable placeholder="Nhập email..." name="email" value="<?= $lien_he['email'] ?>">
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : '' ?>
                                                 </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Số điện thoại</label>
-                                                <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_dien_thoai" value="<?= $lien_he['so_dien_thoai'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['so_dien_thoai']) ? $_SESSION['errors']['so_dien_thoai'] : '' ?>
-                                                </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Nội dung</label>
-                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="noi_dung" value="<?= $lien_he['noi_dung'] ?>"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>

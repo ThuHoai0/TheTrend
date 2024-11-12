@@ -110,9 +110,6 @@ class LienhesController
             // die($category_status  );
             // validate
             $errors = [];
-            if (empty($ho_ten)) {
-                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
-            }
             // Kiểm tra email
             if (empty($email)) {
                 $errors['email'] = "Email là bắt buộc";
@@ -121,17 +118,11 @@ class LienhesController
             }
 
 // Kiểm tra số điện thoại
-            if (empty($so_dien_thoai)) {
-                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
-            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
-                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
-            }
-
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelLienhe->updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
+                $this->modelLienhe->updateData($id,$email,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();
