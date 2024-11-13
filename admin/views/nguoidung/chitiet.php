@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi Tiết Khuyến Mại  | The Trend</title>
+    <title>Chi Tiết Người Dùng | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -48,12 +48,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Chi Tiết Khuyến Mại</h2>
+                            <h2 class="mb-sm-0">Chi Tiết Người Dùng</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Chi Tiết Khuyến Mại</li>
+                                    <li class="breadcrumb-item active">Chi Tiết Người Dùng</li>
                                 </ol>
                             </div>
 
@@ -69,35 +69,60 @@
 
                                 <form class="container-fluid mt-3 mb-3">
                                     <div class="mb-3">
-                                        <h5 class="form-label">Tên Khuyến Mại</h5>
-                                        <input type="text" class="form-control" value="<?= $khuyen_mai['ten_khuyen_mai'] ?>" disabled>
+                                        <h5 class="form-label">Tên Người Dùng</h5>
+                                        <input type="text" class="form-control" value="<?= $nguoi_dung['ten'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Mô tả</h5>
-                                        <textarea disabled type="text" class="form-control"><?= $khuyen_mai['mo_ta'] ?></textarea>
+                                        <h5 class="form-label">Email</h5>
+                                        <input type="text" class="form-control" value="<?= $nguoi_dung['email'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Phần trăm giảm </h5>
-                                        <input type="text" class="form-control" value="<?= $khuyen_mai['phan_tram_giam'] ?>" disabled>
+                                        <h5 class="form-label">Số điện thoại</h5>
+                                        <input type="text" class="form-control" value="<?= $nguoi_dung['so_dien_thoai'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Ngày bắt đầu</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_bat_dau'] ?>" disabled>
+                                        <h5 class="form-label">Ngày sinh</h5>
+                                        <input type="text" class="form-control" value="<?= $nguoi_dung['ngay_sinh'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Ngày kết thúc</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_ket_thuc'] ?>" disabled>
+                                        <h5 class="form-label">Giới tính</h5>
+                                        <?php if (isset($nguoi_dung['gioi_tinh'])): ?>
+                                            <?php if ($nguoi_dung['gioi_tinh'] == 1): ?>
+                                                <label style="margin-right: 15px">
+                                                    <input disabled type="radio" name="gioi_tinh" value="1" checked> Nam<br>
+                                                </label>
+                                            <?php elseif ($nguoi_dung['gioi_tinh'] == 2): ?>
+                                                <label style="margin-right: 15px">
+                                                    <input disabled type="radio" name="gioi_tinh" value="2" checked> Nữ<br>
+                                                </label>
+                                            <?php elseif ($nguoi_dung['gioi_tinh'] == 0): ?>
+                                                <label>
+                                                    <input disabled type="radio" name="gioi_tinh" value="0" checked> Khác<br>
+                                                </label>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Địa chỉ</h5>
+                                        <textarea disabled type="text" class="form-control"><?= $nguoi_dung['dia_chi'] ?></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày tạo</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_tao'] ?>" disabled>
+                                        <input type="datetime-local" class="form-control" value="<?= $nguoi_dung['ngay_tao'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Vai trò</h5>
+                                        <select class="form-select" name="trang_thai" disabled>
+                                            <option <?= ($nguoi_dung['vai_tro'] == 0) ? 'selected' : ''  ?> value="0">Khách hàng</option>
+                                            <option <?= ($nguoi_dung['vai_tro'] == 1) ? 'selected' : ''  ?> value="1">Admin</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Sắp diễn ra</option>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 2) ? 'selected' : ''  ?> value="0">Đang diễn ra</option>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Kết thúc</option>
+                                            <option <?= ($nguoi_dung['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
+                                            <option <?= ($nguoi_dung['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-12">

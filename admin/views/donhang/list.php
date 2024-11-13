@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Tin Tức | The Trend</title>
+    <title>Quản lý đơn hàng | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -44,12 +44,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Tin Tức</h2>
+                            <h2 class="mb-sm-0">Quản lý đơn hàng</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Tin Tức</li>
+                                    <li class="breadcrumb-item active">Quản lý đơn hàng</li>
                                 </ol>
                             </div>
 
@@ -64,12 +64,6 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=tintuc/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Tin Mới
-                                    </a>
-
-                                    <!-- Search Form and Select aligned to the right -->
                                     <form class="d-flex" role="search" method="get" id="searchForm">
                                         <input type="text" name="search" id="searchInput" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
                                     </form>
@@ -78,13 +72,14 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" id="search-results">
                                             <table class="table table-striped table-nowrap align-middle mb-0">
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Tiêu đề</th>
-                                                    <th scope="col">Nội dung</th>
+                                                    <th scope="col">Người đặt hàng</th>
+                                                    <th scope="col">Người nhận</th>
+                                                    <th scope="col">Tổng tiền</th>
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
                                                     </th>
@@ -92,34 +87,28 @@
                                                 </tr>
 
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="tableBody">
 
-                                                <?php foreach ($tin_tucs as $i => $tin_tuc) : ?>
+                                                <?php foreach ($don_hangs as $i => $don_hang) : ?>
                                                     <tr>
-                                                        <td class="fw-medium"><?= $i+1 ?></td>
+                                                        <td class="fw-medium"><?= $i + 1 ?></td>
                                                         <td>
-                                                            <a href="?act=tintuc/chitiet&id=<?= $tin_tuc['id'] ?>"><?= $tin_tuc['tieu_de'] ?></a>
+                                                            <a href="?act=donhang/chitiet&id="></a>
                                                         </td>
-                                                        <td><?= $tin_tuc['noi_dung'] ?></td>
+                                                        <td><?= $don_hang['ho_ten_nguoi_nhan'] ?></td>
+                                                        <td><?= $don_hang['tong_tien'] ?></td>
                                                         <td>
-                                                            <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($tin_tuc['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
-                                                                <?php
-                                                            }
-                                                            ?>
+                                                            <?php if ($don_hang['trang_thai_thanh_toan'] == '1') : ?>
+                                                                <span class="badge bg-success">Đã Thanh Toán</span>
+                                                            <?php else : ?>
+                                                                <span class="badge bg-danger">Chưa Thanh Toán</span>
+                                                            <?php endif; ?>
                                                         </td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=tintuc/edit&id=<?= $tin_tuc['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-
-                                                                <form action="?act=tintuc/delete" method="POST"
-                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $tin_tuc['id'] ?>">
+                                                                <a href="?act=donhang/edit&id=<?= $don_hang['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <form action="?act=donhang/delete" method="POST" onsubmit="return confirm('Bạn có muốn xóa không?')">
+                                                                    <input type="hidden" name="id" value="<?= $don_hang['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>
                                                                     </button>
@@ -128,6 +117,9 @@
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
+
+
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -237,6 +229,9 @@ require_once "views/layouts/libs_js.php";
         }
     });
 </script>
+
+
+
 
 
 </body>

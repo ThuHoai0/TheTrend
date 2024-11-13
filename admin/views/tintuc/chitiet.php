@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi Tiết Khuyến Mại  | The Trend</title>
+    <title>Chi Tiết Tin Tức | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -48,12 +48,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Chi Tiết Khuyến Mại</h2>
+                            <h2 class="mb-sm-0">Chi Tiết Tin Tức</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Chi Tiết Khuyến Mại</li>
+                                    <li class="breadcrumb-item active">Chi Tiết Tin Tức</li>
                                 </ol>
                             </div>
 
@@ -69,35 +69,22 @@
 
                                 <form class="container-fluid mt-3 mb-3">
                                     <div class="mb-3">
-                                        <h5 class="form-label">Tên Khuyến Mại</h5>
-                                        <input type="text" class="form-control" value="<?= $khuyen_mai['ten_khuyen_mai'] ?>" disabled>
+                                        <h5 class="form-label">Tiêu đề</h5>
+                                        <input type="text" class="form-control" value="<?= $tin_tuc['tieu_de'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Mô tả</h5>
-                                        <textarea disabled type="text" class="form-control"><?= $khuyen_mai['mo_ta'] ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Phần trăm giảm </h5>
-                                        <input type="text" class="form-control" value="<?= $khuyen_mai['phan_tram_giam'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ngày bắt đầu</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_bat_dau'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ngày kết thúc</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_ket_thuc'] ?>" disabled>
+                                        <h5 class="form-label">Nội dung</h5>
+                                        <textarea disabled type="text" class="form-control"><?= $tin_tuc['noi_dung'] ?></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày tạo</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_tao'] ?>" disabled>
+                                        <input type="datetime-local" class="form-control" value="<?= $tin_tuc['ngay_tao'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Sắp diễn ra</option>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 2) ? 'selected' : ''  ?> value="0">Đang diễn ra</option>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Kết thúc</option>
+                                            <option <?= ($tin_tuc['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
+                                            <option <?= ($tin_tuc['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-12">

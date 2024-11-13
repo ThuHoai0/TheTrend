@@ -21,11 +21,17 @@ class NguoidungsController
         } else {
             $nguoi_dungs = $this->modelNguoidung->getAll();
         }
-
-
-
         // dua du lieu ra view
         require_once './views/nguoidung/list.php';
+    }
+
+    public function chitiet()
+    {
+        $id = $_GET['id'];
+
+        $nguoi_dung = $this->modelNguoidung->getDetailData($id);
+
+        require_once './views/nguoidung/chitiet.php';
     }
 
     // ham hien thi form them nguoi dung public function create()

@@ -65,9 +65,7 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=lienhe/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
-                                    </a>
+
                                     <div class="d-flex align-items-center">
 
                                         <form class="d-flex" role="search" method="get" id="searchForm">
@@ -87,8 +85,8 @@
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên liên hệ</th>
                                                     <th scope="col">Email</th>
-                                                    <th scope="col">Số điện thoại</th>
-                                                    <th scope="col">Nội dung</th>
+<!--                                                    <th scope="col">Số điện thoại</th>-->
+<!--                                                    <th scope="col">Nội dung</th>-->
 
                                                     <!-- Ngày tạo with Sort Button -->
 
@@ -108,10 +106,14 @@
                                                 <?php foreach ($lien_hes as $i => $lien_he) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><?= $lien_he['ho_ten'] ?></td>
+
+                                                        <td>
+                                                            <a href="?act=lienhe/chitiet&id= <?= $lien_he['id'] ?>"> <?= $lien_he['ho_ten'] ?></a>
+
+                                                        </td>
                                                         <td><?= $lien_he['email'] ?></td>
-                                                        <td><?= $lien_he['so_dien_thoai'] ?></td>
-                                                        <td><?= $lien_he['noi_dung'] ?></td>
+<!--                                                        <td>--><?php //= $lien_he['so_dien_thoai'] ?><!--</td>-->
+<!--                                                        <td>--><?php //= $lien_he['noi_dung'] ?><!--</td>-->
                                 
                                                         <td>
                                                             <?php
@@ -208,26 +210,43 @@ require_once "views/layouts/libs_js.php";
 ?>
 
 <script>
-    // Lấy phần tử input
+    // Get the input and form elements
     const searchInput = document.getElementById('searchInput');
-    const searchForm = document.getElementById('searchForm');
 
-    // Bắt sự kiện khi nhấn phím Enter trong input
+    // Check for 'search' parameter in the URL on page load
+    window.addEventListener('load', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+
+        // If there's a search query, set it in the input field
+        if (searchQuery) {
+            searchInput.value = searchQuery;
+            // Load the search results, e.g., searchUsers(searchQuery);
+        } else {
+            // If there's no search query, load the full list
+            fetchUserData();  // Call the function that loads the full list
+        }
+    });
+
+    // Listen for the Enter key press in the input field
     searchInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {  // Kiểm tra xem phím nhấn có phải là Enter không
-            event.preventDefault();  // Ngừng hành động mặc định của form (không reload ngay lập tức)
+        if (event.key === 'Enter') {  // Check if the key pressed is Enter
+            event.preventDefault();  // Prevent the default form action (no immediate reload)
 
-            // Lấy giá trị trong ô input
+            // Get the value from the input field
             const query = searchInput.value.trim();
 
-            // Kiểm tra nếu có giá trị trong ô input
+            // Check if the input field has a value
             if (query) {
-                // Cập nhật URL với tham số search và giá trị của input
+                // Update the URL with the search parameter and reload the page
                 const currentUrl = new URL(window.location.href);
-                currentUrl.searchParams.set('search', query);  // Thêm giá trị vào query string mà không mã hóa
-
-                // Đổi URL của trang hiện tại mà không reload
-                window.location.href = currentUrl.href;  // Reload trang với URL mới
+                currentUrl.searchParams.set('search', query);
+                window.location.href = currentUrl.href;
+            } else {
+                // If the input is empty, clear the search parameter and reload the full list
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.delete('search');
+                window.location.href = currentUrl.href;  // Reload to show the full list
             }
         }
     });
