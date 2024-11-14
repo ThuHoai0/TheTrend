@@ -44,15 +44,29 @@ class Lienhe
     }
 
 //    // cap nhat du lieu vao CSDL
+<<<<<<< Updated upstream
     public function updateData($id,$trang_thai) {
         try {
 
             $sql = "UPDATE lien_hes SET trang_thai = :trang_thai WHERE id = :id";
+=======
+    public function updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai) {
+        try {
+
+            $sql = "UPDATE lien_hes SET ho_ten = :ho_ten, noi_dung = :noi_dung, so_dien_thoai = :so_dien_thoai, trang_thai = :trang_thai, email = :email WHERE id = :id";
+>>>>>>> Stashed changes
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
+            $stmt->bindParam(':ho_ten', $ho_ten);
             $stmt->bindParam(':id', $id);
+<<<<<<< Updated upstream
+=======
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
+            $stmt->bindParam(':noi_dung', $noi_dung);
+>>>>>>> Stashed changes
             $stmt->bindParam(':trang_thai', $trang_thai);
 
 
