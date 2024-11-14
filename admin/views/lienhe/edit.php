@@ -99,7 +99,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Nội dung</label>
-                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="noi_dung" value="<?= $lien_he['noi_dung'] ?>"></textarea>
+                                                <textarea type="text" class="form-control" placeholder="Nhập nội dung..." name="noi_dung" value="<?= $lien_he['noi_dung'] ?>"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
