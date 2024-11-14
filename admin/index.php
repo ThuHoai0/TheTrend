@@ -15,10 +15,6 @@ require_once 'controllers/KhuyenmaisController.php';
 require_once 'controllers/LienhesController.php';
 require_once 'controllers/BannersController.php';
 require_once 'controllers/DanhgiasController.php';
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 require_once 'controllers/TrangthaidonhangsController.php';
 
 // Require toàn bộ file Models
@@ -29,10 +25,6 @@ require_once 'models/Khuyenmai.php';
 require_once 'models/Lienhe.php';
 require_once 'models/Banner.php';
 require_once 'models/Danhgia.php';
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 require_once 'models/Trangthaidonhang.php';
 
 
@@ -113,10 +105,7 @@ match ($act) {
     'trangthaidonhang/update' => (new TrangthaidonhangsController())->update(),
     'trangthaidonhang/delete' => (new TrangthaidonhangsController())->delete(),
 
-<<<<<<< Updated upstream
-    // quản lý đánh giá 
-=======
->>>>>>> Stashed changes
+
     'danhgia/list' => (new DanhgiasController())->index(),
     'danhgia/store' => (new DanhgiasController())->store(),
     'danhgia/create' => (new DanhgiasController())->create(),

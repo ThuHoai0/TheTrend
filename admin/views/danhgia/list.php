@@ -65,14 +65,6 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <!-- Add Category Button aligned to the left -->
-<<<<<<< Updated upstream
-                                    <a href="?act=lienhe/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <form class="d-flex" role="search">
-                                            <input class="form-control me-1" type="search" placeholder="Tìm kiếm..." aria-label="Search">
-=======
                                     <!-- <a href="?act=danhgia/create" class="btn btn-primary material-shadow-none">
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
                                     </a> -->
@@ -83,7 +75,6 @@
 
                                         <form class="d-flex" role="search" method="get" id="searchForm">
                                             <input type="text" name="search" id="searchInput" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
->>>>>>> Stashed changes
                                         </form>
                                     </div>
 
@@ -97,24 +88,12 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-<<<<<<< Updated upstream
-                                                    <th scope="col">Tên liên hệ</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Số điện thoại</th>
-                                                    <th scope="col">Nội dung</th>
-
-                                                    <!-- Ngày tạo with Sort Button -->
-
-
-                                                    <!-- Trạng thái with Sort Button -->
-=======
                                                     <th scope="col">ID sản phẩm</th>
                                                     <th scope="col">ID người dùng</th>
                                                     <th scope="col">Số sao</th>
                                                     <th scope="col">Nội dung</th>
                                                     <th scope="col">Ngày đánh giá</th>
 
->>>>>>> Stashed changes
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
                                                         <!-- Dropdown Filter Button -->
@@ -126,24 +105,6 @@
                                                 </thead>
                                                 <tbody>
 
-<<<<<<< Updated upstream
-                                                <?php foreach ($lien_hes as $i => $lien_he) : ?>
-                                                    <tr>
-                                                        <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><?= $lien_he['ho_ten'] ?></td>
-                                                        <td><?= $lien_he['email'] ?></td>
-                                                        <td><?= $lien_he['so_dien_thoai'] ?></td>
-                                                        <td><?= $lien_he['noi_dung'] ?></td>
-                                
-                                                        <td>
-                                                            <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($lien_he['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Đã liên hệ</span>
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-danger">Chưa liên hệ</span>
-=======
                                                 <?php foreach ($danh_gias as $i => $danh_gia) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
@@ -160,26 +121,17 @@
                                                                 <?php
                                                             } else { ?>
                                                                 <span class="badge bg-danger">Không Hiển thị</span>
->>>>>>> Stashed changes
                                                                 <?php
                                                             }
                                                             ?>
                                                         </td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-<<<<<<< Updated upstream
-                                                                <a href="?act=lienhe/edit&id=<?= $lien_he['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-
-                                                                <form action="?act=lienhe/delete" method="POST"
-                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $lien_he['id'] ?>">
-=======
                                                                 <a href="?act=danhgia/edit&id=<?= $danh_gia['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
                                                                 <form action="?act=danhgia/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
                                                                     <input type="hidden" name="id" value="<?= $danh_gia['id'] ?>">
->>>>>>> Stashed changes
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>
                                                                     </button>
@@ -255,8 +207,6 @@
 require_once "views/layouts/libs_js.php";
 ?>
 
-<<<<<<< Updated upstream
-=======
 <script>
     // Lấy phần tử input
     const searchInput = document.getElementById('searchInput');
@@ -284,7 +234,6 @@ require_once "views/layouts/libs_js.php";
 </script>
 
 
->>>>>>> Stashed changes
 </body>
 
 </html>

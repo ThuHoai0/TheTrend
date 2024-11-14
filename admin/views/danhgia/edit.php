@@ -47,20 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-<<<<<<< Updated upstream
-                            <h4 class="mb-sm-0">Quản Lý Danh Sách Liên Hệ</h4>
-=======
                             <h4 class="mb-sm-0">Quản Lý Danh Sách Đánh Giá</h4>
->>>>>>> Stashed changes
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-<<<<<<< Updated upstream
-                                    <li class="breadcrumb-item active">Danh Sách Liên Hệ</li>
-=======
                                     <li class="breadcrumb-item active">Danh Sách Đánh Giá</li>
->>>>>>> Stashed changes
                                 </ol>
                             </div>
 
@@ -75,51 +67,26 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-<<<<<<< Updated upstream
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Liên Hệ</h4>
-=======
                                     <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Đánh Giá</h4>
->>>>>>> Stashed changes
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-<<<<<<< Updated upstream
-                                        <form id="updateForm" action="?act=lienhe/update&id=<?= $lien_he['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
-
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên liên hệ</label>
-                                                <input type="text" disabled class="form-control" placeholder="Nhập tên liên hệ..." name="ho_ten" value="<?= $lien_he['ho_ten'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ho_ten']) ? $_SESSION['errors']['ho_ten'] : '' ?>
-                                                </span>
-=======
                                         <form id="updateForm" action="?act=danhgia/update&id=<?= $danh_gia['id'] ?>" method="post">
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">ID đánh giá</label>
                                                 <input disabled type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="id" value="<?= $danh_gia['id'] ?>">
->>>>>>> Stashed changes
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-<<<<<<< Updated upstream
-                                                    <option value="1" <?= $lien_he['trang_thai'] == 1 ? 'selected' : '' ?> >Đã liên hệ</option>
-                                                    <option value="0" <?= $lien_he['trang_thai'] == 0 ? 'selected' : '' ?> >Chưa liên hệ</option>
-=======
                                                     <option value="1" <?= $danh_gia['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
                                                     <option value="0" <?= $danh_gia['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thi</option>
->>>>>>> Stashed changes
                                                 </select>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-<<<<<<< Updated upstream
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Liên Hệ</button>
-=======
                                                     <button type="submit" class="btn btn-primary">Cập Nhật Đánh giá</button>
->>>>>>> Stashed changes
                                                 </div>
                                             </div>
                                         </form>

@@ -121,11 +121,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=danhgia/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-<<<<<<< Updated upstream
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý Đánh giá</span>
-=======
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý đánh giá</span>
->>>>>>> Stashed changes
                     </a>
                 </li>
             </ul>

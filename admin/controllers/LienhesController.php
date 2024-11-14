@@ -99,35 +99,11 @@ class LienhesController
             // die($category_status  );
             // validate
             $errors = [];
-<<<<<<< Updated upstream
-=======
-            if (empty($ho_ten)) {
-                $errors['ho_ten'] = "Tên người liên hệ là bắt buộc";
-            }
-            // Kiểm tra email
-            if (empty($email)) {
-                $errors['email'] = "Email là bắt buộc";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors['email'] = "Định dạng email không hợp lệ";
-            }
-
-// Kiểm tra số điện thoại
-            if (empty($so_dien_thoai)) {
-                $errors['so_dien_thoai'] = "Số điện thoại là bắt buộc";
-            } elseif (!preg_match("/^[0-9]{10,11}$/", $so_dien_thoai)) {
-                $errors['so_dien_thoai'] = "Số điện thoại phải là 10-11 chữ số";
-            }
-
->>>>>>> Stashed changes
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-<<<<<<< Updated upstream
                 $this->modelLienhe->updateData($id,$trang_thai);
-=======
-                $this->modelLienhe->updateData($id,$ho_ten,$email,$so_dien_thoai,$noi_dung,$trang_thai);
->>>>>>> Stashed changes
                 // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();

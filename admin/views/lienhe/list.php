@@ -64,19 +64,9 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-<<<<<<< Updated upstream
                                     <!-- Add Category Button aligned to the left -->
                                     <a href="?act=lienhe/create" class="btn btn-primary material-shadow-none">
                                         <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
-=======
-                                    <!-- hiện nút thêm  -->
-                                    <!-- <a href="?act=lienhe/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Liên Hệ
-                                    </a> -->
-                                    <!-- nút thêm ẩn -->
-                                    <a href="#" class="#">
-                                                <i></i>
->>>>>>> Stashed changes
                                     </a>
                                     <div class="d-flex align-items-center">
                                         <form class="d-flex" role="search">
