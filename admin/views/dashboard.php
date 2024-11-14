@@ -17,7 +17,18 @@
     require_once "layouts/libs_css.php";
     ?>
 </head>
+<?php
+if (!isset($_SESSION['iduser'])) {
+    header("location:/TheTrend/?act=dangnhap");
+    exit;
+}
+if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['vai_tro'] != 2))) {
+    header("location:/TheTrend/?act=dangnhap");
+    exit;
+}
+?>
 
+?>
 <body>
 
     <!-- Begin page -->

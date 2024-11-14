@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi Tiết Danh Mục  | The Trend</title>
+    <title>Chi Tiết Đơn Hàng  | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -48,12 +48,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Chi Tiết Danh Mục</h2>
+                            <h2 class="mb-sm-0">Chi Tiết Đơn Hàng</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Chi Tiết Danh Mục</li>
+                                    <li class="breadcrumb-item active">Chi Tiết Đơn Hàng</li>
                                 </ol>
                             </div>
 
@@ -69,22 +69,49 @@
 
                                 <form class="container-fluid mt-3 mb-3">
                                     <div class="mb-3">
-                                        <h5 class="form-label">Tên Danh Mục</h5>
-                                        <input type="text" class="form-control" value="<?= $danh_muc['ten_danh_muc'] ?>" disabled>
+                                        <h5 class="form-label">Tên người dùng</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['ten_nguoi_dung'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Mô tả</h5>
-                                        <textarea disabled type="text" class="form-control"><?= $danh_muc['mo_ta'] ?></textarea>
+                                        <h5 class="form-label">Ngày đặt hàng</h5>
+                                        <input type="datetime-local" class="form-control" value="<?= $don_hang['ngay_dat_hang'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Ngày Tạo</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $danh_muc['ngay_tao'] ?>" disabled>
+                                        <h5 class="form-label">Phương thức thanh toán</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['phuong_thuc_thanh_toan'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="ForminputState" class="form-label">Trạng thái</label>
+                                        <h5 class="form-label">Trạng thái thanh toán</h5>
+                                        <input type="text" class="form-control" value="<?= ($don_hang['trang_thai_thanh_toan']) ? 'Đã thanh toán' : 'Chưa thanh toán' ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Họ tên người nhận</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['ho_ten_nguoi_nhan'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Số điện thoại người nhận</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['so_dien_thoai_nguoi_nhan'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Email người nhận</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['email_nguoi_nhan'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Ghi chú</h5>
+                                        <textarea disabled type="text" class="form-control"><?= $don_hang['ghi_chu'] ?></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Tổng tiền</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['tong_tien'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
                                         <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($danh_muc['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
-                                            <option <?= ($danh_muc['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
+                                            <option <?= ($don_hang['trang_thai_id'] == 1) ? 'selected' : ''  ?> value="1">Đang xử lý</option>
+                                            <option <?= ($don_hang['trang_thai_id'] == 2) ? 'selected' : ''  ?> value="2">Đã xác nhận</option>
+                                            <option <?= ($don_hang['trang_thai_id'] == 3) ? 'selected' : ''  ?> value="3">Đang giao hàng</option>
+                                            <option <?= ($don_hang['trang_thai_id'] == 4) ? 'selected' : ''  ?> value="4">Đã giao hàng</option>
+                                            <option <?= ($don_hang['trang_thai_id'] == 0) ? 'selected' : ''  ?> value="0">Đã hủy</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-12">

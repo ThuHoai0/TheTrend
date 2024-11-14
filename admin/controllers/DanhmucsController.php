@@ -20,10 +20,6 @@ class DanhmucsController
         } else {
             $danh_mucs = $this->modelDanhmuc->getAll();
         }
-
-
-
-        // dua du lieu ra view
         require_once './views/danhmuc/list.php';
     }
 

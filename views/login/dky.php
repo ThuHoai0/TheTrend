@@ -19,12 +19,12 @@
             </div>
 
             <div class="input-box">
-                <input type="email" placeholder="Email" required name="email">>
+                <input type="email" placeholder="Email" required name="email">
                 <box-icon type='solid' name='envelope'></box-icon>
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" required name="mat_khau">>
+                <input type="password" placeholder="Password" required name="mat_khau">
                 <box-icon type='solid' name='lock-alt'></box-icon>
             </div>
 

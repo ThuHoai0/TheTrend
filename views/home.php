@@ -35,6 +35,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 <!--===============================================================================================-->
 </head>
+
 <body class="animsition">
 	
 	<!-- Header -->
@@ -85,10 +86,14 @@
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 						</div>
-							
+
 						<div class="flex-c-m h-full p-lr-19">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
-								<i class="zmdi zmdi-menu"></i>
+							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                                <?php if (!empty($_SESSION['iduser'])) { ?>
+                                    <a href="?act=dangxuat"><?= $_SESSION['name'] ?></a>
+                                <?php } else { ?>
+                                <a href="?act=dangnhap"><i class="zmdi zmdi-account"></i></a>
+                                <?php } ?>
 							</div>
 						</div>
 					</div>
@@ -113,11 +118,9 @@
 			</div>
 
 			<!-- Button show menu -->
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</div>
+<!--			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">-->
+<!---->
+<!--			</div>-->
 		</div>
 
 

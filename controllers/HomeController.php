@@ -13,10 +13,9 @@ class HomeController
     public function check()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $ten = $_POST['ten'];
+            $ten = $_POST['email'];
             $mat_khau = $_POST['mat_khau'];
             $check = $this->modelHome->check($ten, $mat_khau);
-
             if (empty($check)) {
                 echo "<script>alert('Sai tài khoản hoặc mật khẩu!')
                 window.location.href = '?act=home';
@@ -25,8 +24,6 @@ class HomeController
                 echo "<script>alert('Đăng nhập thành công!');
                 window.location.href = '?act=home';
                 </script>";
-                $_SESSION['iduser'] = $check['0']['id'];
-                $_SESSION['user'] = $check['0']['vai_tro']; // 2 là admin
             }
         }
         require_once 'views/login/dn.php';
@@ -34,7 +31,9 @@ class HomeController
     public function dangxuat()
     {
         unset($_SESSION['iduser']);
-        unset($_SESSION['user']);
+        unset($_SESSION['email']);
+        unset($_SESSION['name']);
+        unset($_SESSION['vai_tro']);
         echo "<script>alert('Đăng xuất thành công!');
                 window.location.href = '?action=home';
                 </script>";

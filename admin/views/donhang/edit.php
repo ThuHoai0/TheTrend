@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm Danh Mục | The Trend</title>
+    <title>Quản lý Đơn hàng | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,12 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h4 class="mb-sm-0">Quản Lý Danh Mục Sản Phẩm</h4>
+                            <h4 class="mb-sm-0">Quản lý Đơn hàng</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Mục Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Quản lý Đơn hàng</li>
                                 </ol>
                             </div>
 
@@ -67,38 +67,67 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Danh Mục</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Đơn hàng</h4>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=danhmuc/update&id=<?= $danh_muc['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
-
+                                        <form id="updateForm" action="?act=donhang/update&id=<?= $don_hang['id'] ?>" method="post">
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên danh mục</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc" value="<?= $danh_muc['ten_danh_muc'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
-                                                </span>
+                                                <label for="citynameInput" class="form-label">Tên người dùng</label>
+                                                <input type="text" class="form-control" name="ten_nguoi_dung" value="<?= $don_hang['ten_nguoi_dung'] ?>" disabled>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Mô tả</label>
-                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $danh_muc['mo_ta'] ?></textarea>
+                                                <label for="citynameInput" class="form-label">Ngày đặt hàng</label>
+                                                <input type="text" class="form-control" name="ngay_dat_hang" value="<?= $don_hang['ngay_dat_hang'] ?>" disabled>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="ForminputState" class="form-label">Trạng thái</label>
+                                                <label for="citynameInput" class="form-label">Phương thức thanh toán</label>
+                                                <input type="text" class="form-control" name="phuong_thuc_thanh_toan" value="<?= $don_hang['phuong_thuc_thanh_toan'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Trạng thái thanh toán</label>
+                                                <select class="form-select" name="trang_thai_thanh_toan" disabled>
+                                                    <option value="1" <?= $don_hang['trang_thai_thanh_toan'] == 1 ? 'selected' : '' ?> >Đã thanh toán</option>
+                                                    <option value="0" <?= $don_hang['trang_thai_thanh_toan'] == 0 ? 'selected' : '' ?> >Chưa thanh toán</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Họ tên người nhận</label>
+                                                <input type="text" class="form-control" name="ho_ten_nguoi_nhan" value="<?= $don_hang['ho_ten_nguoi_nhan'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Số điện thoại người nhận</label>
+                                                <input type="text" class="form-control" name="so_dien_thoai_nguoi_nhan" value="<?= $don_hang['so_dien_thoai_nguoi_nhan'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Email người nhận</label>
+                                                <input type="text" class="form-control" name="email_nguoi_nhan" value="<?= $don_hang['email_nguoi_nhan'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Ghi chú</label>
+                                                <textarea type="text" class="form-control" name="ghi_chu" disabled><?= $don_hang['ghi_chu'] ?></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Tổng tiền</label>
+                                                <input type="text" class="form-control" name="tong_tien" value="<?= $don_hang['tong_tien'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $danh_muc['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $danh_muc['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="12" <?= $don_hang['trang_thai_id'] == 12 ? 'selected' : '' ?> >Đang xử lý</option>
+                                                    <option value="13" <?= $don_hang['trang_thai_id'] == 13 ? 'selected' : '' ?> >Đã xác nhận</option>
+                                                    <option value="14" <?= $don_hang['trang_thai_id'] == 14 ? 'selected' : '' ?> >Đang giao hàng</option>
+                                                    <option value="15" <?= $don_hang['trang_thai_id'] == 15 ? 'selected' : '' ?> >Đã giao hàng</option>
+                                                    <option value="16" <?= $don_hang['trang_thai_id'] == 16 ? 'selected' : '' ?> >Đã hủy</option>
                                                 </select>
                                                 <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
+                                                    <?= !empty($_SESSION['errors']['$trang_thai_don_hang']) ? $_SESSION['errors']['$trang_thai_don_hang'] : '' ?>
                                                 </span>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                                                    <button type="submit" class="btn btn-primary">Cập Đơn Hàng</button>
                                                 </div>
                                             </div>
                                         </form>

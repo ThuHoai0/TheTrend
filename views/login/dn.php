@@ -14,8 +14,8 @@
         <form action="?act=dangnhap" method="post">
             <h1>Đăng Nhập</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required name="ten">
-                <box-icon type='solid' name='user'></box-icon>
+                <input type="text" placeholder="Username" required name="email">
+                <box-icon type='solid' name='email'></box-icon>
             </div>
             <div class="input-box">
                 <input type="password" placeholder="Password" required name="mat_khau">

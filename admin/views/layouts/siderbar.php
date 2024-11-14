@@ -65,6 +65,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=hinhanhsanpham/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Hình ảnh sản phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=khuyenmai/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Khuyến mại</span>
                     </a>

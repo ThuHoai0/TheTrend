@@ -81,8 +81,9 @@
                                                     <th scope="col">Người nhận</th>
                                                     <th scope="col">Tổng tiền</th>
                                                     <th scope="col" class="align-items-center">
-                                                        Trạng thái
+                                                        Trạng thái thanh toán
                                                     </th>
+                                                    <th>Trạng thái đơn hàng</th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
 
@@ -93,7 +94,7 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i + 1 ?></td>
                                                         <td>
-                                                            <a href="?act=donhang/chitiet&id="></a>
+                                                            <a href="?act=donhang/chitiet&id=<?=$don_hang['id']?>"><?= $don_hang['ten_nguoi_dung'] ?></a>
                                                         </td>
                                                         <td><?= $don_hang['ho_ten_nguoi_nhan'] ?></td>
                                                         <td><?= $don_hang['tong_tien'] ?></td>
@@ -104,6 +105,10 @@
                                                                 <span class="badge bg-danger">Chưa Thanh Toán</span>
                                                             <?php endif; ?>
                                                         </td>
+                                                        <td>
+                                                            <?=$don_hang['ten_trang_thai']?>
+                                                        </td>
+
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
                                                                 <a href="?act=donhang/edit&id=<?= $don_hang['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
@@ -116,7 +121,7 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                <?php endforeach; ?>
+                                                    <?php endforeach; ?>
 
 
 

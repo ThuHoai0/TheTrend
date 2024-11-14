@@ -8,7 +8,9 @@ class Donhang
     }
     public function getAll() {
         try {
-            $sql = "SELECT * FROM `don_hangs`";
+            $sql = "SELECT don_hangs.*, nguoi_dungs.ten AS ten_nguoi_dung, trang_thai_don_hangs.ten_trang_thai FROM 
+            `don_hangs` INNER JOIN nguoi_dungs ON nguoi_dungs.id = don_hangs.nguoi_dung_id
+            			INNER JOIN trang_thai_don_hangs ON trang_thai_don_hangs.id = don_hangs.trang_thai_id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -52,6 +54,46 @@ class Donhang
             echo 'Error: ' .$e->getMessage();
         }
     }
+
+
+    public function updateData($id,$trang_thai_don_hang) {
+        try {
+
+            $sql = "UPDATE don_hangs SET trang_thai_id = :trang_thai_don_hang
+                    WHERE id = :id";
+
+            $stmt = $this->conn->prepare($sql);
+
+            // gan gia tri vao cac tham so
+            $stmt->bindParam(':id', $id);
+
+            $stmt->bindParam(':trang_thai_don_hang', $trang_thai_don_hang);
+
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+            echo 'Error: ' .$e->getMessage();
+        }
+    }
+
+
+    public function getDetailData($id) {
+        try {
+            $sql = "SELECT don_hangs.* ,nguoi_dungs.ten AS ten_nguoi_dung FROM 
+            `don_hangs` INNER JOIN nguoi_dungs ON nguoi_dungs.id = don_hangs.nguoi_dung_id 
+            WHERE don_hangs.id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo 'Error: ' .$e->getMessage();
+        }
+    }
+
+
     public function __destruct() {
         $this->conn = null;
     }
