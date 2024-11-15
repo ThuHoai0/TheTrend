@@ -151,15 +151,11 @@
 // Kiểm tra 'ngay_bat_dau'
              if (empty($ngay_bat_dau)) {
                  $errors['ngay_bat_dau'] = "Ngày bắt đầu là bắt buộc";
-             } elseif (!DateTime::createFromFormat('Y-m-d', $ngay_bat_dau)) {
-                 $errors['ngay_bat_dau'] = "Ngày bắt đầu không hợp lệ (định dạng phải là YYYY-MM-DD)";
              }
 
 // Kiểm tra 'ngay_ket_thuc'
              if (empty($ngay_ket_thuc)) {
                  $errors['ngay_ket_thuc'] = "Ngày kết thúc là bắt buộc";
-             } elseif (!DateTime::createFromFormat('Y-m-d', $ngay_ket_thuc)) {
-                 $errors['ngay_ket_thuc'] = "Ngày kết thúc không hợp lệ (định dạng phải là YYYY-MM-DD)";
              } else {
                  // Chuyển đổi $ngay_bat_dau và $ngay_ket_thuc thành đối tượng DateTime để so sánh
                  $ngay_bat_dau_dt = new DateTime($ngay_bat_dau);

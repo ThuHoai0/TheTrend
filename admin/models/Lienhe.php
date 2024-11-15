@@ -44,17 +44,15 @@ class Lienhe
     }
 
 //    // cap nhat du lieu vao CSDL
-    public function updateData($id,$email,$trang_thai) {
+    public function updateData($id,$trang_thai) {
         try {
 
-            $sql = "UPDATE lien_hes SET trang_thai = :trang_thai, email = :email WHERE id = :id";
+            $sql = "UPDATE lien_hes SET trang_thai = :trang_thai WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':email', $email);
-
             $stmt->bindParam(':trang_thai', $trang_thai);
 
 

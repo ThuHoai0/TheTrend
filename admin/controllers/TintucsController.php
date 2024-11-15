@@ -22,11 +22,17 @@ class TintucsController
         } else {
             $tin_tucs = $this->modelTintuc->getAll();
         }
-
-
-
         // dua du lieu ra view
         require_once './views/tintuc/list.php';
+    }
+
+    public function chitiet()
+    {
+        $id = $_GET['id'];
+
+        $tin_tuc = $this->modelTintuc->getDetailData($id);
+
+        require_once './views/tintuc/chitiet.php';
     }
 
     // ham hien thi form them danh muc  public function create()

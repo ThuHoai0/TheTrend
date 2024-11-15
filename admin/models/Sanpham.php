@@ -52,10 +52,10 @@ class Sanpham {
     }
 
 
-    public function postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao) {
+    public function postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao, $anh) {
         try {
-            $sql = "INSERT INTO `san_phams`(`ten_san_pham`, `mo_ta`,`gia`, `hinh_anh`, `gia_nhap`, `so_luong`, `danh_muc_id`, `trang_thai`, `ngay_tao`) 
-                    VALUES (:ten_san_pham, :mo_ta, :gia, :hinh_anh, :gia_nhap, :so_luong, :danh_muc_id, :trang_thai, :ngay_tao)";
+            $sql = "INSERT INTO `san_phams`(`ten_san_pham`, `mo_ta`,`gia`, `gia_nhap`, `so_luong`, `danh_muc_id`, `trang_thai`, `ngay_tao`, `hinh_anh`) 
+                                    VALUES (:ten_san_pham, :mo_ta, :gia, :gia_nhap, :so_luong, :danh_muc_id, :trang_thai, :ngay_tao, :hinh_anh)";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -63,15 +63,23 @@ class Sanpham {
             $stmt->bindParam(':ten_san_pham', $ten_san_pham);
             $stmt->bindParam(':mo_ta', $mo_ta);
             $stmt->bindParam(':gia', $gia);
-            $stmt->bindParam(':hinh_anh', $load_hinh_anh);
             $stmt->bindParam(':gia_nhap', $gia_nhap);
             $stmt->bindParam(':so_luong', $so_luong);
             $stmt->bindParam(':danh_muc_id', $danh_muc_id);
             $stmt->bindParam(':trang_thai', $trang_thai);
             $stmt->bindParam(':ngay_tao', $ngay_tao);
+            $stmt->bindParam(':hinh_anh', $anh);
 
             $stmt->execute();
+            $lastInsertId = $this->conn->lastInsertId();
 
+            foreach ($load_hinh_anh as $key => $value) {
+                $sql = "INSERT INTO `hinh_anh_san_phams`(`san_pham_id`, `duong_dan_hinh_anh`) VALUES (:san_pham_id, :duong_dan_hinh_anh)";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':san_pham_id', $lastInsertId);
+                $stmt->bindParam(':duong_dan_hinh_anh', $value[0]);
+                $stmt->execute();
+            }
             return true;
         } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();

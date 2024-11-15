@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm Danh Mục | The Trend</title>
+    <title>Sửa Khuyến Mại | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h4 class="mb-sm-0">Quản Lý Danh Mục Sản Phẩm</h4>
+                            <h4 class="mb-sm-0">Quản Lý Khuyến mại</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
@@ -86,7 +86,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <h5 class="form-label">Phần trăm giảm</h5>
-                                                <input type="text" class="form-control" placeholder="Nhập phần trăm giảm..." name="phan_tram_giam" value="<?= $khuyen_mai['phan_tram_giam']?>">
+                                                <input type="number" class="form-control" placeholder="Nhập phần trăm giảm..." name="phan_tram_giam" value="<?= $khuyen_mai['phan_tram_giam']?>">
                                             </div>
                                             <div class="mb-3">
                                                 <h5 class="form-label">Ngày bắt đầu</h5>

@@ -101,7 +101,6 @@
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option selected disabled>Chọn trạng thái</option>
                                                     <option value="1" <?= $tin_tuc['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
                                                     <option value="2" <?= $tin_tuc['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
                                                 </select>

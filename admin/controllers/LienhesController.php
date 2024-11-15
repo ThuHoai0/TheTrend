@@ -21,11 +21,17 @@ class LienhesController
         } else {
             $lien_hes = $this->modelLienhe->getAll();
         }
-
-
-
         // dua du lieu ra view
         require_once './views/lienhe/list.php';
+    }
+
+    public function chitiet()
+    {
+        $id = $_GET['id'];
+
+        $lien_he = $this->modelLienhe->getDetailData($id);
+
+        require_once './views/lienhe/chitiet.php';
     }
 
     // ham hien thi form them lien he  public function create()
@@ -100,29 +106,19 @@ class LienhesController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // lay ra du lieu
             $id = $_GET['id'];
-            $ho_ten = $_POST['ho_ten'];
-            $email = $_POST['email'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
-            $noi_dung = $_POST['noi_dung'];
             $trang_thai = $_POST['trang_thai'];
 
 
             // die($category_status  );
             // validate
             $errors = [];
-            // Kiểm tra email
-            if (empty($email)) {
-                $errors['email'] = "Email là bắt buộc";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors['email'] = "Định dạng email không hợp lệ";
-            }
 
-// Kiểm tra số điện thoại
+
             // Cap nhat du lieu
             if (empty($errors)) {
                 // Neu khong co loi thi them du lieu
                 // Them vao CSDL
-                $this->modelLienhe->updateData($id,$email,$trang_thai);
+                $this->modelLienhe->updateData($id,$trang_thai);
                 // unset($_SESSION['errors']);
                 header('Location: ?act=lienhe/list');
                 exit();

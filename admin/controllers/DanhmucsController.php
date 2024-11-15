@@ -20,11 +20,16 @@ class DanhmucsController
         } else {
             $danh_mucs = $this->modelDanhmuc->getAll();
         }
-
-
-
-        // dua du lieu ra view
         require_once './views/danhmuc/list.php';
+    }
+
+    public function chitiet()
+    {
+        $id = $_GET['id'];
+
+        $danh_muc = $this->modelDanhmuc->getDetailData($id);
+
+        require_once './views/danhmuc/chitiet.php';
     }
 
     // ham hien thi form them danh muc  public function create()

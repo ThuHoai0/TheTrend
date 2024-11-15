@@ -45,6 +45,8 @@ class SanphamsController
             $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); 
 
             $load_hinh_anh = uploadFile($hinh_anh);
+            $img= $_FILES['anh'];
+            $anh= upload($img);
 
             // validate
             $errors = [];
@@ -75,8 +77,9 @@ class SanphamsController
 
             // them du lieu
             if (empty($errors)) {
-                $this->modelSanpham->postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao);
+                $this->modelSanpham->postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao,$anh);
                 unset($_SESSION['errors']);
+
                 header('Location: ?act=sanpham/list');
                 exit();
             } else {
@@ -159,7 +162,6 @@ class SanphamsController
             } elseif (!is_numeric($so_luong) || $so_luong < 0) {
                 $errors['so_luong'] = "Số lượng phải là số không âm";
             }
-
             // Cập nhật dữ liệu nếu không có lỗi
             if (empty($errors)) {
                 $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai);

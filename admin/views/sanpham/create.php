@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập giá..." name="gia">
+                                        <input type="number" class="form-control" placeholder="Nhập giá..." name="gia">
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['gia']) ? $_SESSION['errors']['gia'] : '' ?>
                                         </span>
@@ -93,11 +93,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Hình ảnh</h5>
-                                        <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="hinh_anh">
+                                        <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="anh">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Anh phu</h5>
+                                        <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="hinh_anh[]" multiple>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá nhập</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap">
+                                        <input type="number" class="form-control" placeholder="Nhập giá nhập..." name="gia_nhap">
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['gia_nhap']) ? $_SESSION['errors']['gia_nhap'] : '' ?>
                                         </span>
@@ -107,7 +111,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Số lượng</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập số lượng..." name="so_luong">
+                                        <input type="number" class="form-control" placeholder="Nhập số lượng..." name="so_luong">
                                         <span class="text-danger">
                                             <?= !empty($_SESSION['errors']['so_luong']) ? $_SESSION['errors']['so_luong'] : '' ?>
                                         </span>
