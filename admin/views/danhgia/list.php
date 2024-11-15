@@ -108,8 +108,13 @@
                                                 <?php foreach ($danh_gias as $i => $danh_gia) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
+<<<<<<< Updated upstream
                                                         <td><?= $danh_gia['san_pham_id '] ?></td>
                                                         <td><?= $danh_gia['nguoi_dung_id '] ?></td>
+=======
+                                                        <td><?= $danh_gia['san_pham_id'] ?></td>
+                                                        <td><?= $danh_gia['nguoi_dung_id'] ?></td>
+>>>>>>> Stashed changes
                                                         <td><?= $danh_gia['so_sao'] ?></td>
                                                         <td><?= $danh_gia['noi_dung'] ?></td>
                                                         <td><?= $danh_gia['ngay_danh_gia'] ?></td>
@@ -231,6 +236,11 @@ require_once "views/layouts/libs_js.php";
             }
         }
     });
+<<<<<<< Updated upstream
+=======
+    console.log($danh_gias);
+    
+>>>>>>> Stashed changes
 </script>
 
 

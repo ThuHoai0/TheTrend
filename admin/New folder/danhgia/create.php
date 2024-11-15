@@ -116,6 +116,43 @@
 
                     </div> <!-- end col -->
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="h-100">
+                            <div class="card">
+
+                                <form class="container-fluid mt-3 mb-3">
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Tên Danh Mục</h5>
+                                        <input type="text" class="form-control" value="<?= $danh_muc['ten_danh_muc'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Mô tả</h5>
+                                        <textarea disabled type="text" class="form-control"><?= $danh_muc['mo_ta'] ?></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Ngày Tạo</h5>
+                                        <input type="datetime-local" class="form-control" value="<?= $danh_muc['ngay_tao'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ForminputState" class="form-label">Trạng thái</label>
+                                        <select class="form-select" name="trang_thai" disabled>
+                                            <option <?= ($danh_muc['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
+                                            <option <?= ($danh_muc['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div> <!-- end .h-100-->
+
+                    </div> <!-- end col -->
+                </div>
 
             </div>
             <!-- container-fluid -->

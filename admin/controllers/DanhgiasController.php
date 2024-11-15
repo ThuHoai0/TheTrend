@@ -40,7 +40,10 @@ class DanhgiasController
             $noi_dung = $_POST['noi_dung'];
             $trang_thai = $_POST['trang_thai'];
             $ngay_danh_gia = isset($_POST['ngay_danh_gia']) ? $_POST['ngay_danh_gia'] : date('Y-m-d H:i:s'); 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             $errors = [];
             if (empty($san_pham_id)) {
                 $errors['san_pham_id'] = "Tên sản phẩm là bắt buộc";
@@ -65,7 +68,13 @@ class DanhgiasController
                 exit();
             }
         }
+<<<<<<< Updated upstream
     }
+=======
+       
+    }
+    
+>>>>>>> Stashed changes
     public function edit()
     {
         // lay id

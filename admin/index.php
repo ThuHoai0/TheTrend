@@ -106,11 +106,24 @@ match ($act) {
     'trangthaidonhang/delete' => (new TrangthaidonhangsController())->delete(),
 
 
+<<<<<<< Updated upstream
+=======
+    'hinhanhsanpham/list' => (new HinhanhsanphamsController())->index(),
+    'hinhanhsanpham/create' => (new HinhanhsanphamsController())->create(),
+    'hinhanhsanpham/store' => (new HinhanhsanphamsController())->store(),
+    'hinhanhsanpham/edit' => (new HinhanhsanphamsController())->edit(),
+    'hinhanhsanpham/update' => (new HinhanhsanphamsController())->update(),
+    'hinhanhsanpham/delete' => (new HinhanhsanphamsController())->delete(),
+
+>>>>>>> Stashed changes
     'danhgia/list' => (new DanhgiasController())->index(),
     'danhgia/store' => (new DanhgiasController())->store(),
     'danhgia/create' => (new DanhgiasController())->create(),
     'danhgia/edit' => (new DanhgiasController())->edit(),
     'danhgia/update' => (new DanhgiasController())->update(),
     'danhgia/delete' => (new DanhgiasController())->delete(),
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 };
