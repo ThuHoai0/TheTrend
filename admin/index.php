@@ -17,6 +17,12 @@ require_once 'controllers/BannersController.php';
 
 require_once 'controllers/TrangthaidonhangsController.php';
 
+require_once 'controllers/NguoidungsController.php';
+require_once 'controllers/DonhangsController.php';
+require_once 'controllers/BinhluansController.php';
+require_once 'controllers/HinhanhsanphamsController.php';
+
+
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
@@ -35,6 +41,11 @@ require_once 'controllers/NguoidungsController.php';
 require_once 'models/Danhmuc.php';
 //require_once 'models/Product.php';
 require_once 'models/Nguoidung.php';
+
+require_once 'models/Donhang.php';
+require_once 'models/Binhluan.php';
+require_once 'models/Hinhanhsanpham.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -101,7 +112,13 @@ match ($act) {
     'banner/delete' => (new BannersController())->delete(),
 
 
-    // Trạng thái đơn hàng
+    'binhluan/list' => (new BinhluansController())->index(),
+    'binhluan/store' => (new BinhluansController())->store(),
+    'binhluan/edit' => (new BinhluansController())->edit(),
+    'binhluan/update' => (new BinhluansController())->update(),
+    'binhluan/delete' => (new BinhluansController())->delete(),
+    'binhluan/chitiet' => (new BinhluansController())->chitiet(),
+
     'trangthaidonhang/list' => (new TrangthaidonhangsController())->index(),
     'trangthaidonhang/store' => (new TrangthaidonhangsController())->store(),
     'trangthaidonhang/edit' => (new TrangthaidonhangsController())->edit(),

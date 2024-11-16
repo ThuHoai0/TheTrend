@@ -78,6 +78,18 @@ class SanphamsController
         }
     }
 
+
+    public function chitiet()
+    {
+        $id = $_GET['id'];
+
+        $san_pham = $this->modelSanpham->getDetailData($id);
+
+        $sp = $this->modelSanpham->getCategory();
+
+        require_once './views/sanpham/chitiet.php';
+    }
+
     public function edit()
     {
         // lay id
