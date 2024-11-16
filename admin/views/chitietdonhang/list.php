@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi tiết  | The Trend</title>
+    <title>Chi tiết đơn hàng | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Danh Sách Banner</h2>
+                            <h2 class="mb-sm-0">Quản Lý Chi tiết đơn hàng</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
@@ -52,7 +52,6 @@
                                     <li class="breadcrumb-item active">Danh Sách Banner</li>
                                 </ol>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -64,10 +63,8 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <!-- Add Category Button aligned to the left -->
-                                    <a href="?act=banner/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Banner
-                                    </a>
+<!--                                    search-->
+
 
                                 </div><!-- end card header -->
 
@@ -79,45 +76,32 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Hình ảnh</th>
-                                                    <th scope="col">Mô tả</th>
-
-                                                    <th scope="col" class="align-items-center">
-                                                        Trạng thái
-
-                                                    </th>
+                                                    <th scope="col">Mã đơn hàng</th>
+                                                    <th scope="col">Tên sản phẩm</th>
+                                                    <th scope="col">Số lượng</th>
+                                                    <th scope="col">Đơn giá</th>
+                                                    <th scope="col">Thành tiền</th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
 
-                                                <?php foreach ($banners as $i => $banner) : ?>
+                                                <?php foreach ($chi_tiet_don_hangs as $i => $chi_tiet_don_hang) : ?>
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><img src="<?= './../admin/uploads/'.$banner['duong_dan_hinh_anh'] ?>" alt="" width="150px"></td>
-                                                        <td><?= $banner['mo_ta'] ?></td>
-                                
-                                                        <td>
-                                                            <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($banner['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">hiển thị</span>
-                                                                
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-danger">Không hiển thị</span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </td>
+                                                        <td><?= $chi_tiet_don_hang['MaDonHang'] ?></td>
+                                                        <td><?= $chi_tiet_don_hang['TenSanPham'] ?></td>
+                                                        <td><?= $chi_tiet_don_hang['so_luong'] ?></td>
+                                                        <td><?= $chi_tiet_don_hang['don_gia'] ?></td>
+                                                        <td><?= $chi_tiet_don_hang['thanh_tien'] ?></td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=banner/edit&id=<?= $banner['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <a href="?act=banner/edit&id=<?= $chi_tiet_don_hang['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
                                                                 <form action="?act=banner/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $banner['id'] ?>">
+                                                                    <input type="hidden" name="id" value="<?= $chi_tiet_don_hang['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>
                                                                     </button>

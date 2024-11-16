@@ -11,7 +11,13 @@ class Chitietdonhang
     // danh sach danh muc
     public function getAll() {
         try {
-            $sql = "SELECT * FROM `chi_tiet_don_hangs`";
+            $sql = "SELECT 
+                        dh.id AS DonHangID,
+                        dh.ma_don_hang AS MaDonHang,
+                        sp.ten_san_pham AS TenSanPham
+                    FROM don_hangs dh
+                    JOIN chi_tiet_don_hangs ctdh ON dh.id = ctdh.don_hang_id
+                    JOIN san_phams sp ON ctdh.san_pham_id = sp.id;";
 
             $stmt = $this->conn->prepare($sql);
 
