@@ -33,10 +33,11 @@ function uploadFile($file, $folderUpload = '../admin/uploads/')
 
             // Set the target file path
             $targetFilePath = $folderUpload . $fileName;
-
+//            var_dump($targetFilePath);
+//            die();
             // Move the uploaded file to the target directory
             if (move_uploaded_file($file['tmp_name'][$i], $targetFilePath)) {
-                $result[] = [$file['name'][$i]];
+                $result[] = [$fileName];
             } else {
                 echo "Error uploading file " . $file['name'][$i] . ".<br>";
             }

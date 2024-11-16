@@ -82,11 +82,6 @@
                                                 </span>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Hình ảnh</label> <br>
-                                                <input type="hidden" class="form-control" name="img" value="<?= $san_pham['hinh_anh']?>">
-                                                <input type="file" class="form-control" name="hinh_anh">
-                                            </div>
-                                            <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Mô tả</label>
                                                 <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $san_pham['mo_ta'] ?></textarea>
                                             </div>

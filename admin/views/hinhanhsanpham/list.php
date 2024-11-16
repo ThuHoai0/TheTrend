@@ -84,7 +84,8 @@
                                                             <a href="?act=hinhanhsanpham/chitiet&id=<?= $hinh_anh_san_pham['product_id'] ?>"><?= $hinh_anh_san_pham['product_name'] ?></a>
                                                         </td>
                                                         <td>
-                                                            <img src="<?= './../admin/uploads/'.$hinh_anh_san_pham['additional_image'] ?>" style="max-width: 100px; max-height: 100px;">
+                                                            <img src="<?= 'uploads/'.$hinh_anh_san_pham['additional_image'] ?>" alt="" style="max-width: 100px; max-height: 100px;">
+<!--                                                            <img src="--><?php //= './../admin/uploads/'.$hinh_anh_san_pham['additional_image'] ?><!--" style="max-width: 100px; max-height: 100px;">-->
                                                         </td>
 
                                                         <td><?= $hinh_anh_san_pham['image_description'] ?></td>

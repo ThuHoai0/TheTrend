@@ -5,9 +5,12 @@ class HinhanhsanphamsController
     // ham ket noi den Model
     public $modelHinhanhsanpham;
 
+    public $modelDanhmuc;
+
     public function __construct()
     {
         $this->modelHinhanhsanpham = new Hinhanhsanpham();
+        $this->modelDanhmuc = new Danhmuc();
     }
 
     // ham hien thi danh sach
@@ -27,9 +30,9 @@ class HinhanhsanphamsController
     {
         $id = $_GET['id'];
 
-        $danh_muc = $this->modelDanhmuc->getDetailData($id);
+        $hinh_anh_san_pham = $this->modelHinhanhsanpham->getDetailData($id);
 
-        require_once './views/danhmuc/chitiet.php';
+        require_once './views/hinhanhsanpham/chitiet.php';
     }
 
     // ham hien thi form them danh muc  public function create()
@@ -84,10 +87,10 @@ class HinhanhsanphamsController
         // lay id
         $id = $_GET['id'];
         // lay thong tin chi tiet cua danh muc
-        $danh_muc = $this->modelDanhmuc->getDetailData($id);
+        $hinh_anh_san_pham = $this->modelHinhanhsanpham->getDetailData($id);
 
         // do du lieu ra form
-        require_once './views/danhmuc/edit.php';
+        require_once './views/hinhanhsanpham/edit.php';
     }
 
     // Ham xu ly cap nhat du lieu vao CSDL

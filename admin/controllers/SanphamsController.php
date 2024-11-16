@@ -3,8 +3,11 @@
 class SanphamsController
 {
     public $modelSanpham;
+    public $modelAnhphu;
     public function __construct() {
         $this->modelSanpham = new Sanpham();
+        $this->modelAnhphu = new Hinhanhsanpham();
+
     }
 
     public function index()
@@ -42,9 +45,12 @@ class SanphamsController
             $so_luong = $_POST['so_luong'];
             $danh_muc_id = $_POST['danh_muc_id'];
             $trang_thai = $_POST['trang_thai'];
-            $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s'); 
+            $ngay_tao = isset($_POST['ngay_tao']) ? $_POST['ngay_tao'] : date('Y-m-d H:i:s');
+
+
 
             $load_hinh_anh = uploadFile($hinh_anh);
+
             $img= $_FILES['anh'];
             $anh= upload($img);
 
@@ -183,6 +189,7 @@ class SanphamsController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
+            $this->modelAnhphu->deleteData1($id);
             $this->modelSanpham->deleteData($id);
             header('Location: ?act=sanpham/list');
             exit();

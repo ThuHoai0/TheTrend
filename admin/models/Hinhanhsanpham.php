@@ -129,6 +129,22 @@ class Hinhanhsanpham
         }
     }
 
+    public function deleteData1($id) {
+        try {
+            $sql = "DELETE FROM `hinh_anh_san_phams` WHERE san_pham_id = :id";
+
+            $stmt = $this->conn->prepare($sql);
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo 'Error: ' .$e->getMessage();
+        }
+    }
+
     // huy ket noi CSDL
     public function __destruct() {
         $this->conn = null;
