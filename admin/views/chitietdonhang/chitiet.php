@@ -66,57 +66,26 @@
                     <div class="col">
                         <div class="h-100">
                             <div class="card">
-
                                 <form class="container-fluid mt-3 mb-3">
-                                    <div class="mb-3">
-                                            <label for="citynameInput" class="form-label">Mã đơn hàng</label>
-                                            <input type="text" class="form-control" name="ma_don_hang" value="<?= $don_hang['ma_don_hang'] ?>" disabled>
+                                <div class="mb-3">
+                                        <h5 class="form-label">Mã Đơn Hàng</h5>
+                                        <input type="text" class="form-control" value="<?= $chi_tiet_don_hang['ma_dh'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Tên người dùng</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['ten_nguoi_dung'] ?>" disabled>
+                                        <h5 class="form-label">Tên Sản Phẩm</h5>
+                                        <input type="text" class="form-control" value="<?= $chi_tiet_don_hang['ten_san_pham'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Ngày đặt hàng</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $don_hang['ngay_dat_hang'] ?>" disabled>
+                                        <h5 class="form-label">Số Lượng</h5>
+                                        <textarea disabled type="text" class="form-control"><?= $chi_tiet_don_hang['so_luong'] ?></textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Phương thức thanh toán</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['phuong_thuc_thanh_toan'] ?>" disabled>
+                                        <h5 class="form-label">Giá</h5>
+                                        <input type="text" class="form-control" value="<?= $chi_tiet_don_hang['don_gia'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <h5 class="form-label">Trạng thái thanh toán</h5>
-                                        <input type="text" class="form-control" value="<?= ($don_hang['trang_thai_thanh_toan']) ? 'Đã thanh toán' : 'Chưa thanh toán' ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Họ tên người nhận</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['ho_ten_nguoi_nhan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Số điện thoại người nhận</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['so_dien_thoai_nguoi_nhan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Email người nhận</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['email_nguoi_nhan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ghi chú</h5>
-                                        <textarea disabled type="text" class="form-control"><?= $don_hang['ghi_chu'] ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Tổng tiền</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['tong_tien'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
-                                        <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($don_hang['trang_thai_id'] == 1) ? 'selected' : ''  ?> value="1">Đang xử lý</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 2) ? 'selected' : ''  ?> value="2">Đã xác nhận</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 3) ? 'selected' : ''  ?> value="3">Đang giao hàng</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 4) ? 'selected' : ''  ?> value="4">Đã giao hàng</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 0) ? 'selected' : ''  ?> value="0">Đã hủy</option>
-                                        </select>
+                                        <h5 class="form-label">Thành Tiền</h5>
+                                        <input type="text" class="form-control" value="<?= $chi_tiet_don_hang['thanh_tien'] ?>" disabled>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
