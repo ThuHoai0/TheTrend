@@ -77,9 +77,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Người đặt hàng</th>
-                                                    <th scope="col">Người nhận</th>
-                                                    <th scope="col">Tổng tiền</th>
+                                                    <th scope="col">Mã đơn hàng</th>
+                                                    <th scope="col">Ngày đặt hàng</th>
+                                                    <th scope="col">Phương thức thanh toán</th>
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái thanh toán
                                                     </th>
@@ -94,10 +94,10 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i + 1 ?></td>
                                                         <td>
-                                                            <a href="?act=donhang/chitiet&id=<?=$don_hang['id']?>"><?= $don_hang['ten_nguoi_dung'] ?></a>
+                                                            <a href="?act=donhang/chitiet&id=<?=$don_hang['id']?>"><?= $don_hang['ma_don_hang'] ?></a>
                                                         </td>
-                                                        <td><?= $don_hang['ho_ten_nguoi_nhan'] ?></td>
-                                                        <td><?= $don_hang['tong_tien'] ?></td>
+                                                        <td><?= $don_hang['ngay_dat_hang'] ?></td>
+                                                        <td><?= $don_hang['phuong_thuc_thanh_toan'] ?></td>
                                                         <td>
                                                             <?php if ($don_hang['trang_thai_thanh_toan'] == '1') : ?>
                                                                 <span class="badge bg-success">Đã Thanh Toán</span>

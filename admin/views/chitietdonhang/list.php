@@ -4,7 +4,9 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi tiết đơn hàng | The Trend</title>
+
+    <title>Chi Tiết Đơn Hàng  | The Trend</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -44,12 +46,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Chi tiết đơn hàng</h2>
+                            <h2 class="mb-sm-0">Chi Tiết Đơn Hàng</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Banner</li>
+                                    <li class="breadcrumb-item active">Chi Tiết Đơn Hàng</li>
                                 </ol>
                             </div>
                         </div>
@@ -63,8 +65,13 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-<!--                                    search-->
-
+                                    <!-- Add Category Button aligned to the left -->
+                                    <!-- <a href="?act=chitietdonhang/create" class="btn btn-primary material-shadow-none">
+                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Banner
+                                    </a> -->
+                                    <form class="d-flex" role="search" method="get" id="searchForm">
+                                        <input type="text" name="search" id="searchInput" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
+                                    </form>
 
                                 </div><!-- end card header -->
 
@@ -76,12 +83,11 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Mã đơn hàng</th>
-                                                    <th scope="col">Tên sản phẩm</th>
-                                                    <th scope="col">Số lượng</th>
-                                                    <th scope="col">Đơn giá</th>
-                                                    <th scope="col">Thành tiền</th>
-                                                    <th scope="col">Thao tác</th>
+                                                    <th scope="col">Mã Đơn Hàng</th>
+                                                    <th scope="col">Tên Sản Phẩm</th>
+                                                    <th scope="col">Số Lượng</th>
+                                                    <th scope="col">Giá</th>
+                                                    <th scope="col">Thành Tiền</th>
                                                 </tr>
 
                                                 </thead>
@@ -89,24 +95,15 @@
 
                                                 <?php foreach ($chi_tiet_don_hangs as $i => $chi_tiet_don_hang) : ?>
                                                     <tr>
-                                                        <td class="fw-medium"><?= $i+1 ?></td>
-                                                        <td><?= $chi_tiet_don_hang['MaDonHang'] ?></td>
-                                                        <td><?= $chi_tiet_don_hang['TenSanPham'] ?></td>
+                                                    <td class="fw-medium"><?= $i+1 ?></td>
+                                                        <td>
+                                                            <a href="?act=chitietdonhang/chitiet&id=<?= $chi_tiet_don_hang['id'] ?>"><?= $chi_tiet_don_hang['ma_dh'] ?></a>
+                                                        </td>
+                                                        <td><?= $chi_tiet_don_hang['ten_san_pham'] ?></td>
                                                         <td><?= $chi_tiet_don_hang['so_luong'] ?></td>
                                                         <td><?= $chi_tiet_don_hang['don_gia'] ?></td>
                                                         <td><?= $chi_tiet_don_hang['thanh_tien'] ?></td>
                                                         <td>
-                                                            <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=banner/edit&id=<?= $chi_tiet_don_hang['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-
-                                                                <form action="?act=banner/delete" method="POST"
-                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $chi_tiet_don_hang['id'] ?>">
-                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
-                                                                        <i class="ri-delete-bin-line"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
