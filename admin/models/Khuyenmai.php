@@ -48,8 +48,6 @@ class Khuyenmai
         }
     }
     // cap nhat du lieu vao CSDL
-    public function updateData($id, $ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $trang_thai) {
-        try {
     public function updateData($id, $ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc) {
         try {
 

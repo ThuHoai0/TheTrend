@@ -43,8 +43,7 @@
 
              $today = new DateTime();
 
-//             $ngay_bat_dau = new DateTime($_POST['ngay_bat_dau']);
-//             $ngay_ket_thuc = new DateTime($_POST['ngay_ket_thuc']);
+//
 
 
              if ($today < $ngay_bat_dau) {
