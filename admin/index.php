@@ -138,6 +138,7 @@ match ($act) {
     'hinhanhsanpham/delete' => (new HinhanhsanphamsController())->delete(),
 
     'chitietdonhang/list' => (new ChitietdonhangsController())->index(),
+    'chitietdonhang/chitiet' => (new ChitietdonhangsController())->chitiet(),
 
 
     // 'dashboard' => (new DashboardController())->index(),
