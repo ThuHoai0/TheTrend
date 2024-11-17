@@ -12,12 +12,15 @@
         </a>
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
-            <span class="logo-sm">
-                <img src="assets/images/logo-sm.png" alt="" height="22">
-            </span>
-            <span class="logo-lg">
-                <img src="assets/images/logo-light.png" alt="" height="17">
-            </span>
+            <svg id="theTrendLogo" width="100" height="17" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Rectangle -->
+                <rect width="100" height="17" fill="#405189"/>
+
+                <!-- Text -->
+                <text x="5" y="13" font-family="Arial" font-size="18" font-weight="bold" fill="#FFFFFF">
+                    The Trend
+                </text>
+            </svg>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
             <i class="ri-record-circle-line"></i>
@@ -95,18 +98,17 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
 
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý bài viết</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=binhluan/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý bình luận</span>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="?act=danhgia/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý đánh giá</span>
+                    </a>
+                </li>
 
                 <li class="nav-item">
 

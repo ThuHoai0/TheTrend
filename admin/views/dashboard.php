@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | NN Shop</title>
+    <title>Dashboard | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -61,23 +61,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                             <div class="flex-grow-1">
-                                                <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                                                <p class="text-muted mb-0">Here's what's happening with your store today.</p>
-                                            </div>
-                                            <div class="mt-3 mt-lg-0">
-                                                <form action="javascript:void(0);">
-                                                    <div class="row g-3 mb-0 align-items-center">
-                                                        <div class="col-auto">
-                                                            <button type="button" class="btn btn-soft-success material-shadow-none"><i class="ri-add-circle-line align-middle me-1"></i> Add Product</button>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-auto">
-                                                            <button type="button" class="btn btn-soft-info btn-icon waves-effect material-shadow-none waves-light layout-rightside-btn"><i class="ri-pulse-line"></i></button>
-                                                        </div>
-                                                        <!--end col-->
-                                                    </div>
-                                                    <!--end row-->
-                                                </form>
+                                                <h4 class="fs-16 mb-1">Chào bạn, <?= $_SESSION['name']?>!</h4>
                                             </div>
                                         </div><!-- end card header -->
                                     </div>
@@ -101,8 +85,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?=  $tongThuNhapNgay  ?> ">0</span> VND </h4>
-                                                        <a href="#" class="text-decoration-underline">View net earnings</a>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?=  $tongThuNhapNgay  ?> ">0</span> VND </h4>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-success-subtle rounded fs-3">
@@ -130,7 +113,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
                                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $soLuongDonHangHomNay?>">0</span> Đơn Hàng </h4>
-                                                        <a href="#" class="text-decoration-underline">View all orders</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-info-subtle rounded fs-3">
@@ -158,7 +140,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
                                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $soLuongKhachHang?>">0</span> Người Dùng</h4>
-                                                        <a href="#" class="text-decoration-underline">See details</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-warning-subtle rounded fs-3">
@@ -169,93 +150,11 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             </div><!-- end card body -->
                                         </div><!-- end card -->
                                     </div><!-- end col -->
-
-                                    <div class="col-xl-4 col-md-6">
-                                        <!-- card -->
-                                        <div class="card card-animate">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Tổng Đơn Hàng Cả Năm</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <h5 class="text-muted fs-14 mb-0">
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-end justify-content-between mt-4">
-                                                    <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?php $tongSoLuongDonHangCaNam ?>">0</span> Tổng Đơn Hàng</h4>
-                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
-                                                    </div>
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-primary-subtle rounded fs-3">
-                                                            <i class="bx bx-wallet text-primary"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                    <div class="col-xl-4 col-md-6">
-                                        <!-- card -->
-                                        <div class="card card-animate">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Thu Nhập Năm</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <h5 class="text-muted fs-14 mb-0">
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-end justify-content-between mt-4">
-                                                    <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?php $thuNhapNam?> ">0</span> VNĐ </h4>
-                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
-                                                    </div>
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-primary-subtle rounded fs-3">
-                                                            <i class="bx bx-wallet text-primary"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                    <div class="col-xl-4  col-md-6">
-                                        <!-- card -->
-                                        <div class="card card-animate">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Hoàn Tiền</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <h5 class="text-muted fs-14 mb-0">
-                                                        </h5>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-end justify-content-between mt-4">
-                                                    <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?php $hoanTien ?>">0</span> Hoàn tiền </h4>
-                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
-                                                    </div>
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-primary-subtle rounded fs-3">
-                                                            <i class="bx bx-wallet text-primary"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
                                 </div> <!-- end row-->
 
                                 
                                 <div class="row">
-                                    <div class="col-xl-8">
+                                    <div class="col-xl-12">
                                         <div class="card">
                                             <div class="card-header border-0 align-items-center d-flex">
                                                 <h4 class="card-title mb-0 flex-grow-1">Revenue</h4>
@@ -315,60 +214,15 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             </div><!-- end card body -->
                                         </div><!-- end card -->
                                     </div><!-- end col -->
-
-                                    <div class="col-xl-4">
-                                        <!-- card -->
-                                        <div class="card card-height-100">
-                                            <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0 flex-grow-1">Sales by Locations</h4>
-                                                <div class="flex-shrink-0">
-                                                    <button type="button" class="btn btn-soft-primary material-shadow-none btn-sm">
-                                                        Export Report
-                                                    </button>
-                                                </div>
-                                            </div><!-- end card header -->
-
-                                            <!-- card body -->
-                                            <div class="card-body">
-
-                                                <div id="sales-by-locations" data-colors='["--vz-light", "--vz-success", "--vz-primary"]' data-colors-interactive='["--vz-light", "--vz-info", "--vz-primary"]' style="height: 269px" dir="ltr"></div>
-
-                                                <div class="px-2 py-2 mt-1">
-                                                    <p class="mb-1">Canada <span class="float-end">75%</span></p>
-                                                    <div class="progress mt-2" style="height: 6px;">
-                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="75"></div>
-                                                    </div>
-
-                                                    <p class="mt-3 mb-1">Greenland <span class="float-end">47%</span>
-                                                    </p>
-                                                    <div class="progress mt-2" style="height: 6px;">
-                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 47%" aria-valuenow="47" aria-valuemin="0" aria-valuemax="47"></div>
-                                                    </div>
-
-                                                    <p class="mt-3 mb-1">Russia <span class="float-end">82%</span></p>
-                                                    <div class="progress mt-2" style="height: 6px;">
-                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="82"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end card body -->
-                                        </div>
-                                        <!-- end card -->
-                                    </div>
-                                    <!-- end col -->
                                 </div>
 
                                 <div class="row">
                                     <div class="col-xl-6">
                                         <div class="card">
                                             <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0 flex-grow-1">Best Selling Products</h4>
+                                                <h4 class="card-title mb-0 flex-grow-1">Top 5 sản phẩm bán chạy</h4>
                                                 <div class="flex-shrink-0">
                                                     <div class="dropdown card-header-dropdown">
-                                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span class="fw-semibold text-uppercase fs-12">Sort by:
-                                                            </span><span class="text-muted">Today<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                        </a>
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="#">Today</a>
                                                             <a class="dropdown-item" href="#">Yesterday</a>
@@ -533,34 +387,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                         </tbody>
                                                     </table>
                                                 </div>
-
-                                                <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
-                                                    <div class="col-sm">
-                                                        <div class="text-muted">
-                                                            Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-auto  mt-3 mt-sm-0">
-                                                        <ul class="pagination pagination-separated pagination-sm mb-0 justify-content-center">
-                                                            <li class="page-item disabled">
-                                                                <a href="#" class="page-link">←</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">1</a>
-                                                            </li>
-                                                            <li class="page-item active">
-                                                                <a href="#" class="page-link">2</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">3</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">→</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -568,12 +394,9 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                     <div class="col-xl-6">
                                         <div class="card card-height-100">
                                             <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0 flex-grow-1">Top Sellers</h4>
+                                                <h4 class="card-title mb-0 flex-grow-1">Khuyến mại</h4>
                                                 <div class="flex-shrink-0">
                                                     <div class="dropdown card-header-dropdown">
-                                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                        </a>
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="#">Download Report</a>
                                                             <a class="dropdown-item" href="#">Export</a>
@@ -724,34 +547,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                         </tbody>
                                                     </table><!-- end table -->
                                                 </div>
-
-                                                <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
-                                                    <div class="col-sm">
-                                                        <div class="text-muted">
-                                                            Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-auto  mt-3 mt-sm-0">
-                                                        <ul class="pagination pagination-separated pagination-sm mb-0 justify-content-center">
-                                                            <li class="page-item disabled">
-                                                                <a href="#" class="page-link">←</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">1</a>
-                                                            </li>
-                                                            <li class="page-item active">
-                                                                <a href="#" class="page-link">2</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">3</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">→</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
                                             </div> <!-- .card-body-->
                                         </div> <!-- .card-->
                                     </div> <!-- .col-->
@@ -761,12 +556,9 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                     <div class="col-xl-4">
                                         <div class="card card-height-100">
                                             <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0 flex-grow-1">Store Visits by Source</h4>
+                                                <h4 class="card-title mb-0 flex-grow-1">ABC</h4>
                                                 <div class="flex-shrink-0">
                                                     <div class="dropdown card-header-dropdown">
-                                                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                        </a>
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="#">Download Report</a>
                                                             <a class="dropdown-item" href="#">Export</a>
@@ -785,12 +577,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                     <div class="col-xl-8">
                                         <div class="card">
                                             <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0 flex-grow-1">Recent Orders</h4>
-                                                <div class="flex-shrink-0">
-                                                    <button type="button" class="btn btn-soft-info btn-sm material-shadow-none">
-                                                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
-                                                    </button>
-                                                </div>
+                                                <h4 class="card-title mb-0 flex-grow-1">Khách hàng thân thiết</h4>
                                             </div><!-- end card header -->
 
                                             <div class="card-body">

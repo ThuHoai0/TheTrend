@@ -102,9 +102,7 @@
                                                         <td><?= $chi_tiet_don_hang['ten_san_pham'] ?></td>
                                                         <td><?= $chi_tiet_don_hang['so_luong'] ?></td>
                                                         <td><?= $chi_tiet_don_hang['don_gia'] ?></td>
-                                                        <td><?= $chi_tiet_don_hang['thanh_tien'] ?></td>
-                                                        <td>
-                                                        </td>
+                                                        <td><?= $chi_tiet_don_hang['so_luong'] * $chi_tiet_don_hang['don_gia'] ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                                 </tbody>

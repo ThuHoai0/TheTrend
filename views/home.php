@@ -34,6 +34,19 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 <!--===============================================================================================-->
+    <style>
+        #admin {
+            color: pink;
+            font-size: 15px;
+            font-family: "Times New Roman";
+        }
+
+        #admin1 {
+            color: pink;
+            font-size: 25px;
+            font-family: "Times New Roman";
+        }
+    </style>
 </head>
 
 <body class="animsition">
@@ -90,10 +103,10 @@
 						<div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                                 <?php if (!empty($_SESSION['iduser'])) { ?>
-                                    <a href="?act=dangxuat"><?= $_SESSION['name'] ?></a>
+                                    <a id="admin"href="?act=dangxuat">Đăng xuất</a> |
                                     <?php if($_SESSION['vai_tro'] == 2) {
                                     ?>
-                                    <a href="http://localhost/TheTrend/admin">Đến admin</a>
+                                    <a id="admin1" href="http://localhost/TheTrend/admin">Admin</a>
                                     <?php
                                     }?>
                                 <?php } else { ?>
