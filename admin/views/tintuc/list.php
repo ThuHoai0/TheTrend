@@ -85,8 +85,10 @@
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tiêu đề</th>
                                                     <th scope="col">Nội dung</th>
+
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
+
                                                     </th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>

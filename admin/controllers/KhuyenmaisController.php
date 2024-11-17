@@ -62,9 +62,11 @@
              }
 // Kiểm tra 'phan_tram_giam'
              if (empty($phan_tram_giam)) {
+
                  $errors['phan_tram_giam'] = "Phần trăm giảm giá là bắt buộc";
              } elseif (!is_numeric($phan_tram_giam) || $phan_tram_giam < 0 || $phan_tram_giam > 100) {
                  $errors['phan_tram_giam'] = "Phần trăm giảm giá phải là một số từ 0 đến 100";
+
              }
 
 // Kiểm tra 'ngay_bat_dau'
@@ -92,7 +94,7 @@
              if (empty($errors)) {
                  // neu khong co loi thi them du lieu
                  // them vao CSDL
-                 $this->modelKhuyenmai->postData($ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $ngay_tao,$trang_thai);
+                 $this->modelKhuyenmai->postData($ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $ngay_tao, $trang_thai);
                  unset($_SESSION['errors']);
                  header('Location: ?act=khuyenmai/list');
                  exit();

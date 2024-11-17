@@ -93,6 +93,7 @@
                                                     <!-- Trạng thái with Sort Button -->
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
+
                                                     </th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>

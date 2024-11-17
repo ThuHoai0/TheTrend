@@ -77,9 +77,6 @@ class SanphamsController
             } elseif (!is_numeric($so_luong) || $so_luong < 0) {
                 $errors['so_luong'] = "Số lượng phải là số không âm";
             }
-//            if (empty($danh_muc)) {
-//                $errors['danh_muc'] = "Danh mục là bắt buộc";
-//            }
 
             // them du lieu
             if (empty($errors)) {
@@ -97,14 +94,14 @@ class SanphamsController
     }
 
     public function chitiet()
-    {
+    
         $id = $_GET['id'];
 
         $san_pham = $this->modelSanpham->getDetailData($id);
         $sp = $this->modelSanpham->getCategory();
 
         require_once './views/sanpham/chitiet.php';
-    }
+
     public function edit()
     {
         // lay id
@@ -132,17 +129,7 @@ class SanphamsController
             $danh_muc_id = $_POST['danh_muc_id'];
             $trang_thai = $_POST['trang_thai'];
 
-            // Lấy dữ liệu hiện tại để dùng khi không có hình ảnh mới
-//            $currentData = $this->modelSanpham->getDetailData($id);
 
-            // Kiểm tra và tải lên ảnh nếu có
-//            if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
-//                // Có ảnh mới, thực hiện tải lên
-//                $load_hinh_anh = uploadFile($hinh_anh);
-//            } else {
-//                // Không có ảnh mới, giữ nguyên ảnh cũ
-//                $load_hinh_anh = $currentData['hinh_anh'];
-//            }
 
             // Validate dữ liệu
             $errors = [];
@@ -171,7 +158,7 @@ class SanphamsController
             if (empty($errors)) {
                 $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $gia, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai);
                 unset($_SESSION['errors']);
-//                die;
+
                 header('Location: ?act=sanpham/list');
                 exit();
             } else {

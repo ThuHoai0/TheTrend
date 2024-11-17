@@ -19,6 +19,12 @@ require_once 'controllers/DonhangsController.php';
 require_once 'controllers/HinhanhsanphamsController.php';
 require_once 'controllers/ChitietdonhangsController.php';
 
+require_once 'controllers/NguoidungsController.php';
+require_once 'controllers/DonhangsController.php';
+require_once 'controllers/BinhluansController.php';
+require_once 'controllers/HinhanhsanphamsController.php';
+
+
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
@@ -31,6 +37,11 @@ require_once 'models/Nguoidung.php';
 require_once 'models/Donhang.php';
 require_once 'models/Hinhanhsanpham.php';
 require_once 'models/Chitietdonhang.php';
+
+require_once 'models/Donhang.php';
+require_once 'models/Binhluan.php';
+require_once 'models/Hinhanhsanpham.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -64,12 +75,15 @@ match ($act) {
     'khuyenmai/delete' => (new KhuyenmaisController())->delete(),
     'khuyenmai/chitiet' => (new KhuyenmaisController())->chitiet(),
 
+
     'nguoidung/list' => (new NguoidungsController())->index(),
     'nguoidung/create' => (new NguoidungsController())->create(),
     'nguoidung/edit' => (new NguoidungsController())->edit(),
     'nguoidung/update' => (new NguoidungsController())->update(),
     'nguoidung/delete' => (new NguoidungsController())->delete(),
     'nguoidung/chitiet' => (new NguoidungsController())->chitiet(),
+
+// Quan ly tin tuc
 
     'tintuc/list' => (new TintucsController())->index(),
     'tintuc/create' => (new TintucsController())->create(),
@@ -93,6 +107,13 @@ match ($act) {
     'banner/edit' => (new BannersController())->edit(),
     'banner/update' => (new BannersController())->update(),
     'banner/delete' => (new BannersController())->delete(),
+
+    'binhluan/list' => (new BinhluansController())->index(),
+    'binhluan/store' => (new BinhluansController())->store(),
+    'binhluan/edit' => (new BinhluansController())->edit(),
+    'binhluan/update' => (new BinhluansController())->update(),
+    'binhluan/delete' => (new BinhluansController())->delete(),
+    'binhluan/chitiet' => (new BinhluansController())->chitiet(),
 
     'trangthaidonhang/list' => (new TrangthaidonhangsController())->index(),
     'trangthaidonhang/create' => (new TrangthaidonhangsController())->create(),

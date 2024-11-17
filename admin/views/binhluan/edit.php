@@ -7,9 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-
-    <title>Sửa Khuyến Mại | The Trend</title>
-
+    <title>Danh Sách Bình Luận | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -49,15 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-
-                            <h4 class="mb-sm-0">Quản Lý Khuyến mại</h4>
-
+                            <h4 class="mb-sm-0">Quản Lý Danh Mục Bình Luận</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Khuyến mại</li>
-
+                                    <li class="breadcrumb-item active">Cập Nhật Bình Luận</li>
                                 </ol>
                             </div>
 
@@ -72,43 +67,42 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Khuyến Mại</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Bình Luận</h4>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form class="container-fluid mt-3 mb-3" action="?act=khuyenmai/update&id=<?= $khuyen_mai['id'] ?>" method="POST">
-                                            <div class="mb-3">
-                                                <h5 class="form-label">Tên khuyến mại</h5>
-                                                <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_khuyen_mai" value="<?= $khuyen_mai['ten_khuyen_mai']?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_khuyen_mai']) ? $_SESSION['errors']['ten_khuyen_mai'] : '' ?>
-                                                </span>
-                                            </div>
-                                            <div class="mb-3">
-                                                <h5 class="form-label">Mô tả</h5>
-                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $khuyen_mai['mo_ta']?></textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <h5 class="form-label">Phần trăm giảm</h5>
-                                                <input type="number" class="form-control" placeholder="Nhập phần trăm giảm..." name="phan_tram_giam" value="<?= $khuyen_mai['phan_tram_giam']?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <h5 class="form-label">Ngày bắt đầu</h5>
-                                                <input type="datetime-local" class="form-control" name="ngay_bat_dau" value="<?= $khuyen_mai['ngay_bat_dau']?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <h5 class="form-label">Ngày kết thúc</h5>
-                                                <input type="datetime-local" class="form-control" name="ngay_ket_thuc" value="<?= $khuyen_mai['ngay_ket_thuc']?>">
-                                            </div>
+                                        <form id="updateForm" action="?act=binhluan/update&id=<?= $binh_luan['id'] ?>" method="post">
 
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Tên sản phẩm</label>
+                                                <input type="text" class="form-control" name="ten_sp" value="<?= $binh_luan['ten_sp'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Tên người dùng</label>
+                                                <input type="text" class="form-control" name="ten" value="<?= $binh_luan['ten'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Nội dung</label>
+                                                <textarea type="text" class="form-control" name="noi_dung" disabled><?= $binh_luan['noi_dung'] ?></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ForminputState" class="form-label">Trạng thái</label>
+                                                <select class="form-select" name="trang_thai">
+                                                    <option value="1" <?= $binh_luan['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
+                                                    <option value="0" <?= $binh_luan['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Biểu tượng</label>
+                                                <input type="text" class="form-control" name="bieu_tuong" value="<?= $binh_luan['bieu_tuong'] ?>" disabled>
+                                            </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Sửa khuyến mại</button>
+                                                    <button type="submit" class="btn btn-primary">Cập Nhật Bình Luận</button>
                                                 </div>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -173,6 +167,51 @@
 require_once "views/layouts/libs_js.php";
 ?>
 
+<script>
+    function submitForm() {
+        console.log("Nút 'Cập Nhật Danh Mục' đã được nhấn.");
+
+        const form = document.getElementById("updateForm");
+        const formData = new FormData(form);
+
+        // Kiểm tra giá trị của các trường trước khi gửi
+        const categoryName = formData.get("category_name");
+        const categoryStatus = formData.get("category_status");
+        console.log("categoryName=>",categoryName);
+        console.log("categoryStatus=>",categoryStatus);
+        console.log("formData",formData)           
+        if (!categoryName) {
+            alert("Tên danh mục là bắt buộc.");
+            return;
+        }
+
+        if (!categoryStatus) {
+            alert("Trạng thái là bắt buộc.");
+            return;
+        }
+
+        // Gửi dữ liệu bằng AJAX (fetch)
+        fetch("?act=update_category", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                // In kết quả trả về từ server ra console
+                console.log("Phản hồi từ server:", data);
+
+                // Thông báo thành công hoặc cập nhật giao diện
+                if (data.success) {
+                    alert("Cập nhật danh mục thành công!");
+                } else {
+                    alert("Cập nhật không thành công. Vui lòng thử lại.");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+            });
+    }
+</script>
 </body>
 
 </html><?php

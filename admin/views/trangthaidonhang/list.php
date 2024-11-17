@@ -86,7 +86,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
+
                                                     <th scope="col">Trạng Thái Đơn Hàng</th>
+
                                                     <th scope="col">Mô tả</th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>

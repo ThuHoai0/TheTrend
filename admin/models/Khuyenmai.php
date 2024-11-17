@@ -28,6 +28,7 @@ class Khuyenmai
             $sql = "INSERT INTO `khuyen_mais`(`ten_khuyen_mai`, `mo_ta`, `phan_tram_giam`, `ngay_bat_dau`, `ngay_ket_thuc`, `ngay_tao`, `trang_thai`) 
                     VALUES (:ten_khuyen_mai, :mo_ta, :phan_tram_giam, :ngay_bat_dau, :ngay_ket_thuc, :ngay_tao, :trang_thai)";
 
+
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
@@ -46,22 +47,25 @@ class Khuyenmai
             echo 'Error: ' .$e->getMessage();
         }
     }
-
+    // cap nhat du lieu vao CSDL
+    public function updateData($id, $ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $trang_thai) {
+        try {
     public function updateData($id, $ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc) {
         try {
 
             $sql = "UPDATE khuyen_mais SET ten_khuyen_mai = :ten_khuyen_mai, mo_ta = :mo_ta, phan_tram_giam = :phan_tram_giam, ngay_bat_dau = :ngay_bat_dau, ngay_ket_thuc = :ngay_ket_thuc  WHERE id = :id";
 
+
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
+
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':ten_khuyen_mai', $ten_khuyen_mai);
             $stmt->bindParam(':mo_ta', $mo_ta);
             $stmt->bindParam(':phan_tram_giam', $phan_tram_giam);
             $stmt->bindParam(':ngay_bat_dau', $ngay_bat_dau);
             $stmt->bindParam(':ngay_ket_thuc', $ngay_ket_thuc);
-
 
             $stmt->execute();
 

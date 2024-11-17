@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm Khuyến mại | The Trend</title>
+    <title>Chi Tiết Sản Phẩm  | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -29,6 +29,7 @@
     require_once "views/layouts/header.php";
 
     require_once "views/layouts/siderbar.php";
+
     ?>
 
     <!-- Left Sidebar End -->
@@ -47,12 +48,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Quản Lý Khuyến mại</h2>
+                            <h2 class="mb-sm-0">Chi Tiết Sản Phẩm</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Sách Khuyến mại</li>
+                                    <li class="breadcrumb-item active">Chi Tiết Sản Phẩm</li>
                                 </ol>
                             </div>
 
@@ -65,50 +66,42 @@
                     <div class="col">
                         <div class="h-100">
                             <div class="card">
-                                <div class="card-header align-items-center d-flex">
-                                    <h3 class="card-title mb-0 flex-grow-1">Thêm Khuyến mại</h3>
-                                </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=khuyenmai/store" method="POST">
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Tên khuyến mại</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ten_khuyen_mai">
-                                        <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['ten_khuyen_mai']) ? $_SESSION['errors']['ten_khuyen_mai'] : '' ?>
-                                        </span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Mô tả</h5>
-                                        <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Phần trăm giảm</h5>
-                                        <input type="text" class="form-control" placeholder="Nhập phần trăm giảm..." name="phan_tram_giam">
-                                        <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['phan_tram_giam']) ? $_SESSION['errors']['phan_tram_giam'] : '' ?>
-                                        </span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ngày bắt đầu</h5>
-                                        <input type="date" class="form-control" name="ngay_bat_dau">
-                                        <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['ngay_bat_dau']) ? $_SESSION['errors']['ngay_bat_dau'] : '' ?>
-                                        </span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ngày kết thúc</h5>
-                                        <input type="date" class="form-control" name="ngay_ket_thuc">
 
-                                        <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['ngay_ket_thuc']) ? $_SESSION['errors']['ngay_ket_thuc'] : '' ?>
-                                        </span>
+                                <form class="container-fluid mt-3 mb-3">
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Tên sản phẩm</h5>
+                                        <input type="text" class="form-control" value="<?= $binh_luan['ten_sp'] ?>" disabled>
                                     </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Tên người dùng</h5>
+                                        <input type="text" class="form-control" value="<?= $binh_luan['ten'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Nội dung</h5>
+                                        <textarea disabled type="text" class="form-control"><?= $binh_luan['noi_dung'] ?></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Ngày bình luận</h5>
+                                        <input type="text" class="form-control" value="<?= $binh_luan['ngay_binh_luan'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ForminputState" class="form-label">Trạng thái</label>
+                                        <select class="form-select" name="trang_thai" disabled>
+                                            <option <?= ($binh_luan['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
+                                            <option <?= ($binh_luan['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Biểu tượng</h5>
+                                        <input type="text" class="form-control" value="<?= $binh_luan['bieu_tuong'] ?>" disabled>
+                                    </div>
+                                    
                                     <div class="col-lg-12">
                                         <div class="text-end">
-                                            <button type="submit" class="btn btn-primary">Thêm Khuyến mại</button>
+                                            <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
                                         </div>
                                     </div>
                                 </form>
-
 
                             </div>
                         </div> <!-- end .h-100-->
