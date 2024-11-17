@@ -13,6 +13,7 @@ class Chitietdonhang
             INNER JOIN don_hangs ON don_hangs.id = ctdh.don_hang_id
             INNER JOIN san_phams ON san_phams.id = ctdh.san_pham_id";
 
+
             $stmt = $this->conn->prepare($sql);
 
             $stmt->execute();
