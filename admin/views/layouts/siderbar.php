@@ -51,7 +51,7 @@
                 <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=/">
-                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Thống kê</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -124,11 +124,6 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=banner/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý Banner</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Thống kê</span>
                     </a>
                 </li>
             </ul>
