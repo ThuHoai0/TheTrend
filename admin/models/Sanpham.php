@@ -80,7 +80,16 @@ class Sanpham {
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
+<<<<<<< Updated upstream
             $sql = "SELECT * FROM `san_phams` WHERE id = :id";
+=======
+            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc , danh_gias.* 
+            FROM `san_phams` 
+            inner JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id  
+            
+            WHERE san_phams.id = :id";
+            
+>>>>>>> Stashed changes
 
             $stmt = $this->conn->prepare($sql);
 
@@ -93,7 +102,7 @@ class Sanpham {
             echo 'Error: ' .$e->getMessage();
         }
     }
-
+    
 
     public function updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai) {
         try {

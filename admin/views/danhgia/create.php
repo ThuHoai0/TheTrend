@@ -116,6 +116,7 @@
 
                     </div> <!-- end col -->
                 </div>
+<<<<<<< Updated upstream
                 <div class="row">
                     <div class="col">
 
@@ -209,6 +210,9 @@
 
                     </div> <!-- end col -->
                 </div>
+=======
+
+>>>>>>> Stashed changes
             </div>
             <!-- container-fluid -->
         </div>

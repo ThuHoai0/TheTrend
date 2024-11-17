@@ -109,8 +109,13 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                                         <td><?= $danh_gia['san_pham_id '] ?></td>
                                                         <td><?= $danh_gia['nguoi_dung_id '] ?></td>
+=======
+                                                        <td><?= $danh_gia['san_pham_id'] ?></td>
+                                                        <td><?= $danh_gia['nguoi_dung_id'] ?></td>
+>>>>>>> Stashed changes
 =======
                                                         <td><?= $danh_gia['san_pham_id'] ?></td>
                                                         <td><?= $danh_gia['nguoi_dung_id'] ?></td>
@@ -237,9 +242,12 @@ require_once "views/layouts/libs_js.php";
         }
     });
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
     console.log($danh_gias);
     
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 </script>
 

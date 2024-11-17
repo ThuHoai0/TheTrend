@@ -16,6 +16,13 @@ require_once 'controllers/LienhesController.php';
 require_once 'controllers/BannersController.php';
 require_once 'controllers/DanhgiasController.php';
 require_once 'controllers/TrangthaidonhangsController.php';
+<<<<<<< Updated upstream
+=======
+require_once 'controllers/NguoidungsController.php';
+require_once 'controllers/DonhangsController.php';
+require_once 'controllers/HinhanhsanphamsController.php';
+require_once 'controllers/DanhgiasController.php';
+>>>>>>> Stashed changes
 
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
@@ -35,6 +42,12 @@ require_once 'controllers/NguoidungsController.php';
 require_once 'models/Danhmuc.php';
 //require_once 'models/Product.php';
 require_once 'models/Nguoidung.php';
+<<<<<<< Updated upstream
+=======
+require_once 'models/Donhang.php';
+require_once 'models/Hinhanhsanpham.php';
+require_once 'models/Danhgia.php';
+>>>>>>> Stashed changes
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -115,6 +128,9 @@ match ($act) {
     'hinhanhsanpham/update' => (new HinhanhsanphamsController())->update(),
     'hinhanhsanpham/delete' => (new HinhanhsanphamsController())->delete(),
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     'danhgia/list' => (new DanhgiasController())->index(),
     'danhgia/store' => (new DanhgiasController())->store(),
@@ -123,7 +139,10 @@ match ($act) {
     'danhgia/update' => (new DanhgiasController())->update(),
     'danhgia/delete' => (new DanhgiasController())->delete(),
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 };

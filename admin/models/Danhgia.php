@@ -14,7 +14,13 @@ class Danhgia {
             
             // $sql ="SELECT danh_gias.*,san_phams.id,nguoi_dungs.id FROM `danh_gias` JOIN san_phams ON san_phams.id=danh_gias.san_pham_id JOIN nguoi_dungs ON nguoi_dungs.id=danh_gias.nguoi_dung_id WHERE danh_gias.id= :id;";
 
+<<<<<<< Updated upstream
             $sql = "SELECT * FROM `danh_gias`";
+=======
+            
+            $sql = "SELECT * FROM `danh_gias`";
+            
+>>>>>>> Stashed changes
             $stmt = $this->conn->prepare($sql);
 
             $stmt->execute();
