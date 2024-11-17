@@ -19,7 +19,11 @@ require_once 'controllers/DonhangsController.php';
 require_once 'controllers/HinhanhsanphamsController.php';
 require_once 'controllers/ChitietdonhangsController.php';
 
+
 // Require toàn bộ file Models
+
+require_once 'models/Dashboard.php';
+
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
@@ -31,6 +35,7 @@ require_once 'models/Nguoidung.php';
 require_once 'models/Donhang.php';
 require_once 'models/Hinhanhsanpham.php';
 require_once 'models/Chitietdonhang.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -117,4 +122,8 @@ match ($act) {
     'hinhanhsanpham/delete' => (new HinhanhsanphamsController())->delete(),
 
     'chitietdonhang/list' => (new ChitietdonhangsController())->index(),
+
+
+    // 'dashboard' => (new DashboardController())->index(),
+  
 };
