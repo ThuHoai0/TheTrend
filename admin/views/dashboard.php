@@ -86,23 +86,22 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                 <!--end row-->
 
                                 <div class="row">
-                                    <div class="col-xl-3 col-md-6">
+                                    <div class="col-xl-4 col-md-6">
                                         <!-- card -->
                                         <div class="card card-animate">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Total Earnings</p>
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Tổng Thu Nhập Ngày</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-success fs-14 mb-0">
-                                                            <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +16.24 %
                                                         </h5>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="559.25">0</span>k </h4>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?=  $tongThuNhapNgay  ?> ">0</span> VND </h4>
                                                         <a href="#" class="text-decoration-underline">View net earnings</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
@@ -115,23 +114,22 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                         </div><!-- end card -->
                                     </div><!-- end col -->
 
-                                    <div class="col-xl-3 col-md-6">
+                                    <div class="col-xl-4 col-md-6">
                                         <!-- card -->
                                         <div class="card card-animate">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Orders</p>
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Đơn Hàng Hôm Nay</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-danger fs-14 mb-0">
-                                                            <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 %
                                                         </h5>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="36894">0</span></h4>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $soLuongDonHangHomNay?>">0</span> Đơn Hàng </h4>
                                                         <a href="#" class="text-decoration-underline">View all orders</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
@@ -144,23 +142,22 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                         </div><!-- end card -->
                                     </div><!-- end col -->
 
-                                    <div class="col-xl-3 col-md-6">
+                                    <div class="col-xl-4 col-md-6">
                                         <!-- card -->
                                         <div class="card card-animate">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Customers</p>
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Số Lượng Khách Hàng</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-success fs-14 mb-0">
-                                                            <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 %
                                                         </h5>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="183.35">0</span>M </h4>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $soLuongKhachHang?>">0</span> Người Dùng</h4>
                                                         <a href="#" class="text-decoration-underline">See details</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
@@ -173,23 +170,76 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                         </div><!-- end card -->
                                     </div><!-- end col -->
 
-                                    <div class="col-xl-3 col-md-6">
+                                    <div class="col-xl-4 col-md-6">
                                         <!-- card -->
                                         <div class="card card-animate">
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> My Balance</p>
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Tổng Đơn Hàng Cả Năm</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-muted fs-14 mb-0">
-                                                            +0.00 %
                                                         </h5>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="165.89">0</span>k </h4>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?php $tongSoLuongDonHangCaNam ?>">0</span> Tổng Đơn Hàng</h4>
+                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-primary-subtle rounded fs-3">
+                                                            <i class="bx bx-wallet text-primary"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+                                    <div class="col-xl-4 col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Thu Nhập Năm</p>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h5 class="text-muted fs-14 mb-0">
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?php $thuNhapNam?> ">0</span> VNĐ </h4>
+                                                        <a href="#" class="text-decoration-underline">Withdraw money</a>
+                                                    </div>
+                                                    <div class="avatar-sm flex-shrink-0">
+                                                        <span class="avatar-title bg-primary-subtle rounded fs-3">
+                                                            <i class="bx bx-wallet text-primary"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                    </div><!-- end col -->
+                                    <div class="col-xl-4  col-md-6">
+                                        <!-- card -->
+                                        <div class="card card-animate">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1 overflow-hidden">
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Hoàn Tiền</p>
+                                                    </div>
+                                                    <div class="flex-shrink-0">
+                                                        <h5 class="text-muted fs-14 mb-0">
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                                    <div>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="<?php $hoanTien ?>">0</span> Hoàn tiền </h4>
                                                         <a href="#" class="text-decoration-underline">Withdraw money</a>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
@@ -203,6 +253,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                     </div><!-- end col -->
                                 </div> <!-- end row-->
 
+                                
                                 <div class="row">
                                     <div class="col-xl-8">
                                         <div class="card">
