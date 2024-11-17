@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Giá bán</label>
-                                                <input type="text" class="form-control" placeholder="Nhập giá bán..." name="gia" value="<?= $san_pham['gia'] ?>">
+                                                <input type="number" class="form-control" placeholder="Nhập giá bán..." name="gia" value="<?= $san_pham['gia'] ?>">
                                                 <span class="text-danger">
                                                     <?= !empty($_SESSION['errors']['gia_nhap']) ? $_SESSION['errors']['gia_nhap'] : '' ?>
                                                 </span>

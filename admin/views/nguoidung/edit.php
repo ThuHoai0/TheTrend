@@ -118,8 +118,8 @@
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Vai Trò</label>
                                                     <select disabled id="form-select" class="form-control" name="vai_tro" required>
-                                                        <option value="1">Khách hàng</option>
-                                                        <option value="0">Quản Trị Viên</option>
+                                                        <option <?= ($nguoi_dung['vai_tro'] == 1) ? 'selected' : ''  ?>  value="1">Khách hàng</option>
+                                                        <option <?= ($nguoi_dung['vai_tro'] == 2) ? 'selected' : ''  ?>  value="2">Quản Trị Viên</option>
                                                     </select>
                                                 </div> 
                                             <div class="mb-3">

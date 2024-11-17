@@ -109,7 +109,7 @@
                                                         </td>
                                                         <td><?= $nguoi_dung['email'] ?></td>
                                                         <td>
-                                                            <?= $nguoi_dung['vai_tro'] == 1 ? 'Admin' : 'Khách hàng' ?>
+                                                            <?= $nguoi_dung['vai_tro'] == 2 ? 'Quản trị viên' : 'Khách hàng' ?>
                                                         </td>
                                                         <td>
                                                             <?php

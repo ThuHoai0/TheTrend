@@ -91,6 +91,11 @@
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                                 <?php if (!empty($_SESSION['iduser'])) { ?>
                                     <a href="?act=dangxuat"><?= $_SESSION['name'] ?></a>
+                                    <?php if($_SESSION['vai_tro'] == 2) {
+                                    ?>
+                                    <a href="http://localhost/TheTrend/admin">Đến admin</a>
+                                    <?php
+                                    }?>
                                 <?php } else { ?>
                                 <a href="?act=dangnhap"><i class="zmdi zmdi-account"></i></a>
                                 <?php } ?>

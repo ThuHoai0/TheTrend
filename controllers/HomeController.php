@@ -47,7 +47,7 @@ class HomeController
             $email = $_POST['email'];
 //            $this->modelHome->dangky($name, $pass, $email);
             $_SESSION['iduser'] = $this->modelHome->dangky($name, $pass, $email);
-            $_SESSION['user'] = 1; // 1 là người thường
+            $_SESSION['vai_tro'] = 1; // 1 là người thường
             echo "<script>alert('Đăng ký thành công!');
                 window.location.href = '?act=home';
                 </script>";

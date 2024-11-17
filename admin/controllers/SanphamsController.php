@@ -127,23 +127,22 @@ class SanphamsController
             $ten_san_pham = $_POST['ten_san_pham'];
             $mo_ta = $_POST['mo_ta'];
             $gia = $_POST['gia'];
-            $hinh_anh = $_FILES['hinh_anh'];
             $gia_nhap = $_POST['gia_nhap'];
             $so_luong = $_POST['so_luong'];
             $danh_muc_id = $_POST['danh_muc_id'];
             $trang_thai = $_POST['trang_thai'];
 
             // Lấy dữ liệu hiện tại để dùng khi không có hình ảnh mới
-            $currentData = $this->modelSanpham->getDetailData($id);
+//            $currentData = $this->modelSanpham->getDetailData($id);
 
             // Kiểm tra và tải lên ảnh nếu có
-            if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
-                // Có ảnh mới, thực hiện tải lên
-                $load_hinh_anh = uploadFile($hinh_anh);
-            } else {
-                // Không có ảnh mới, giữ nguyên ảnh cũ
-                $load_hinh_anh = $currentData['hinh_anh'];
-            }
+//            if ($hinh_anh['error'] == UPLOAD_ERR_OK) {
+//                // Có ảnh mới, thực hiện tải lên
+//                $load_hinh_anh = uploadFile($hinh_anh);
+//            } else {
+//                // Không có ảnh mới, giữ nguyên ảnh cũ
+//                $load_hinh_anh = $currentData['hinh_anh'];
+//            }
 
             // Validate dữ liệu
             $errors = [];
@@ -170,8 +169,9 @@ class SanphamsController
             }
             // Cập nhật dữ liệu nếu không có lỗi
             if (empty($errors)) {
-                $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai);
+                $this->modelSanpham->updateData($id, $ten_san_pham, $mo_ta, $gia, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai);
                 unset($_SESSION['errors']);
+//                die;
                 header('Location: ?act=sanpham/list');
                 exit();
             } else {

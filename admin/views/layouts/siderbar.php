@@ -90,11 +90,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarDanhMuc" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý vận chuyển</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link menu-link" href="?act=nguoidung/list" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
                         <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quản lý người dùng</span>
                     </a>

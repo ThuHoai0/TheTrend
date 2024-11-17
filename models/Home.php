@@ -25,6 +25,8 @@ class Home
                 $_SESSION['name'] = $user['ten'];
                 $_SESSION['vai_tro'] = $user['vai_tro'];
 
+
+
                 return $user;
             }
             return false;
@@ -49,6 +51,8 @@ class Home
             $stmt->execute();
 
             $user_id = $this->conn->lastInsertId();
+
+            $_SESSION['name'] = $ten;
 
             return $user_id;
         } catch (PDOException $e) {

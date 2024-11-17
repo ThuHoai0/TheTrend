@@ -110,8 +110,6 @@ match ($act) {
     'donhang/chitiet' => (new DonhangsController())->chitiet(),
 
     'hinhanhsanpham/list' => (new HinhanhsanphamsController())->index(),
-    'hinhanhsanpham/create' => (new HinhanhsanphamsController())->create(),
-    'hinhanhsanpham/store' => (new HinhanhsanphamsController())->store(),
     'hinhanhsanpham/edit' => (new HinhanhsanphamsController())->edit(),
     'hinhanhsanpham/update' => (new HinhanhsanphamsController())->update(),
     'hinhanhsanpham/delete' => (new HinhanhsanphamsController())->delete(),

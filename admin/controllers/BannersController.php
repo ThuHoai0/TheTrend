@@ -35,7 +35,7 @@ class BannersController
             $mo_ta = $_POST['mo_ta'];
             $trang_thai = $_POST['trang_thai'];
 
-            $load_duong_dan_hinh_anh = uploadFile($duong_dan_hinh_anh);
+            $load_duong_dan_hinh_anh = upload($duong_dan_hinh_anh);
 
 
 
@@ -84,7 +84,7 @@ class BannersController
             // Kiểm tra và tải lên ảnh nếu có
             if ($duong_dan_hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // Có ảnh mới, thực hiện tải lên
-                $load_hinh_anh = uploadFile($duong_dan_hinh_anh);
+                $load_hinh_anh = upload($duong_dan_hinh_anh);
             } else {
                 // Không có ảnh mới, giữ nguyên ảnh cũ
                 $load_hinh_anh = $currentData['duong_dan_hinh_anh'];

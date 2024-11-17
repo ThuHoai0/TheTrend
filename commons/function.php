@@ -21,7 +21,7 @@ function connectDB() {
         echo ("Connection failed: " . $e->getMessage());
     }
 }
-
+// load nhieu anh
 function uploadFile($file, $folderUpload = '../admin/uploads/')
 {
     $result = array();
@@ -50,7 +50,7 @@ function uploadFile($file, $folderUpload = '../admin/uploads/')
 }
 
 
-
+// load 1 anh
 function upload($file, $folderUpload = '../admin/uploads/') {
     // Thêm time() vào để chống trùng file name
     $fileName = time() . $file['name'];

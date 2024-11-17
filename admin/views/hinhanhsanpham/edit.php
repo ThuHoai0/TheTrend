@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Thêm ảnh | The Trend</title>
+    <title>Thêm hình ảnh sản phẩm| The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -47,12 +47,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h4 class="mb-sm-0">Thêm ảnh sản phẩm</h4>
+                            <h4 class="mb-sm-0">Thêm hình ảnh sản phẩm</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Danh Mục Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Hình Ảnh Sản Phẩm</li>
                                 </ol>
                             </div>
 
@@ -67,38 +67,27 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Danh Mục</h4>
+                                    <h4 class="card-title mb-0 flex-grow-1">Cập Nhật Hình Ảnh Sản Phẩm</h4>
                                 </div><!-- end card header -->
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=danhmuc/update&id=<?= $danh_muc['id'] ?>" method="post">
-<!--                                            <input type="hidden" name="id" value="--><?php //= $danh_muc['id'] ?><!--">-->
-
+                                        <form id="updateForm" action="?act=hinhanhsanpham/update&id=<?= $hinh_anh_san_pham['id'] ?>" method="post">
                                             <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên danh mục</label>
-                                                <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc" value="<?= $danh_muc['ten_danh_muc'] ?>">
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
-                                                </span>
+                                                <label for="citynameInput" class="form-label">Tên sản phẩm</label>
+                                                <input type="text" class="form-control" name="product_name" value="<?= $hinh_anh_san_pham['ten_san_pham'] ?>" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Hình ảnh</label>
+                                                <input type="file" class="form-control" name="duong_dan_hinh_anh" value="<?= $hinh_anh_san_pham['duong_dan_hinh_anh'] ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Mô tả</label>
-                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $danh_muc['mo_ta'] ?></textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="ForminputState" class="form-label">Trạng thái</label>
-                                                <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $danh_muc['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $danh_muc['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
-                                                </select>
-                                                <span class="text-danger">
-                                                    <?= !empty($_SESSION['errors']['trang_thai']) ? $_SESSION['errors']['trang_thai'] : '' ?>
-                                                </span>
+                                                <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $hinh_anh_san_pham['mo_ta'] ?></textarea>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">
-                                                    <button type="submit" class="btn btn-primary">Cập Nhật Danh Mục</button>
+                                                    <button type="submit" class="btn btn-primary">Cập Nhật Hình Ảnh Sản Phẩm</button>
                                                 </div>
                                             </div>
                                         </form>

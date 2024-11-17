@@ -114,8 +114,8 @@
                                     <div class="mb-3">
                                         <h5 class="form-label">Vai trò</h5>
                                         <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($nguoi_dung['vai_tro'] == 0) ? 'selected' : ''  ?> value="0">Khách hàng</option>
-                                            <option <?= ($nguoi_dung['vai_tro'] == 1) ? 'selected' : ''  ?> value="1">Admin</option>
+                                            <option <?= ($nguoi_dung['vai_tro'] == 1) ? 'selected' : ''  ?> value="1">Khách hàng</option>
+                                            <option <?= ($nguoi_dung['vai_tro'] == 2) ? 'selected' : ''  ?> value="2">Quản trị viên</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">

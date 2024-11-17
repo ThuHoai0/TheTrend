@@ -55,9 +55,6 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <a href="?act=hinhanhsanpham/create" class="btn btn-primary material-shadow-none">
-                                        <i class="ri-add-circle-line align-middle me-1"></i> Thêm Hình Ảnh
-                                    </a>
                                     <form class="d-flex" role="search" method="get" id="searchForm">
                                         <input type="text" name="search" id="searchInput" placeholder="Tìm kiếm..." autocomplete="off" class="form-control me-2 flex-grow-1">
                                     </form>
@@ -81,17 +78,16 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td>
-                                                            <a href="?act=hinhanhsanpham/chitiet&id=<?= $hinh_anh_san_pham['product_id'] ?>"><?= $hinh_anh_san_pham['product_name'] ?></a>
+                                                                <a href="?act=hinhanhsanpham/chitiet&id=<?= $hinh_anh_san_pham['product_id'] ?>"><?= $hinh_anh_san_pham['product_name'] ?></a>
                                                         </td>
                                                         <td>
                                                             <img src="<?= 'uploads/'.$hinh_anh_san_pham['additional_image'] ?>" alt="" style="max-width: 100px; max-height: 100px;">
-<!--                                                            <img src="--><?php //= './../admin/uploads/'.$hinh_anh_san_pham['additional_image'] ?><!--" style="max-width: 100px; max-height: 100px;">-->
                                                         </td>
 
                                                         <td><?= $hinh_anh_san_pham['image_description'] ?></td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=hinhanhsanpham/edit&id=<?= $hinh_anh_san_pham['product_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                                <a href="?act=hinhanhsanpham/edit&id=<?= $hinh_anh_san_pham['image_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                                 <form action="?act=hinhanhsanpham/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
                                                                     <input type="hidden" name="id" value="<?= $hinh_anh_san_pham['product_id'] ?>">

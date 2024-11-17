@@ -66,15 +66,20 @@
                         <div class="h-100">
                             <div class="card">
                                 <div class="card-header align-items-center d-flex">
-                                    <h3 class="card-title mb-0 flex-grow-1">Tên sản phẩm</h3>
+                                    <h3 class="card-title mb-0 flex-grow-1">Thêm hình ảnh sản phẩm</h3>
                                 </div><!-- end card header -->
-                                <form class="container-fluid mt-3 mb-3" action="?act=danhmuc/store" method="post">
+                                <form class="container-fluid mt-3 mb-3" action="?act=hinhanhsanpham/store" method="post">
                                     <div class="mb-3">
-                                        <h5 class="form-label">Tên danh mục</h5>
+                                        <h5 class="form-label">Tên sản phẩm</h5>
+
                                         <input type="text" class="form-control" placeholder="Nhập tên danh mục..." name="ten_danh_muc">
                                         <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['ten_danh_muc']) ? $_SESSION['errors']['ten_danh_muc'] : '' ?>
+                                            <?= !empty($_SESSION['errors']['product_name']) ? $_SESSION['errors']['product_name'] : '' ?>
                                         </span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Hình ảnh</h5>
+                                        <input type="file">
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Mô tả</h5>
@@ -92,7 +97,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
-                                            <button type="submit" class="btn btn-primary">Thêm Danh Mục</button>
+                                            <button type="submit" class="btn btn-primary">Thêm hình ảnh</button>
                                         </div>
                                     </div>
                                 </form>
