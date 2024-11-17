@@ -73,6 +73,10 @@
                                 <div class="card-body">
                                     <div class="live-preview">
                                         <form id="updateForm" action="?act=donhang/update&id=<?= $don_hang['id'] ?>" method="post">
+                                        <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">Mã đơn hàng</label>
+                                                <input type="text" class="form-control" name="ma_don_hang" value="<?= $don_hang['ma_don_hang'] ?>" disabled>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên người dùng</label>
                                                 <input type="text" class="form-control" name="ten_nguoi_dung" value="<?= $don_hang['ten_nguoi_dung'] ?>" disabled>
