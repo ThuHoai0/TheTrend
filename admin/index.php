@@ -16,18 +16,11 @@ require_once 'controllers/BannersController.php';
 require_once 'controllers/TrangthaidonhangsController.php';
 require_once 'controllers/NguoidungsController.php';
 require_once 'controllers/DonhangsController.php';
-require_once 'controllers/HinhanhsanphamsController.php';
 require_once 'controllers/ChitietdonhangsController.php';
-
-
-require_once 'controllers/NguoidungsController.php';
-require_once 'controllers/DonhangsController.php';
 require_once 'controllers/BinhluansController.php';
 require_once 'controllers/HinhanhsanphamsController.php';
 // Require toàn bộ file Models
-
 require_once 'models/Dashboard.php';
-
 require_once 'models/Danhmuc.php';
 require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
@@ -39,20 +32,13 @@ require_once 'models/Nguoidung.php';
 require_once 'models/Donhang.php';
 require_once 'models/Hinhanhsanpham.php';
 require_once 'models/Chitietdonhang.php';
-require_once 'models/Donhang.php';
 require_once 'models/Binhluan.php';
-require_once 'models/Hinhanhsanpham.php';
-
-
 
 // Route
 $act = $_GET['act'] ?? '/';
-// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
-
 match ($act) {
     // Dashboards
     '/' => (new DashboardController())->index(),
-
     'danhmuc/list' => (new DanhmucsController())->index(),
     'danhmuc/create' => (new DanhmucsController())->create(),
     'danhmuc/store' => (new DanhmucsController())->store(),
@@ -61,6 +47,7 @@ match ($act) {
     'danhmuc/delete' => (new DanhmucsController())->delete(),
     'danhmuc/chitiet' => (new DanhmucsController())->chitiet(),
 
+    // San pham
     'sanpham/list' => (new SanphamsController())->index(),
     'sanpham/create' => (new SanphamsController())->create(),
     'sanpham/store' => (new SanphamsController())->store(),
@@ -69,6 +56,7 @@ match ($act) {
     'sanpham/delete' => (new SanphamsController())->delete(),
     'sanpham/chitiet' => (new SanphamsController())->chitiet(),
 
+    // Khuyen mai
     'khuyenmai/list' => (new KhuyenmaisController())->index(),
     'khuyenmai/create' => (new KhuyenmaisController())->create(),
     'khuyenmai/store' => (new KhuyenmaisController())->store(),
@@ -77,16 +65,14 @@ match ($act) {
     'khuyenmai/delete' => (new KhuyenmaisController())->delete(),
     'khuyenmai/chitiet' => (new KhuyenmaisController())->chitiet(),
 
-
+    // Nguoi dung
     'nguoidung/list' => (new NguoidungsController())->index(),
-    'nguoidung/create' => (new NguoidungsController())->create(),
     'nguoidung/edit' => (new NguoidungsController())->edit(),
     'nguoidung/update' => (new NguoidungsController())->update(),
     'nguoidung/delete' => (new NguoidungsController())->delete(),
     'nguoidung/chitiet' => (new NguoidungsController())->chitiet(),
 
-// Quan ly tin tuc
-
+    // Tin tuc
     'tintuc/list' => (new TintucsController())->index(),
     'tintuc/create' => (new TintucsController())->create(),
     'tintuc/store' => (new TintucsController())->store(),
@@ -95,6 +81,7 @@ match ($act) {
     'tintuc/delete' => (new TintucsController())->delete(),
     'tintuc/chitiet' => (new TintucsController())->chitiet(),
 
+    // Lien he
     'lienhe/list' => (new LienhesController())->index(),
     'lienhe/store' => (new LienhesController())->store(),
     'lienhe/create' => (new LienhesController())->create(),
@@ -103,6 +90,7 @@ match ($act) {
     'lienhe/delete' => (new LienhesController())->delete(),
     'lienhe/chitiet' => (new LienhesController())->chitiet(),
 
+    // Banner
     'banner/list' => (new BannersController())->index(),
     'banner/store' => (new BannersController())->store(),
     'banner/create' => (new BannersController())->create(),
@@ -110,6 +98,7 @@ match ($act) {
     'banner/update' => (new BannersController())->update(),
     'banner/delete' => (new BannersController())->delete(),
 
+    // Binh luan
     'binhluan/list' => (new BinhluansController())->index(),
     'binhluan/store' => (new BinhluansController())->store(),
     'binhluan/edit' => (new BinhluansController())->edit(),
@@ -117,6 +106,7 @@ match ($act) {
     'binhluan/delete' => (new BinhluansController())->delete(),
     'binhluan/chitiet' => (new BinhluansController())->chitiet(),
 
+    // Trang thai don hang
     'trangthaidonhang/list' => (new TrangthaidonhangsController())->index(),
     'trangthaidonhang/create' => (new TrangthaidonhangsController())->create(),
     'trangthaidonhang/store' => (new TrangthaidonhangsController())->store(),
@@ -124,9 +114,8 @@ match ($act) {
     'trangthaidonhang/update' => (new TrangthaidonhangsController())->update(),
     'trangthaidonhang/delete' => (new TrangthaidonhangsController())->delete(),
 
+    // Don hang
     'donhang/list' => (new DonhangsController())->index(),
-    'donhang/create' => (new DonhangsController())->create(),
-    'donhang/store' => (new DonhangsController())->store(),
     'donhang/edit' => (new DonhangsController())->edit(),
     'donhang/update' => (new DonhangsController())->update(),
     'donhang/delete' => (new DonhangsController())->delete(),
@@ -135,12 +124,10 @@ match ($act) {
     'hinhanhsanpham/list' => (new HinhanhsanphamsController())->index(),
     'hinhanhsanpham/edit' => (new HinhanhsanphamsController())->edit(),
     'hinhanhsanpham/update' => (new HinhanhsanphamsController())->update(),
-    'hinhanhsanpham/delete' => (new HinhanhsanphamsController())->delete(),
 
+    // Chi tiet don hang
     'chitietdonhang/list' => (new ChitietdonhangsController())->index(),
     'chitietdonhang/chitiet' => (new ChitietdonhangsController())->chitiet(),
 
 
-    // 'dashboard' => (new DashboardController())->index(),
-  
 };

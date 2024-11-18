@@ -87,14 +87,7 @@
                                                         <td><?= $hinh_anh_san_pham['image_description'] ?></td>
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=hinhanhsanpham/edit&id=<?= $hinh_anh_san_pham['image_id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                <form action="?act=hinhanhsanpham/delete" method="POST"
-                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $hinh_anh_san_pham['product_id'] ?>">
-                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
-                                                                        <i class="ri-delete-bin-line"></i>
-                                                                    </button>
-                                                                </form>
+                                                                <a href="?act=hinhanhsanpham/edit&id=<?= $hinh_anh_san_pham['image_id'] ?>" class="link-success fs-15 "><i class="ri-edit-2-line"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>

@@ -84,10 +84,8 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">STT</th>
-                                                    <th scope="col">Tên sản phẩm</th>
                                                     <th scope="col">Tên người dùng</th>
                                                     <th scope="col">Nội dung</th>
-                                                    <th scope="col">Ngày bình luận</th>
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
                                                     </th>
@@ -102,12 +100,10 @@
                                                         <tr>
                                                             <td class="fw-medium"><?= $i+1 ?></td>
                                                             <td>
-                                                                <a href="?act=binhluan/chitiet&id=<?= $binh_luan['id'] ?>"><?= $binh_luan['ten_sp'] ?></a>
+                                                                <a href="?act=binhluan/chitiet&id=<?= $binh_luan['id'] ?>"><?= $binh_luan['ten'] ?></a>
 
                                                             </td>
-                                                            <td><?= $binh_luan['ten'] ?></td>
                                                             <td><?= $binh_luan['noi_dung'] ?></td>
-                                                            <td><?= $binh_luan['ngay_binh_luan'] ?></td>
                                                             <td>
                                                                 <?php
                                                                 // Check the 'status' field instead of 'category_name'

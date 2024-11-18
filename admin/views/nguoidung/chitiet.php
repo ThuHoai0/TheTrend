@@ -121,8 +121,8 @@
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($nguoi_dung['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
-                                            <option <?= ($nguoi_dung['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
+                                            <option <?= ($nguoi_dung['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hoạt Động</option>
+                                            <option <?= ($nguoi_dung['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không Hoạt Động</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-12">

@@ -9,7 +9,6 @@ class ChitietdonhangsController
     public function index()
     {
         $chi_tiet_don_hangs = null;
-
         if (isset($_GET['search'])) {
             $chi_tiet_don_hangs = $this->modelChitietdonhang->getBySearch($_GET['search']);
         } else {
@@ -23,7 +22,6 @@ class ChitietdonhangsController
         $chi_tiet_don_hang = $this->modelChitietdonhang->getDetailData($id);
         require_once './views/chitietdonhang/chitiet.php';
     }
-    // Ham xu ly cap nhat du lieu vao CSDL
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,5 +31,4 @@ class ChitietdonhangsController
             exit();
         }
     }
-
 }

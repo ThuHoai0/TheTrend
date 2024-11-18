@@ -25,8 +25,6 @@ class Home
                 $_SESSION['name'] = $user['ten'];
                 $_SESSION['vai_tro'] = $user['vai_tro'];
 
-
-
                 return $user;
             }
             return false;

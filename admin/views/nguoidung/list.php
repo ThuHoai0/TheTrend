@@ -116,10 +116,10 @@
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
                                                             if ($nguoi_dung['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển Thị</span>
+                                                                <span class="badge bg-success">Hoạt Động</span>
                                                                 <?php
                                                             } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển Thị</span>
+                                                                <span class="badge bg-danger">Không Hoạt Động</span>
                                                                 <?php
                                                             }
                                                             ?>

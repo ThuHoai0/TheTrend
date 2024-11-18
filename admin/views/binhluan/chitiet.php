@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi Tiết Sản Phẩm  | The Trend</title>
+    <title>Chi Tiết Bình Luận  | The Trend</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -48,12 +48,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Chi Tiết Sản Phẩm</h2>
+                            <h2 class="mb-sm-0">Chi Tiết Bình Luận</h2>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                    <li class="breadcrumb-item active">Chi Tiết Sản Phẩm</li>
+                                    <li class="breadcrumb-item active">Chi Tiết Bình Luận</li>
                                 </ol>
                             </div>
 

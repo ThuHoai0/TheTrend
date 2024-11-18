@@ -106,7 +106,17 @@
                                                             <?php endif; ?>
                                                         </td>
                                                         <td>
-                                                            <?=$don_hang['ten_trang_thai']?>
+                                                            <?php
+                                                            $trang_thai = [
+                                                                12 => "Đang xử lý",
+                                                                13 => "Đã xác nhận",
+                                                                14 => "Đang giao hàng",
+                                                                15 => "Đã giao hàng",
+                                                                16 => "Đã hủy"
+                                                            ];
+
+                                                            echo $trang_thai[$don_hang['trang_thai_id']] ?? "Trạng thái không xác định";
+                                                            ?>
                                                         </td>
 
                                                         <td>

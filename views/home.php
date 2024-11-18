@@ -60,18 +60,22 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img src="assets/images/icons/logo-02.png" alt="IMG-LOGO">
-					</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0 0 150 50">
+                            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Time New Roman" font-size="30" fill="#fff">
+                                The Trend
+                            </text>
+                        </svg>
+                    </a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.html">Trang chủ</a>
 							</li>
 
 							<li>
-								<a href="views/product.php">Shop</a>
+								<a href="views/product.php">Cửa hàng</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
@@ -83,11 +87,11 @@
 							</li>
 
 							<li>
-								<a href="views/about.php">About</a>
+								<a href="views/about.php">Về chúng tôi</a>
 							</li>
 
 							<li>
-								<a href="views/contact.php">Contact</a>
+								<a href="views/contact.php">Liên hệ</a>
 							</li>
 						</ul>
 					</div>	
@@ -146,15 +150,15 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="index.html">Trang chủ</a>
 				</li>
 
 				<li>
-					<a href="product.php">Shop</a>
+					<a href="product.php">Sản phẩm</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.php" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="shoping-cart.php" class="label1 rs1" data-label1="hot">Đặc trưng</a>
 				</li>
 
 				<li>
@@ -162,11 +166,11 @@
 				</li>
 
 				<li>
-					<a href="about.php">About</a>
+					<a href="about.php">Về chúng tôi</a>
 				</li>
 
 				<li>
-					<a href="contact.php">Contact</a>
+					<a href="contact.php">Liên hệ</a>
 				</li>
 			</ul>
 		</div>
@@ -200,132 +204,16 @@
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-
-			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
-				<ul class="sidebar-link w-full">
-					<li class="p-b-13">
-						<a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
-							Home
-						</a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							My Wishlist
-						</a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							My Account
-						</a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							Track Oder
-						</a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							Refunds
-						</a>
-					</li>
-
-					<li class="p-b-13">
-						<a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-							Help & FAQs
-						</a>
-					</li>
-				</ul>
-
-				<div class="sidebar-gallery w-full p-tb-30">
-					<span class="mtext-101 cl5">
-						@ CozaStore
-					</span>
-
-					<div class="flex-w flex-sb p-t-36 gallery-lb">
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-01.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-01.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-02.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-02.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-03.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-03.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-04.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-04.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-05.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-05.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-06.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-06.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-07.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-07.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-08.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-08.jpg');"></a>
-						</div>
-
-						<!-- item gallery sidebar -->
-						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-09.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-09.jpg');"></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="sidebar-gallery w-full">
-					<span class="mtext-101 cl5">
-						About Us
-					</span>
-
-					<p class="stext-108 cl6 p-t-27">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit. Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem fermentum quis. 
-					</p>
-				</div>
-			</div>
 		</div>
 	</aside>
 
-
 	<!-- Cart -->
 	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
 		<div class="header-cart flex-col-l p-l-65 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
-					Your Cart
+					Giỏ hàng
 				</span>
-
 				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
 					<i class="zmdi zmdi-close"></i>
 				</div>
@@ -497,17 +385,13 @@
 						<a href="product.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Nữ
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Xem thêm
 								</div>
 							</div>
 						</a>
@@ -522,17 +406,13 @@
 						<a href="product.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Nam
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Xem thêm
 								</div>
 							</div>
 						</a>
@@ -547,17 +427,13 @@
 						<a href="product.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Watches
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Trẻ Em
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Xem thêm
 								</div>
 							</div>
 						</a>
@@ -572,17 +448,13 @@
 						<a href="product.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Bags
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Mùa Đông
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+                                    Xem thêm
 								</div>
 							</div>
 						</a>
@@ -597,17 +469,14 @@
 						<a href="product.php" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
+									Mùa Hè
 								</span>
 
-								<span class="block1-info stext-102 trans-04">
-									Spring 2018
-								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+                                    Xem thêm
 								</div>
 							</div>
 						</a>
@@ -623,34 +492,34 @@
 		<div class="container">
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					Product Overview
+                    Tổng quan
 				</h3>
 			</div>
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
+						Tất cả
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
+						Nữ
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
+						Nam
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
+						Trẻ em
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
+						Mùa đông
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
+						Mùa hè
 					</button>
 				</div>
 
@@ -658,13 +527,13 @@
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
+						 Lọc
 					</div>
 
 					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
+						Tìm kiếm
 					</div>
 				</div>
 				
@@ -1403,31 +1272,68 @@
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Categories
+						Danh mục sản phẩm
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
+								Nữ
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
+								Nam
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
+								Trẻ em
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
+								Mùa đông
+							</a>
+						</li>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Mùa hè
+                            </a>
+                        </li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Trợ giúp
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Theo dõi đơn hàng
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Hoàn trả
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Vận chuyển
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Câu hỏi thường gặp
 							</a>
 						</li>
 					</ul>
@@ -1435,43 +1341,11 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
+						liên hệ
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+						Số 8, đường Trịnh Văn Bô - Nam Từ Liêm - Hà Nội.
 					</p>
 
 					<div class="p-t-27">
@@ -1491,18 +1365,18 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
+                        Đến
 					</h4>
 
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@gmail.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
 
 						<div class="p-t-18">
 							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
+                                Gửi
 							</button>
 						</div>
 					</form>
