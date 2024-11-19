@@ -105,11 +105,35 @@ class Sanpham {
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM `san_phams` inner JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id WHERE san_phams.id = :id";
-
-
-            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM `san_phams` 
-            inner JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id WHERE san_phams.id = :id";
+            $sql = "SELECT 
+                san_phams.*, 
+                danh_mucs.ten_danh_muc, 
+                danh_gias.so_sao, 
+                danh_gias.noi_dung AS noi_dung_danh_gia, 
+                danh_gias.ngay_danh_gia, 
+                danh_gias.trang_thai AS trang_thai_danh_gia,
+                nguoi_dungs.ten AS ten_nd,
+                nguoi_dungs.so_dien_thoai AS sdt,
+                nguoi_dungs.gioi_tinh AS gt,
+                binh_luans.noi_dung AS noi_dung_binh_luan,
+                binh_luans.ngay_binh_luan, 
+                binh_luans.trang_thai AS trang_thai_binh_luan
+            FROM 
+                san_phams
+            JOIN 
+                danh_mucs 
+                ON danh_mucs.id = san_phams.danh_muc_id
+            LEFT JOIN 
+                danh_gias 
+                ON danh_gias.san_pham_id = san_phams.id
+            LEFT JOIN 
+                binh_luans 
+                ON binh_luans.san_pham_id = san_phams.id
+            LEFT JOIN 
+                nguoi_dungs 
+                ON nguoi_dungs.id = san_phams.nguoi_dung_id
+            WHERE 
+                san_phams.id = :id";
 
 
             $stmt = $this->conn->prepare($sql);

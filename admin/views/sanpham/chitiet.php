@@ -105,6 +105,26 @@
                                             <option <?= ($san_pham['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
                                         </select>
                                     </div>
+                                    <h5 class="form-label">Bình luận</h5>
+                                    <table class="table table-striped table-nowrap align-middle mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Tên người dùng</th>
+                                                    <th scope="col">Nội dung</th>                                            
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <?php foreach ($binh_luans as $i => $binh_luan) : ?>
+                                                        <tr>
+                                                            <td><?= $binh_luan['ten'] ?></td>
+                                                            <td><?= $binh_luan['noi_dung'] ?></td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                            <div class="mb-3">
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
                                             <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>

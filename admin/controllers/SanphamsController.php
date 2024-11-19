@@ -7,6 +7,7 @@ class SanphamsController
     public function __construct() {
         $this->modelSanpham = new Sanpham();
         $this->modelAnhphu = new Hinhanhsanpham();
+        $this->modelBinhluan = new Binhluan();
     }
     public function index()
     {
@@ -72,8 +73,12 @@ class SanphamsController
             }
         }
     }
+
     public function chitiet(){
         $id = $_GET['id'];
+        $binh_luans = $this->modelBinhluan->getAll();
+        $binh_luan = $this->modelBinhluan->getDetailData($id);
+        $san_phams = $this->modelSanpham->getAll();
         $san_pham = $this->modelSanpham->getDetailData($id);
         $sp = $this->modelSanpham->getCategory();
         require_once './views/sanpham/chitiet.php';
