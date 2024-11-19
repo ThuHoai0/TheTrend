@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                            <h2 class="mb-sm-0">Chi Tiết Sản Phẩm</h2>
+                            <h1 class="mb-sm-0">Chi Tiết Sản Phẩm</h1>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
@@ -66,7 +66,8 @@
                     <div class="col">
                         <div class="h-100">
                             <div class="card">
-
+                            <br>
+                            <h2 class="form-label" style="text-align: center">Chi Tiết Sản Phẩm</h2>
                                 <form class="container-fluid mt-3 mb-3">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên sản phẩm</h5>
@@ -105,7 +106,10 @@
                                             <option <?= ($san_pham['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
                                         </select>
                                     </div>
-                                    <h5 class="form-label">Bình luận</h5>
+                            </div>
+                            <div class="card">
+                                <br>
+                            <h2 class="form-label" style="text-align: center">Bình Luận</h2>
                                     <table class="table table-striped table-nowrap align-middle mb-0">
                                                 <thead>
                                                 <tr>
@@ -123,9 +127,62 @@
                                                     <?php endforeach; ?>
                                                 </tbody>
                                             </table>
-                                            <div class="mb-3">
-                                    </div>
+                            </div>
+
+
+                            <div class="card">
+                                <br>
+                                           <h2 class="form-label" style="text-align: center">Đánh Giá</h2>
+                                    <table class="table table-striped table-nowrap align-middle mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Tên người dùng</th>
+                                                    <th scope="col">Số sao</th>
+                                                    <th scope="col">Nội dung</th>    
+                                                    <th scope="col" class="align-items-center">
+                                                        Trạng thái
+                                                    </th>
+                                                    <th scope="col">Thao tác</th>                                        
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <?php foreach ($danh_gias as $i => $danh_gia) : ?>
+                                                        <tr>
+                                                            <td><?= $danh_gia['ten_nguoi_dung'] ?></td>
+                                                            <td><?= $danh_gia['so_sao'] ?></td>
+                                                            <td><?= $danh_gia['noi_dung'] ?></td>
+                                                            <td>
+                                                            <?php
+                                                            // Check the 'status' field instead of 'category_name'
+                                                            if ($danh_gia['trang_thai'] == '1') { ?>
+                                                                <span class="badge bg-success">Hiển thị</span>
+                                                                <?php
+                                                            } else { ?>
+                                                                <span class="badge bg-danger">Không Hiển thị</span>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <div class="hstack gap-3 flex-wrap">
+                                                                <a href="?act=danhgia/edit&id=<?= $danh_gia['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+
+                                                                <form action="?act=danhgia/delete" method="POST"
+                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
+                                                                    <input type="hidden" name="id" value="<?= $danh_gia['id'] ?>">
+                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
+                                                                        <i class="ri-delete-bin-line"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
                                     <div class="col-lg-12">
+                                        <br>
                                         <div class="text-end">
                                             <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
                                         </div>
@@ -133,6 +190,8 @@
                                 </form>
 
                             </div>
+
+
                         </div> <!-- end .h-100-->
 
                     </div> <!-- end col -->
