@@ -10,10 +10,6 @@ class DashboardController {
         $tongThuNhapNgay = $this->modelDashboard->layTongThuNhapHomNay();
         $soLuongDonHangHomNay = $this->modelDashboard->demSoLuongDonHangHomNay();
         $soLuongKhachHang = $this->modelDashboard->demSoLuongKhachHang();
-        $tongSoLuongDonHangCaNam = $this->modelDashboard->thongKeTongDonHangCaNam();
-        $thuNhapNam = $this->modelDashboard->thongKeTongTienCaNam();
-        $hoanTien = $this->modelDashboard->thongKeHoanTien();
-        // $donHoanHuy = $this->modelDashboard-> thongKeTongDonHangHoanTra();
         // $sanPham = $this->modelDashboard-> thongKeSanPham();
         // $danhMuc = $this->modelDashboard-> thongKeDanhMuc();
         // var_dump($thuNhapNam);die;

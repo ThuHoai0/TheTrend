@@ -15,7 +15,6 @@ class Dashboard
      public function layTongThuNhapHomNay() {
 
         try {
-            //code...
             $ngayHienTai = date('Y-m-d'); // Lấy ngày hiện tại
             $sql = "SELECT SUM(tong_tien) AS tong_thu_nhap 
                     FROM don_hangs 
@@ -55,6 +54,7 @@ class Dashboard
 
         }
     }
+    
     public function demSoLuongKhachHang() {
         try {
             
