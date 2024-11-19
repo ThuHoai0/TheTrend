@@ -18,7 +18,7 @@ class Dashboard
             $ngayHienTai = date('Y-m-d'); // Lấy ngày hiện tại
             $sql = "SELECT SUM(tong_tien) AS tong_thu_nhap 
                     FROM don_hangs 
-                    WHERE date(ngay_tao) = :ngay_hien_tai ";
+                    WHERE date(ngay_dat_hang) = :ngay_hien_tai ";
             
 
             $stmt = $this->conn->prepare($sql);
@@ -40,7 +40,7 @@ class Dashboard
             
             $ngayHienTai = date('Y-m-d'); // Ngày hiện tại
             // echo $ngayHienTai;die;
-            $sql = "SELECT COUNT(*) AS so_luong_don_hang FROM don_hangs WHERE DATE(ngay_tao) = :ngay_hien_tai";
+            $sql = "SELECT COUNT(*) AS so_luong_don_hang FROM don_hangs WHERE DATE(ngay_dat_hang) = :ngay_hien_tai";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['ngay_hien_tai' => $ngayHienTai]);
