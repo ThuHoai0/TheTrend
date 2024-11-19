@@ -8,7 +8,11 @@ require_once '../commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once 'controllers/DanhmucsController.php';
+<<<<<<< Updated upstream
 
+=======
+require_once 'controllers/DanhgiasController.php';
+>>>>>>> Stashed changes
 require_once 'controllers/SanphamsController.php';
 require_once 'controllers/TintucsController.php';
 require_once 'controllers/KhuyenmaisController.php';
@@ -21,11 +25,22 @@ require_once 'controllers/TrangthaidonhangsController.php';
 require_once 'controllers/NguoidungsController.php';
 require_once 'controllers/DonhangsController.php';
 require_once 'controllers/HinhanhsanphamsController.php';
+<<<<<<< Updated upstream
 require_once 'controllers/DanhgiasController.php';
 >>>>>>> Stashed changes
 
+=======
+require_once 'controllers/ChitietdonhangsController.php';
+require_once 'controllers/DanhgiasController.php';
+
+require_once 'controllers/NguoidungsController.php';
+require_once 'controllers/DonhangsController.php';
+require_once 'controllers/BinhluansController.php';
+require_once 'controllers/HinhanhsanphamsController.php';
+>>>>>>> Stashed changes
 // Require toàn bộ file Models
 require_once 'models/Danhmuc.php';
+require_once 'models/Danhgia.php';
 require_once 'models/Sanpham.php';
 require_once 'models/Tintuc.php';
 require_once 'models/Khuyenmai.php';
@@ -120,7 +135,16 @@ match ($act) {
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+    'danhgia/list' => (new DanhgiasController())->index(),
+    'danhgia/edit' => (new DanhgiasController())->edit(),
+    'danhgia/update' => (new DanhgiasController())->update(),
+    'danhgia/delete' => (new DanhgiasController())->delete(),
+    'danhgia/chitiet' => (new DanhgiasController())->chitiet(),
+
+>>>>>>> Stashed changes
     'hinhanhsanpham/list' => (new HinhanhsanphamsController())->index(),
     'hinhanhsanpham/create' => (new HinhanhsanphamsController())->create(),
     'hinhanhsanpham/store' => (new HinhanhsanphamsController())->store(),
@@ -141,8 +165,20 @@ match ($act) {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
+<<<<<<< Updated upstream
 =======
 >>>>>>> Stashed changes
 =======
+>>>>>>> Stashed changes
+=======
+
+    'danhgia/list' => (new DanhgiasController())->index(),
+    'danhgia/create' => (new DanhgiasController())->create(),
+    'danhgia/store' => (new DanhgiasController())->store(),
+    'danhgia/edit' => (new DanhgiasController())->edit(),
+    'danhgia/update' => (new DanhgiasController())->update(),
+    'danhgia/delete' => (new DanhgiasController())->delete(),
+    // 'dashboard' => (new DashboardController())->index(),
+  
 >>>>>>> Stashed changes
 };

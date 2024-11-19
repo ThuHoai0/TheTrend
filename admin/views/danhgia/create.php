@@ -117,6 +117,8 @@
                     </div> <!-- end col -->
                 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <div class="row">
                     <div class="col">
 
@@ -210,6 +212,12 @@
 
                     </div> <!-- end col -->
                 </div>
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes

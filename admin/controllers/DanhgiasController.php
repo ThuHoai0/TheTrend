@@ -42,8 +42,16 @@ class DanhgiasController
             $ngay_danh_gia = isset($_POST['ngay_danh_gia']) ? $_POST['ngay_danh_gia'] : date('Y-m-d H:i:s'); 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 =======
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 =======
 
@@ -74,11 +82,19 @@ class DanhgiasController
         }
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     }
 =======
        
     }
     
+>>>>>>> Stashed changes
+=======
+    }
+>>>>>>> Stashed changes
+=======
+    }
 >>>>>>> Stashed changes
 =======
     }
