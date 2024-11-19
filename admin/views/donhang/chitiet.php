@@ -73,6 +73,10 @@
                                             <input type="text" class="form-control" name="ma_don_hang" value="<?= $don_hang['ma_don_hang'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
+                                        <h5 class="form-label">Tên sản phẩm</h5>
+                                        <input type="text" class="form-control" value="<?= $don_hang['ten_san_pham'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
                                         <h5 class="form-label">Tên người dùng</h5>
                                         <input type="text" class="form-control" value="<?= $don_hang['ten_nguoi_dung'] ?>" disabled>
                                     </div>
