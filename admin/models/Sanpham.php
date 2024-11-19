@@ -105,9 +105,6 @@ class Sanpham {
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM `san_phams` inner JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id WHERE san_phams.id = :id";
-
-
             $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc FROM `san_phams` 
             inner JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id WHERE san_phams.id = :id";
 
