@@ -72,10 +72,10 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=hinhanhsanpham/update&id=<?= $hinh_anh_san_pham['id'] ?>" method="post">
+                                        <form id="updateForm" action="?act=hinhanhsanpham/update&id=<?= $hinh_anh_san_pham['id'] ?>" method="post" enctype="multipart/form-data">
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Tên sản phẩm</label>
-                                                <input type="text" class="form-control" name="product_name" value="<?= $hinh_anh_san_pham['ten_san_pham'] ?>" disabled>
+                                                <input type="text" class="form-control" name="ten_san_pham" value="<?= $hinh_anh_san_pham['ten_san_pham'] ?>" readonly>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">Hình ảnh</label>

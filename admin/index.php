@@ -19,6 +19,7 @@ require_once 'controllers/DonhangsController.php';
 require_once 'controllers/ChitietdonhangsController.php';
 require_once 'controllers/BinhluansController.php';
 require_once 'controllers/HinhanhsanphamsController.php';
+require_once 'controllers/DanhgiasController.php';
 // Require toàn bộ file Models
 require_once 'models/Dashboard.php';
 require_once 'models/Danhmuc.php';
@@ -33,7 +34,7 @@ require_once 'models/Donhang.php';
 require_once 'models/Hinhanhsanpham.php';
 require_once 'models/Chitietdonhang.php';
 require_once 'models/Binhluan.php';
-
+require_once 'models/Danhgia.php';
 // Route
 $act = $_GET['act'] ?? '/';
 match ($act) {
@@ -129,5 +130,10 @@ match ($act) {
     'chitietdonhang/list' => (new ChitietdonhangsController())->index(),
     'chitietdonhang/chitiet' => (new ChitietdonhangsController())->chitiet(),
 
-
+    // Danh gia
+    'danhgia/list' => (new DanhgiasController())->index(),
+    'danhgia/store' => (new DanhgiasController())->store(),
+    'danhgia/edit' => (new DanhgiasController())->edit(),
+    'danhgia/update' => (new DanhgiasController())->update(),
+    'danhgia/delete' => (new DanhgiasController())->delete(),
 };

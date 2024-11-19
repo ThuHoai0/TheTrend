@@ -30,7 +30,7 @@ class Dashboard
             return $ketQua['tong_thu_nhap'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
         }
         
     }
@@ -51,7 +51,7 @@ class Dashboard
             //code...
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
 
         }
     }
@@ -68,7 +68,7 @@ class Dashboard
             //code...
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
 
         }
     }
@@ -86,7 +86,7 @@ class Dashboard
 
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
 
         }
 
@@ -126,7 +126,7 @@ class Dashboard
 
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
 
         }
 
@@ -149,7 +149,7 @@ class Dashboard
 
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
 
         }
 

@@ -33,18 +33,24 @@ class HinhanhsanphamsController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_GET['id'];
-            $ten_san_pham = $_POST['ten_san_pham'];
             $duong_dan_hinh_anh = $_FILES['duong_dan_hinh_anh'];
             $mo_ta = $_POST['mo_ta'];
-            $currentData = $this->modelHinhanhsanpham->getDetailData($id);
-            if ($duong_dan_hinh_anh['error'] == UPLOAD_ERR_OK) {
-                $load_hinh_anh = upload($duong_dan_hinh_anh);
-            } else {
-                $load_hinh_anh = $currentData['duong_dan_hinh_anh'];
+            $load_hinh_anh = upload($duong_dan_hinh_anh);
+
+            $anh_hien_tai = $this->modelHinhanhsanpham->getDetailData($id);
+//var_dump($anh_hien_tai);
+//die;
+            if ($duong_dan_hinh_anh['error'] === UPLOAD_ERR_NO_FILE) {
+                $load_hinh_anh = $anh_hien_tai['duong_dan_hinh_anh'];
             }
+
+//            var_dump($load_hinh_anh);
+//            die();
+
+
             $errors = [];
             if (empty($errors)) {
-                $this->modelHinhanhsanpham->updateData($id, $ten_san_pham, $load_hinh_anh, $mo_ta);
+                $this->modelHinhanhsanpham->updateData($id, $load_hinh_anh, $mo_ta);
                 unset($_SESSION['errors']);
                 header('Location: ?act=hinhanhsanpham/list');
                 exit();
