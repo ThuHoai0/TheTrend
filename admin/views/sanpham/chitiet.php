@@ -157,7 +157,7 @@
                                     <div class="col-lg-12">
                                         <br>
                                         <div class="text-end">
-                                            <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
+                                            <button type="button" class="btn btn-primary mb-3" onclick="history.back()">Trở Về</button>
                                         </div>
                                     </div>
                                 </form>
@@ -266,7 +266,6 @@
 <!--                                    </table>-->
 <!--                                </div>-->
 <!---->
-<!--                                <!-- Back Button -->-->
 <!--                                <div class="text-end mt-4">-->
 <!--                                    <button class="btn btn-primary">Trở Về</button>-->
 <!--                                </div>-->
