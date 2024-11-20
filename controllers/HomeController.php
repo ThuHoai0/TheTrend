@@ -10,6 +10,10 @@ class HomeController
         require_once 'index.php';
     }
 
+    public function formDangNhap() {
+        require_once 'login/dn.php';
+    }
+
     public function check()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -56,5 +60,12 @@ class HomeController
                 </script>";
         }
         require_once 'login/dky.php';
+    }
+    public function danhmuc() {
+        $danh_mucs = $this->modelHome->getAllCategory();
+        if (!$danh_mucs) {
+            $danh_mucs = []; // Đặt giá trị mặc định là mảng rỗng
+        }
+        require_once './views/main.php';
     }
 }

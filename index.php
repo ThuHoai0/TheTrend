@@ -23,6 +23,13 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'dangky' => (new HomeController())->dangky(),
         'dangnhap' => (new HomeController())->check(),
         'dangxuat' => (new HomeController())->dangxuat(),
+        'login' => (new HomeController())->formDangNhap(),
+        'danhmuc' => (new HomeController())->danhmuc(),
+
+
+
+
+
         default => null, // Trường hợp không khớp
     };
 }

@@ -2,11 +2,9 @@
 class Home
 {
     public $conn;
-    // ket noi CSDL
     public function __construct() {
         $this->conn = connectDB();
     }
-
     public function check($ten, $mat_khau) {
         try {
             $sql = "SELECT * FROM nguoi_dungs WHERE email = :email AND mat_khau = :mat_khau";
@@ -56,6 +54,16 @@ class Home
         } catch (PDOException $e) {
             var_dump($e->getMessage());
             die;
+            echo 'Error: ' .$e->getMessage();
+        }
+    }
+    public function getAllCategory() {
+        try {
+            $sql = "SELECT * FROM `danh_mucs`";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();
         }
     }
