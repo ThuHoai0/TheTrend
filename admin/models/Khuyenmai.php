@@ -11,7 +11,7 @@ class Khuyenmai
     // danh sach khuyen mai
     public function getAll() {
         try {
-            $sql = "SELECT * FROM `khuyen_mais`";
+            $sql = "SELECT * FROM `khuyen_mais` ORDER BY `id` DESC";
 
             $stmt = $this->conn->prepare($sql);
 

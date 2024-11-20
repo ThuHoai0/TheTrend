@@ -114,7 +114,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">Tên người dùng</th>
-                                                    <th scope="col">Nội dung</th>                                            
+                                                    <th scope="col">Nội dung</th>
                                                 </tr>
                                                 </thead>
 
@@ -138,11 +138,7 @@
                                                 <tr>
                                                     <th scope="col">Tên người dùng</th>
                                                     <th scope="col">Số sao</th>
-                                                    <th scope="col">Nội dung</th>    
-                                                    <th scope="col" class="align-items-center">
-                                                        Trạng thái
-                                                    </th>
-                                                    <th scope="col">Thao tác</th>                                        
+                                                    <th scope="col">Nội dung</th>
                                                 </tr>
                                                 </thead>
 
@@ -152,31 +148,7 @@
                                                             <td><?= $danh_gia['ten_nguoi_dung'] ?></td>
                                                             <td><?= $danh_gia['so_sao'] ?></td>
                                                             <td><?= $danh_gia['noi_dung'] ?></td>
-                                                            <td>
-                                                            <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($danh_gia['trang_thai'] == '1') { ?>
-                                                                <span class="badge bg-success">Hiển thị</span>
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-danger">Không Hiển thị</span>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=danhgia/edit&id=<?= $danh_gia['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
-                                                                <form action="?act=danhgia/delete" method="POST"
-                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $danh_gia['id'] ?>">
-                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
-                                                                        <i class="ri-delete-bin-line"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
@@ -190,6 +162,115 @@
                                 </form>
 
                             </div>
+
+<!--                            <div class="container mt-5">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="tenSanPham" class="form-label">Tên sản phẩm</label>-->
+<!--                                            <input type="text" class="form-control" value="--><?php //$san_pham['ten_san_pham'] ?><!--" readonly>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="moTa" class="form-label">Mô tả</label>-->
+<!--                                            <textarea class="form-control" id="moTa" rows="2" readonly>--><?php //$san_pham['mo_ta'] ?><!--</textarea>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="gia" class="form-label">Giá</label>-->
+<!--                                            <input type="text" class="form-control" id="gia" value="100.00" readonly>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="hinhAnh" class="form-label">Hình ảnh</label>-->
+<!--                                            <div>-->
+<!--                                                <img src="https://via.placeholder.com/150" alt="Product Image" class="img-thumbnail">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="giaNhap" class="form-label">Giá nhập</label>-->
+<!--                                            <input type="text" class="form-control" id="giaNhap" value="10.00" readonly>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="soLuong" class="form-label">Số lượng</label>-->
+<!--                                            <input type="text" class="form-control" id="soLuong" value="2" readonly>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="danhMuc" class="form-label">Danh mục</label>-->
+<!--                                            <select class="form-select" id="danhMuc" disabled>-->
+<!--                                                <option selected>Đồ trẻ em</option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="mb-3">-->
+<!--                                            <label for="trangThai" class="form-label">Trạng thái</label>-->
+<!--                                            <select class="form-select" id="trangThai" disabled>-->
+<!--                                                <option selected>Không hiển thị</option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <br>-->
+<!--                                <h3 class="section-title">Bình Luận</h3>-->
+<!--                                <div class="table-responsive">-->
+<!--                                    <table class="table table-bordered">-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th>Tên người dùng</th>-->
+<!--                                            <th>Nội dung</th>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                        <tr>-->
+<!--                                            <td>mai thi thoai thu</td>-->
+<!--                                            <td>bình luận trong chi tiết sản phẩm</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>co cai nit</td>-->
+<!--                                            <td>bbbbbbbbbbbbbbbbbbb</td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td>co cai nit</td>-->
+<!--                                            <td>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>-->
+<!--                                        </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
+<!--                                <br>-->
+<!--                                <h3 class="section-title">Đánh Giá</h3>-->
+<!--                                <div class="table-responsive">-->
+<!--                                    <table class="table table-bordered">-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th>Tên người dùng</th>-->
+<!--                                            <th>Nội dung</th>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                        <tr>-->
+<!--                                            <td>Nguyen Van A</td>-->
+<!--                                            <td>ok</td>-->
+<!--                                        </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
+<!---->
+<!--                                <!-- Back Button -->-->
+<!--                                <div class="text-end mt-4">-->
+<!--                                    <button class="btn btn-primary">Trở Về</button>-->
+<!--                                </div>-->
+<!--                                <br>-->
+<!--                            </div>-->
 
 
                         </div> <!-- end .h-100-->
