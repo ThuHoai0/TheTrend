@@ -1,5 +1,7 @@
 <!-- Slider -->
-
+<?php
+require_once 'header.php';
+?>
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
@@ -182,20 +184,15 @@
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                     Tất cả sản phẩm
                 </button>
-<!--                --><?php
-//                foreach ($danh_mucs as $danh_muc)  :
-//                    ?>
-<!--                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">-->
-<!--                        --><?php //= htmlspecialchars($danh_muc['ten_danh_muc']) ?>
-<!--                    </button>-->
-<!--                --><?php
-//                endforeach;
-//                ?>
-<?php
-$danh_mucs;
-var_dump($danh_mucs);
-?>
-
+                <?php
+                foreach ($danh_mucs as $danh_muc)  :
+                    ?>
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                        <?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>
+                    </button>
+                <?php
+                endforeach;
+                ?>
             </div>
 
             <div class="flex-w flex-c-m m-tb-10">
@@ -1192,3 +1189,7 @@ var_dump($danh_mucs);
         </div>
     </div>
 </div>
+
+<?php
+require_once 'footer.php';
+?>

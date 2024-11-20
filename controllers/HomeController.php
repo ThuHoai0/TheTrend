@@ -7,7 +7,8 @@ class HomeController
     }
 
     public function index() {
-        require_once 'index.php';
+        $danh_mucs = $this->modelHome->getAllCategory();
+        require_once './views/main.php';
     }
 
     public function formDangNhap() {
@@ -23,12 +24,12 @@ class HomeController
             if (empty($check)) {
                 echo "<script>alert('Sai tài khoản hoặc mật khẩu!')
 //                window.location.href = '?act=home';
-                window.location.href = '?act=index';
+                window.location.href = '?act=dangnhap';
                 </script>";
             } else {
                 echo "<script>alert('Đăng nhập thành công!');
 //                window.location.href = '?act=home';
-                window.location.href = '?act=index';
+                window.location.href = '?act=home';
                 
                 </script>";
             }
@@ -60,12 +61,5 @@ class HomeController
                 </script>";
         }
         require_once 'login/dky.php';
-    }
-    public function danhmuc() {
-        $danh_mucs = $this->modelHome->getAllCategory();
-        if (!$danh_mucs) {
-            $danh_mucs = []; // Đặt giá trị mặc định là mảng rỗng
-        }
-        require_once './views/main.php';
     }
 }

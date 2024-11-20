@@ -120,13 +120,13 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <?php foreach ($binh_luans as $i => $binh_luan) : ?>
+                                                <?php if ($binh_luan) { foreach ($binh_luan as $i => $value) : ?>
                                                         <tr>
                                                             <td class="fw-medium"><?= $i+1 ?></td>
-                                                            <td><?= $binh_luan['ten'] ?></td>
-                                                            <td><?= $binh_luan['noi_dung'] ?></td>
+                                                            <td><?= $value['ten'] ?></td>
+                                                            <td><?= $value['noi_dung'] ?></td>
                                                     </tr>
-                                                    <?php endforeach; ?>
+                                                    <?php endforeach; }?>
                                                 </tbody>
                                             </table>
                             </div>

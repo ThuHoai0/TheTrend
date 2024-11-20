@@ -79,7 +79,6 @@ class SanphamsController
         $id = $_GET['id'];
         $danh_gias = $this->modelDanhgia->getAll();
         $danh_gia = $this->modelDanhgia->getDetailData($id);
-        $binh_luans = $this->modelBinhluan->getAll();
         $binh_luan = $this->modelBinhluan->getDetailData($id);
         $san_phams = $this->modelSanpham->getAll();
         $san_pham = $this->modelSanpham->getDetailData($id);
