@@ -156,20 +156,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                         <div class="card">
                                             <div class="card-header border-0 align-items-center d-flex">
                                                 <h4 class="card-title mb-0 flex-grow-1">Doanh thu</h4>
-                                                <!-- <div>
-                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
-                                                        ALL
-                                                    </button>
-                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
-                                                        1M
-                                                    </button>
-                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
-                                                        6M
-                                                    </button>
-                                                    <button type="button" class="btn btn-soft-primary material-shadow-none btn-sm">
-                                                        1Y
-                                                    </button>
-                                                </div> -->
                                             </div><!-- end card header -->
 
                                             <div class="card-header p-0 border-0 bg-light-subtle">
@@ -183,15 +169,15 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                     <!--end col-->
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1">$<span class="counter-value" data-target="22.89">0</span>k</h5>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="90000000">0</span> VND</h5>
                                                             <p class="text-muted mb-0">Thu Nhập</p>
                                                         </div>
                                                     </div>
                                                     <!--end col-->
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="367">0</span></h5>
-                                                            <p class="text-muted mb-0">Hoàn Lại Tiền</p>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="36">0</span></h5>
+                                                            <p class="text-muted mb-0">Hoàn Đơn</p>
                                                         </div>
                                                     </div>
                                                     <!--end col-->

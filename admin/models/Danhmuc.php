@@ -8,7 +8,7 @@ class Danhmuc
     }
     public function getAll() {
         try {
-            $sql = "SELECT * FROM `danh_mucs`";
+            $sql = "SELECT * FROM `danh_mucs` ORDER BY `id` DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
