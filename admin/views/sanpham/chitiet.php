@@ -109,6 +109,7 @@
                                     <table class="table table-striped table-nowrap align-middle mb-0">
                                                 <thead>
                                                 <tr>
+                                                    <th scope="col">STT</th>
                                                     <th scope="col">Tên người dùng</th>
                                                     <th scope="col">Nội dung</th>                                            
                                                 </tr>
@@ -117,6 +118,7 @@
                                                 <tbody>
                                                 <?php foreach ($binh_luans as $i => $binh_luan) : ?>
                                                         <tr>
+                                                            <td class="fw-medium"><?= $i+1 ?></td>
                                                             <td><?= $binh_luan['ten'] ?></td>
                                                             <td><?= $binh_luan['noi_dung'] ?></td>
                                                     </tr>
