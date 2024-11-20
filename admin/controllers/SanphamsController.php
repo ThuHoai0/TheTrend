@@ -77,7 +77,6 @@ class SanphamsController
 
     public function chitiet(){
         $id = $_GET['id'];
-        $danh_gias = $this->modelDanhgia->getAll();
         $danh_gia = $this->modelDanhgia->getDetailData($id);
         $binh_luan = $this->modelBinhluan->getDetailData($id);
         $san_phams = $this->modelSanpham->getAll();

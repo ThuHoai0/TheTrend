@@ -144,14 +144,14 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <?php foreach ($danh_gias as $i => $danh_gia) : ?>
+                                                <?php if ($danh_gia) {foreach ($danh_gia as $i => $value) : ?>
                                                         <tr>
-                                                            <td><?= $danh_gia['ten_nguoi_dung'] ?></td>
-                                                            <td><?= $danh_gia['so_sao'] ?></td>
-                                                            <td><?= $danh_gia['noi_dung'] ?></td>
+                                                            <td><?= $value['ten'] ?></td>
+                                                            <td><?= $value['so_sao'] ?></td>
+                                                            <td><?= $value['noi_dung'] ?></td>
 
                                                     </tr>
-                                                    <?php endforeach; ?>
+                                                    <?php endforeach; }?>
                                                 </tbody>
                                             </table>
                                     <div class="col-lg-12">
