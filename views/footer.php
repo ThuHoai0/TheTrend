@@ -6,7 +6,6 @@
                 <h4 class="stext-301 cl0 p-b-30">
                     Danh Mục
                 </h4>
-
                 <ul>
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
@@ -248,7 +247,37 @@ $('.js-pscroll').each(function() {
 </script>
 <!--===============================================================================================-->
 <script src="assets/js/main.js"></script>
+<script>
+    // Get the input and form elements
+    const searchInput = document.getElementById('searchInput');
 
+    // Check for 'search' parameter in the URL on page load
+    window.addEventListener('load', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        if (searchQuery) {
+            searchInput.value = searchQuery;
+        } else {
+            fetchUserData();  // Call the function that loads the full list
+        }
+    });
+
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {  // Check if the key pressed is Enter
+            event.preventDefault();  // Prevent the default form action (no immediate reload)
+            const query = searchInput.value.trim();
+            if (query) {
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', query);
+                window.location.href = currentUrl.href;
+            } else {
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.delete('search');
+                window.location.href = currentUrl.href;  // Reload to show the full list
+            }
+        }
+    });
+</script>
 </body>
 
 </html>

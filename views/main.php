@@ -99,12 +99,10 @@ require_once 'header.php';
                             <span class="block1-name ltext-102 trans-04 p-b-8">
                                 Nữ
                             </span>
-
                             <span class="block1-info stext-102 trans-04">
                                 Mùa xuân 2018
                             </span>
                         </div>
-
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
                                 Mua Ngay
@@ -113,12 +111,9 @@ require_once 'header.php';
                     </a>
                 </div>
             </div>
-
             <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
                     <img src="assets/images/banner-02.jpg" alt="IMG-BANNER">
-
                     <a href="sanpham.php"
                         class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
@@ -130,7 +125,6 @@ require_once 'header.php';
                                 Mùa Xuân 2018
                             </span>
                         </div>
-
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
                                 Mua Ngay
@@ -139,12 +133,10 @@ require_once 'header.php';
                     </a>
                 </div>
             </div>
-
             <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
                 <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
                     <img src="assets/images/banner-03.jpg" alt="IMG-BANNER">
-
                     <a href="sanpham.php"
                         class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                         <div class="block1-txt-child1 flex-col-l">
@@ -156,7 +148,6 @@ require_once 'header.php';
                                 Mẫu Mới
                             </span>
                         </div>
-
                         <div class="block1-txt-child2 p-b-4 trans-05">
                             <div class="block1-link stext-101 cl0 trans-09">
                                 Mua Ngay
@@ -184,15 +175,13 @@ require_once 'header.php';
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                     Tất cả sản phẩm
                 </button>
-                <?php
-                foreach ($danh_mucs as $danh_muc)  :
-                    ?>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                <?php foreach ($danh_mucs as $danh_muc): ?>
+                    <a href="?act=home&category=<?= htmlspecialchars($danh_muc['id']) ?>"
+                       class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                       data-filter=".<?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>">
                         <?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>
-                    </button>
-                <?php
-                endforeach;
-                ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
 
             <div class="flex-w flex-c-m m-tb-10">
@@ -212,12 +201,10 @@ require_once 'header.php';
             <!-- Search product -->
             <div class="dis-none panel-search w-full p-t-10 p-b-15">
                 <div class="bor8 dis-flex p-l-15">
-                    <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-                        <i class="zmdi zmdi-search"></i>
-                    </button>
-
-                    <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-                        placeholder="Search">
+                    <form role="search" method="get" id="searchForm">
+                        <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text"
+                               placeholder="Tìm Kiếm" id="searchInput" name="search">
+                    </form>
                 </div>
             </div>
 
@@ -228,16 +215,14 @@ require_once 'header.php';
                         <div class="mtext-102 cl2 p-b-15">
                             Lọc
                         </div>
-
                         <ul>
                             <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
+                                <a href="?act=home&page=<?= $page ?>&ord=0" class="filter-link stext-106 trans-04">
                                     Giá: Cao đến thấp
                                 </a>
                             </li>
-
                             <li class="p-b-6">
-                                <a href="#" class="filter-link stext-106 trans-04">
+                                <a href="?act=home&page=<?= $page ?>&ord=1" class="filter-link stext-106 trans-04">
                                     Giá: Thấp đến cao
                                 </a>
                             </li>
@@ -250,25 +235,13 @@ require_once 'header.php';
                         </div>
 
                         <div class="flex-w p-t-4 m-r--5">
-                            <a href="#"
-                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Nữ
-                            </a>
-
-                            <a href="#"
-                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Nam
-                            </a>
-
-                            <a href="#"
-                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Đồng hồ
-                            </a>
-
-                            <a href="#"
-                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Túi xách
-                            </a>
+                            <?php
+                            foreach ($danh_mucs as $danh_muc) {
+                                ?>
+                                <a href="" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"><?= $danh_muc['ten_danh_muc'] ?></a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -276,571 +249,51 @@ require_once 'header.php';
         </div>
         <!-- sanpham -->
         <div class="row isotope-grid">
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-01.jpg" alt="IMG-PRODUCT">
 
-                        <a href="#e"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Esprit Ruffle Shirt
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $16.64
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
+            <?php foreach ($san_phams as $san_pham): ?>
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="<?= $san_pham['hinh_anh'] ?? 'default.jpg'; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 300px; object-fit: cover; object-position: center">
+                            <a href=""
+                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                Xem thêm
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-02.jpg" alt="IMG-PRODUCT">
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="chitietsanpham.php?id=<?= $san_pham['id']; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    <?= htmlspecialchars($san_pham['ten_san_pham']); ?>
+                                </a>
 
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
+                                <span class="stext-105 cl3">
+                    <?= number_format($san_pham['gia'], 0, ',', '.'); ?> VNĐ
+                </span>
+                            </div>
 
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Herschel supply
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $35.31
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
+                                         alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
+                                         alt="ICON">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-03.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Only Check Trouser
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $25.50
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-04.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Classic Trench Coat
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $75.00
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-05.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Front Pocket Jumper
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $34.75
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-06.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Vintage Inspired Classic
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $93.20
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-07.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Shirt in Stretch Cotton
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $52.66
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-08.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Pieces Metallic Printed
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $18.96
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-09.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Converse All Star Hi Plimsolls
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $75.00
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-10.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Femme T-Shirt In Stripe
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $25.85
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-11.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Herschel supply
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $63.16
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-12.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Herschel supply
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $63.15
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-13.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                T-Shirt with Sleeve
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $18.49
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-14.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Pretty Little Thing
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $54.79
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-15.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Mini Silver Mesh Watch
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $86.85
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="assets/images/product-16.jpg" alt="IMG-PRODUCT">
-
-                        <a href="#"
-                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                            Quick View
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                            <a href="chitietsanpham.php" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                Square Neck Back
-                            </a>
-
-                            <span class="stext-105 cl3">
-                                $29.64
-                            </span>
-                        </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                    alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                    alt="ICON">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
         <!-- hetsanpham -->
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45">
-            <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-                Xem Thêm
+            <a href="?act=home&page=<?= $page - 1 ?>">
+                <i class="fa-solid fa-arrow-left mr-4"> </i>
+            </a>
+            <a href="?act=home&page=<?= $page + 1 ?>">
+                <i class="fa-solid fa-arrow-right ml-4"> </i>
             </a>
         </div>
     </div>

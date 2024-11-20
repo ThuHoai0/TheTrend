@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/util.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         #admin {
             color: #000;
@@ -74,11 +75,11 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li>
-                                <a href="index.php">Trang Chủ</a>
+                                <a href="http://localhost/TheTrend/?act=home">Trang Chủ</a>
                             </li>
 
                             <li>
-                                <a href="sanpham.php">Danh mục</a>
+                                <a href="sanpham.php">Sản Phẩm</a>
                             </li>
 
                             <li>
@@ -123,26 +124,6 @@
                     </div>
                 </nav>
             </div>
-        </div>
-
-        <!-- Header Mobile -->
-        <div class="wrap-header-mobile">
-            <!-- Logo moblie -->
-            <div class="logo-mobile">
-                <a href="index.php"><img src="assets/images/icons/logo-01.png" alt="IMG-LOGO"></a>
-            </div>
-            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                    data-notify="2">
-                    <i class="zmdi zmdi-shopping-cart"></i>
-                </div>
-
-                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-                    data-notify="0">
-                    <i class="zmdi zmdi-favorite-outline"></i>
-                </a>
-            </div>
-
         </div>
 
     </header>

@@ -68,4 +68,53 @@ class Home
         }
     }
 
+    public function getByCategory($danh_muc_id, $offset, $limit) {
+        $sql = "SELECT * FROM san_phams WHERE danh_muc_id = :danh_muc_id LIMIT :offset, :limit";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':danh_muc_id', $danh_muc_id, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function getAllProduct($offset, $limit, $ord) {
+        try {
+            // Xác định thứ tự sắp xếp (cao -> thấp hoặc thấp -> cao)
+            $orderDirection = ($ord === 1) ? 'ASC' : 'DESC';
+
+            $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc 
+                FROM san_phams 
+                LEFT JOIN danh_mucs 
+                ON san_phams.danh_muc_id = danh_mucs.id 
+                ORDER BY san_phams.gia $orderDirection 
+                LIMIT :limit OFFSET :offset";
+
+            $stmt = $this->conn->prepare($sql);
+
+            // Bind các tham số vào câu SQL
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            // Lấy kết quả
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+
+
+    public function getBySearch($search) {
+        $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE :search";
+//        die('túi');
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

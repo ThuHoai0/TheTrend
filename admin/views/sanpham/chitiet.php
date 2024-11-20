@@ -67,7 +67,6 @@
                         <div class="h-100">
                             <div class="card">
                             <br>
-                            <h2 class="form-label" style="text-align: center">Chi Tiết Sản Phẩm</h2>
                                 <form class="container-fluid mt-3 mb-3">
                                     <div class="mb-3">
                                         <h5 class="form-label">Tên sản phẩm</h5>
