@@ -81,10 +81,22 @@ class Donhang
 
     public function getDetailData($id) {
         try {
-            $sql = "SELECT dhs.* ,nguoi_dungs.ten AS ten_nguoi_dung, san_phams.ten_san_pham FROM 
+            $sql = "SELECT dhs.* ,
+            nguoi_dungs.ten AS ten_nguoi_dung,
+            san_phams.ten_san_pham,
+            chi_tiet_don_hangs.so_luong,
+            chi_tiet_don_hangs.don_gia,
+            chi_tiet_don_hangs.thanh_tien,
+            nguoi_dungs.ten,
+            nguoi_dungs.email,
+            nguoi_dungs.so_dien_thoai,
+            trang_thai_don_hangs.ten_trang_thai
+            FROM
             `don_hangs` AS dhs
             JOIN san_phams ON san_phams.id = dhs.san_pham_id
-            JOIN nguoi_dungs ON nguoi_dungs.id = dhs.nguoi_dung_id 
+            LEFT JOIN nguoi_dungs ON nguoi_dungs.id = dhs.nguoi_dung_id
+            LEFT JOIN chi_tiet_don_hangs ON chi_tiet_don_hangs.don_hang_id = dhs.id 
+            LEFT JOIN trang_thai_don_hangs ON trang_thai_don_hangs.id = dhs.trang_thai_id 
             WHERE dhs.id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);

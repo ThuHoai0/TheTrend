@@ -72,30 +72,17 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=binhluan/update&id=<?= $binh_luan['id'] ?>" method="post">
-
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên sản phẩm</label>
-                                                <input type="text" class="form-control" name="ten_sp" value="<?= $binh_luan['ten_sp'] ?>" disabled>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Tên người dùng</label>
-                                                <input type="text" class="form-control" name="ten" value="<?= $binh_luan['ten'] ?>" disabled>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Nội dung</label>
-                                                <textarea type="text" class="form-control" name="noi_dung" disabled><?= $binh_luan['noi_dung'] ?></textarea>
+                                        <form id="updateForm" action="?act=binhluan/update&id=<?= $value['id'] ?>" method="post">
+                                        <div class="mb-3">
+                                                <label for="citynameInput" class="form-label">ID Bình luận</label>
+                                                <input disabled type="text" class="form-control" name="id" value="<?= $value['id'] ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $binh_luan['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $binh_luan['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thị</option>
+                                                    <option value="1" <?= $value['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
+                                                    <option value="0" <?= $value['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thi</option>
                                                 </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="citynameInput" class="form-label">Biểu tượng</label>
-                                                <input type="text" class="form-control" name="bieu_tuong" value="<?= $binh_luan['bieu_tuong'] ?>" disabled>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="text-end">

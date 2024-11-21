@@ -5,6 +5,7 @@ class DonhangsController
     public $modelDonhang;
     public function __construct() {
         $this->modelDonhang = new Donhang();
+        $this->modelChitietdonhang = new Chitietdonhang();
     }
     public function index()
     {
@@ -21,6 +22,9 @@ class DonhangsController
     {
         $id = $_GET['id'];
         $don_hang = $this->modelDonhang->getDetailData($id);
+        $chi_tiet_don_hang = $this->modelChitietdonhang->getDetailData($id);
+        // var_dump($don_hang); die;
+        // var_dump($chi_tiet_don_hang); die;
         require_once './views/donhang/chitiet.php';
     }
     public function edit()

@@ -115,6 +115,8 @@
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên người dùng</th>
                                                     <th scope="col">Nội dung</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Thao tác</th>
                                                 </tr>
                                                 </thead>
 
@@ -124,6 +126,20 @@
                                                             <td class="fw-medium"><?= $i+1 ?></td>
                                                             <td><?= $value['ten'] ?></td>
                                                             <td><?= $value['noi_dung'] ?></td>
+                                                            <td><?= $value['trang_thai'] ?></td>
+                                                            <td>
+                                                            <div class="hstack gap-3 flex-wrap">
+                                                                <a href="?act=binhluan/edit&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+
+                                                                <form action="?act=binhluan/delete" method="POST"
+                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
+                                                                    <input type="hidden" name="id" value="<?= $value['id'] ?>">
+                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
+                                                                        <i class="ri-delete-bin-line"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <?php endforeach; }?>
                                                 </tbody>
@@ -137,19 +153,36 @@
                                     <table class="table table-striped table-nowrap align-middle mb-0">
                                                 <thead>
                                                 <tr>
+                                                    <th scope="col">STT</th>
                                                     <th scope="col">Tên người dùng</th>
                                                     <th scope="col">Số sao</th>
                                                     <th scope="col">Nội dung</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Thao tác</th>
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
                                                 <?php if ($danh_gia) {foreach ($danh_gia as $i => $value) : ?>
                                                         <tr>
+                                                            <td class="fw-medium"><?= $i+1 ?></td>
                                                             <td><?= $value['ten'] ?></td>
                                                             <td><?= $value['so_sao'] ?></td>
                                                             <td><?= $value['noi_dung'] ?></td>
+                                                            <td><?= $value['trang_thai'] ?></td>
+                                                            <td>
+                                                            <div class="hstack gap-3 flex-wrap">
+                                                                <a href="?act=danhgia/edit&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
+                                                                <form action="?act=danhgia/delete" method="POST"
+                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
+                                                                    <input type="hidden" name="id" value="<?= $value['id'] ?>">
+                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
+                                                                        <i class="ri-delete-bin-line"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                     <?php endforeach; }?>
                                                 </tbody>
