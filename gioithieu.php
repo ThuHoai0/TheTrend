@@ -1,5 +1,5 @@
 <?php
-	include"./views/header.php";
+	require_once "./views/header.php";
  ?>
 
 <!-- Title page -->
@@ -106,4 +106,4 @@
     </span>
 </div>
 
-<?php include "./views/footer.php";?>
+<?php require_once "./views/footer.php";?>

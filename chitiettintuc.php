@@ -1,5 +1,5 @@
 <?php 
-	include "./view/header.php";
+	require_once "./views/header.php";
 ?>
 
 <!-- breadcrumb -->
@@ -394,5 +394,5 @@
 </section>
 
 <?php 
-	include "./view/footer.php";
+	require_once "./views/footer.php";
 ?>
