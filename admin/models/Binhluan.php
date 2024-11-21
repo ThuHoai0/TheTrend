@@ -49,14 +49,15 @@ class Binhluan {
     }
     public function getDetailData($id) {
         try {
+
             $sql = "SELECT bl.* ,san_phams.ten_san_pham AS ten_sp, nguoi_dungs.ten FROM 
             `binh_luans` AS bl
             JOIN san_phams ON san_phams.id = bl.san_pham_id
-            JOIN nguoi_dungs ON nguoi_dungs.id = bl.nguoi_dung_id WHERE bl.id = :id";
+            JOIN nguoi_dungs ON nguoi_dungs.id = bl.nguoi_dung_id WHERE bl.san_pham_id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            return $stmt->fetch();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();
         }

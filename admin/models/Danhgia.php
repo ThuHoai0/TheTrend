@@ -94,7 +94,10 @@ class Danhgia {
     // lay thong tin chi tiet
     public function getDetailData($id) {
         try {
-            $sql = "SELECT * FROM `danh_gias` WHERE id = :id";
+            $sql = "SELECT dg.* ,san_phams.ten_san_pham AS ten_sp, nguoi_dungs.ten FROM 
+            `danh_gias` AS dg
+            JOIN san_phams ON san_phams.id = dg.san_pham_id
+            JOIN nguoi_dungs ON nguoi_dungs.id = dg.nguoi_dung_id WHERE dg.san_pham_id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -102,7 +105,7 @@ class Danhgia {
 
             $stmt->execute();
 
-            return $stmt->fetch();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' .$e->getMessage();
         }

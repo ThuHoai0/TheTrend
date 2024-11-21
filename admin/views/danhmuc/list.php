@@ -84,7 +84,6 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên danh mục</th>
-                                                    <th scope="col">Mô tả</th>
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
 
@@ -101,7 +100,6 @@
                                                         <td>
                                                             <a href="?act=danhmuc/chitiet&id=<?= $danh_muc['id'] ?>"><?= $danh_muc['ten_danh_muc'] ?></a>
                                                         </td>
-                                                        <td><?= $danh_muc['mo_ta'] ?></td>
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'

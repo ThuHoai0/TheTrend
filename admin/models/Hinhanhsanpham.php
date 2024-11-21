@@ -9,21 +9,23 @@ class Hinhanhsanpham
     public function getAll() {
         try {
             $sql = "SELECT 
-                        sp.id AS product_id,
-                        sp.ten_san_pham AS product_name,
-                        sp.mo_ta AS product_description,
-                        sp.gia AS price,
-                        sp.hinh_anh AS main_image,
-                        hinh.duong_dan_hinh_anh AS additional_image,
-                        hinh.mo_ta AS image_description,
-                        hinh.id as image_id
-                    FROM 
-                        san_phams sp
-                    INNER JOIN 
-                        hinh_anh_san_phams hinh
-                    ON 
-                        sp.id = hinh.san_pham_id;
-                    ";
+    sp.id AS product_id,
+    sp.ten_san_pham AS product_name,
+    sp.mo_ta AS product_description,
+    sp.gia AS price,
+    sp.hinh_anh AS main_image,
+    hinh.duong_dan_hinh_anh AS additional_image,
+    hinh.mo_ta AS image_description,
+    hinh.id AS image_id
+FROM 
+    san_phams sp
+INNER JOIN 
+    hinh_anh_san_phams hinh
+ON 
+    sp.id = hinh.san_pham_id
+ORDER BY 
+    sp.id DESC;
+                  ";
 
             $stmt = $this->conn->prepare($sql);
 

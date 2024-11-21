@@ -156,20 +156,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                         <div class="card">
                                             <div class="card-header border-0 align-items-center d-flex">
                                                 <h4 class="card-title mb-0 flex-grow-1">Doanh thu</h4>
-                                                <!-- <div>
-                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
-                                                        ALL
-                                                    </button>
-                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
-                                                        1M
-                                                    </button>
-                                                    <button type="button" class="btn btn-soft-secondary material-shadow-none btn-sm">
-                                                        6M
-                                                    </button>
-                                                    <button type="button" class="btn btn-soft-primary material-shadow-none btn-sm">
-                                                        1Y
-                                                    </button>
-                                                </div> -->
                                             </div><!-- end card header -->
 
                                             <div class="card-header p-0 border-0 bg-light-subtle">
@@ -186,6 +172,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                         <div class="p-3 border border-dashed border-start-0">
                                                             <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongTienCaNam; ?>">0</span> VND</h5>
                                                             <p class="text-muted mb-0">Thu Nhập Cả Năm</p>
+
                                                         </div>
                                                     </div>
 

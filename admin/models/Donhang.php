@@ -81,9 +81,11 @@ class Donhang
 
     public function getDetailData($id) {
         try {
-            $sql = "SELECT don_hangs.* ,nguoi_dungs.ten AS ten_nguoi_dung FROM 
-            `don_hangs` INNER JOIN nguoi_dungs ON nguoi_dungs.id = don_hangs.nguoi_dung_id 
-            WHERE don_hangs.id = :id";
+            $sql = "SELECT dhs.* ,nguoi_dungs.ten AS ten_nguoi_dung, san_phams.ten_san_pham FROM 
+            `don_hangs` AS dhs
+            JOIN san_phams ON san_phams.id = dhs.san_pham_id
+            JOIN nguoi_dungs ON nguoi_dungs.id = dhs.nguoi_dung_id 
+            WHERE dhs.id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->execute();

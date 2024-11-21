@@ -7,7 +7,8 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Chi Tiết Đơn Hàng  | The Trend</title>
+    <title>Chi Tiết Sản Phẩm  | The Trend</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -66,64 +67,85 @@
                     <div class="col">
                         <div class="h-100">
                             <div class="card">
-
-                                <form class="container-fluid mt-3 mb-3">
-                                    <div class="mb-3">
-                                            <label for="citynameInput" class="form-label">Mã đơn hàng</label>
-                                            <input type="text" class="form-control" name="ma_don_hang" value="<?= $don_hang['ma_don_hang'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Tên người dùng</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['ten_nguoi_dung'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ngày đặt hàng</h5>
-                                        <input type="datetime-local" class="form-control" value="<?= $don_hang['ngay_dat_hang'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Phương thức thanh toán</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['phuong_thuc_thanh_toan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Trạng thái thanh toán</h5>
-                                        <input type="text" class="form-control" value="<?= ($don_hang['trang_thai_thanh_toan']) ? 'Đã thanh toán' : 'Chưa thanh toán' ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Họ tên người nhận</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['ho_ten_nguoi_nhan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Số điện thoại người nhận</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['so_dien_thoai_nguoi_nhan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Email người nhận</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['email_nguoi_nhan'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Ghi chú</h5>
-                                        <textarea disabled type="text" class="form-control"><?= $don_hang['ghi_chu'] ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h5 class="form-label">Tổng tiền</h5>
-                                        <input type="text" class="form-control" value="<?= $don_hang['tong_tien'] ?>" disabled>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
-                                        <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($don_hang['trang_thai_id'] == 1) ? 'selected' : ''  ?> value="1">Đang xử lý</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 2) ? 'selected' : ''  ?> value="2">Đã xác nhận</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 3) ? 'selected' : ''  ?> value="3">Đang giao hàng</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 4) ? 'selected' : ''  ?> value="4">Đã giao hàng</option>
-                                            <option <?= ($don_hang['trang_thai_id'] == 0) ? 'selected' : ''  ?> value="0">Đã hủy</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="text-end">
-                                            <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
-                                        </div>
-                                    </div>
-                                </form>
+                <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                    <h4 style="color:#fff">Quản lý danh sách đơn hàng | <?= $don_hang['ma_don_hang'] ?></h4>
+                    </div>
+                    <div class="card-body">
+                    <div class="mb-3">
+                        <span class="badge bg-success p-2">Đơn hàng: 
+                        
+                        </span>
+                        <span class="badge bg-primary text-white p-2">Phương thức thanh toán: <?= $don_hang['phuong_thuc_thanh_toan'] ?></span>
+                        <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán: <?= $don_hang['trang_thai_thanh_toan'] ?></span>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                        <h5>Thông tin người đặt </h5>
+                        <p><strong>Tên:</strong></p>
+                        <p><strong>Email:</strong></p>
+                        <p><strong>SĐT:</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                        <h5>Thông tin người nhận</h5>
+                        <p><strong>Tên:</strong> <?= $don_hang['ho_ten_nguoi_nhan'] ?></p>
+                        <p><strong>Email:</strong> <?= $don_hang['email_nguoi_nhan'] ?></p>
+                        <p><strong>SĐT:</strong> <?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></p>
+                        <p><strong>Địa chỉ:</strong> 147 Phường Canh gà</p>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center">
+                        <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <?php foreach ($don_hangs as $i => $don_hang) : ?>
+                            <td class="fw-medium"><?= $i+1 ?></td>
+                            <td><?= $don_hang['ten_san_pham'] ?></td>
+                            <td><?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></td>
+                            <td><?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></td>
+                            <td><?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                        
+                        </table>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end mt-4">
+                        <ul class="list-group w-50">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Thành tiền:</span>
+                            <strong>1,554</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Tiền vận chuyển:</span>
+                            <strong>50,000</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <span>Tổng tiền:</span>
+                            <strong class="text-danger"><?= $don_hang['tong_tien'] ?></strong>
+                        </li>
+                        </ul>
+                    </div> <br>
+                        <div class="col-lg-12">
+                            <div class="text-end">
+                                <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                </div>
 
                             </div>
                         </div> <!-- end .h-100-->
@@ -185,7 +207,7 @@
 <?php
 require_once "views/layouts/libs_js.php";
 ?>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html><?php

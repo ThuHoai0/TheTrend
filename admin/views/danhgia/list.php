@@ -96,8 +96,6 @@
 
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
-                                                        <!-- Dropdown Filter Button -->
-
                                                     </th>
                                                     <th scope="col">Thao tác</th>
                                                 </tr>

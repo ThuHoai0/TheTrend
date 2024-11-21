@@ -78,7 +78,7 @@
                                                     <tr>
                                                         <td class="fw-medium"><?= $i+1 ?></td>
                                                         <td>
-                                                                <a href="?act=hinhanhsanpham/chitiet&id=<?= $hinh_anh_san_pham['product_id'] ?>"><?= $hinh_anh_san_pham['product_name'] ?></a>
+                                                            <?= $hinh_anh_san_pham['product_name'] ?>
                                                         </td>
                                                         <td>
                                                             <img src="<?= 'uploads/'.$hinh_anh_san_pham['additional_image'] ?>" alt="" style="max-width: 100px; max-height: 100px;">
