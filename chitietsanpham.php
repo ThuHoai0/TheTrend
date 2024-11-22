@@ -72,19 +72,19 @@
             <div class="col-md-6 col-lg-5 p-b-30">
                 <div class="p-r-50 p-t-5 p-lr-0-lg">
                     <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                        Lightweight Jacket
+                        <?= $chi_tiet['ten_san_pham'] ?>
                     </h4>
 
                     <span class="mtext-106 cl2">
-                        <?= $chi_tiet_san_pham['gia'] ?>
+                        <?= $chi_tiet['gia'] ?>
                     </span>
 
                     <p class="stext-102 cl3 p-t-23">
-                        <?= $chi_tiet_san_pham['mo_ta'] ?>
+                        <?= $chi_tiet['mo_ta'] ?>
                     </p>
 
                     <p class="stext-102 cl3 p-t-23">
-                        <?= $chi_tiet_san_pham['so_luong'] ?>
+                        <?= $chi_tiet['so_luong'] ?>
                     </p>
 
                     <!--  -->

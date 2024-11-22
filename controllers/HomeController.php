@@ -103,27 +103,16 @@ class HomeController
     }
     public function chitietsanpham()
     {
-        // Kiểm tra xem ID sản phẩm có được truyền vào hay không
-        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-            $id = (int)$_GET['id'];
-
-            // Gọi phương thức lấy chi tiết sản phẩm từ model
-            $chi_tiet_san_pham = $this->modelHome->getDetailData($id);
-
-            // Kiểm tra nếu không tìm thấy sản phẩm
-            if (!$chi_tiet_san_pham) {
-                echo "<script>alert('Sản phẩm không tồn tại!'); 
-            window.location.href = '?act=home';</script>";
-                return;
-            }
-
-            // Hiển thị giao diện chi tiết sản phẩm
-            require_once 'chitietsanpham.php';
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $id = intval($_GET['id']); // Chuyển đổi thành số nguyên để đảm bảo an toàn
+            $chi_tiet = $this->modelHome->getDetailData($id);
+            var_dump($chi_tiet);
+            die();
         } else {
-            // Nếu ID không hợp lệ hoặc không được cung cấp, chuyển hướng về trang chủ
-            echo "<script>alert('ID sản phẩm không hợp lệ!'); 
-        window.location.href = '?act=home';</script>";
+            echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
+            $chi_tiet = false; // Đặt giá trị mặc định
         }
+            require_once './chitietsanpham.php';
     }
     public function lienhe()
     {
