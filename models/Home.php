@@ -106,8 +106,6 @@ class Home
         }
     }
 
-
-
     public function getBySearch($search) {
         $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE :search";
 //        die('túi');
@@ -115,6 +113,34 @@ class Home
         $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getTop8Products() {
+        try {
+            $sql = "SELECT sp.id, sp.ten_san_pham, sp.gia, sp.hinh_anh, COUNT(dh.san_pham_id) AS luot_mua
+                FROM san_phams sp
+                JOIN don_hangs dh ON sp.id = dh.san_pham_id
+                GROUP BY sp.id, sp.ten_san_pham, sp.gia, sp.hinh_anh
+                ORDER BY luot_mua DESC
+                LIMIT 8";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+    public function getDetailData($id)
+    {
+        try {
+            $sql = "SELECT ten_san_pham, mo_ta, gia, hinh_anh, so_luong FROM `san_phams`
+            WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
     }
 
 }

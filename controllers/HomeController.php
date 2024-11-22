@@ -73,4 +73,57 @@ class HomeController
         }
         require_once 'login/dky.php';
     }
+
+    public function sanpham()
+    {
+        $offset = 16;
+        $limit = 16;
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $ord = isset($_GET['ord']) ? (int)$_GET['ord'] : 1;
+
+        if ($page) {
+            $offset = ($page - 1) * $limit;
+        }
+        $danh_mucs = $this->modelHome->getAllCategory();
+        $san_phams = null;
+        if (isset($_GET['category']) && !empty($_GET['category'])) {
+            $danh_muc_id = (int)$_GET['category'];
+            $san_phams = $this->modelHome->getByCategory($danh_muc_id, $offset, $limit);
+        } elseif (isset($_GET['search']) && !empty($_GET['search'])) {
+            $san_phams = $this->modelHome->getBySearch($_GET['search']);
+        } else {
+            $san_phams = $this->modelHome->getAllProduct($offset, $limit, $ord);
+        }
+        require_once './sanpham.php';
+    }
+    public function top8()
+    {
+        $top8 = $this->modelHome->getTop8Products();
+        require_once './views/main.php';
+    }
+    public function chitietsanpham()
+    {
+        // Kiểm tra xem ID sản phẩm có được truyền vào hay không
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $id = (int)$_GET['id'];
+
+            // Gọi phương thức lấy chi tiết sản phẩm từ model
+            $chi_tiet_san_pham = $this->modelHome->getDetailData($id);
+
+            // Kiểm tra nếu không tìm thấy sản phẩm
+            if (!$chi_tiet_san_pham) {
+                echo "<script>alert('Sản phẩm không tồn tại!'); 
+            window.location.href = '?act=home';</script>";
+                return;
+            }
+
+            // Hiển thị giao diện chi tiết sản phẩm
+            require_once 'chitietsanpham.php';
+        } else {
+            // Nếu ID không hợp lệ hoặc không được cung cấp, chuyển hướng về trang chủ
+            echo "<script>alert('ID sản phẩm không hợp lệ!'); 
+        window.location.href = '?act=home';</script>";
+        }
+    }
+
 }

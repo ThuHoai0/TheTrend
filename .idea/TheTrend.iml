@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="duan1" />
+    <orderEntry type="module" module-name="DU-AN-WEB-BAN-LAPTOP" />
   </component>
 </module>

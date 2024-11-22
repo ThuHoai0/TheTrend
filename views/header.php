@@ -79,7 +79,7 @@
                             </li>
 
                             <li>
-                                <a href="sanpham.php">Sản Phẩm</a>
+                                <a href="?act=sanpham">Sản Phẩm</a>
                             </li>
                             <li>
                                 <a href="gioithieu.php">Khuyến mại</a>
@@ -88,8 +88,6 @@
                             <li>
                                 <a href="tintuc.php">Tin Tức</a>
                             </li>
-
-
 
                             <li>
                                 <a href="lienhe.php">Liên Hệ</a>
