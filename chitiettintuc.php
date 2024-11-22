@@ -1,9 +1,9 @@
 <?php 
-	include "./view/header.php";
+	require_once "./views/header.php";
 ?>
 
 <!-- breadcrumb -->
-<div class="container">
+<!-- <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
             Home
@@ -22,13 +22,13 @@
 </div>
 
 
-<!-- Content page -->
+<!-- 
 <section class="bg0 p-t-52 p-b-20">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-lg-9 p-b-80">
                 <div class="p-r-45 p-r-0-lg">
-                    <!--  -->
+                    
                     <div class="wrap-pic-w how-pos5-parent">
                         <img src="images/blog-04.jpg" alt="IMG-BLOG">
 
@@ -107,7 +107,7 @@
                         </div>
                     </div>
 
-                    <!--  -->
+                    <!-- 
                     <div class="p-t-40">
                         <h5 class="mtext-113 cl2 p-b-12">
                             Leave a Comment
@@ -391,8 +391,24 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= htmlspecialchars($tinTuc['tieu_de']) ?></title>
+</head>
+<body>
+    <h1><?= htmlspecialchars($tinTuc['tieu_de']) ?></h1>
+    <p><?= nl2br(htmlspecialchars($tinTuc['noi_dung'])) ?></p>
+    <p><small>Ngày tạo: <?= $tinTuc['ngay_tao'] ?></small></p>
+    <a href="index.php">Quay lại danh sách</a>
+</body>
+</html>
 
 <?php 
-	include "./view/footer.php";
+	require_once "./views/footer.php";
 ?>
