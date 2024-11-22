@@ -58,7 +58,7 @@ class Sanpham {
                                     VALUES (:ten_san_pham, :mo_ta, :gia, :gia_nhap, :so_luong, :danh_muc_id, :trang_thai, :ngay_tao, :hinh_anh)";
 
             $stmt = $this->conn->prepare($sql);
-
+            die($stmt);
             // gan gia tri vao cac tham so
             $stmt->bindParam(':ten_san_pham', $ten_san_pham);
             $stmt->bindParam(':mo_ta', $mo_ta);
@@ -113,8 +113,6 @@ class Sanpham {
                 danh_gias.ngay_danh_gia, 
                 danh_gias.trang_thai AS trang_thai_danh_gia,
                 nguoi_dungs.ten AS ten_nd,
-                nguoi_dungs.so_dien_thoai AS sdt,
-                nguoi_dungs.gioi_tinh AS gt,
                 binh_luans.noi_dung AS noi_dung_binh_luan,
                 binh_luans.ngay_binh_luan, 
                 binh_luans.trang_thai AS trang_thai_binh_luan

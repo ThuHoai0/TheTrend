@@ -118,6 +118,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Danh mục</h5>
+
                                         <select class="form-select" name="danh_muc_id">
                                             <option value="" selected disabled>Chọn danh mục</option>
                                             <?php

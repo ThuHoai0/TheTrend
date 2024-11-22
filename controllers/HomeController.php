@@ -104,13 +104,11 @@ class HomeController
     public function chitietsanpham()
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $id = intval($_GET['id']); // Chuyển đổi thành số nguyên để đảm bảo an toàn
+            $id = intval($_GET['id']);
             $chi_tiet = $this->modelHome->getDetailData($id);
-            var_dump($chi_tiet);
-            die();
         } else {
             echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
-            $chi_tiet = false; // Đặt giá trị mặc định
+            $chi_tiet = false;
         }
             require_once './chitietsanpham.php';
     }

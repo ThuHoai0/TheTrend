@@ -27,6 +27,7 @@ class SanphamsController
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            die($_POST['danh_muc_id']);
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $ten_san_pham = $_POST['ten_san_pham'];
             $mo_ta = $_POST['mo_ta'];
