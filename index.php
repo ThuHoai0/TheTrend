@@ -21,6 +21,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'sanpham' => (new HomeController()) -> sanpham(),
         'yeuthich' => (new HomeController()) -> top8(),
         'chitietsanpham' => (new HomeController()) -> chitietsanpham(),
+        'lienhe' => (new HomeController()) -> lienhe(),
 
 
         default => null, // Trường hợp không khớp

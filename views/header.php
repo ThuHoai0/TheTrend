@@ -90,7 +90,7 @@
                             </li>
 
                             <li>
-                                <a href="lienhe.php">Liên Hệ</a>
+                                <a href="http://localhost/TheTrend/?act=lienhe">Liên Hệ</a>
                             </li>
                         </ul>
                     </div>

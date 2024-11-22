@@ -142,5 +142,25 @@ class Home
             echo 'Error: ' . $e->getMessage();
         }
     }
+    public function lienhe($email, $ho_ten, $so_dien_thoai,$noi_dung) {
+        try {
+            $sql = "INSERT INTO lien_hes (`ho_ten`, `email`, `so_dien_thoai`, `noi_dung`) VALUES (:ho_ten, :email, :so_dien_thoai, :noi_dung)";
+
+            $stmt = $this->conn->prepare($sql);
+
+            // gan gia tri vao cac tham so
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':ho_ten', $ho_ten);
+            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai);
+            $stmt->bindParam(':noi_dung', $noi_dung);
+
+            $stmt->execute();
+
+
+        }
+        catch (PDOException $e) {
+            echo 'Error: ' .$e->getMessage();
+        }
+    }
 
 }
