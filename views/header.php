@@ -79,11 +79,10 @@
                             </li>
 
                             <li>
-                                <a href="sanpham.php">Sản Phẩm</a>
+                                <a href="?act=sanpham">Sản Phẩm</a>
                             </li>
-
                             <li>
-                                <a href="giohang.php">Giỏ Hàng</a>
+                                <a href="gioithieu.php">Khuyến mại</a>
                             </li>
 
                             <li>
@@ -91,11 +90,7 @@
                             </li>
 
                             <li>
-                                <a href="gioithieu.php">Giới Thiệu</a>
-                            </li>
-
-                            <li>
-                                <a href="lienhe.php">Liên Hệ</a>
+                                <a href="http://localhost/TheTrend/?act=lienhe">Liên Hệ</a>
                             </li>
                         </ul>
                     </div>

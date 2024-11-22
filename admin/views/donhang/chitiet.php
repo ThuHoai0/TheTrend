@@ -74,18 +74,28 @@
                     </div>
                     <div class="card-body">
                     <div class="mb-3">
-                        <span class="badge bg-success p-2">Đơn hàng: 
+                        <span class="badge bg-success p-2">Đơn hàng: <?= $don_hang['ten_trang_thai'] ?>
                         
                         </span>
                         <span class="badge bg-primary text-white p-2">Phương thức thanh toán: <?= $don_hang['phuong_thuc_thanh_toan'] ?></span>
-                        <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán: <?= $don_hang['trang_thai_thanh_toan'] ?></span>
+                        <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán: 
+                        <?php
+                                                            // Check the 'status' field instead of 'category_name'
+                                                            if ($don_hang['trang_thai_thanh_toan'] == '1') { ?>
+                                                                <span class="badge bg-warning text-dark">Đã Thanh Toán </span>
+                                                                <?php
+                                                            } else { ?>
+                                                                <span class="badge bg-warning text-dark">Chưa Thanh Toán</span>
+                                                                <?php
+                                                            }
+                                                            ?>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-6">
                         <h5>Thông tin người đặt </h5>
-                        <p><strong>Tên:</strong></p>
-                        <p><strong>Email:</strong></p>
-                        <p><strong>SĐT:</strong></p>
+                        <p><strong>Tên:</strong><?= $don_hang['ten'] ?></p>
+                        <p><strong>Email:</strong><?= $don_hang['email'] ?></p>
+                        <p><strong>SĐT:</strong><?= $don_hang['so_dien_thoai'] ?></p>
                         </div>
                         <div class="col-md-6">
                         <h5>Thông tin người nhận</h5>
@@ -99,23 +109,19 @@
                         <table class="table table-bordered text-center">
                         <thead class="table-light">
                         <tr>
-                            <th>#</th>
                             <th>Tên sản phẩm</th>
                             <th>Đơn giá</th>
                             <th>Số lượng</th>
-                            <th>Thành tiền</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                        <?php foreach ($don_hangs as $i => $don_hang) : ?>
-                            <td class="fw-medium"><?= $i+1 ?></td>
-                            <td><?= $don_hang['ten_san_pham'] ?></td>
-                            <td><?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></td>
-                            <td><?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></td>
-                            <td><?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></td>
+                        <tr>  
+                        <?php if ($chi_tiet_don_hang) { foreach ($chi_tiet_don_hang as $i => $value) : ?>
+                            <td><?= $value['ten_san_pham'] ?></td>
+                            <td><?= $value['don_gia'] ?></td>
+                            <td><?= $value['so_luong'] ?></td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach; } ?>
                         </tbody>
                         
                         </table>
@@ -124,12 +130,8 @@
                     <div class="d-flex justify-content-end mt-4">
                         <ul class="list-group w-50">
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Thành tiền:</span>
-                            <strong>1,554</strong>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Tiền vận chuyển:</span>
-                            <strong>50,000</strong>
+                            <span>Thành tiền: </span>
+                            <strong><?= $don_hang['so_luong'] * $don_hang['don_gia'] ?></strong>
                         </li>
                         <li class="list-group-item d-flex justify-content-between bg-light">
                             <span>Tổng tiền:</span>
