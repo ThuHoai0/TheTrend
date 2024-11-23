@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vie">
 
 <head>
-    <title>Home</title>
+    <?php
+    // Lấy giá trị của act từ URL (mặc định là 'home' nếu không có giá trị nào)
+    $act = $_GET['act'] ?? 'home';
+
+    // Thiết lập tiêu đề và nội dung giao diện dựa trên act
+    switch ($act) {
+        case 'sanpham':
+            $title = 'Sản Phẩm';
+            $view = 'views/sanpham.php';
+            break;
+
+        case 'chitietsanpham':
+            $title = 'Chi Tiết Sản Phẩm';
+            $view = 'views/chitietsanpham.php';
+            break;
+
+        case 'khuyenmai':
+            $title = 'Khuyến Mại';
+            $view = 'views/khuyenmai.php';
+            break;
+
+        case 'tintuc':
+            $title = 'Tin Tức';
+            $view = 'views/tintuc.php';
+            break;
+
+        case 'lienhe':
+            $title = 'Liên Hệ';
+            $view = 'views/lienhe.php';
+            break;
+
+        case 'home':
+        default:
+            $title = 'Trang Chủ';
+            $view = 'views/home.php';
+            break;
+    }
+    ?>
+    <title><?= $title ?></title> <!-- Tiêu đề động -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="assets/images/icons/favicon.png" />
     <!--===============================================================================================-->
@@ -75,7 +113,7 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li>
-                                <a href="http://localhost/TheTrend/?act=home">Trang Chủ</a>
+                                <a href="?act=home">Trang Chủ</a>
                             </li>
 
                             <li>
@@ -90,7 +128,7 @@
                             </li>
 
                             <li>
-                                <a href="http://localhost/TheTrend/?act=lienhe">Liên Hệ</a>
+                                <a href="?act=lienhe">Liên Hệ</a>
                             </li>
                         </ul>
                     </div>

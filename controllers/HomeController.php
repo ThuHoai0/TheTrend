@@ -41,9 +41,10 @@ class HomeController
                 window.location.href = '?act=dangnhap';
                 </script>";
             } else {
-                echo "<script>alert('Đăng nhập thành công!');
-                window.location.href = '?act=home';
-                </script>";
+                header("Location: ?act=home");
+                exit();
+//                echo "<script>alert('Đăng nhập thành công!');
+//                </script>";
             }
         }
         require_once 'login/dn.php';
@@ -54,9 +55,11 @@ class HomeController
         unset($_SESSION['email']);
         unset($_SESSION['name']);
         unset($_SESSION['vai_tro']);
-        echo "<script>alert('Đăng xuất thành công!');
-                window.location.href = '?act=home';
-                </script>";
+        header("Location: ?act=home");
+        exit();
+//        echo "<script>alert('Đăng xuất thành công!');
+//                window.location.href = '?act=home';
+//                </script>";
     }
 
     public function dangky()
@@ -68,59 +71,75 @@ class HomeController
 
             // Validate tên đăng nhập
             if (empty($name)) {
-                echo "<script>alert('Tên đăng nhập không được để trống.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Tên đăng nhập không được để trống.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
             if (strlen($name) < 3 || strlen($name) > 20) {
-                echo "<script>alert('Tên đăng nhập phải có độ dài từ 3 đến 20 ký tự.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Tên đăng nhập phải có độ dài từ 3 đến 20 ký tự.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
             if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
-                echo "<script>alert('Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
 
             // Validate mật khẩu
             if (empty($pass)) {
-                echo "<script>alert('Mật khẩu không được để trống.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Mật khẩu không được để trống.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
             if (strlen($pass) < 6 || strlen($pass) > 50) {
-                echo "<script>alert('Mật khẩu phải có độ dài từ 6 đến 50 ký tự.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Mật khẩu phải có độ dài từ 6 đến 50 ký tự.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
             if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/', $pass)) {
-                echo "<script>alert('Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 số.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 số.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
 
             // Kiểm tra email đã tồn tại
             if ($this->modelHome->checkEmailExists($email)) {
-                echo "<script>alert('Email đã được sử dụng, vui lòng chọn email khác.');
-                window.location.href = '?act=dangky';
-                </script>";
-                return;
+                header("Location: ?act=dangky");
+                exit();
+//                echo "<script>alert('Email đã được sử dụng, vui lòng chọn email khác.');
+//                window.location.href = '?act=dangky';
+//                </script>";
+//                return;
             }
 
             // Thêm người dùng mới
             $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
             $_SESSION['iduser'] = $this->modelHome->dangky($name, $hashed_pass, $email);
             $_SESSION['vai_tro'] = 1; // 1 là người thường
-            echo "<script>alert('Đăng ký thành công!');
-            window.location.href = '?act=home';
-            </script>";
+            header("Location: ?act=home");
+            exit();
+//            echo "<script>alert('Đăng ký thành công!');
+//            window.location.href = '?act=home';
+//            </script>";
         }
         require_once 'login/dky.php';
     }

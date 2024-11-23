@@ -9,7 +9,7 @@
                     Tất Cả Sản Phẩm
                 </a>
                 <?php foreach ($danh_mucs as $danh_muc): ?>
-                    <a href="?act=sanpham&category=<?= htmlspecialchars($danh_muc['id']) ?>"
+                    <a href="?act=sanpham&category=<?= ($danh_muc['id']) ?>"
                        class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
                        data-filter=".<?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>">
                         <?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>
