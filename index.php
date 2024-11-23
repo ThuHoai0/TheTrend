@@ -6,9 +6,13 @@ require_once './commons/function.php';
 require_once './controllers/HomeController.php';
 require_once './controllers/TintucController.php';
 
+require_once './controllers/LienheController.php';
+
 // model
 require_once './models/Home.php';
 require_once './models/TinTuc.php';
+
+require_once './models/Lienhe.php';
 
 $act = $_GET['act'] ?? '/';
 
@@ -24,7 +28,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'sanpham' => (new HomeController()) -> sanpham(),
         'yeuthich' => (new HomeController()) -> top8(),
         'chitietsanpham' => (new HomeController()) -> chitietsanpham(),
-        'lienhe' => (new HomeController()) -> lienhe(),
+
+        'lienhe' => (new LienheController()) -> lienhe(),
         
         'tintuc' => (new TintucController()) -> dstintuc(),
         'chitiettintuc' => (new TintucController()) -> chitiet(),

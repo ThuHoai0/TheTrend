@@ -189,30 +189,4 @@ class HomeController
         require_once './chitietsanpham.php';
     }
 
-
-
-
-    public function lienhe()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];
-            $ho_ten = $_POST['ho_ten'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
-            $noi_dung = $_POST['noi_dung'];
-            $this->modelHome->lienhe($email, $ho_ten, $so_dien_thoai,$noi_dung);
-            echo "<script>alert('Gửi thành công!');
-                window.location.href = '?act=lienhe';
-                </script>";
-        }
-        require_once 'lienhe.php';
-    }
-
-
-
-
-
-
-
-
-
 }

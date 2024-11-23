@@ -12,7 +12,7 @@ class TinTuc
     public function get3TinTuc()
     {
         try {
-            $sql = "SELECT * FROM `tin_tucs`";
+            $sql = "SELECT * FROM `tin_tucs` ORDER BY id DESC LIMIT 2";
 
             $stmt = $this->conn->prepare($sql);
 
