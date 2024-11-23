@@ -124,7 +124,7 @@
                                                         </td>
                                                         <td><img src="<?= './../admin/uploads/'.$san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
                                                         <td><?= $san_pham['so_luong'] ?></td>
-                                                        <td><?= $san_pham['gia'] ?></td>
+                                                        <td><?= $san_pham['gia'] * 10 ?> </td>
                                                         <td>
                                                             <?php
                                                             if ($san_pham['trang_thai'] == '1') { ?>

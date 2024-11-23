@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá</h5>
-                                        <input type="text" class="form-control" value="<?= $san_pham['gia'] ?>" disabled>
+                                        <input type="text" class="form-control" value="<?= $san_pham['gia'] * 10 ?>" disabled>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Hình ảnh</h5>
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Giá nhập</h5>
-                                        <input type="text" class="form-control" value="<?= $san_pham['gia_nhap'] ?>" disabled>
+                                        <input type="text" class="form-control" value="<?= $san_pham['gia_nhap'] * 10 ?>" disabled>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Số lượng</h5>
