@@ -154,65 +154,141 @@ class HomeController
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = intval($_GET['id']);
+            $nguoiDungId = $_SESSION['iduser'] ?? null;
 
             // Lấy chi tiết sản phẩm
             $chi_tiet = $this->modelHome->getDetailData($id);
 
             if ($chi_tiet) {
-                // Lấy ID danh mục của sản phẩm hiện tại
                 $categoryId = $chi_tiet['danh_muc_id'];
-
-                // Lấy danh sách sản phẩm liên quan
                 $san_pham_lien_quan = $this->modelHome->getRelatedProducts($categoryId, $id);
-
-                // Lấy top 2 hình ảnh của sản phẩm
                 $hinh_anh_top2 = $this->modelHome->getTopProductImages($id);
-
-                // Lưu ảnh gốc từ sản phẩm chi tiết
                 $hinh_anh_goc = $chi_tiet['hinh_anh'];
+
+                // Lấy danh sách đánh giá
+                $danh_gias = $this->modelHome->getDanhgiaBySanPhamId($id);
+
+                // Kiểm tra người dùng đã mua hàng chưa
+                $hasPurchased = false;
+                if ($nguoiDungId) {
+                    $hasPurchased = $this->modelHome->hasPurchased($id, $nguoiDungId);
+                }
             } else {
                 echo "Không tìm thấy thông tin sản phẩm.";
                 $chi_tiet = false;
                 $san_pham_lien_quan = [];
                 $hinh_anh_top2 = [];
-                $hinh_anh_goc = 'default.jpg'; // Ảnh mặc định nếu không tìm thấy
+                $hinh_anh_goc = 'default.jpg';
+                $danh_gias = [];
+                $hasPurchased = false;
             }
         } else {
             echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
             $chi_tiet = false;
             $san_pham_lien_quan = [];
             $hinh_anh_top2 = [];
-            $hinh_anh_goc = 'default.jpg'; // Ảnh mặc định nếu không có sản phẩm
+            $hinh_anh_goc = 'default.jpg';
+            $danh_gias = [];
+            $hasPurchased = false;
         }
 
-        // Gọi giao diện hiển thị
         require_once './chitietsanpham.php';
     }
 
-
-
-
-    public function lienhe()
+    public function danhgia()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];
-            $ho_ten = $_POST['ho_ten'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
-            $noi_dung = $_POST['noi_dung'];
-            $this->modelHome->lienhe($email, $ho_ten, $so_dien_thoai,$noi_dung);
-            echo "<script>alert('Gửi thành công!');
-                window.location.href = '?act=lienhe';
-                </script>";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id'])) {
+            // Thiết lập múi giờ
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+            // Lấy dữ liệu từ form và URL
+            $sanPhamId = intval($_GET['id']); // ID sản phẩm
+            $nguoiDungId = $_SESSION['iduser'] ?? null; // Lấy ID người dùng từ session (nếu đăng nhập)
+            $soSao = $_POST['rating'] ?? null; // Số sao được chọn từ form
+            $noiDung = $_POST['noi_dung'] ?? ''; // Nội dung đánh giá
+            $ngayDanhGia = date('Y-m-d H:i:s'); // Ngày hiện tại
+            $trangThai = 1; // Trạng thái hiển thị mặc định
+
+            // Kiểm tra nếu người dùng đã đánh giá sản phẩm này
+            if ($this->modelHome->checkExistingReview($sanPhamId, $nguoiDungId)) {
+                $_SESSION['errors'] = ['Bạn chỉ được đánh giá sản phẩm này một lần.'];
+                header('Location: ?act=chitietsanpham&id=' . $sanPhamId);
+                exit();
+            }
+
+            // Kiểm tra lỗi
+            $errors = [];
+            if (empty($soSao) || !is_numeric($soSao) || $soSao < 1 || $soSao > 5) {
+                $errors['rating'] = "Bạn phải chọn số sao hợp lệ (1 đến 5).";
+            }
+            if (empty($noiDung)) {
+                $errors['noi_dung'] = "Nội dung đánh giá không được để trống.";
+            }
+
+            // Nếu có lỗi, lưu lỗi vào session và điều hướng quay lại
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                header('Location: ?act=chitietsanpham&id=' . $sanPhamId);
+                exit();
+            }
+
+            // Thêm đánh giá vào database
+            $this->modelHome->addDanhgia($sanPhamId, $nguoiDungId, $soSao, $noiDung, $ngayDanhGia, $trangThai);
+
+            // Lưu thông báo thành công
+            $_SESSION['success'] = "Đánh giá của bạn đã được thêm thành công!";
+            header('Location: ?act=chitietsanpham&id=' . $sanPhamId);
+            exit();
+        } else {
+            // Điều hướng nếu không phải POST hoặc không có ID sản phẩm
+            header('Location: ?act=home');
+            exit();
         }
-        require_once 'lienhe.php';
     }
 
 
+    public function binhluan()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['iduser'])) {
+            // Lấy dữ liệu từ session
+            $nguoiDungId = $_SESSION['iduser']; // ID người dùng từ session
 
+            // Lấy dữ liệu từ form và URL
+            $sanPhamId = $_GET['id'] ?? 0; // ID sản phẩm được truyền qua URL
+            $noiDung = $_POST['noi_dung'] ?? ''; // Nội dung bình luận từ form
 
+            // Kiểm tra dữ liệu
+            $errors = [];
+            if (empty($noiDung)) {
+                $errors[] = "Nội dung bình luận không được để trống.";
+            }
+            if (empty($sanPhamId) || !is_numeric($sanPhamId)) {
+                $errors[] = "ID sản phẩm không hợp lệ.";
+            }
 
+            // Nếu có lỗi, lưu lỗi vào session và điều hướng quay lại
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                header('Location: ?act=chitietsanpham&id=' . $sanPhamId);
+                exit();
+            }
+            // Thêm bình luận vào database
+            $ngayBinhLuan = date('Y-m-d H:i:s');
+            $trangThai = 1; // Trạng thái hiển thị mặc định
 
+            $this->modelHome->addReview($sanPhamId, $nguoiDungId, $noiDung, $ngayBinhLuan, $trangThai);
 
+            // Điều hướng sau khi thêm bình luận thành công
+            $_SESSION['success'] = "Bình luận của bạn đã được thêm thành công!";
+
+            header('Location: ?act=chitietsanpham&id=' . $sanPhamId);
+            exit();
+        } else {
+            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            header('Location: ?act=dangnhap');
+            exit();
+        }
+    }
 
 
 }

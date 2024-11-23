@@ -25,7 +25,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'yeuthich' => (new HomeController()) -> top8(),
         'chitietsanpham' => (new HomeController()) -> chitietsanpham(),
         'lienhe' => (new HomeController()) -> lienhe(),
-        
+        'danhgia' => (new HomeController()) -> danhgia(),
+        'binhluan' => (new HomeController()) -> binhluan(),
+
+
         'tintuc' => (new TintucController()) -> dstintuc(),
         'chitiettintuc' => (new TintucController()) -> chitiet(),
 
@@ -33,7 +36,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
 
         default => null, // Trường hợp không khớp
-
     };
 }
+
+
+
 ?>

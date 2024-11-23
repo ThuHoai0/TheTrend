@@ -136,6 +136,9 @@
                     </li>
 
                     <li class="nav-item p-b-10">
+                        <a class="nav-link" data-toggle="tab" href="#binhluan" role="tab">Bình luận</a>
+                    </li>
+                    <li class="nav-item p-b-10">
                         <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh giá</a>
                     </li>
                 </ul>
@@ -152,60 +155,65 @@
                     </div>
 
                     <!-- - -->
-                    <div class="tab-pane fade" id="information" role="tabpanel">
+                    <div class="tab-pane fade" id="binhluan" role="tabpanel">
                         <div class="row">
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                <ul class="p-lr-28 p-lr-15-sm">
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Weight
-                                        </span>
+                                <div class="p-b-30 m-lr-15-sm">
+                                    <!-- Review -->
+                                    <?php if (!empty($binh_luan)): ?>
+                                        <?php foreach ($binh_luan as $comment): ?>
+                                            <div class="flex-w flex-t p-b-68">
+                                                <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                                                    <!-- Ảnh đại diện mặc định -->
+                                                    <img src="https://i.pinimg.com/736x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg" alt="AVATAR">
+                                                </div>
 
-                                        <span class="stext-102 cl6 size-206">
-                                            0.79 kg
-                                        </span>
-                                    </li>
+                                                <div class="size-207">
+                                                    <div class="flex-w flex-sb-m p-b-17">
+                                                        <!-- Hiển thị tên người dùng -->
+                                                        <span class="mtext-107 cl2 p-r-20">
+                                                            <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
+                                                        </span>
+                                                        <!-- Hiển thị ngày bình luận -->
+                                                        <span class="stext-102 cl3">
+                                                            <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
+                                                        </span>
+                                                    </div>
+                                                    <!-- Hiển thị nội dung bình luận -->
+                                                    <p class="stext-102 cl6">
+                                                        <?= htmlspecialchars($comment['noi_dung']); ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <!-- Nếu không có bình luận -->
+                                        <p class="text-danger text-center">Chưa có bình luận nào cho sản phẩm này.</p>
+                                    <?php endif; ?>
 
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Dimensions
-                                        </span>
 
-                                        <span class="stext-102 cl6 size-206">
-                                            110 x 33 x 100 cm
-                                        </span>
-                                    </li>
 
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Materials
-                                        </span>
+                                    <!-- Add review -->
+                                    <?php if (isset($_SESSION['iduser'])): ?>
+                                        <!-- Nếu người dùng đã đăng nhập -->
+                                        <form class="w-full mt-5" action="?act=binhluan&id=<?= $chi_tiet['id']; ?>" method="post">
+                                            <h5 class="mtext-108 cl2 p-b-7">Thêm bình luận</h5>
+                                            <div class="row p-b-25">
+                                                <div class="col-12 p-b-5">
+                                                    <label class="stext-102 cl3 mt-3" for="noi_dung">Viết bình luận</label>
+                                                    <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="noi_dung" name="noi_dung" required></textarea>
+                                                </div>
+                                            </div>
+                                            <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">Gửi</button>
+                                        </form>
+                                    <?php else: ?>
+                                        <!-- Nếu người dùng chưa đăng nhập -->
+                                        <p class="mt-4">
+                                            Bạn cần <a href="?act=dangnhap" class="font-weight-bold">đăng nhập</a> để bình luận.
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
 
-                                        <span class="stext-102 cl6 size-206">
-                                            60% cotton
-                                        </span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Color
-                                        </span>
-
-                                        <span class="stext-102 cl6 size-206">
-                                            Black, Blue, Grey, Green, Red, White
-                                        </span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-                                        <span class="stext-102 cl3 size-205">
-                                            Size
-                                        </span>
-
-                                        <span class="stext-102 cl6 size-206">
-                                            XL, L, M, S
-                                        </span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -216,92 +224,100 @@
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                 <div class="p-b-30 m-lr-15-sm">
                                     <!-- Review -->
-                                    <div class="flex-w flex-t p-b-68">
-                                        <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                            <img src="images/avatar-01.jpg" alt="AVATAR">
-                                        </div>
-
-                                        <div class="size-207">
-                                            <div class="flex-w flex-sb-m p-b-17">
-                                                <span class="mtext-107 cl2 p-r-20">
-                                                    Mai Thị Hoài Thu
-                                                </span>
-
-                                                <span class="fs-18 cl11">
-                                                    <i class="zmdi zmdi-star"></i>
-                                                    <i class="zmdi zmdi-star"></i>
-                                                    <i class="zmdi zmdi-star"></i>
-                                                    <i class="zmdi zmdi-star"></i>
-                                                    <i class="zmdi zmdi-star-half"></i>
-                                                </span>
+                                    <?php if (!empty($danh_gias) && is_array($danh_gias)): ?>
+                                        <?php
+                                        $danh_gia = $danh_gias[0];
+                                        ?>
+                                        <div class="flex-w flex-t p-b-68">
+                                            <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+                                                <img src="https://via.placeholder.com/100" alt="AVATAR">
                                             </div>
-
-                                            <p class="stext-102 cl6">
-                                                Nhưng điều tuyệt vời nhất và tốt đẹp nhất ở con người thì anh ấy đã bỏ đi. Nhưng với những triết gia khác
-                                            </p>
+                                            <div class="size-207">
+                                                <div class="flex-w flex-sb-m p-b-17">
+                    <span class="mtext-107 cl2 p-r-20">
+                        <?= htmlspecialchars($_SESSION['name']); ?>
+                    </span>
+                                                    <span class="fs-18 cl11">
+                        <?= str_repeat('<i class="zmdi zmdi-star"></i>', intval($danh_gia['so_sao'])); ?>
+                        <?= str_repeat('<i class="zmdi zmdi-star-outline"></i>', 5 - intval($danh_gia['so_sao'])); ?>
+                    </span>
+                                                </div>
+                                                <p class="stext-102 cl6">
+                                                    <?= htmlspecialchars($danh_gia['noi_dung']); ?>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endif; ?>
 
-                                    <!-- Add review -->
-                                    <form class="w-full" action="" method="post">
-                                        <h5 class="mtext-108 cl2 p-b-7">
-                                            Thêm đánh giá
-                                        </h5>
+                                    <!-- Add or Update Review -->
+                                    <?php if (isset($_SESSION['iduser'])): ?>
+                                        <?php if ($hasPurchased): ?>
+                                            <!-- Hiển thị form thêm hoặc chỉnh sửa đánh giá -->
+                                            <?php if (empty($danh_gias)): ?>
+                                                <form class="w-full mt-5" action="?act=danhgia&id=<?= $chi_tiet['id']; ?>" method="post">
+                                                    <h5 class="mtext-108 cl2 p-b-7">Thêm đánh giá</h5>
 
-                                        <p class="stext-102 cl6">
-                                            Địa chỉ email của bạn sẽ không được công bố. Các trường bắt buộc được đánh dấu
+                                                    <div class="flex-w flex-m p-t-50 p-b-23">
+                                                        <span class="stext-102 cl3 m-r-16">Đánh giá</span>
+                                                        <span class="wrap-rating fs-18 cl11 pointer">
+                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="1"></i>
+                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="2"></i>
+                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="3"></i>
+                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="4"></i>
+                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="5"></i>
+                            <input class="dis-none" type="number" name="rating" id="rating" required>
+                        </span>
+                                                    </div>
+
+                                                    <div class="row p-b-25">
+                                                        <div class="col-12 p-b-5">
+                                                            <label class="stext-102 cl3 mt-3" for="noi_dung">Viết đánh giá</label>
+                                                            <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="noi_dung" name="noi_dung" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">Gửi</button>
+                                                </form>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <p class="text-warning text-center">Bạn cần mua sản phẩm này để được đánh giá.</p>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <p class="mt-4">
+                                            Bạn cần <a href="?act=dangnhap" class="font-weight-bold">đăng nhập</a> để thêm đánh giá.
                                         </p>
-
-                                        <div class="flex-w flex-m p-t-50 p-b-23">
-                                            <span class="stext-102 cl3 m-r-16">
-                                                Đánh giá
-                                            </span>
-
-                                            <span class="wrap-rating fs-18 cl11 pointer">
-                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
-                                                <input class="dis-none" type="number" name="rating">
-                                            </span>
-                                        </div>
-
-                                        <div class="row p-b-25">
-                                            <div class="col-12 p-b-5">
-                                                <label class="stext-102 cl3" for="review">Ghi đánh giá</label>
-                                                <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-                                                    id="review" name="review"></textarea>
-                                            </div>
-
-                                            <div class="col-sm-6 p-b-5">
-                                                <label class="stext-102 cl3" for="name">Tên</label>
-                                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text"
-                                                    name="name">
-                                            </div>
-
-                                            <div class="col-sm-6 p-b-5">
-                                                <label class="stext-102 cl3" for="email">Email</label>
-                                                <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email"
-                                                    type="text" name="email">
-                                            </div>
-                                        </div>
-
-                                        <button
-                                            class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                                            Gửi
-                                        </button>
-                                    </form>
+                                    <?php endif; ?>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+    <script>
+        document.querySelectorAll('.item-rating').forEach(function (star) {
+            star.addEventListener('click', function () {
+                const ratingValue = this.getAttribute('data-value');
+                document.getElementById('rating').value = ratingValue;
+
+                // Thay đổi màu sắc các sao đã chọn
+                document.querySelectorAll('.item-rating').forEach(function (item) {
+                    item.classList.remove('zmdi-star');
+                    item.classList.add('zmdi-star-outline');
+                });
+                for (let i = 0; i < ratingValue; i++) {
+                    document.querySelectorAll('.item-rating')[i].classList.remove('zmdi-star-outline');
+                    document.querySelectorAll('.item-rating')[i].classList.add('zmdi-star');
+                }
+            });
+        });
+
+    </script>
 
 <!-- Related Products -->
 <section class="sec-relate-product bg0 p-t-45 p-b-105">
