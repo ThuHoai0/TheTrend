@@ -58,7 +58,11 @@ class Dashboard
     public function demSoLuongKhachHang() {
         try {
             
-            $sql = "SELECT COUNT(*) AS so_luong_khach_hang FROM nguoi_dungs";
+                $sql = "SELECT COUNT(*) AS so_luong_khach_hang
+FROM nguoi_dungs
+WHERE trang_thai = 1 AND vai_tro = 1;
+
+    ";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();

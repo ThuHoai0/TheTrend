@@ -21,8 +21,17 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'dangnhap' => (new HomeController())->check(),
         'dangxuat' => (new HomeController())->dangxuat(),
         'login' => (new HomeController())->formDangNhap(),
-        'sanpham' => (new HomeController())->sanpham(),
-        'chitietsanpham' => (new HomeController())->chitietsanpham(),
+        'sanpham' => (new HomeController()) -> sanpham(),
+        'yeuthich' => (new HomeController()) -> top8(),
+        'chitietsanpham' => (new HomeController()) -> chitietsanpham(),
+        'lienhe' => (new HomeController()) -> lienhe(),
+        'danhgia' => (new HomeController()) -> danhgia(),
+        'binhluan' => (new HomeController()) -> binhluan(),
+
+
+        'tintuc' => (new TintucController()) -> dstintuc(),
+        'chitiettintuc' => (new TintucController()) -> chitiet(),
+
 
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
         'thongtinnguoidung' => (new NguoidungController())->edit(),

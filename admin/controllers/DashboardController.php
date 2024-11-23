@@ -13,7 +13,7 @@ class DashboardController {
         
         $tongDonHangCaNam = $this->modelDashboard->thongKeTongDonHangCaNam();
         $tongTienCaNam = $this->modelDashboard->thongKeTongTienCaNam();
-        $sanPham = $this->modelDashboard-> thongKeSanPham();
+        $tongSanPham = $this->modelDashboard-> thongKeSanPham();
 
         $tongDonHang = $this->modelDashboard-> tongDonHang();
         $tongDonHangDaDat = $this->modelDashboard-> tongDonHangDaDat();

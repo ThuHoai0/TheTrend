@@ -74,7 +74,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Tổng Thu Nhập Ngày Hôm Nay</p>
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Số Đơn Hàng Cả Năm</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-success fs-14 mb-0">
@@ -83,7 +83,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?=  $tongThuNhapNgay ?> ">0</span> VND </h4>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?php echo $tongDonHangCaNam; ?>">0</span> Đơn Hàng</h4>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-success-subtle rounded fs-3">
@@ -101,7 +101,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 overflow-hidden">
-                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Đơn Hàng Hôm Nay</p>
+                                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Thu Nhập Cả Năm</p>
                                                     </div>
                                                     <div class="flex-shrink-0">
                                                         <h5 class="text-danger fs-14 mb-0">
@@ -110,7 +110,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                 </div>
                                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                                     <div>
-                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?= $soLuongDonHangHomNay ?>">0</span> Đơn Hàng </h4>
+                                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="<?php echo $tongTienCaNam; ?>">0</span> VNĐ</h4>
                                                     </div>
                                                     <div class="avatar-sm flex-shrink-0">
                                                         <span class="avatar-title bg-info-subtle rounded fs-3">
@@ -162,16 +162,16 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             <div class="row g-0 text-center">
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongDonHangCaNam; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số Đơn Hàng Cả Năm</p>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?=  $tongThuNhapNgay ?> ">0</span> VNĐ</h5>
+                                                            <p class="text-muted mb-0">Tổng Thu Nhập Ngày Hôm Nay</p>
                                                         </div>
                                                     </div>
                                                 
                                                     <!--end col-->
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongTienCaNam; ?>">0</span> VND</h5>
-                                                            <p class="text-muted mb-0">Thu Nhập Cả Năm</p>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?= $soLuongDonHangHomNay ?>"></span> Đơn Hàng</h5>
+                                                            <p class="text-muted mb-0">Đơn Hàng Hôm Nay</p>
 
                                                         </div>
                                                     </div>
@@ -179,7 +179,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                     <!--end col-->
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo  $sanPham; ?>">0</span></h5>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongSanPham; ?>">0</span> Sản Phẩm</h5>
                                                             <p class="text-muted mb-0">Tổng Số Lượng Sản Phẩm</p>
                                                         </div>
                                                     </div>
