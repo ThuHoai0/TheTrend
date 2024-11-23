@@ -21,6 +21,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'dangnhap' => (new HomeController())->check(),
         'dangxuat' => (new HomeController())->dangxuat(),
         'login' => (new HomeController())->formDangNhap(),
+        'sanpham' => (new HomeController())->sanpham(),
+        'chitietsanpham' => (new HomeController())->chitietsanpham(),
 
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
 
