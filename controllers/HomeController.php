@@ -162,22 +162,35 @@ class HomeController
                 // Lấy ID danh mục của sản phẩm hiện tại
                 $categoryId = $chi_tiet['danh_muc_id'];
 
-                // Lấy danh sách 4 sản phẩm liên quan
+                // Lấy danh sách sản phẩm liên quan
                 $san_pham_lien_quan = $this->modelHome->getRelatedProducts($categoryId, $id);
+
+                // Lấy top 2 hình ảnh của sản phẩm
+                $hinh_anh_top2 = $this->modelHome->getTopProductImages($id);
+
+                // Lưu ảnh gốc từ sản phẩm chi tiết
+                $hinh_anh_goc = $chi_tiet['hinh_anh'];
             } else {
                 echo "Không tìm thấy thông tin sản phẩm.";
                 $chi_tiet = false;
                 $san_pham_lien_quan = [];
+                $hinh_anh_top2 = [];
+                $hinh_anh_goc = 'default.jpg'; // Ảnh mặc định nếu không tìm thấy
             }
         } else {
             echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
             $chi_tiet = false;
             $san_pham_lien_quan = [];
+            $hinh_anh_top2 = [];
+            $hinh_anh_goc = 'default.jpg'; // Ảnh mặc định nếu không có sản phẩm
         }
 
         // Gọi giao diện hiển thị
         require_once './chitietsanpham.php';
     }
+
+
+
 
     public function lienhe()
     {

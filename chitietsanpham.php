@@ -32,37 +32,37 @@
                         <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                         <div class="slick3 gallery-lb">
-                            <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+
+
+                            <!-- Hiển thị ảnh gốc -->
+                            <div class="item-slick3" data-thumb="<?= '././admin/uploads/' . $hinh_anh_goc; ?>">
                                 <div class="wrap-pic-w pos-relative">
-                                    <img src="<?= '././admin/uploads/'. $chi_tiet['hinh_anh'] ?? 'default.jpg'; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
+                                    <img src="<?= '././admin/uploads/' . $hinh_anh_goc; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                        href="images/product-detail-01.jpg">
+                                       href="<?= '././admin/uploads/' . $hinh_anh_goc; ?>">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                            <!-- Hiển thị top 2 ảnh -->
+                            <?php if (!empty($hinh_anh_top2)): ?>
+                                <?php foreach ($hinh_anh_top2 as $hinh): ?>
+                                    <div class="item-slick3" data-thumb="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                                               href="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p>Không có hình ảnh bổ sung cho sản phẩm này.</p>
+                            <?php endif; ?>
 
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                        href="images/product-detail-02.jpg">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
 
-                            <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT" >
-
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                        href="images/product-detail-03.jpg">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -320,24 +320,17 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <!-- Hiển thị hình ảnh sản phẩm -->
                                 <img src="<?= '././admin/uploads/'. $san_pham['hinh_anh'] ?>" alt="<?= $san_pham['ten_san_pham'] ?>" style="width: 100%; height: 300px; object-fit: cover; object-position: center">
-
-                                <!-- Nút xem thêm -->
                                 <a href="?act=chitietsanpham&id=<?= $san_pham['id']; ?>"
                                    class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                     Xem Thêm
                                 </a>
                             </div>
-
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">
-                                    <!-- Hiển thị tên sản phẩm -->
                                     <a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         <?= $san_pham['ten_san_pham'] ?>
                                     </a>
-
-                                    <!-- Hiển thị giá sản phẩm -->
                                     <span class="stext-105 cl3">
                         <?= number_format($san_pham['gia'], 0, ',', '.') ?> VND
                     </span>
