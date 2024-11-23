@@ -121,10 +121,15 @@
                 <img src="https://everpro.id/wp-content/uploads/2022/12/whatsapp-image-2022-03-28-at-09-20220328092414.jpeg" alt="ZAGG Logo">
                 <div class="details">
                     <h4><?= htmlspecialchars($voucher['ten_khuyen_mai']) ?></h4>
-                    <span id="voucher-code-<?= $index ?>"><?= htmlspecialchars($voucher['ma_khuyen_mai']) ?></span>
                     <p><?= htmlspecialchars($voucher['mo_ta']) ?> | HSD <?= htmlspecialchars($voucher['ngay_ket_thuc']) ?></p>
                 </div>
-                <button class="save-button" onclick="copyVoucher(<?= $index ?>)">Lưu</button>
+                <!-- Nút Lưu chứa mã khuyến mãi trong thuộc tính data-voucher -->
+                <button 
+                    class="save-button" 
+                    onclick="copyVoucher(this)" 
+                    data-voucher="<?= htmlspecialchars($voucher['ma_khuyen_mai']) ?>">
+                    Lưu
+                </button>
             </div>
         <?php endforeach; ?>
     <?php else : ?>
@@ -134,9 +139,8 @@
 
 <script>
     // Hàm sao chép mã khuyến mãi
-    function copyVoucher(index) {
-        const voucherId = `voucher-code-${index}`; // Tạo ID động dựa trên chỉ số
-        const voucherCode = document.getElementById(voucherId).textContent; // Lấy nội dung của mã khuyến mãi
+    function copyVoucher(buttonElement) {
+        const voucherCode = buttonElement.getAttribute("data-voucher"); // Lấy mã từ thuộc tính data-voucher
 
         // Sao chép nội dung vào clipboard
         navigator.clipboard.writeText(voucherCode)
@@ -148,6 +152,7 @@
             });
     }
 </script>
+
 <!-- Back to top -->
 <div class="btn-back-to-top" id="myBtn">
     <span class="symbol-btn-back-to-top">
