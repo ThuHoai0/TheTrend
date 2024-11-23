@@ -57,6 +57,17 @@ class Home
             echo 'Error: ' .$e->getMessage();
         }
     }
+    public function checkEmailExists($email)
+    {
+        $sql = "SELECT * FROM nguoi_dungs WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->rowCount() > 0; // Trả về true nếu email đã tồn tại
+    }
+
+
+
     public function getAllCategory() {
         try {
             $sql = "SELECT * FROM `danh_mucs`";
