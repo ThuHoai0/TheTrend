@@ -5,7 +5,6 @@ class DonhangsController
     public $modelDonhang;
     public function __construct() {
         $this->modelDonhang = new Donhang();
-        $this->modelChitietdonhang = new Chitietdonhang();
     }
     public function index()
     {
@@ -21,10 +20,13 @@ class DonhangsController
     public  function chitiet ()
     {
         $id = $_GET['id'];
-        $don_hang = $this->modelDonhang->getDetailData($id);
-        $chi_tiet_don_hang = $this->modelChitietdonhang->getDetailData($id);
-        // var_dump($don_hang); die;
-        // var_dump($chi_tiet_don_hang); die;
+//        $don_hang = $this->modelDonhang->getDetailData($id);
+        $don_hang = $this->modelDonhang->getOrderInfo($id); // Chứa thông tin chung
+        $san_phams = $this->modelDonhang->getOrderProducts($id); // Chứa danh sách sản phẩm
+
+//         var_dump($don_hang);
+//         var_dump($san_phams);
+//         die();
         require_once './views/donhang/chitiet.php';
     }
     public function edit()

@@ -23,6 +23,7 @@
          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
              date_default_timezone_set('Asia/Ho_Chi_Minh');
              $ten_khuyen_mai = $_POST['ten_khuyen_mai'];
+             $ma_khuyen_mai = $_POST['ma_khuyen_mai'];
              $mo_ta = $_POST['mo_ta'];
              $phan_tram_giam = $_POST['phan_tram_giam'];
              $ngay_bat_dau = $_POST['ngay_bat_dau'];
@@ -40,6 +41,9 @@
              if (empty($ten_khuyen_mai)) {
                  $errors['ten_khuyen_mai'] = "Tên khuyến mại là bắt buộc";
              }
+             if (empty($ma_khuyen_mai)) {
+                $errors['ma_khuyen_mai'] = "Tên khuyến mại là bắt buộc";
+            }
              if (empty($phan_tram_giam)) {
                  $errors['phan_tram_giam'] = "Phần trăm giảm giá là bắt buộc";
              } elseif (!is_numeric($phan_tram_giam) || $phan_tram_giam < 0 || $phan_tram_giam > 100) {
@@ -63,7 +67,7 @@
                  }
              }
              if (empty($errors)) {
-                 $this->modelKhuyenmai->postData($ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $ngay_tao, $trang_thai);
+                 $this->modelKhuyenmai->postData($ten_khuyen_mai, $ma_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $ngay_tao, $trang_thai);
                  unset($_SESSION['errors']);
                  header('Location: ?act=khuyenmai/list');
                  exit();
@@ -92,6 +96,7 @@
              // lay ra du lieu
              $id = $_GET['id'];
              $ten_khuyen_mai = $_POST['ten_khuyen_mai'];
+             $ma_khuyen_mai = $_POST['ma_khuyen_mai'];
              $mo_ta = $_POST['mo_ta'];
              $phan_tram_giam = $_POST['phan_tram_giam'];
              $ngay_bat_dau = $_POST['ngay_bat_dau'];
@@ -118,7 +123,7 @@
                  }
              }
              if (empty($errors)) {
-                 $this->modelKhuyenmai->updateData($id, $ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc);
+                 $this->modelKhuyenmai->updateData($id, $ten_khuyen_mai, $ma_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc);
                  unset($_SESSION['errors']);
                  header('Location: ?act=khuyenmai/list');
                  exit();

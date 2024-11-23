@@ -41,8 +41,9 @@ class HomeController
                 window.location.href = '?act=dangnhap';
                 </script>";
             } else {
+                header("Location: ?act=home");
+                exit();
                 echo "<script>alert('Đăng nhập thành công!');
-                window.location.href = '?act=home';
                 </script>";
             }
         }
@@ -54,22 +55,71 @@ class HomeController
         unset($_SESSION['email']);
         unset($_SESSION['name']);
         unset($_SESSION['vai_tro']);
+        header("Location: ?act=home");
+        exit();
         echo "<script>alert('Đăng xuất thành công!');
-                window.location.href = '?act=home';
                 </script>";
     }
 
     public function dangky()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['ten'];
-            $pass = $_POST['mat_khau'];
-            $email = $_POST['email'];
-            $_SESSION['iduser'] = $this->modelHome->dangky($name, $pass, $email);
-            $_SESSION['vai_tro'] = 1; // 1 là người thường
-            echo "<script>alert('Đăng ký thành công!');
-                window.location.href = '?act=home';
+            $name = trim($_POST['ten']);
+            $pass = trim($_POST['mat_khau']);
+            $email = trim($_POST['email']);
+
+            // Validate tên đăng nhập
+            if (empty($name)) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Tên đăng nhập không được để trống.');
                 </script>";
+            }
+            if (strlen($name) < 3 || strlen($name) > 20) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Tên đăng nhập phải có độ dài từ 3 đến 20 ký tự.');
+                </script>";
+            }
+            if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới.');
+                </script>";
+            }
+
+            // Validate mật khẩu
+            if (empty($pass)) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Mật khẩu không được để trống.');
+                </script>";
+            }
+            if (strlen($pass) < 6 || strlen($pass) > 50) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Mật khẩu phải có độ dài từ 6 đến 50 ký tự.');
+                </script>";
+            }
+            if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/', $pass)) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 số.');
+                </script>";
+            }
+            if ($this->modelHome->checkEmailExists($email)) {
+                header("Location: ?act=dangky");
+                exit();
+                echo "<script>alert('Email đã được sử dụng, vui lòng chọn email khác.');
+                </script>";
+            }
+            $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
+            $_SESSION['iduser'] = $this->modelHome->dangky($name, $hashed_pass, $email);
+            $_SESSION['vai_tro'] = 1; // 1 là người thường
+            header("Location: ?act=home");
+            exit();
+            echo "<script>alert('Đăng ký thành công!');
+            </script>";
         }
         require_once 'login/dky.php';
     }
@@ -102,28 +152,33 @@ class HomeController
     }
     public function chitietsanpham()
     {
-        // Kiểm tra xem ID sản phẩm có được truyền vào hay không
-        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-            $id = (int)$_GET['id'];
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $id = intval($_GET['id']);
 
-            // Gọi phương thức lấy chi tiết sản phẩm từ model
-            $chi_tiet_san_pham = $this->modelHome->getDetailData($id);
+            // Lấy chi tiết sản phẩm
+            $chi_tiet = $this->modelHome->getDetailData($id);
 
-            // Kiểm tra nếu không tìm thấy sản phẩm
-            if (!$chi_tiet_san_pham) {
-                echo "<script>alert('Sản phẩm không tồn tại!'); 
-            window.location.href = '?act=home';</script>";
-                return;
+            if ($chi_tiet) {
+                // Lấy ID danh mục của sản phẩm hiện tại
+                $categoryId = $chi_tiet['danh_muc_id'];
+
+                // Lấy danh sách 4 sản phẩm liên quan
+                $san_pham_lien_quan = $this->modelHome->getRelatedProducts($categoryId, $id);
+            } else {
+                echo "Không tìm thấy thông tin sản phẩm.";
+                $chi_tiet = false;
+                $san_pham_lien_quan = [];
             }
-
-            // Hiển thị giao diện chi tiết sản phẩm
-            require_once 'chitietsanpham.php';
         } else {
-            // Nếu ID không hợp lệ hoặc không được cung cấp, chuyển hướng về trang chủ
-            echo "<script>alert('ID sản phẩm không hợp lệ!'); 
-        window.location.href = '?act=home';</script>";
+            echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
+            $chi_tiet = false;
+            $san_pham_lien_quan = [];
         }
+
+        // Gọi giao diện hiển thị
+        require_once './chitietsanpham.php';
     }
+
     public function lienhe()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -16,7 +16,6 @@ require_once 'controllers/BannersController.php';
 require_once 'controllers/TrangthaidonhangsController.php';
 require_once 'controllers/NguoidungsController.php';
 require_once 'controllers/DonhangsController.php';
-require_once 'controllers/ChitietdonhangsController.php';
 require_once 'controllers/BinhluansController.php';
 require_once 'controllers/HinhanhsanphamsController.php';
 require_once 'controllers/DanhgiasController.php';
@@ -32,7 +31,6 @@ require_once 'models/Trangthaidonhang.php';
 require_once 'models/Nguoidung.php';
 require_once 'models/Donhang.php';
 require_once 'models/Hinhanhsanpham.php';
-require_once 'models/Chitietdonhang.php';
 require_once 'models/Binhluan.php';
 require_once 'models/Danhgia.php';
 // Route
@@ -125,10 +123,6 @@ match ($act) {
     'hinhanhsanpham/list' => (new HinhanhsanphamsController())->index(),
     'hinhanhsanpham/edit' => (new HinhanhsanphamsController())->edit(),
     'hinhanhsanpham/update' => (new HinhanhsanphamsController())->update(),
-
-    // Chi tiet don hang
-    'chitietdonhang/list' => (new ChitietdonhangsController())->index(),
-    'chitietdonhang/chitiet' => (new ChitietdonhangsController())->chitiet(),
 
     // Danh gia
     'danhgia/list' => (new DanhgiasController())->index(),

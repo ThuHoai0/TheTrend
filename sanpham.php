@@ -9,7 +9,7 @@
                     Tất Cả Sản Phẩm
                 </a>
                 <?php foreach ($danh_mucs as $danh_muc): ?>
-                    <a href="?act=sanpham&category=<?= htmlspecialchars($danh_muc['id']) ?>"
+                    <a href="?act=sanpham&category=<?= ($danh_muc['id']) ?>"
                        class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
                        data-filter=".<?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>">
                         <?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>
@@ -92,17 +92,17 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="<?= $san_pham['hinh_anh'] ?? 'default.jpg'; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 300px; object-fit: cover; object-position: center">
-                            <a href=""
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                            <img src="<?= '././admin/uploads/'. $san_pham['hinh_anh'] ?? 'default.jpg'; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 300px; object-fit: cover; object-position: center">
+                            <a href="?act=chitietsanpham&id=<?= $san_pham['id']; ?>"
+                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                 Xem thêm
                             </a>
                         </div>
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="chitietsanpham.php?id=<?= $san_pham['id']; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    <?= htmlspecialchars($san_pham['ten_san_pham']); ?>
+                                <a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    <?= ($san_pham['ten_san_pham']); ?>
                                 </a>
 
                                 <span class="stext-105 cl3">
