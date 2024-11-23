@@ -24,6 +24,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'sanpham' => (new HomeController())->sanpham(),
         'chitietsanpham' => (new HomeController())->chitietsanpham(),
 
+        'lienhe' => (new HomeController())->lienhe(),
+
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
 
 

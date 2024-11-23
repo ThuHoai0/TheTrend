@@ -107,16 +107,12 @@ class HomeController
                 echo "<script>alert('Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 số.');
                 </script>";
             }
-
-            // Kiểm tra email đã tồn tại
             if ($this->modelHome->checkEmailExists($email)) {
                 header("Location: ?act=dangky");
                 exit();
                 echo "<script>alert('Email đã được sử dụng, vui lòng chọn email khác.');
                 </script>";
             }
-
-            // Thêm người dùng mới
             $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
             $_SESSION['iduser'] = $this->modelHome->dangky($name, $hashed_pass, $email);
             $_SESSION['vai_tro'] = 1; // 1 là người thường
@@ -127,11 +123,6 @@ class HomeController
         }
         require_once 'login/dky.php';
     }
-
-
-
-
-
     public function sanpham()
     {
         $offset = 16;
@@ -163,13 +154,31 @@ class HomeController
     {
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = intval($_GET['id']);
+
+            // Lấy chi tiết sản phẩm
             $chi_tiet = $this->modelHome->getDetailData($id);
+
+            if ($chi_tiet) {
+                // Lấy ID danh mục của sản phẩm hiện tại
+                $categoryId = $chi_tiet['danh_muc_id'];
+
+                // Lấy danh sách 4 sản phẩm liên quan
+                $san_pham_lien_quan = $this->modelHome->getRelatedProducts($categoryId, $id);
+            } else {
+                echo "Không tìm thấy thông tin sản phẩm.";
+                $chi_tiet = false;
+                $san_pham_lien_quan = [];
+            }
         } else {
             echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
             $chi_tiet = false;
+            $san_pham_lien_quan = [];
         }
-            require_once './chitietsanpham.php';
+
+        // Gọi giao diện hiển thị
+        require_once './chitietsanpham.php';
     }
+
     public function lienhe()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

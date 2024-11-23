@@ -130,4 +130,26 @@ class Home
             echo 'Error: ' .$e->getMessage();
         }
     }
+    public function getRelatedProducts($categoryId, $productId) {
+        try {
+            $sql = "SELECT 
+                        san_phams.* 
+                    FROM 
+                        san_phams
+                    WHERE 
+                        san_phams.danh_muc_id = :categoryId 
+                        AND san_phams.id != :productId
+                    ORDER BY 
+                        RAND() -- Sắp xếp ngẫu nhiên
+                    LIMIT 4";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':categoryId', $categoryId, PDO::PARAM_INT);
+        $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Trả về danh sách sản phẩm liên quan
+    } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
 }
