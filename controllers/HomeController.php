@@ -73,4 +73,58 @@ class HomeController
         }
         require_once 'login/dky.php';
     }
+
+    public function sanpham()
+    {
+        $offset = 16;
+        $limit = 16;
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $ord = isset($_GET['ord']) ? (int)$_GET['ord'] : 1;
+
+        if ($page) {
+            $offset = ($page - 1) * $limit;
+        }
+        $danh_mucs = $this->modelHome->getAllCategory();
+        $san_phams = null;
+        if (isset($_GET['category']) && !empty($_GET['category'])) {
+            $danh_muc_id = (int)$_GET['category'];
+            $san_phams = $this->modelHome->getByCategory($danh_muc_id, $offset, $limit);
+        } elseif (isset($_GET['search']) && !empty($_GET['search'])) {
+            $san_phams = $this->modelHome->getBySearch($_GET['search']);
+        } else {
+            $san_phams = $this->modelHome->getAllProduct($offset, $limit, $ord);
+        }
+        require_once './sanpham.php';
+    }
+    public function top8()
+    {
+        $top8 = $this->modelHome->getTop8Products();
+        require_once './views/main.php';
+    }
+    public function chitietsanpham()
+    {
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $id = intval($_GET['id']);
+            $chi_tiet = $this->modelHome->getDetailData($id);
+        } else {
+            echo "ID sản phẩm không hợp lệ hoặc không được cung cấp.";
+            $chi_tiet = false;
+        }
+            require_once './chitietsanpham.php';
+    }
+    public function lienhe()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'];
+            $ho_ten = $_POST['ho_ten'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
+            $noi_dung = $_POST['noi_dung'];
+            $this->modelHome->lienhe($email, $ho_ten, $so_dien_thoai,$noi_dung);
+            echo "<script>alert('Gửi thành công!');
+                window.location.href = '?act=lienhe';
+                </script>";
+        }
+        require_once 'lienhe.php';
+    }
+
 }

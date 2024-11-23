@@ -75,25 +75,25 @@
                     <div class="card-body">
                     <div class="mb-3">
                         <span class="badge bg-success p-2">Đơn hàng: <?= $don_hang['ten_trang_thai'] ?>
-                        
+
                         </span>
                         <span class="badge bg-primary text-white p-2">Phương thức thanh toán: <?= $don_hang['phuong_thuc_thanh_toan'] ?></span>
-                        <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán: 
+                        <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán:
                         <?php
-                                                            // Check the 'status' field instead of 'category_name'
-                                                            if ($don_hang['trang_thai_thanh_toan'] == '1') { ?>
-                                                                <span class="badge bg-warning text-dark">Đã Thanh Toán </span>
-                                                                <?php
-                                                            } else { ?>
-                                                                <span class="badge bg-warning text-dark">Chưa Thanh Toán</span>
-                                                                <?php
-                                                            }
-                                                            ?>
+                        // Check the 'status' field instead of 'category_name'
+                        if ($don_hang['trang_thai_thanh_toan'] == '1') { ?>
+                            <span class="badge bg-warning text-dark">Đã Thanh Toán </span>
+                            <?php
+                        } else { ?>
+                            <span class="badge bg-warning text-dark">Chưa Thanh Toán</span>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-6">
                         <h5>Thông tin người đặt </h5>
-                        <p><strong>Tên:</strong><?= $don_hang['ten'] ?></p>
+                        <p><strong>Tên:</strong><?= $don_hang['ten_nguoi_dung'] ?></p>
                         <p><strong>Email:</strong><?= $don_hang['email'] ?></p>
                         <p><strong>SĐT:</strong><?= $don_hang['so_dien_thoai'] ?></p>
                         </div>
@@ -105,37 +105,47 @@
                         <p><strong>Địa chỉ:</strong> 147 Phường Canh gà</p>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-bordered text-center">
-                        <thead class="table-light">
-                        <tr>
-                            <th>Tên sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>  
-                        <?php if ($chi_tiet_don_hang) { foreach ($chi_tiet_don_hang as $i => $value) : ?>
-                            <td><?= $value['ten_san_pham'] ?></td>
-                            <td><?= $value['don_gia'] ?></td>
-                            <td><?= $value['so_luong'] ?></td>
-                        </tr>
-                        <?php endforeach; } ?>
-                        </tbody>
-                        
-                        </table>
-                    </div>
-                    
-                    <div class="d-flex justify-content-end mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-center">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $tong_tien = 0; // Khởi tạo biến tổng tiền
+                                if (isset($san_phams) && is_array($san_phams) && !empty($san_phams)) :
+                                    ?>
+                                    <?php foreach ($san_phams as $sp) : ?>
+                                    <?php
+                                    $thanh_tien = $sp['so_luong'] * $sp['don_gia']; // Tính thành tiền từng sản phẩm
+                                    $tong_tien += $thanh_tien; // Cộng dồn vào tổng tiền
+                                    ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($sp['ten_san_pham']) ?></td>
+                                        <td><?= htmlspecialchars($sp['so_luong']) ?></td>
+                                        <td><?= number_format($sp['don_gia'], 0, ',', '.') ?>đ</td>
+                                        <td><?= number_format($thanh_tien, 0, ',', '.') ?>đ</td>
+                                    </tr>
+                                <?php endforeach; ?>
+
+                                <?php else : ?>
+
+                                <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="d-flex justify-content-end mt-4">
                         <ul class="list-group w-50">
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Thành tiền: </span>
-                            <strong><?= $don_hang['so_luong'] * $don_hang['don_gia'] ?></strong>
-                        </li>
                         <li class="list-group-item d-flex justify-content-between bg-light">
                             <span>Tổng tiền:</span>
-                            <strong class="text-danger"><?= $don_hang['tong_tien'] ?></strong>
+                            <strong class="text-danger"><?= number_format($tong_tien, 0, ',', '.') ?>đ</strong>
                         </li>
                         </ul>
                     </div> <br>
@@ -145,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 </div>
 

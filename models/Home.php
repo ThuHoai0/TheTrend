@@ -81,32 +81,22 @@ class Home
 
     public function getAllProduct($offset, $limit, $ord) {
         try {
-            // Xác định thứ tự sắp xếp (cao -> thấp hoặc thấp -> cao)
             $orderDirection = ($ord === 1) ? 'ASC' : 'DESC';
-
             $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc 
                 FROM san_phams 
                 LEFT JOIN danh_mucs 
                 ON san_phams.danh_muc_id = danh_mucs.id 
                 ORDER BY san_phams.gia $orderDirection 
                 LIMIT :limit OFFSET :offset";
-
             $stmt = $this->conn->prepare($sql);
-
-            // Bind các tham số vào câu SQL
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-
             $stmt->execute();
-
-            // Lấy kết quả
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
-
-
 
     public function getBySearch($search) {
         $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE :search";

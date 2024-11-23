@@ -87,75 +87,50 @@ require_once 'header.php';
 <!-- Banner -->
 <div class="sec-banner bg0 p-t-80 p-b-50">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="assets/images/banner-01.jpg" alt="IMG-BANNER">
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5">
+                SẢN PHẨM NỔI BẬT
+            </h3>
+            <br>
+        </div>
+        <div class="row isotope-grid">
 
-                    <a href="assets/sanpham.php"
-                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-                            <span class="block1-name ltext-102 trans-04 p-b-8">
-                                Nữ
-                            </span>
-                            <span class="block1-info stext-102 trans-04">
-                                Mùa xuân 2018
-                            </span>
-                        </div>
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Mua Ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <div class="block1 wrap-pic-w">
-                    <img src="assets/images/banner-02.jpg" alt="IMG-BANNER">
-                    <a href="sanpham.php"
-                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-                            <span class="block1-name ltext-102 trans-04 p-b-8">
-                                Nam
-                            </span>
+            <div class="row">
+                <!-- Sản phẩm 1 -->
+<!--                <div class="row">-->
+<!--                    --><?php //foreach ($top8 as $product): ?>
+<!--                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">-->
+<!--                            <div class="block2">-->
+<!--                                <div class="block2-pic hov-img0">-->
+<!--                                    <img src="assets/images/--><?php //echo htmlspecialchars($product['hinh_anh']); ?><!--" alt="IMG-PRODUCT" style="width: 100%; height: 300px; object-fit: cover; object-position: center">-->
+<!---->
+<!--                                    <a href="chitietsanpham.php?id=--><?php //echo htmlspecialchars($product['id']); ?><!--" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">-->
+<!--                                        Xem thêm-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="block2-txt flex-w flex-t p-t-14">-->
+<!--                                    <div class="block2-txt-child1 flex-col-l">-->
+<!--                                        <a href="chitietsanpham.php?id=--><?php //echo htmlspecialchars($product['id']); ?><!--" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">-->
+<!--                                            --><?php //echo htmlspecialchars($product['ten_san_pham']); ?>
+<!--                                        </a>-->
+<!--                                        <span class="stext-105 cl3">-->
+<!--                            --><?php //echo number_format($product['gia'], 0, ',', '.'); ?><!-- VNĐ-->
+<!--                        </span>-->
+<!--                                    </div>-->
+<!--                                    <div class="block2-txt-child2 flex-r p-t-3">-->
+<!--                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">-->
+<!--                                            <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png" alt="ICON">-->
+<!--                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png" alt="ICON">-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    --><?php //endforeach; ?>
+<!--                </div>-->
 
-                            <span class="block1-info stext-102 trans-04">
-                                Mùa Xuân 2018
-                            </span>
-                        </div>
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Mua Ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
-            <div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="assets/images/banner-03.jpg" alt="IMG-BANNER">
-                    <a href="sanpham.php"
-                        class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-                            <span class="block1-name ltext-102 trans-04 p-b-8">
-                                Phụ kiện
-                            </span>
 
-                            <span class="block1-info stext-102 trans-04">
-                                Mẫu Mới
-                            </span>
-                        </div>
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Mua Ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -172,9 +147,9 @@ require_once 'header.php';
 
         <div class="flex-w flex-sb-m p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                <a href="?act=home" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                     Tất cả sản phẩm
-                </button>
+                </a>
                 <?php foreach ($danh_mucs as $danh_muc): ?>
                     <a href="?act=home&category=<?= htmlspecialchars($danh_muc['id']) ?>"
                        class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
@@ -264,7 +239,7 @@ require_once 'header.php';
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="chitietsanpham.php?id=<?= $san_pham['id']; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a href="?act=chitietsanpham&id=<?= $san_pham['id']; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     <?= htmlspecialchars($san_pham['ten_san_pham']); ?>
                                 </a>
 

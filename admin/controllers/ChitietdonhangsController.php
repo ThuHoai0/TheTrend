@@ -20,6 +20,8 @@ class ChitietdonhangsController
     {
         $id = $_GET['id'];
         $chi_tiet_don_hang = $this->modelChitietdonhang->getDetailData($id);
+        var_dump($chi_tiet_don_hang);
+        die();
         require_once './views/chitietdonhang/chitiet.php';
     }
     public function delete()

@@ -11,6 +11,11 @@ require_once './models/Home.php';
 require_once './models/Khuyenmai.php';
 
 $act = $_GET['act'] ?? '/';
+//die($act);
+if (strpos($act, '?') !== false) {
+    $act = explode('?', $act)[0]; // Lấy phần trước dấu "?".
+//    die($act);
+}
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];

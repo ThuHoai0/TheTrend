@@ -123,15 +123,10 @@
                                                             <a href="?act=sanpham/chitiet&id=<?= $san_pham['id'] ?>"><?= $san_pham['ten_san_pham'] ?></a>
                                                         </td>
                                                         <td><img src="<?= './../admin/uploads/'.$san_pham['hinh_anh'] ?>" alt="" width="150px"></td>
-<!--                                                        <td>--><?php //= $san_pham['mo_ta'] ?><!--</td>-->
                                                         <td><?= $san_pham['so_luong'] ?></td>
                                                         <td><?= $san_pham['gia'] ?></td>
-<!--                                                        <td>--><?php //= $san_pham['gia_nhap'] ?><!--</td>-->
-<!--                                                        <td>--><?php //= $san_pham['ten_danh_muc'] ?><!--</td>-->
-<!--                                                        <td>--><?php //= $san_pham['ngay_tao'] ?><!--</td>-->
                                                         <td>
                                                             <?php
-                                                            // Check the 'status' field instead of 'category_name'
                                                             if ($san_pham['trang_thai'] == '1') { ?>
                                                                 <span class="badge bg-success">Hiển Thị</span>
                                                                 <?php
