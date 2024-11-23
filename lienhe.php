@@ -1,5 +1,21 @@
 <?php 
-	include"./views/header.php";
+	include "./views/header.php";
+?>
+
+<?php
+if (isset($_SESSION['success'])) {
+    echo '<div class="alert alert-success" role="alert">' . $_SESSION['success'] . '</div>';
+    unset($_SESSION['success']); // Xóa thông báo sau khi hiển thị
+}
+
+if (isset($_SESSION['errors'])) {
+    echo '<div class="alert alert-danger" role="alert">';
+    foreach ($_SESSION['errors'] as $error) {
+        echo '<p>' . $error . '</p>';
+    }
+    echo '</div>';
+    unset($_SESSION['errors']); // Xóa lỗi sau khi hiển thị
+}
 ?>
 
 <!-- Title page -->
@@ -9,88 +25,51 @@
     </h2>
 </section>
 
-
 <!-- Content page -->
 <section class="bg0 p-t-104 p-b-116">
     <div class="container">
-        <div class="flex-w flex-tr">
-            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+        <div class="row">
+            <!-- Form Liên Hệ -->
+            <div class="col-md-8">
+                <h4 class="mtext-105 cl2 txt-center p-b-30">Gửi thắc mắc cho chúng tôi</h4>
                 <form action="?act=lienhe" method="POST">
-                    <h4 class="mtext-105 cl2 txt-center p-b-30">
-                    Gửi thắc mắc cho chúng tôi
-                    </h4>
-
-                    <div class="bor8 m-b-20 how-pos4-parent">
-                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email"
-                            placeholder="Email của ban">
-                        <img class="how-pos4 pointer-none" src="assets/images/icons/icon-email.png" alt="ICON">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email của bạn</label>
+                        <input class="form-control" type="email" name="email" placeholder="Email của bạn" required>
                     </div>
-                    <div class="bor8 m-b-20 how-pos4-parent">
-                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="ho_ten"
-                            placeholder="Họ và tên của bạn">
-
-                    </div>                    <div class="bor8 m-b-20 how-pos4-parent">
-                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="so_dien_thoai"
-                            placeholder="Số điện thoại của bạn">
+                    <div class="mb-3">
+                        <label for="ho_ten" class="form-label">Họ và tên của bạn</label>
+                        <input class="form-control" type="text" name="ho_ten" placeholder="Họ và tên của bạn" required>
                     </div>
-
-                    <div class="bor8 m-b-30">
-                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="noi_dung"
-                            placeholder="Thắc mắc của bạn về chúng tôi"></textarea>
+                    <div class="mb-3">
+                        <label for="so_dien_thoai" class="form-label">Số điện thoại của bạn</label>
+                        <input class="form-control" type="text" name="so_dien_thoai" placeholder="Số điện thoại của bạn" required>
                     </div>
-
-                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
-                        Gửi cho chúng tôi
-                    </button>
+                    <div class="mb-3">
+                        <label for="noi_dung" class="form-label">Thắc mắc của bạn</label>
+                        <textarea class="form-control" name="noi_dung" rows="4" placeholder="Nhập nội dung thắc mắc của bạn" required></textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-dark" type="submit">Gửi cho chúng tôi</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-                <div class="flex-w w-full p-b-42">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-map-marker"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Address
-                        </span>
-
-                        <p class="stext-115 cl6 size-213 p-t-18">
-                            Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
-                        </p>
+            <!-- Thông Tin Liên Hệ -->
+            <div class="col-md-4">
+                <div class="p-4 border rounded">
+                    <h5 class="mb-4">Thông Tin Liên Hệ</h5>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-map-marker-alt"></i> Địa chỉ</h6>
+                        <p>Ngách 112/12 Nguyên Xá Bắc Từ Liêm Hà Nội</p>
                     </div>
-                </div>
-
-                <div class="flex-w w-full p-b-42">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-phone-handset"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Lets Talk
-                        </span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            +1 800 1236879
-                        </p>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-phone-alt"></i> Hotline</h6>
+                        <p><a href="tel:+18001236789" class="text-decoration-none">+1 800 1236879</a></p>
                     </div>
-                </div>
-
-                <div class="flex-w w-full">
-                    <span class="fs-18 cl5 txt-center size-211">
-                        <span class="lnr lnr-envelope"></span>
-                    </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2">
-                            Sale Support
-                        </span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">
-                            contact@example.com
-                        </p>
+                    <div>
+                        <h6><i class="fas fa-envelope"></i> Email</h6>
+                        <p><a href="mailto:contact@example.com" class="text-decoration-none">contact@example.com</a></p>
                     </div>
                 </div>
             </div>
@@ -98,11 +77,10 @@
     </div>
 </section>
 
-
 <!-- Map -->
-<div class="map">
-    <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="assets/images/icons/pin.png"
-        data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+<div class="map mt-4">
+    <div id="google_map" class="size-303" data-map-x="40.691446" data-map-y="-73.886787" data-pin="assets/images/icons/pin.png"
+        data-scrollwheel="0" data-draggable="1" data-zoom="11"></div>
 </div>
 
 <!-- Back to top -->

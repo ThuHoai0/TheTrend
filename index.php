@@ -6,9 +6,13 @@ require_once './commons/function.php';
 require_once './controllers/HomeController.php';
 require_once './controllers/TintucController.php';
 
+require_once './controllers/LienheController.php';
+
 // model
 require_once './models/Home.php';
 require_once './models/TinTuc.php';
+
+require_once './models/Lienhe.php';
 
 $act = $_GET['act'] ?? '/';
 
