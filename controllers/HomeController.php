@@ -73,7 +73,6 @@ class HomeController
         }
         require_once 'login/dky.php';
     }
-
     public function sanpham()
     {
         $offset = 16;
@@ -139,5 +138,13 @@ class HomeController
         }
         require_once 'lienhe.php';
     }
+
+
+
+
+
+
+
+
 
 }

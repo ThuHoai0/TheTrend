@@ -86,7 +86,7 @@
                             </li>
 
                             <li>
-                                <a href="tintuc.php">Tin Tức</a>
+                                <a href="?act=tintuc">Tin Tức</a>
                             </li>
 
                             <li>
