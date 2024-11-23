@@ -4,9 +4,11 @@ require_once './commons/env.php';
 require_once './commons/function.php';
 // controller
 require_once './controllers/HomeController.php';
+require_once './controllers/KhuyenmaiController.php';
 
 // model
 require_once './models/Home.php';
+require_once './models/Khuyenmai.php';
 
 $act = $_GET['act'] ?? '/';
 
@@ -20,6 +22,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'dangxuat' => (new HomeController())->dangxuat(),
         'login' => (new HomeController())->formDangNhap(),
 
+        'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
 
 
         default => null, // Trường hợp không khớp

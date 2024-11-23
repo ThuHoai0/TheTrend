@@ -86,6 +86,10 @@
                                                 </span>
                                             </div>
                                             <div class="mb-3">
+                                                <h5 class="form-label">Mã khuyến mại</h5>
+                                                <input type="text" class="form-control" placeholder="Nhập tên khuyến mại..." name="ma_khuyen_mai" value="<?= $khuyen_mai['ma_khuyen_mai']?>">
+                                            </div>
+                                            <div class="mb-3">
                                                 <h5 class="form-label">Mô tả</h5>
                                                 <textarea type="text" class="form-control" placeholder="Nhập mô tả..." name="mo_ta"><?= $khuyen_mai['mo_ta']?></textarea>
                                             </div>

@@ -87,6 +87,7 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tên khuyến mại</th>
+                                                    <th scope="col">Mã khuyến mại</th>
 <!--                                                    <th scope="col">Mô tả</th>-->
                                                     <th scope="col">Phần trăm giảm</th>
                                                     <th scope="col">Ngày bắt đầu</th>
@@ -123,6 +124,7 @@
                                                         <td>
                                                             <a href="?act=khuyenmai/chitiet&id=<?= $khuyen_mai['id']?>"><?= $khuyen_mai['ten_khuyen_mai'] ?></a>
                                                         </td>
+                                                        <td><?= $khuyen_mai['ma_khuyen_mai'] ?></td>
                                                         <td><?= $khuyen_mai['phan_tram_giam'] ?> %</td>
                                                         <td><?= $khuyen_mai['ngay_bat_dau'] ?></td>
                                                         <td><?= $khuyen_mai['ngay_ket_thuc'] ?></td>

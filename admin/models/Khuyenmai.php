@@ -23,16 +23,17 @@ class Khuyenmai
         }
     }
 
-    public function postData($ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $ngay_tao, $trang_thai) {
+    public function postData($ten_khuyen_mai, $ma_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc, $ngay_tao, $trang_thai) {
         try {
-            $sql = "INSERT INTO `khuyen_mais`(`ten_khuyen_mai`, `mo_ta`, `phan_tram_giam`, `ngay_bat_dau`, `ngay_ket_thuc`, `ngay_tao`, `trang_thai`) 
-                    VALUES (:ten_khuyen_mai, :mo_ta, :phan_tram_giam, :ngay_bat_dau, :ngay_ket_thuc, :ngay_tao, :trang_thai)";
+            $sql = "INSERT INTO `khuyen_mais`(`ten_khuyen_mai`, `ma_khuyen_mai`, `mo_ta`, `phan_tram_giam`, `ngay_bat_dau`, `ngay_ket_thuc`, `ngay_tao`, `trang_thai`) 
+                    VALUES (:ten_khuyen_mai, :ma_khuyen_mai, :mo_ta, :phan_tram_giam, :ngay_bat_dau, :ngay_ket_thuc, :ngay_tao, :trang_thai)";
 
 
             $stmt = $this->conn->prepare($sql);
 
             // gan gia tri vao cac tham so
             $stmt->bindParam(':ten_khuyen_mai', $ten_khuyen_mai);
+            $stmt->bindParam(':ma_khuyen_mai', $ma_khuyen_mai);
             $stmt->bindParam(':mo_ta', $mo_ta);
             $stmt->bindParam(':phan_tram_giam', $phan_tram_giam);
             $stmt->bindParam(':ngay_bat_dau', $ngay_bat_dau);
@@ -48,10 +49,10 @@ class Khuyenmai
         }
     }
     // cap nhat du lieu vao CSDL
-    public function updateData($id, $ten_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc) {
+    public function updateData($id, $ten_khuyen_mai, $ma_khuyen_mai, $mo_ta, $phan_tram_giam, $ngay_bat_dau, $ngay_ket_thuc) {
         try {
 
-            $sql = "UPDATE khuyen_mais SET ten_khuyen_mai = :ten_khuyen_mai, mo_ta = :mo_ta, phan_tram_giam = :phan_tram_giam, ngay_bat_dau = :ngay_bat_dau, ngay_ket_thuc = :ngay_ket_thuc  WHERE id = :id";
+            $sql = "UPDATE khuyen_mais SET ten_khuyen_mai = :ten_khuyen_mai, ma_khuyen_mai = :ma_khuyen_mai, mo_ta = :mo_ta, phan_tram_giam = :phan_tram_giam, ngay_bat_dau = :ngay_bat_dau, ngay_ket_thuc = :ngay_ket_thuc  WHERE id = :id";
 
 
             $stmt = $this->conn->prepare($sql);
@@ -60,6 +61,7 @@ class Khuyenmai
 
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':ten_khuyen_mai', $ten_khuyen_mai);
+            $stmt->bindParam(':ma_khuyen_mai', $ma_khuyen_mai);
             $stmt->bindParam(':mo_ta', $mo_ta);
             $stmt->bindParam(':phan_tram_giam', $phan_tram_giam);
             $stmt->bindParam(':ngay_bat_dau', $ngay_bat_dau);

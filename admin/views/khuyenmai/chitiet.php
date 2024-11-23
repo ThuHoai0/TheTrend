@@ -73,6 +73,10 @@
                                         <input type="text" class="form-control" value="<?= $khuyen_mai['ten_khuyen_mai'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
+                                        <h5 class="form-label">Mã Khuyến Mại</h5>
+                                        <input type="text" class="form-control" value="<?= $khuyen_mai['ma_khuyen_mai'] ?>" disabled>
+                                    </div>
+                                    <div class="mb-3">
                                         <h5 class="form-label">Mô tả</h5>
                                         <textarea disabled type="text" class="form-control"><?= $khuyen_mai['mo_ta'] ?></textarea>
                                     </div>

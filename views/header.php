@@ -82,7 +82,7 @@
                                 <a href="sanpham.php">Sản Phẩm</a>
                             </li>
                             <li>
-                                <a href="gioithieu.php">Khuyến mại</a>
+                                <a href="?act=khuyenmai">Khuyến mại</a>
                             </li>
 
                             <li>
