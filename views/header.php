@@ -86,6 +86,68 @@
             font-size: 25px;
             font-family: "Times New Roman";
         }
+        /* Căn chỉnh chung cho dropdown */
+        .dropdown {
+                position: relative;
+                display: inline-block;
+                font-size: 14px; /* Giảm kích thước chữ */
+            }
+
+            /* Nội dung của menu dropdown (ẩn mặc định) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                right: 0; /* Đẩy menu trượt sát biểu tượng */
+                background-color: #ffffff;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                border: 1px solid #ddd;
+                border-radius: 6px; /* Bo góc mềm mại */
+                min-width: 120px; /* Giảm chiều rộng */
+                padding: 5px 0; /* Thu nhỏ khoảng cách */
+                z-index: 1;
+            }
+
+            /* Liên kết trong menu dropdown */
+            .dropdown-content a {
+                text-decoration: none;
+                color: #333;
+                padding: 6px 12px; /* Cách đều bên trong */
+                display: block;
+                font-size: 13px; /* Giảm kích thước chữ */
+                border-radius: 4px; /* Bo góc nhỏ */
+            }
+
+            /* Hiệu ứng hover cho liên kết */
+            .dropdown-content a:hover {
+                background-color: #f0f0f0; /* Màu nền nhạt khi hover */
+                color: #007bff; /* Màu chữ xanh đẹp hơn */
+            }
+
+            /* Hiển thị menu khi có lớp "show" */
+            .dropdown-content.show {
+                display: block;
+            }
+
+            /* Tùy chỉnh icon */
+            .dropdown .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px; /* Kích thước biểu tượng nhỏ hơn */
+                border-radius: 50%; /* Làm icon tròn */
+                background-color: #f8f9fa; /* Màu nền sáng nhẹ */
+                color: #333; /* Màu biểu tượng */
+                cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            /* Hiệu ứng hover cho icon */
+            .dropdown .icon:hover {
+                background-color: #007bff; /* Màu xanh khi hover */
+                color: #fff; /* Màu biểu tượng đổi sang trắng */
+            }
+
     </style>
 </head>
 
@@ -143,7 +205,19 @@
                         <div class="flex-c-m h-full p-lr-19">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                                 <?php if (!empty($_SESSION['iduser'])) { ?>
-                                    <a id="admin" href="?act=dangxuat">Đăng xuất</a> |
+                                    <a id="admin" href="?act=dangxuat">Đăng xuất</a> | 
+                                    <!--  -->
+                                    <div class="dropdown">
+                                        <a href="javascript:void(0)" class="icon" onclick="toggleDropdown('dropdown-menu')">
+                                            <i class="fa-regular fa-user"></i>
+                                        </a>
+                                        <form action="?act=thongtinnguoidung" method="post">
+                                        <div id="dropdown-menu" class="dropdown-content">
+                                            <a href="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">Thông tin người dùng</a>  
+                                            <a href="?act=quenmatkhau">Quên mật khẩu</a>
+                                        </div>
+                                        </form>
+                                    </div>
                                     <?php if($_SESSION['vai_tro'] == 2) {
                                         ?>
                                         <a id="admin1" href="http://localhost/TheTrend/admin">Admin</a>
@@ -158,9 +232,24 @@
                 </nav>
             </div>
         </div>
-
     </header>
+ <script>
+    // Hiển thị/ẩn dropdown khi nhấn vào icon
+        function toggleDropdown(id) {
+            const menu = document.getElementById(id);
+            menu.classList.toggle("show");
+        }
 
+        // Ẩn dropdown khi nhấp ra ngoài
+        window.onclick = function(event) {
+            if (!event.target.matches('.icon, .icon *')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        };
+ </script>
     <!-- Cart -->
 <!--    <div class="wrap-header-cart js-panel-cart">-->
 <!--        <div class="s-full js-hide-cart"></div>-->
@@ -248,3 +337,4 @@
 <!--        </div>-->
 <!--    </div>-->
     <!-- #region -->
+

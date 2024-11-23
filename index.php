@@ -5,11 +5,11 @@ require_once './commons/function.php';
 // controller
 require_once './controllers/HomeController.php';
 require_once './controllers/KhuyenmaiController.php';
-
+require_once './controllers/NguoidungController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Khuyenmai.php';
-
+require_once './models/Nguoidung.php';
 $act = $_GET['act'] ?? '/';
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -25,6 +25,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'chitietsanpham' => (new HomeController())->chitietsanpham(),
 
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
+        'thongtinnguoidung' => (new NguoidungController())->edit(),
+        'luuthongtin' => (new NguoidungController())->update(),
 
 
         default => null, // Trường hợp không khớp
