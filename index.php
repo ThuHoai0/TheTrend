@@ -28,11 +28,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'sanpham' => (new HomeController()) -> sanpham(),
         'yeuthich' => (new HomeController()) -> top8(),
         'chitietsanpham' => (new HomeController()) -> chitietsanpham(),
-        
+
         'lienhe' => (new LienheController()) -> lienhe(),
         'danhgia' => (new HomeController()) -> danhgia(),
         'binhluan' => (new HomeController()) -> binhluan(),
-
 
         'tintuc' => (new TintucController()) -> dstintuc(),
         'chitiettintuc' => (new TintucController()) -> chitiet(),
