@@ -6,7 +6,6 @@ class DanhgiasController
     public function __construct() {
         $this->modelDanhgia = new Danhgia();
     }
-
     public function index()
     {
         $danh_gias = null;
@@ -20,7 +19,6 @@ class DanhgiasController
         // dua du lieu ra view
         require_once './views/danhgia/list.php';
     }
-
     public function create(){
         $sp = $this->modelDanhgia->getCategory();
         require_once './views/danhgia/create.php';
