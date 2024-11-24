@@ -117,7 +117,7 @@
 
     <!-- Form Container -->
     <div class="form-container">
-    <form method="POST" action="?act=luuthongtin/update&id=<?= $_SESSION['iduser']?>">
+    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser']?>">
 <!--        --><?php //var_dump($_SESSION['iduser']); die(); ?>
         <!-- Username -->
         <div class="form-section">

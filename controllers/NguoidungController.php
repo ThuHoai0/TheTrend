@@ -83,10 +83,12 @@ class NguoidungController
                 $hashed_password = password_hash($mat_khau, PASSWORD_BCRYPT);
 
                 // Cập nhật dữ liệu
-                $success = $this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh);
+                $this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh);
 
-                if ($success) {
+                if ($this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh))
+                {
                     header('Location: ?act=thongtinnguoidung&id=' . $id);
+                    echo "Cập nhật thành công";
                 } else {
                     echo "Cập nhật thất bại. Vui lòng thử lại.";
                 }

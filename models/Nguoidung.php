@@ -12,7 +12,7 @@ class Nguoidung
     public function updateUser($id, $email, $mat_khau, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh)
     {
         try {
-            $sql = "UPDATE nguoi_dung 
+            $sql = "UPDATE nguoi_dungs 
                     SET email = :email, 
                         mat_khau = :mat_khau, 
                         dia_chi = :dia_chi, 
