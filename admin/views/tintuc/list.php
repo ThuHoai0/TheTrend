@@ -84,7 +84,6 @@
                                                 <tr>
                                                     <th scope="col">STT</th>
                                                     <th scope="col">Tiêu đề</th>
-                                                    <th scope="col">Nội dung</th>
 
                                                     <th scope="col" class="align-items-center">
                                                         Trạng thái
@@ -102,7 +101,6 @@
                                                         <td>
                                                             <a href="?act=tintuc/chitiet&id=<?= $tin_tuc['id'] ?>"><?= $tin_tuc['tieu_de'] ?></a>
                                                         </td>
-                                                        <td><?= $tin_tuc['noi_dung'] ?></td>
                                                         <td>
                                                             <?php
                                                             // Check the 'status' field instead of 'category_name'
