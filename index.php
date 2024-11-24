@@ -6,10 +6,14 @@ require_once './commons/function.php';
 require_once './controllers/HomeController.php';
 require_once './controllers/KhuyenmaiController.php';
 require_once './controllers/NguoidungController.php';
+require_once './controllers/LienheController.php';
+require_once './controllers/TinTucController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Khuyenmai.php';
 require_once './models/Nguoidung.php';
+require_once './models/Lienhe.php';
+require_once './models/TinTuc.php';
 $act = $_GET['act'] ?? '/';
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -35,7 +39,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
 
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
-        'thongtinnguoidung' => (new NguoidungController())->edit(),
+        'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
         'luuthongtin' => (new NguoidungController())->update(),
 
         default => null, // Trường hợp không khớp

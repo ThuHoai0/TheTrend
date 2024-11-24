@@ -117,16 +117,17 @@
 
     <!-- Form Container -->
     <div class="form-container">
-    <form method="POST" action="?act=thongtinnguoidung/update&id=<?= $_SESSION['iduser']?>">
+    <form method="POST" action="?act=luuthongtin/update&id=<?= $_SESSION['iduser']?>">
+<!--        --><?php //var_dump($_SESSION['iduser']); die(); ?>
         <!-- Username -->
         <div class="form-section">
             <label for="ten" class="form-label">Tên Đăng Nhập</label>
             <input 
                 type="text" 
                 class="form-control" 
-                id="ten" 
+                id="ten"
                 name="ten" 
-                value="<?= isset($nguoi_dung['ten']) ? $nguoi_dung['ten'] : '' ?>" 
+                value="<?= $_SESSION['name'] ?>"
                 readonly>
             <div class="form-text">Tên đăng nhập không thể thay đổi.</div>
         </div>
@@ -140,7 +141,7 @@
                     class="form-control" 
                     id="email" 
                     name="email" 
-                    value="<?= isset($nguoi_dung['email']) ? $nguoi_dung['email'] : '' ?>">
+                    value="<?= $_SESSION['email'] ?>">
             </div>
         </div>
         <!-- Mat Khau -->
