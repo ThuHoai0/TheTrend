@@ -51,6 +51,7 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
+
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
@@ -148,6 +149,21 @@
                 color: #fff; /* Màu biểu tượng đổi sang trắng */
             }
 
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000; /* Màu nền đỏ */
+            color: #fff; /* Màu chữ trắng */
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 12px; /* Bo góc */
+            z-index: 10; /* Đảm bảo hiển thị phía trên hình ảnh */
+            text-transform: uppercase; /* Viết hoa */
+        }
+
+
     </style>
 </head>
 
@@ -163,7 +179,7 @@
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
-                    <a href="#" class="logo">
+                    <a href="?act=home" class="logo">
                         <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0 0 150 50">
                             <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Time New Roman" font-size="30" fill="#000">
                                 The Trend

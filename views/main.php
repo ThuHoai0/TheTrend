@@ -2,6 +2,7 @@
 <?php
 require_once 'header.php';
 ?>
+
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
@@ -147,17 +148,23 @@ require_once 'header.php';
 
         <div class="flex-w flex-sb-m p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                <a href="?act=home" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                <!-- Tất cả sản phẩm -->
+                <a href="?act=home"
+                   class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 <?= !isset($_GET['category']) ? 'how-active1' : '' ?>"
+                   data-filter="*">
                     Tất cả sản phẩm
                 </a>
+
+                <!-- Danh mục sản phẩm -->
                 <?php foreach ($danh_mucs as $danh_muc): ?>
                     <a href="?act=home&category=<?= htmlspecialchars($danh_muc['id']) ?>"
-                       class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+                       class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 <?= (isset($_GET['category']) && $_GET['category'] == $danh_muc['id']) ? 'how-active1' : '' ?>"
                        data-filter=".<?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>">
                         <?= htmlspecialchars($danh_muc['ten_danh_muc']) ?>
                     </a>
                 <?php endforeach; ?>
             </div>
+
 
             <div class="flex-w flex-c-m m-tb-10">
                 <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
@@ -203,34 +210,24 @@ require_once 'header.php';
                             </li>
                         </ul>
                     </div>
-
-                    <div class="filter-col4 p-b-27">
-                        <div class="mtext-102 cl2 p-b-15">
-                            Thẻ
-                        </div>
-
-                        <div class="flex-w p-t-4 m-r--5">
-                            <?php
-                            foreach ($danh_mucs as $danh_muc) {
-                                ?>
-                                <a href="" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"><?= $danh_muc['ten_danh_muc'] ?></a>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- sanpham -->
         <div class="row isotope-grid">
 
-            <?php foreach ($san_phams as $san_pham): ?>
+            <?php foreach ($san_phams as $index => $san_pham): ?>
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
                     <!-- Block2 -->
                     <div class="block2">
-                        <div class="block2-pic hov-img0">
+                        <div class="block2-pic hov-img0 position-relative">
                             <img src="<?= '././admin/uploads/'. $san_pham['hinh_anh'] ?? 'default.jpg'; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 300px; object-fit: cover; object-position: center">
+
+                            <?php if ($index < 3): ?>
+                                <!-- Nhãn NEW -->
+                                <span class="badge-new">NEW</span>
+                            <?php endif; ?>
+
                             <a href="?act=chitietsanpham&id=<?= $san_pham['id']; ?>"
                                class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                 Xem thêm
@@ -239,21 +236,18 @@ require_once 'header.php';
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <b class="stext-104 cl4 js-name-b2 p-b-6" style="font-size: 18px;">
                                     <?= htmlspecialchars($san_pham['ten_san_pham']); ?>
-                                </a>
-
+                                </b>
                                 <span class="stext-105 cl3">
-                    <?= number_format($san_pham['gia'], 0, ',', '.'); ?> VNĐ
-                </span>
+                            <?= number_format($san_pham['gia'], 0, ',', '.'); ?> VNĐ
+                        </span>
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">
                                 <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png"
-                                         alt="ICON">
+                                    <img class="icon-heart1 dis-block trans-04" src="assets/images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="assets/images/icons/icon-heart-02.png" alt="ICON">
                                 </a>
                             </div>
                         </div>
@@ -261,6 +255,8 @@ require_once 'header.php';
                 </div>
             <?php endforeach; ?>
         </div>
+
+
         <!-- hetsanpham -->
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45">
