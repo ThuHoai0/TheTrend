@@ -117,16 +117,16 @@
 
     <!-- Form Container -->
     <div class="form-container">
-    <form method="POST" action="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">
+    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser']?>">
 <!--        --><?php //var_dump($_SESSION['iduser']); die(); ?>
         <!-- Username -->
         <div class="form-section">
-            <label for="ten" class="form-label">Tên Đăng Nhập</label>
+            <label for="name" class="form-label">Tên Đăng Nhập</label>
             <input 
                 type="text" 
                 class="form-control" 
-                id="ten"
-                name="ten" 
+                id="name"
+                name="name" 
                 value="<?= $_SESSION['name'] ?>"
                 readonly>
             <div class="form-text">Tên đăng nhập không thể thay đổi.</div>
@@ -181,7 +181,7 @@
         </div>
 
         <!-- Gender -->
-        <div class="form-section">
+            <div class="form-section">
         <label class="form-label">Giới Tính</label>
         <div>
             <div class="form-check form-check-inline">
@@ -189,8 +189,8 @@
                     class="form-check-input" 
                     type="radio" 
                     name="gioi_tinh" 
-                    value="Nam" 
-                    <?= $gioi_tinh = ($nguoi_dung['gioi_tinh'] == 1) ? 'Nam' : 'Nữ';  ?>>
+                    value="1" 
+                    <?= $nguoi_dung['gioi_tinh'] == 1 ? 'checked' : '' ?>>
                 <label class="form-check-label">Nam</label>
             </div>
             <div class="form-check form-check-inline">
@@ -198,52 +198,53 @@
                     class="form-check-input" 
                     type="radio" 
                     name="gioi_tinh" 
-                    value="Nữ" 
-                    <?= $gioi_tinh = ($nguoi_dung['gioi_tinh'] == 2) ? 'Nam' : 'Nữ'; ?>>
+                    value="2" 
+                    <?= $nguoi_dung['gioi_tinh'] == 2 ? 'checked' : '' ?>>
                 <label class="form-check-label">Nữ</label>
+            </div>
+        </div>  
+    </div>
+
+       <!-- Ngày sinh -->
+    <div class="form-section">
+        <label for="ngay_sinh" class="form-label">Ngày sinh</label>
+        <div class="row">
+            <!-- Ngày -->
+            <div class="col-4">
+                <select name="day" id="day" class="form-select" required>
+                    <option value="">Ngày</option>
+                    <?php for ($i = 1; $i <= 31; $i++): ?>
+                        <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && intval(date('d', strtotime($nguoi_dung['ngay_sinh']))) == $i ? 'selected' : '' ?>>
+                            <?= $i ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <!-- Tháng -->
+            <div class="col-4">
+                <select name="month" id="month" class="form-select" required>
+                    <option value="">Tháng</option>
+                    <?php for ($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && intval(date('m', strtotime($nguoi_dung['ngay_sinh']))) == $i ? 'selected' : '' ?>>
+                            <?= $i ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <!-- Năm -->
+            <div class="col-4">
+                <select name="year" id="year" class="form-select" required>
+                    <option value="">Năm</option>
+                    <?php for ($i = date('Y'); $i >= 1900; $i--): ?>
+                        <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && intval(date('Y', strtotime($nguoi_dung['ngay_sinh']))) == $i ? 'selected' : '' ?>>
+                            <?= $i ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
             </div>
         </div>
     </div>
 
-
-
-
-        <!-- Date of Birth -->
-        <div class="form-section">
-            <label for="ngay_sinh" class="form-label">Ngày Sinh</label>
-            <div class="row">
-                <div class="col-4">
-                    <select class="form-select" name="day">
-                        <option value="">Ngày</option>
-                        <?php for ($i = 1; $i <= 31; $i++): ?>
-                            <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && date('d', strtotime($nguoi_dung['ngay_sinh'])) == $i ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <select class="form-select" name="month">
-                        <option value="">Tháng</option>
-                        <?php for ($i = 1; $i <= 12; $i++): ?>
-                            <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && date('m', strtotime($nguoi_dung['ngay_sinh'])) == $i ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <select class="form-select" name="year">
-                        <option value="">Năm</option>
-                        <?php for ($i = 1900; $i <= date('Y'); $i++): ?>
-                            <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && date('Y', strtotime($nguoi_dung['ngay_sinh'])) == $i ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-            </div>
-        </div>
 
         <!-- Save Button -->
         <button type="submit" class="btn btn-primary mt-3">Lưu Thông Tin</button>
