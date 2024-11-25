@@ -150,34 +150,142 @@ class ChitietsanphamController
         }
     }
 
-    public function laythongtinsp() {
+//    public function laythongtinsp() {
+//        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+//            // Lấy dữ liệu từ form
+//            $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+//            $product_name = isset($_POST['product_name']) ? htmlspecialchars($_POST['product_name']) : '';
+//            $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
+//            $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+//            $product_image = 'assets/images/default.jpg'; // Ảnh mặc định (có thể thay đổi nếu cần)
+//
+////            var_dump($quantity);
+////            die();
+//
+//            // Kiểm tra dữ liệu hợp lệ
+//            if ($product_id > 0 && $quantity > 0) {
+//                // Gọi hàm addToCart để thêm sản phẩm vào giỏ hàng
+//                $this->modelChitietsanpham->addToCart($product_id, $product_name, $product_price, $quantity, $product_image);
+//
+//                // Redirect về trang giỏ hàng
+////                header("Location: ?act=giohang");
+////                exit();
+//            } else {
+//                echo "Dữ liệu không hợp lệ!";
+//            }
+//        }
+//    }
+
+    public function handleCartAjax() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Lấy dữ liệu từ form
             $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
             $product_name = isset($_POST['product_name']) ? htmlspecialchars($_POST['product_name']) : '';
             $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
             $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+            $product_image = 'assets/images/default.jpg'; // Ảnh mặc định
+            ini_set('display_errors', 1);
+            error_reporting(E_ALL);
 
-            // Kiểm tra dữ liệu hợp lệ
             if ($product_id > 0 && $quantity > 0) {
-                // Lưu vào session hoặc xử lý logic thêm giỏ hàng
                 session_start();
                 if (!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = [];
                 }
-                $_SESSION['cart'][] = [
-                    'product_id' => $product_id,
-                    'product_name' => $product_name,
-                    'product_price' => $product_price,
-                    'quantity' => $quantity,
-                ];
+                $product_found = false;
+                foreach ($_SESSION['cart'] as &$item) {
+                    if ($item['product_id'] == $product_id) {
+                        $item['quantity'] += $quantity; // Tăng số lượng sản phẩm
+                        $product_found = true;
+                        break;
+                    }
+                }
+                if (!$product_found) {
+                    $_SESSION['cart'][] = [
+                        'product_id' => $product_id,
+                        'product_name' => $product_name,
+                        'product_price' => $product_price,
+                        'quantity' => $quantity,
+                        'product_image' => $product_image,
+                    ];
+                }
 
-                // Redirect lại trang chi tiết sản phẩm hoặc giỏ hàng
-                header("Location: chitietsanpham.php?id=" . $product_id);
-                exit();
+                // Tính tổng số lượng sản phẩm trong giỏ hàng
+                $total_items = array_sum(array_column($_SESSION['cart'], 'quantity'));
+
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Thêm vào giỏ hàng thành công!',
+                    'total_items' => $total_items,
+                ]);
             } else {
-                echo "Dữ liệu không hợp lệ!";
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Dữ liệu không hợp lệ!',
+                ]);
+            }
+        } else {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Yêu cầu không hợp lệ!',
+            ]);
+        }
+        exit();
+    }
+
+
+    public function xoaSP()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'remove') {
+            $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+            if ($product_id > 0 && isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $key => $item) {
+                    if ($item['product_id'] == $product_id) {
+                        unset($_SESSION['cart'][$key]);
+                        break;
+                    }
+                }
+                $_SESSION['cart'] = array_values($_SESSION['cart']);
             }
         }
+        // Quay lại trang giỏ hàng
+//        header("Location: ?act=giohang");
+        exit();
     }
+
+    public function getCartCount() {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            session_start(); // Ensure session is started
+            $count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+            echo json_encode([
+                'success' => true,
+                'count' => $count
+            ]);
+        } else {
+            echo json_encode(['success' => false]);
+        }
+        exit();
+    }
+
+    public function updateCart()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quantity'])) {
+            foreach ($_POST['quantity'] as $product_id => $quantity) {
+                $product_id = intval($product_id);
+                $quantity = intval($quantity);
+                if ($quantity > 0 && isset($_SESSION['cart'])) {
+                    foreach ($_SESSION['cart'] as &$item) {
+                        if ($item['product_id'] == $product_id) {
+                            $item['quantity'] = $quantity; // Update quantity
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        // Redirect back to the cart page
+        header("Location: ?act=giohang");
+        exit();
+    }
+
+
 }

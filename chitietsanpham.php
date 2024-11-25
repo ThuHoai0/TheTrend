@@ -50,7 +50,7 @@
                                 <?php foreach ($hinh_anh_top2 as $hinh): ?>
                                     <div class="item-slick3" data-thumb="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>">
                                         <div class="wrap-pic-w pos-relative">
-                                            <img src="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
+                                            <img name="product_img" src="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
                                             <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                                href="<?= '././admin/uploads/' . $hinh['duong_dan_hinh_anh']; ?>">
                                                 <i class="fa fa-expand"></i>
@@ -98,7 +98,7 @@
 
 
                         <div class="flex-w flex-r-m p-b-10">
-                            <form action="" method="POST" class="size-204 flex-w flex-m respon6-next">
+                            <form method="GET" class="size-204 flex-w flex-m respon6-next">
                                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
@@ -115,11 +115,11 @@
                                 <input type="hidden" name="product_name" value="<?= htmlspecialchars($chi_tiet['ten_san_pham']) ?>"> <!-- Tên sản phẩm -->
                                 <input type="hidden" name="product_price" value="<?= $chi_tiet['gia'] ?>"> <!-- Giá sản phẩm -->
 
-                                <button type="submit"
-                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                <button onclick="themVao()" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Thêm vào giỏ hàng
                                 </button>
                             </form>
+
                         </div>
                     </div>
 
@@ -366,10 +366,9 @@
                                         <?= $san_pham['ten_san_pham'] ?>
                                     </a>
                                     <span class="stext-105 cl3">
-                        <?= number_format($san_pham['gia'], 0, ',', '.') ?> VND
-                    </span>
+                                        <?= number_format($san_pham['gia'], 0, ',', '.') ?> VND
+                                    </span>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -550,5 +549,33 @@
         </div>
     </div>
 </div>
+    <script>
+
+        function themVao() {
+            $.ajax({
+                url: '?act=handleCartAjax',
+                type: 'POST',
+                data: {
+                    product_id: $('[name="product_id"]').val(),
+                    product_name: $('[name="product_name"]').val(),
+                    product_img: $('[name="product_img"]').val(),
+                    product_price: $('[name="product_price"]').val(),
+                    quantity: $('[name="quantity"]').val(),
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        alert(response.message);
+                        $('.cart-total-items').text(response.total_items);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Có lỗi xảy ra, vui lòng thử lại!');
+                },
+            });
+        }
+    </script>
 
 <?php include "./views/footer.php";?>

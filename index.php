@@ -35,7 +35,11 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'chitietsanpham' => (new ChitietsanphamController()) -> chitietsanpham(),
         'danhgia' => (new ChitietsanphamController()) -> danhgia(),
         'binhluan' => (new ChitietsanphamController()) -> binhluan(),
-        'thongtinsp' => (new ChitietsanphamController()) -> laythongtinsp(),
+//        'thongtinsp' => (new ChitietsanphamController()) -> laythongtinsp(),
+        'addCart' => (new ChitietsanphamController()) -> getCartCount(),
+        'handleCartAjax' => (new ChitietsanphamController()) -> handleCartAjax(),
+        'xoaSP' => (new ChitietsanphamController()) -> xoaSP(),
+        'updateCart' => (new ChitietsanphamController()) -> updateCart(),
 
         'lienhe' => (new LienheController()) -> lienhe(),
 
@@ -49,7 +53,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'doimatkhau' => (new NguoidungController())->update(),
 
         'giohang' => (new GiohangController()) -> giohang(),
-//        'addtocart' => (new GiohangController()) -> addToCart(),
 
 
 
