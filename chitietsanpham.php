@@ -71,9 +71,8 @@
             <div class="col-md-6 col-lg-5 p-b-30">
                 <div class="p-r-50 p-t-5 p-lr-0-lg">
                     <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                        <?= $chi_tiet['ten_san_pham'] ?>
+                        <?= ucwords($chi_tiet['ten_san_pham']) ?>
                     </h4>
-
                     <span class="mtext-106 cl2">
                         Giá tiền: <?= $chi_tiet['gia'] * 10 ?> VNĐ
                     </span>
@@ -160,24 +159,40 @@
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                 <div class="p-b-30 m-lr-15-sm">
                                     <!-- Review -->
+                                    <?php
+                                    // Mảng chứa URL của 10 ảnh đại diện ngẫu nhiên
+                                    $avatar_urls = [
+                                        "https://i.pinimg.com/736x/e1/95/04/e195040207a2745da3daa76bd89bce66.jpg",
+                                        "https://i.pinimg.com/736x/9c/ad/ef/9cadef762d49d7b12f666fde5f5bd245.jpg",
+                                        "https://i.pinimg.com/736x/b5/ba/a5/b5baa53327e504f6f3c2b1e719299a5a.jpg",
+                                        "https://i.pinimg.com/736x/7f/ac/c1/7facc1caff33bd07fdb88dae4f9a1082.jpg",
+                                        "https://i.pinimg.com/736x/f8/57/92/f857926b3e0abee0a02d4867038c7960.jpg",
+                                        "https://i.pinimg.com/736x/c9/03/8f/c9038ffb9fec4de75d3f8db2f77d0d00.jpg",
+                                        "https://i.pinimg.com/736x/da/c5/09/dac5097f3cc18d95e4581ab91580282e.jpg",
+                                        "https://i.pinimg.com/736x/bb/f9/1d/bbf91d985e6d545feacf5052bf96ae79.jpg",
+                                        "https://i.pinimg.com/736x/9f/8c/a7/9f8ca751b4b5b1fd77bd32e71d640e39.jpg",
+                                        "https://i.pinimg.com/736x/33/ba/f4/33baf4bccb7c5106fe86cbfd70a3afef.jpg"
+                                    ];
+                                    ?>
+
                                     <?php if (!empty($binh_luan)): ?>
                                         <?php foreach ($binh_luan as $comment): ?>
                                             <div class="flex-w flex-t p-b-68">
                                                 <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                                    <!-- Ảnh đại diện mặc định -->
-                                                    <img src="https://i.pinimg.com/736x/59/f0/d0/59f0d0067c5d04c5db5f92f517767002.jpg" alt="AVATAR">
+                                                    <!-- Chọn ảnh đại diện ngẫu nhiên -->
+                                                    <img src="<?= $avatar_urls[array_rand($avatar_urls)]; ?>" alt="AVATAR">
                                                 </div>
 
                                                 <div class="size-207">
                                                     <div class="flex-w flex-sb-m p-b-17">
                                                         <!-- Hiển thị tên người dùng -->
                                                         <span class="mtext-107 cl2 p-r-20">
-                                                            <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
-                                                        </span>
+                        <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
+                    </span>
                                                         <!-- Hiển thị ngày bình luận -->
                                                         <span class="stext-102 cl3">
-                                                            <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
-                                                        </span>
+                        <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
+                    </span>
                                                     </div>
                                                     <!-- Hiển thị nội dung bình luận -->
                                                     <p class="stext-102 cl6">
@@ -193,11 +208,11 @@
 
 
 
+
                                     <!-- Add review -->
                                     <?php if (isset($_SESSION['iduser'])): ?>
                                         <!-- Nếu người dùng đã đăng nhập -->
                                         <form class="w-full mt-5" action="?act=binhluan&id=<?= $chi_tiet['id']; ?>" method="post">
-                                            <h5 class="mtext-108 cl2 p-b-7">Thêm bình luận</h5>
                                             <div class="row p-b-25">
                                                 <div class="col-12 p-b-5">
                                                     <label class="stext-102 cl3 mt-3" for="noi_dung">Viết bình luận</label>
@@ -234,13 +249,13 @@
                                             </div>
                                             <div class="size-207">
                                                 <div class="flex-w flex-sb-m p-b-17">
-                    <span class="mtext-107 cl2 p-r-20">
-                        <?= htmlspecialchars($_SESSION['name']); ?>
-                    </span>
+                                                    <span class="mtext-107 cl2 p-r-20">
+                                                        <?= htmlspecialchars($_SESSION['name']); ?>
+                                                    </span>
                                                     <span class="fs-18 cl11">
-                        <?= str_repeat('<i class="zmdi zmdi-star"></i>', intval($danh_gia['so_sao'])); ?>
-                        <?= str_repeat('<i class="zmdi zmdi-star-outline"></i>', 5 - intval($danh_gia['so_sao'])); ?>
-                    </span>
+                                                        <?= str_repeat('<i class="zmdi zmdi-star"></i>', intval($danh_gia['so_sao'])); ?>
+                                                        <?= str_repeat('<i class="zmdi zmdi-star-outline"></i>', 5 - intval($danh_gia['so_sao'])); ?>
+                                                    </span>
                                                 </div>
                                                 <p class="stext-102 cl6">
                                                     <?= htmlspecialchars($danh_gia['noi_dung']); ?>
@@ -250,42 +265,42 @@
                                     <?php endif; ?>
 
                                     <!-- Add or Update Review -->
-                                    <?php if (isset($_SESSION['iduser'])): ?>
-                                        <?php if ($hasPurchased): ?>
-                                            <!-- Hiển thị form thêm hoặc chỉnh sửa đánh giá -->
-                                            <?php if (empty($danh_gias)): ?>
-                                                <form class="w-full mt-5" action="?act=danhgia&id=<?= $chi_tiet['id']; ?>" method="post">
-                                                    <h5 class="mtext-108 cl2 p-b-7">Thêm đánh giá</h5>
-
-                                                    <div class="flex-w flex-m p-t-50 p-b-23">
-                                                        <span class="stext-102 cl3 m-r-16">Đánh giá</span>
-                                                        <span class="wrap-rating fs-18 cl11 pointer">
-                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="1"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="2"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="3"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="4"></i>
-                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="5"></i>
-                            <input class="dis-none" type="number" name="rating" id="rating" required>
-                        </span>
-                                                    </div>
-
-                                                    <div class="row p-b-25">
-                                                        <div class="col-12 p-b-5">
-                                                            <label class="stext-102 cl3 mt-3" for="noi_dung">Viết đánh giá</label>
-                                                            <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="noi_dung" name="noi_dung" required></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">Gửi</button>
-                                                </form>
-                                            <?php endif; ?>
-                                        <?php else: ?>
-                                            <p class="text-warning text-center">Bạn cần mua sản phẩm này để được đánh giá.</p>
-                                        <?php endif; ?>
-                                    <?php else: ?>
+<!--                                    --><?php //if (isset($_SESSION['iduser'])): ?>
+<!--                                        --><?php //if ($hasPurchased): ?>
+<!--                                            <!-- Hiển thị form thêm hoặc chỉnh sửa đánh giá -->-->
+<!--                                            --><?php //if (empty($danh_gias)): ?>
+<!--                                                <form class="w-full mt-5" action="?act=danhgia&id=--><?php //= $chi_tiet['id']; ?><!--" method="post">-->
+<!--                                                    <h5 class="mtext-108 cl2 p-b-7">Thêm đánh giá</h5>-->
+<!---->
+<!--                                                    <div class="flex-w flex-m p-t-50 p-b-23">-->
+<!--                                                        <span class="stext-102 cl3 m-r-16">Đánh giá</span>-->
+<!--                                                        <span class="wrap-rating fs-18 cl11 pointer">-->
+<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="1"></i>-->
+<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="2"></i>-->
+<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="3"></i>-->
+<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="4"></i>-->
+<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="5"></i>-->
+<!--                                                            <input class="dis-none" type="number" name="rating" id="rating" required>-->
+<!--                                                        </span>-->
+<!--                                                    </div>-->
+<!---->
+<!--                                                    <div class="row p-b-25">-->
+<!--                                                        <div class="col-12 p-b-5">-->
+<!--                                                            <label class="stext-102 cl3 mt-3" for="noi_dung">Viết đánh giá</label>-->
+<!--                                                            <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="noi_dung" name="noi_dung" required></textarea>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">Gửi</button>-->
+<!--                                                </form>-->
+<!--                                            --><?php //endif; ?>
+<!--                                        --><?php //else: ?>
+<!--                                            <p class="text-warning text-center">Bạn cần mua sản phẩm này để được đánh giá.</p>-->
+<!--                                        --><?php //endif; ?>
+<!--                                    --><?php //else: ?>
                                         <p class="mt-4">
-                                            Bạn cần <a href="?act=dangnhap" class="font-weight-bold">đăng nhập</a> để thêm đánh giá.
+                                            Bạn cần <a href="?act=dangnhap" class="font-weight-bold">mua hàng</a> để thêm đánh giá.
                                         </p>
-                                    <?php endif; ?>
+<!--                                    --><?php //endif; ?>
                                 </div>
 
 

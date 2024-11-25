@@ -25,7 +25,7 @@ class NguoidungController
             exit();
         }
     }
-    
+
     public function edit()
     {
         $id = $_GET['id'];
