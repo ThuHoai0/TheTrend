@@ -75,7 +75,7 @@
                                         <form id="updateForm" action="?act=danhgia/update&id=<?= $value['id'] ?>" method="post">
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">ID đánh giá</label>
-                                                <input disabled type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="id" value="<?= $value['id'] ?>">
+                                                <input disabled type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="id" value="<?= $san_pham['ten_san_pham'] ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>

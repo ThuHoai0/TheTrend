@@ -129,4 +129,5 @@ class DanhgiasController
             }
             exit();
         }
-    }}
+    }
+}

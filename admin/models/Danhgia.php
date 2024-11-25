@@ -124,6 +124,9 @@ class Danhgia {
             return $result['san_pham_id'] ?? null;
         }
 
+
+
+
     // huy ket noi CSDL
     public function __destruct() {
         $this->conn = null;

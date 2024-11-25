@@ -75,6 +75,18 @@ class Binhluan {
             echo 'Error: ' .$e->getMessage();
         }
     }
+
+    public function getProductIdByBinhluanId($binh_luan_id)
+        {
+            $sql = "SELECT san_pham_id FROM binh_luans WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $binh_luan_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['san_pham_id'] ?? null;
+        }
+
     public function __destruct() {
         $this->conn = null;
     }
