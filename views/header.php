@@ -223,7 +223,7 @@
                     <div class="wrap-icon-header flex-w flex-r-m">
 
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart position-relative">
-                            <a href="giohang.php"><i class="zmdi zmdi-shopping-cart"></i></a>
+                            <a href="?act=giohang"><i class="zmdi zmdi-shopping-cart"></i></a>
                             <?php if (isset($_SESSION['cart_total']) && $_SESSION['cart_total'] > 0): ?>
                                 <span class="badge badge-danger position-absolute" style="top: 0; right: 0; font-size: 12px;">
                                     <?= $_SESSION['cart_total'] ?>
