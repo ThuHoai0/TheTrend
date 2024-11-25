@@ -236,7 +236,7 @@ require_once 'header.php';
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <b class="stext-104 cl4 js-name-b2 p-b-6" style="font-size: 18px;">
+                                <b class="stext-104 cl4 js-name-b2 p-b-6" style="font-size: 18px;font-family: 'Roboto', sans-serif !important;">
                                     <?= htmlspecialchars($san_pham['ten_san_pham']); ?>
                                 </b>
                                 <span class="stext-105 cl3">
