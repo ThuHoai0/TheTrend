@@ -83,10 +83,6 @@ class NguoidungController
     }
 }
 
-
-
-
-
     public function edit()
     {
         $id = $_GET['id'];
@@ -130,23 +126,20 @@ class NguoidungController
         }
 
         // Kiểm tra mật khẩu hiện tại
-        if (!password_verify($mat_khau, $nguoi_dung['mat_khau'])) {
+        if ($mat_khau !== $nguoi_dung['mat_khau']) {
             echo "<script>alert('Mật khẩu hiện tại không chính xác.');</script>";
             return;
         }
-        
+
         // Kiểm tra nếu mật khẩu mới giống mật khẩu hiện tại
-        if (password_verify($new_password, $nguoi_dung['mat_khau'])) {
+        if ($new_password === $nguoi_dung['mat_khau']) {
             echo "<script>alert('Mật khẩu mới không được giống mật khẩu hiện tại.');</script>";
             return;
         }
 
         // Cập nhật mật khẩu trong cơ sở dữ liệu
-        // Mã hóa mật khẩu mới
-        $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
-
-        // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-        $update_status = $this->modelNguoidung->updatePassword($id, $hashed_new_password);
+        // Không mã hóa mật khẩu mới, chỉ lưu trực tiếp vào cơ sở dữ liệu
+        $update_status = $this->modelNguoidung->updatePassword($id, $new_password);
 
         if ($update_status) {
             echo "<script>alert('Đổi mật khẩu thành công.'); window.location.href='?act=home';</script>";
@@ -160,5 +153,6 @@ class NguoidungController
         exit();
     }
 }
+
 
 }

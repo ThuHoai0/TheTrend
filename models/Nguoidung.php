@@ -38,32 +38,32 @@ class Nguoidung
 
     
 
-    public function updatePassword($id, $hashed_password)
-    {
-        try {
-            // Xác định câu truy vấn SQL
-            $sql = "UPDATE nguoi_dungs 
-                    SET mat_khau = :mat_khau
-                    WHERE id = :id";
+    public function updatePassword($id, $password)
+{
+    try {
+        // Xác định câu truy vấn SQL
+        $sql = "UPDATE nguoi_dungs 
+                SET mat_khau = :mat_khau
+                WHERE id = :id";
 
-            // Chuẩn bị câu truy vấn
-            $stmt = $this->conn->prepare($sql);
+        // Chuẩn bị câu truy vấn
+        $stmt = $this->conn->prepare($sql);
 
-            // Gán giá trị cho các tham số truy vấn
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':mat_khau', $hashed_password, PDO::PARAM_STR);
+        // Gán giá trị cho các tham số truy vấn
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':mat_khau', $password, PDO::PARAM_STR);  // Không mã hóa mật khẩu
 
-            // Thực thi truy vấn
-            if ($stmt->execute()) {
-                return true; // Trả về true nếu cập nhật thành công
-            } else {
-                return false; // Trả về false nếu có lỗi trong quá trình thực thi
-            }
-        } catch (PDOException $e) {
-            // Ghi log lỗi để dễ dàng kiểm tra sau này
-            error_log('Lỗi khi cập nhật mật khẩu: ' . $e->getMessage());
-            return false;
+        // Thực thi truy vấn
+        if ($stmt->execute()) {
+            return true; // Trả về true nếu cập nhật thành công
+        } else {
+            return false; // Trả về false nếu có lỗi trong quá trình thực thi
         }
+    } catch (PDOException $e) {
+        // Ghi log lỗi để dễ dàng kiểm tra sau này
+        error_log('Lỗi khi cập nhật mật khẩu: ' . $e->getMessage());
+        return false;
     }
+}
 
 }
