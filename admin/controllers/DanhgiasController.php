@@ -84,6 +84,8 @@ class DanhgiasController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Lấy dữ liệu từ form
             $id = $_GET['id'];
+
+            
             $trang_thai = $_POST['trang_thai'];
 
             $currentData = $this->modelDanhgia->getDetailData($id);
@@ -94,7 +96,7 @@ class DanhgiasController
             if (empty($errors)) {
                 $this->modelDanhgia->updateData($id, $trang_thai);
                 unset($_SESSION['errors']);
-                header('Location: ?act=danhgia/list');
+                header('Location: ?act=sanpham/chitiet&id=' .$id);
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
@@ -110,11 +112,21 @@ class DanhgiasController
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
-            $this->modelDanhgia->deleteData($id);
-            header('Location: ?act=danhgia/list');
+            $danh_gia_id = $_POST['id']; // ID của đánh giá
+            
+            // Lấy ID sản phẩm từ đánh giá trước khi xóa
+            $san_pham_id = $this->modelDanhgia->getProductIdByDanhgiaId($danh_gia_id);
+            
+            // Xóa đánh giá
+            $this->modelDanhgia->deleteData($danh_gia_id);
+            
+            // Điều hướng về trang chi tiết sản phẩm
+            if ($san_pham_id) {
+                header('Location: ?act=sanpham/chitiet&id=' . $san_pham_id);
+            } else {
+                // Trường hợp không lấy được sản phẩm, điều hướng về danh sách sản phẩm hoặc trang lỗi
+                header('Location: act=sanpham/list');
+            }
             exit();
         }
-    }
-
-}
+    }}
