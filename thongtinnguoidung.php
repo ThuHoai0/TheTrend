@@ -10,7 +10,7 @@
         body {
             background: url('assets/images/slide-01.jpg') no-repeat center center fixed;
             background-size: cover;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;

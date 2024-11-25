@@ -44,7 +44,7 @@ class BinhluansController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_GET['id'];
             $trang_thai = $_POST['trang_thai'];
-            $currentData = $this->modelBinhluan->getDetailData($id);
+
             $errors = [];
             if (empty($errors)) {
                 $this->modelBinhluan->updateData($id, $trang_thai);
@@ -62,9 +62,21 @@ class BinhluansController
     public function delete()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
-            $this->modelBinhluan->deleteData($id);
-            header('Location: ?act=binhluan/list');
+            $binh_luan_id = $_POST['id']; // ID của đánh giá
+            
+            // Lấy ID sản phẩm từ đánh giá trước khi xóa
+            $san_pham_id = $this->modelBinhluan->getProductIdByBinhluanId($binh_luan_id);
+            
+            // Xóa đánh giá
+            $this->modelBinhluan->deleteData($binh_luan_id);
+            
+            // Điều hướng về trang chi tiết sản phẩm
+            if ($san_pham_id) {
+                header('Location: ?act=sanpham/chitiet&id=' . $san_pham_id);
+            } else {
+                // Trường hợp không lấy được sản phẩm, điều hướng về danh sách sản phẩm hoặc trang lỗi
+                header('Location: act=sanpham/list');
+            }
             exit();
         }
     }

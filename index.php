@@ -4,6 +4,7 @@ require_once './commons/env.php';
 require_once './commons/function.php';
 // controller
 require_once './controllers/HomeController.php';
+require_once './controllers/GiohangController.php';
 require_once './controllers/ChitietsanphamController.php';
 require_once './controllers/KhuyenmaiController.php';
 require_once './controllers/NguoidungController.php';
@@ -11,6 +12,7 @@ require_once './controllers/LienheController.php';
 require_once './controllers/TinTucController.php';
 // model
 require_once './models/Home.php';
+require_once './models/Giohang.php';
 require_once './models/Chitietsanpham.php';
 require_once './models/Khuyenmai.php';
 require_once './models/Nguoidung.php';
@@ -33,18 +35,25 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'chitietsanpham' => (new ChitietsanphamController()) -> chitietsanpham(),
         'danhgia' => (new ChitietsanphamController()) -> danhgia(),
         'binhluan' => (new ChitietsanphamController()) -> binhluan(),
+        'thongtinsp' => (new ChitietsanphamController()) -> laythongtinsp(),
 
         'lienhe' => (new LienheController()) -> lienhe(),
 
         'tintuc' => (new TintucController()) -> dstintuc(),
         'chitiettintuc' => (new TintucController()) -> chitiet(),
 
-
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
+
         'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
         'luuthongtin' => (new NguoidungController())->editUser(),
         'suamatkhau' => (new NguoidungController())->edit(),
         'doimatkhau' => (new NguoidungController())->update(),
+
+        'giohang' => (new GiohangController()) -> giohang(),
+//        'addtocart' => (new GiohangController()) -> addToCart(),
+
+
+
         default => null, // Trường hợp không khớp
     };
 }

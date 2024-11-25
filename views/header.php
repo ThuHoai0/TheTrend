@@ -51,7 +51,6 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
-
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
@@ -128,8 +127,19 @@
             .dropdown-content.show {
                 display: block;
             }
+            body, html {
+                font-family: 'Roboto', sans-serif !important;
+                }
 
-            /* Tùy chỉnh icon */
+                /* Đảm bảo các thẻ văn bản cũng dùng Roboto */
+            h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, textarea {
+                font-family: 'Roboto', sans-serif !important;
+            }
+            button, input, textarea {
+                font-family: 'Roboto', sans-serif !important;
+            }
+
+            /* Tùy chỉnh icon */s
             .dropdown .icon {
                 display: flex;
                 align-items: center;
@@ -163,6 +173,14 @@
             text-transform: uppercase; /* Viết hoa */
         }
 
+        .badge {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -214,9 +232,15 @@
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m">
 
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
-                            <a href="giohang.php"><i class="zmdi zmdi-shopping-cart"></i></a>
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart position-relative">
+                            <a href="?act=giohang"><i class="zmdi zmdi-shopping-cart"></i></a>
+                            <?php if (isset($_SESSION['cart_total']) && $_SESSION['cart_total'] > 0): ?>
+                                <span class="badge badge-danger position-absolute" style="top: 0; right: 0; font-size: 12px;">
+                                    <?= $_SESSION['cart_total'] ?>
+                                </span>
+                            <?php endif; ?>
                         </div>
+
 
                         <div class="flex-c-m h-full p-lr-19">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">

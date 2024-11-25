@@ -233,6 +233,23 @@ $('.js-pscroll').each(function() {
             }
         }
     });
+    document.querySelector('.js-addcart-detail').addEventListener('click', function (e) {
+        e.preventDefault();
+        const productId = document.querySelector('input[name="product_id"]').value;
+        const quantity = document.querySelector('input[name="quantity"]').value;
+
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `product_id=${productId}&quantity=${quantity}`
+        })
+            .then(response => response.text())
+            .then(data => {
+                // Cập nhật số lượng trên biểu tượng giỏ hàng
+                document.querySelector('.js-show-cart .badge').textContent = data;
+            });
+    });
+
 </script>
 </body>
 

@@ -98,25 +98,28 @@
 
 
                         <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-204 flex-w flex-m respon6-next">
+                            <form action="" method="POST" class="size-204 flex-w flex-m respon6-next">
                                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
                                     </div>
 
-                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
-                                        value="1">
+                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" value="1" min="1">
 
                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                     </div>
                                 </div>
 
-                                <button
-                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                <input type="hidden" name="product_id" value="<?= $chi_tiet['id'] ?>"> <!-- ID sản phẩm -->
+                                <input type="hidden" name="product_name" value="<?= htmlspecialchars($chi_tiet['ten_san_pham']) ?>"> <!-- Tên sản phẩm -->
+                                <input type="hidden" name="product_price" value="<?= $chi_tiet['gia'] ?>"> <!-- Giá sản phẩm -->
+
+                                <button type="submit"
+                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                     Thêm vào giỏ hàng
                                 </button>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -187,12 +190,12 @@
                                                     <div class="flex-w flex-sb-m p-b-17">
                                                         <!-- Hiển thị tên người dùng -->
                                                         <span class="mtext-107 cl2 p-r-20">
-                        <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
-                    </span>
+                                                            <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
+                                                        </span>
                                                         <!-- Hiển thị ngày bình luận -->
                                                         <span class="stext-102 cl3">
-                        <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
-                    </span>
+                                                            <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
+                                                        </span>
                                                     </div>
                                                     <!-- Hiển thị nội dung bình luận -->
                                                     <p class="stext-102 cl6">
