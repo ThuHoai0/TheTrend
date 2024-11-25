@@ -98,7 +98,7 @@
 
 
                         <div class="flex-w flex-r-m p-b-10">
-                            <form action="add_to_cart.php" method="POST" class="size-204 flex-w flex-m respon6-next">
+                            <form action="" method="POST" class="size-204 flex-w flex-m respon6-next">
                                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
@@ -120,7 +120,6 @@
                                     Thêm vào giỏ hàng
                                 </button>
                             </form>
-
                         </div>
                     </div>
 
@@ -191,12 +190,12 @@
                                                     <div class="flex-w flex-sb-m p-b-17">
                                                         <!-- Hiển thị tên người dùng -->
                                                         <span class="mtext-107 cl2 p-r-20">
-                        <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
-                    </span>
+                                                            <?= htmlspecialchars($comment['ten_nguoi_dung']); ?>
+                                                        </span>
                                                         <!-- Hiển thị ngày bình luận -->
                                                         <span class="stext-102 cl3">
-                        <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
-                    </span>
+                                                            <?= htmlspecialchars($comment['ngay_binh_luan']); ?>
+                                                        </span>
                                                     </div>
                                                     <!-- Hiển thị nội dung bình luận -->
                                                     <p class="stext-102 cl6">
