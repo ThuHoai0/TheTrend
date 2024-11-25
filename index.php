@@ -49,6 +49,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'suamatkhau' => (new NguoidungController())->edit(),
         'doimatkhau' => (new NguoidungController())->update(),
 
+        'quenmatkhau' => (new NguoidungController())->forgotPassword(),
+
         'giohang' => (new GiohangController()) -> giohang(),
 //        'addtocart' => (new GiohangController()) -> addToCart(),
 

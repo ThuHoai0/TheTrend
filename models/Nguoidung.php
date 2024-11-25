@@ -65,5 +65,34 @@ class Nguoidung
         return false;
     }
 }
+    // Lấy thông tin người dùng theo email
+    public function getUserByEmail($email)
+    {
+        try {
+            $sql = "SELECT * FROM nguoi_dungs WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetch(); // Trả về thông tin người dùng nếu tồn tại
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updatePass($id, $newPassword)
+    {
+        try {
+            // Cập nhật mật khẩu mới (không mã hóa)
+            $sql = "UPDATE nguoi_dungs SET mat_khau = :mat_khau WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':mat_khau', $newPassword, PDO::PARAM_STR); // Lưu trực tiếp mật khẩu
+            return $stmt->execute(); // Cập nhật mật khẩu mới
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return false;
+        }
+    }
 
 }
