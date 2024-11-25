@@ -23,34 +23,16 @@ class Nguoidung
     }
     
     
-    public function updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh)
+    public function updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh)
     {
-        try {
-            // Xác định câu truy vấn SQL
-            $sql = "UPDATE nguoi_dungs 
-                    SET email = :email, 
-                        dia_chi = :dia_chi, 
-                        so_dien_thoai = :so_dien_thoai, 
-                        gioi_tinh = :gioi_tinh
-                    WHERE id = :id";
-
-            // Chuẩn bị câu truy vấn
-            $stmt = $this->conn->prepare($sql);
-
-            // Gán giá trị cho các tham số truy vấn
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':dia_chi', $dia_chi, PDO::PARAM_STR);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai, PDO::PARAM_STR);
-            $stmt->bindParam(':gioi_tinh', $gioi_tinh, PDO::PARAM_INT);
-
-            // Thực thi truy vấn
-            return $stmt->execute(); // Trả về true/false
-        } catch (PDOException $e) {
-            // Ghi log lỗi để dễ dàng kiểm tra sau này
-            error_log('Lỗi khi cập nhật thông tin người dùng: ' . $e->getMessage());
-            return false;
-        }
+        // Cập nhật thông tin người dùng vào cơ sở dữ liệu
+        $sql = "UPDATE nguoi_dungs
+                SET email = ?, dia_chi = ?, so_dien_thoai = ?, gioi_tinh = ?, ngay_sinh = ?
+                WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        
+        // Thực thi câu lệnh cập nhật với các tham số
+        return $stmt->execute([$email, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh, $id]);
     }
 
 

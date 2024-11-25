@@ -49,15 +49,21 @@ class NguoidungController
             $dia_chi = trim($_POST['dia_chi']);
             $so_dien_thoai = trim($_POST['so_dien_thoai']);
             $gioi_tinh = isset($_POST['gioi_tinh']) ? intval($_POST['gioi_tinh']) : null;
+            $day = isset($_POST['day']) ? intval($_POST['day']) : null;
+            $month = isset($_POST['month']) ? intval($_POST['month']) : null;
+            $year = isset($_POST['year']) ? intval($_POST['year']) : null;
+
+            $ngay_sinh = sprintf('%04d-%02d-%02d', $year, $month, $day);
+
 
             // Kiểm tra dữ liệu hợp lệ
-            if (empty($email) || empty($dia_chi) || empty($so_dien_thoai) || is_null($gioi_tinh)) {
+            if (empty($email) || empty($dia_chi) || empty($so_dien_thoai) || is_null($gioi_tinh) || empty($ngay_sinh)) {
                 echo "<script>alert('Vui lòng điền đầy đủ thông tin.');</script>";
                 return;
             }
 
             // Gọi phương thức cập nhật trong model
-            $is_updated = $this->modelNguoidung->updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh);
+            $is_updated = $this->modelNguoidung->updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh);
 
             if ($is_updated) {
                 // Lấy lại dữ liệu mới để hiển thị
@@ -76,6 +82,7 @@ class NguoidungController
         exit();
     }
 }
+
 
 
 
