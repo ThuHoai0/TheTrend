@@ -8,36 +8,6 @@ class Nguoidung
         $this->conn = connectDB();
     }
 
-
-    public function updateUser($id, $email, $mat_khau, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh)
-    {
-        try {
-            $sql = "UPDATE nguoi_dungs 
-                    SET email = :email, 
-                        mat_khau = :mat_khau, 
-                        dia_chi = :dia_chi, 
-                        so_dien_thoai = :so_dien_thoai, 
-                        gioi_tinh = :gioi_tinh, 
-                        ngay_sinh = :ngay_sinh 
-                    WHERE id = :id";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':mat_khau', $mat_khau, PDO::PARAM_STR);
-            $stmt->bindParam(':dia_chi', $dia_chi, PDO::PARAM_STR);
-            $stmt->bindParam(':so_dien_thoai', $so_dien_thoai, PDO::PARAM_STR);
-            $stmt->bindParam(':gioi_tinh', $gioi_tinh, PDO::PARAM_STR);
-            $stmt->bindParam(':ngay_sinh', $ngay_sinh, PDO::PARAM_STR);
-
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            error_log('Lỗi cập nhật người dùng: ' . $e->getMessage());
-            return false;
-        }
-    }
-
-    // Phương thức lấy thông tin chi tiết người dùng
     public function getUserById($id)
     {
         try {
@@ -51,4 +21,33 @@ class Nguoidung
             return false;
         }
     }
+
+    public function updatePassword($id, $hashed_password)
+    {
+        try {
+            // Xác định câu truy vấn SQL
+            $sql = "UPDATE nguoi_dungs 
+                    SET mat_khau = :mat_khau
+                    WHERE id = :id";
+
+            // Chuẩn bị câu truy vấn
+            $stmt = $this->conn->prepare($sql);
+
+            // Gán giá trị cho các tham số truy vấn
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':mat_khau', $hashed_password, PDO::PARAM_STR);
+
+            // Thực thi truy vấn
+            if ($stmt->execute()) {
+                return true; // Trả về true nếu cập nhật thành công
+            } else {
+                return false; // Trả về false nếu có lỗi trong quá trình thực thi
+            }
+        } catch (PDOException $e) {
+            // Ghi log lỗi để dễ dàng kiểm tra sau này
+            error_log('Lỗi khi cập nhật mật khẩu: ' . $e->getMessage());
+            return false;
+        }
+    }
+
 }

@@ -8,33 +8,6 @@ class NguoidungController
         $this->modelNguoidung = new Nguoidung();
     }
 
-    public function edit()
-    {
-        // Khởi động session nếu chưa có
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        // Kiểm tra nếu session đã lưu 'iduser'
-        if (isset($_SESSION['iduser'])) {
-            $id = $_SESSION['iduser'];
-
-            // Lấy thông tin người dùng từ model bằng id lấy từ session
-            $nguoi_dung = $this->modelNguoidung->getDetail($id);
-
-            if ($nguoi_dung) {
-                // Yêu cầu hiển thị thông tin người dùng
-                require_once 'thongtinnguoidung.php';
-            } else {
-                // Xử lý khi không tìm thấy thông tin người dùng
-                echo 'Không tìm thấy thông tin người dùng.';
-            }
-        } else {
-            // Nếu không có session 'iduser', chuyển hướng về trang login
-            header('Location: dn.php');
-            exit();
-        }
-    }
     public function showEditForm()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -53,55 +26,78 @@ class NguoidungController
         }
     }
 
-    // Phương thức cập nhật thông tin người dùng
-    public function update()
+    public function edit()
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        if (isset($_SESSION['iduser']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_SESSION['iduser'];
-
-            // Lấy dữ liệu từ form và thực hiện validation
-            $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-            $mat_khau = $_POST['mat_khau'];
-            $dia_chi = htmlspecialchars(trim($_POST['dia_chi']));
-            $so_dien_thoai = preg_replace('/[^0-9]/', '', $_POST['so_dien_thoai']);
-            $gioi_tinh = in_array($_POST['gioi_tinh'], ['Nam', 'Nữ', 'Khác']) ? $_POST['gioi_tinh'] : null;
-
-
-            // Xử lý ngày sinh
-            $day = $_POST['day'] ?? null;
-            $month = $_POST['month'] ?? null;
-            $year = $_POST['year'] ?? null;
-            $ngay_sinh = ($day && $month && $year) ? "$year-$month-$day" : null;
-
-            // Kiểm tra dữ liệu hợp lệ
-            if ($email && $mat_khau && $dia_chi && $so_dien_thoai && $gioi_tinh && $ngay_sinh) {
-                // Mã hóa mật khẩu trước khi lưu
-                $hashed_password = password_hash($mat_khau, PASSWORD_BCRYPT);
-
-                // Cập nhật dữ liệu
-                $this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh);
-
-                if ($this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh))
-                {
-                    echo "<script>alert('Sửa thành công!');
-                    </script>";
-                    header('Location: ?act=thongtinnguoidung&id=' . $id);
-
-                } else {
-                    echo "Cập nhật thất bại. Vui lòng thử lại.";
-                }
-            } else {
-                echo "Dữ liệu không hợp lệ. Vui lòng kiểm tra lại.";
-            }
-        } else {
-            header('Location: dn.php'); // Chuyển hướng nếu chưa đăng nhập hoặc không phải POST
-            exit();
-        }
+        $id = $_GET['id'];
+        $nguoi_dung = $this->modelNguoidung->getUserById($id);
+        require_once 'suamatkhau.php';
     }
 
+    // Phương thức cập nhật thông tin người dùng
+    public function update()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Kiểm tra xem người dùng đã đăng nhập hay chưa
+    if (isset($_SESSION['iduser']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_SESSION['iduser'];
+
+        // Lấy dữ liệu từ form
+        $mat_khau = trim($_POST['mat_khau']);
+        $new_password = trim($_POST['new_password']);
+        $confirm_password = trim($_POST['confirm_password']);
+
+        // Kiểm tra dữ liệu hợp lệ
+        if (empty($mat_khau) || empty($new_password) || empty($confirm_password)) {
+            echo "<script>alert('Vui lòng điền đầy đủ thông tin.');</script>";
+            return;
+        }
+
+        if ($new_password !== $confirm_password) {
+            echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp.');</script>";
+            return;
+        }
+
+        // Lấy thông tin người dùng từ database
+        $nguoi_dung = $this->modelNguoidung->getUserById($id); // Phương thức này cần lấy thông tin user theo ID
+
+        if (!$nguoi_dung) {
+            echo "<script>alert('Người dùng không tồn tại.');</script>";
+            return;
+        }
+
+        // Kiểm tra mật khẩu hiện tại
+        if (!password_verify($mat_khau, $nguoi_dung['mat_khau'])) {
+            echo "<script>alert('Mật khẩu hiện tại không chính xác.');</script>";
+            return;
+        }
+        
+        // Kiểm tra nếu mật khẩu mới giống mật khẩu hiện tại
+        if (password_verify($new_password, $nguoi_dung['mat_khau'])) {
+            echo "<script>alert('Mật khẩu mới không được giống mật khẩu hiện tại.');</script>";
+            return;
+        }
+
+        // Cập nhật mật khẩu trong cơ sở dữ liệu
+        // Mã hóa mật khẩu mới
+        $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+        // Cập nhật mật khẩu mới vào cơ sở dữ liệu
+        $update_status = $this->modelNguoidung->updatePassword($id, $hashed_new_password);
+
+        if ($update_status) {
+            echo "<script>alert('Đổi mật khẩu thành công.'); window.location.href='?act=home';</script>";
+            exit();
+        } else {
+            echo "<script>alert('Cập nhật mật khẩu không thành công. Vui lòng thử lại.');</script>";
+            return;
+        }
+    } else {
+        echo "<script>alert('Bạn cần đăng nhập trước khi thực hiện thao tác này.'); window.location.href='dn.php';</script>";
+        exit();
+    }
+}
 
 }

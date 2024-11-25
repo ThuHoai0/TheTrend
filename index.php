@@ -42,8 +42,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
         'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
-        'luuthongtin' => (new NguoidungController())->update(),
-
+        'suamatkhau' => (new NguoidungController())->edit(),
+        'doimatkhau' => (new NguoidungController())->update(),
         default => null, // Trường hợp không khớp
     };
 }

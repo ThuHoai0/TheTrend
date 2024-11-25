@@ -117,7 +117,7 @@
 
     <!-- Form Container -->
     <div class="form-container">
-    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser']?>">
+    <form method="POST" action="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">
 <!--        --><?php //var_dump($_SESSION['iduser']); die(); ?>
         <!-- Username -->
         <div class="form-section">
@@ -182,37 +182,31 @@
 
         <!-- Gender -->
         <div class="form-section">
-            <label class="form-label">Giới Tính</label>
-            <div>
-                <div class="form-check form-check-inline">
-                    <input 
-                        class="form-check-input" 
-                        type="radio" 
-                        name="gioi_tinh" 
-                        value="Nam" 
-                        <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] === 'Nam' ? 'checked' : '' ?>>
-                    <label class="form-check-label">Nam</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input 
-                        class="form-check-input" 
-                        type="radio" 
-                        name="gioi_tinh" 
-                        value="Nữ" 
-                        <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] === 'Nữ' ? 'checked' : '' ?>>
-                    <label class="form-check-label">Nữ</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input 
-                        class="form-check-input" 
-                        type="radio" 
-                        name="gioi_tinh" 
-                        value="Khác" 
-                        <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] === 'Khác' ? 'checked' : '' ?>>
-                    <label class="form-check-label">Khác</label>
-                </div>
+        <label class="form-label">Giới Tính</label>
+        <div>
+            <div class="form-check form-check-inline">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="gioi_tinh" 
+                    value="Nam" 
+                    <?= $gioi_tinh = ($nguoi_dung['gioi_tinh'] == 1) ? 'Nam' : 'Nữ';  ?>>
+                <label class="form-check-label">Nam</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name="gioi_tinh" 
+                    value="Nữ" 
+                    <?= $gioi_tinh = ($nguoi_dung['gioi_tinh'] == 2) ? 'Nam' : 'Nữ'; ?>>
+                <label class="form-check-label">Nữ</label>
             </div>
         </div>
+    </div>
+
+
+
 
         <!-- Date of Birth -->
         <div class="form-section">
