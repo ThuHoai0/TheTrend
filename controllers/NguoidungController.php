@@ -26,6 +26,60 @@ class NguoidungController
         }
     }
 
+    public function editUser()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Kiểm tra xem người dùng đã đăng nhập hay chưa
+    if (isset($_SESSION['iduser'])) {
+        $id = $_SESSION['iduser'];
+
+        // Lấy thông tin người dùng từ database
+        $nguoi_dung = $this->modelNguoidung->getUserById($id);
+        if (!$nguoi_dung) {
+            echo "<script>alert('Người dùng không tồn tại.');</script>";
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Lấy dữ liệu từ form
+            $email = trim($_POST['email']);
+            $dia_chi = trim($_POST['dia_chi']);
+            $so_dien_thoai = trim($_POST['so_dien_thoai']);
+            $gioi_tinh = isset($_POST['gioi_tinh']) ? intval($_POST['gioi_tinh']) : null;
+
+            // Kiểm tra dữ liệu hợp lệ
+            if (empty($email) || empty($dia_chi) || empty($so_dien_thoai) || is_null($gioi_tinh)) {
+                echo "<script>alert('Vui lòng điền đầy đủ thông tin.');</script>";
+                return;
+            }
+
+            // Gọi phương thức cập nhật trong model
+            $is_updated = $this->modelNguoidung->updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh);
+
+            if ($is_updated) {
+                // Lấy lại dữ liệu mới để hiển thị
+                $nguoi_dung = $this->modelNguoidung->getUserById($id);
+                echo "<script>alert('Cập nhật thông tin thành công.'); window.location.href='?act=home';</script>";
+                exit();
+            } else {
+                echo "<script>alert('Cập nhật thông tin không thành công. Vui lòng thử lại.');</script>";
+            }
+        }
+
+        // Hiển thị dữ liệu cũ nếu chưa cập nhật thành công
+        return $nguoi_dung;
+    } else {
+        echo "<script>alert('Bạn cần đăng nhập trước khi thực hiện thao tác này.'); window.location.href='dn.php';</script>";
+        exit();
+    }
+}
+
+
+
+
     public function edit()
     {
         $id = $_GET['id'];
