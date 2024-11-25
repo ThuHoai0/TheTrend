@@ -51,7 +51,6 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
-
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
@@ -128,8 +127,19 @@
             .dropdown-content.show {
                 display: block;
             }
+            body, html {
+                font-family: 'Roboto', sans-serif !important;
+                }
 
-            /* Tùy chỉnh icon */
+                /* Đảm bảo các thẻ văn bản cũng dùng Roboto */
+            h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, textarea {
+                font-family: 'Roboto', sans-serif !important;
+            }
+            button, input, textarea {
+                font-family: 'Roboto', sans-serif !important;
+            }
+
+            /* Tùy chỉnh icon */s
             .dropdown .icon {
                 display: flex;
                 align-items: center;

@@ -76,8 +76,7 @@ class Danhgia {
     public function updateData($id, $trang_thai) {
         try {
 
-            $sql = "UPDATE danh_gias SET trang_thai = :trang_thai
-                    WHERE id = :id";
+            $sql = "UPDATE danh_gias SET trang_thai = :trang_thai WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
