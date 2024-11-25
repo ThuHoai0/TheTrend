@@ -173,6 +173,14 @@
             text-transform: uppercase; /* Viết hoa */
         }
 
+        .badge {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -224,9 +232,15 @@
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m">
 
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart position-relative">
                             <a href="giohang.php"><i class="zmdi zmdi-shopping-cart"></i></a>
+                            <?php if (isset($_SESSION['cart_total']) && $_SESSION['cart_total'] > 0): ?>
+                                <span class="badge badge-danger position-absolute" style="top: 0; right: 0; font-size: 12px;">
+                                    <?= $_SESSION['cart_total'] ?>
+                                </span>
+                            <?php endif; ?>
                         </div>
+
 
                         <div class="flex-c-m h-full p-lr-19">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
