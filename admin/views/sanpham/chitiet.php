@@ -129,7 +129,7 @@
                                                             <td><?= $value['trang_thai'] ?></td>
                                                             <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=binhluan/edit&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                            
 
                                                                 <form action="?act=binhluan/delete" method="POST"
                                                                     onsubmit="return confirm('Bạn có muốn xóa không?')">
@@ -172,8 +172,7 @@
                                                             <td><?= $value['trang_thai'] ?></td>
                                                             <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=danhgia/edit&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-
+                                            
                                                                 <form action="?act=danhgia/delete" method="POST"
                                                                       onsubmit="return confirm('Bạn có muốn xóa không?')">
                                                                     <input type="hidden" name="id" value="<?= $value['id'] ?>">

@@ -44,7 +44,7 @@ class BinhluansController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_GET['id'];
             $trang_thai = $_POST['trang_thai'];
-            $currentData = $this->modelBinhluan->getDetailData($id);
+
             $errors = [];
             if (empty($errors)) {
                 $this->modelBinhluan->updateData($id, $trang_thai);

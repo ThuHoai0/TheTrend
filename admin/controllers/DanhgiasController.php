@@ -84,19 +84,16 @@ class DanhgiasController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Lấy dữ liệu từ form
             $id = $_GET['id'];
-
-            
             $trang_thai = $_POST['trang_thai'];
-
-            $currentData = $this->modelDanhgia->getDetailData($id);
-
+            $danh_gia_id = $_POST['id'];
+            $san_pham_id = $this->modelDanhgia->getProductIdByDanhgiaId($danh_gia_id);
             $errors = [];
             
             // Cập nhật dữ liệu nếu không có lỗi
             if (empty($errors)) {
                 $this->modelDanhgia->updateData($id, $trang_thai);
                 unset($_SESSION['errors']);
-                header('Location: ?act=sanpham/chitiet&id=' .$id);
+                header('Location: ?act=sanpham/chitiet&id=' .$san_pham_id);
                 exit();
             } else {
                 $_SESSION['errors'] = $errors;
