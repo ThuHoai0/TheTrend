@@ -35,12 +35,12 @@ class NguoidungController
 
     // Phương thức cập nhật thông tin người dùng
     public function update()
-    {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+    // Kiểm tra xem người dùng đã đăng nhập hay chưa
     if (isset($_SESSION['iduser']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_SESSION['iduser'];
 
@@ -51,57 +51,53 @@ class NguoidungController
 
         // Kiểm tra dữ liệu hợp lệ
         if (empty($mat_khau) || empty($new_password) || empty($confirm_password)) {
-            echo "Vui lòng điền đầy đủ thông tin.";
+            echo "<script>alert('Vui lòng điền đầy đủ thông tin.');</script>";
             return;
         }
 
         if ($new_password !== $confirm_password) {
-            echo "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+            echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp.');</script>";
             return;
         }
 
         // Lấy thông tin người dùng từ database
         $nguoi_dung = $this->modelNguoidung->getUserById($id); // Phương thức này cần lấy thông tin user theo ID
-        // var_dump($nguoi_dung); die;
+
         if (!$nguoi_dung) {
-            echo "Người dùng không tồn tại.";
+            echo "<script>alert('Người dùng không tồn tại.');</script>";
             return;
         }
 
         // Kiểm tra mật khẩu hiện tại
-        // if (!password_verify($mat_khau, $nguoi_dung['mat_khau'])) {
-        //     echo "Mật khẩu hiện tại không chính xác.";
-        //     return;
-        // }
+        if (!password_verify($mat_khau, $nguoi_dung['mat_khau'])) {
+            echo "<script>alert('Mật khẩu hiện tại không chính xác.');</script>";
+            return;
+        }
         
-
         // Kiểm tra nếu mật khẩu mới giống mật khẩu hiện tại
         if (password_verify($new_password, $nguoi_dung['mat_khau'])) {
-            echo "Mật khẩu mới không được giống mật khẩu hiện tại.";
+            echo "<script>alert('Mật khẩu mới không được giống mật khẩu hiện tại.');</script>";
             return;
         }
 
         // Cập nhật mật khẩu trong cơ sở dữ liệu
-        if (empty($errors)) {
-            // Mã hóa mật khẩu mới
-            $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
-    
-            // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-            $nguoi_dung = $this->modelNguoidung->updatePassword($id, $hashed_new_password);
-            // var_dump($nguoi_dung); die;
-    
-            // Xóa thông báo lỗi trong session (nếu có)
-            unset($_SESSION['errors']);
-    
-            // Chuyển hướng người dùng về trang chủ sau khi đổi mật khẩu thành công
-            if ($nguoi_dung) {
-                echo "Đổi mật khẩu thành công.";
-                header('Location: ?act=home');
-                exit();
-            } else {
-                $errors[] = "Cập nhật mật khẩu không thành công. Vui lòng thử lại.";
-            }
+        // Mã hóa mật khẩu mới
+        $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+        // Cập nhật mật khẩu mới vào cơ sở dữ liệu
+        $update_status = $this->modelNguoidung->updatePassword($id, $hashed_new_password);
+
+        if ($update_status) {
+            echo "<script>alert('Đổi mật khẩu thành công.'); window.location.href='?act=home';</script>";
+            exit();
+        } else {
+            echo "<script>alert('Cập nhật mật khẩu không thành công. Vui lòng thử lại.');</script>";
+            return;
         }
+    } else {
+        echo "<script>alert('Bạn cần đăng nhập trước khi thực hiện thao tác này.'); window.location.href='dn.php';</script>";
+        exit();
     }
-    }
+}
+
 }
