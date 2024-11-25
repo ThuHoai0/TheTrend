@@ -132,7 +132,7 @@
                                                                 <a href="?act=binhluan/edit&id=<?= $value['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
 
                                                                 <form action="?act=binhluan/delete" method="POST"
-                                                                      onsubmit="return confirm('Bạn có muốn xóa không?')">
+                                                                    onsubmit="return confirm('Bạn có muốn xóa không?')">
                                                                     <input type="hidden" name="id" value="<?= $value['id'] ?>">
                                                                     <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
                                                                         <i class="ri-delete-bin-line"></i>

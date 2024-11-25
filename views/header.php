@@ -244,6 +244,7 @@
                                         <form action="?act=thongtinnguoidung" method="post">
                                         <div id="dropdown-menu" class="dropdown-content">
                                             <a href="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">Thông tin người dùng</a>  
+                                            <a href="?act=suamatkhau&id=<?= $_SESSION['iduser']?>">Đổi mật khẩu</a>
                                             <a href="?act=quenmatkhau">Quên mật khẩu</a>
                                         </div>
                                         </form>
