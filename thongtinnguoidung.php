@@ -10,7 +10,7 @@
         body {
             background: url('assets/images/slide-01.jpg') no-repeat center center fixed;
             background-size: cover;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -117,143 +117,134 @@
 
     <!-- Form Container -->
     <div class="form-container">
-    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser']?>">
-<!--        --><?php //var_dump($_SESSION['iduser']); die(); ?>
-        <!-- Username -->
-        <div class="form-section">
-            <label for="ten" class="form-label">Tên Đăng Nhập</label>
-            <input 
-                type="text" 
-                class="form-control" 
-                id="ten"
-                name="ten" 
-                value="<?= $_SESSION['name'] ?>"
-                readonly>
-            <div class="form-text">Tên đăng nhập không thể thay đổi.</div>
-        </div>
+    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser'] ?>">
+    <!-- Username -->
+    <div class="form-section">
+        <label for="name" class="form-label">Tên Đăng Nhập</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="name"
+            name="name" 
+            value="<?= $_SESSION['name'] ?>"
+            readonly>
+        <div class="form-text">Tên đăng nhập không thể thay đổi.</div>
+    </div>
 
-        <!-- Email -->
-        <div class="form-section">
-            <label for="email" class="form-label">Email</label>
-            <div class="d-flex align-items-center">
+    <!-- Email -->
+    <div class="form-section">
+        <label for="email" class="form-label">Email</label>
+        <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            name="email" 
+            value="<?= $_SESSION['email'] ?>">
+    </div>
+
+    <!-- Password -->
+    <div class="form-section">
+        <label for="mat_khau" class="form-label">Mật Khẩu</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="mat_khau" 
+            name="mat_khau" 
+            value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>">
+    </div>
+
+    <!-- Address -->
+    <div class="form-section">
+        <label for="dia_chi" class="form-label">Địa chỉ</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="dia_chi" 
+            name="dia_chi" 
+            value="<?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?>">
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-section">
+        <label for="so_dien_thoai" class="form-label">Số Điện Thoại</label>
+        <input 
+            type="tel" 
+            class="form-control" 
+            id="so_dien_thoai" 
+            name="so_dien_thoai" 
+            value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>">
+    </div>
+
+    <!-- Gender -->
+    <div class="form-section">
+        <label class="form-label">Giới Tính</label>
+        <div>
+            <div class="form-check form-check-inline">
                 <input 
-                    type="email" 
-                    class="form-control" 
-                    id="email" 
-                    name="email" 
-                    value="<?= $_SESSION['email'] ?>">
+                    class="form-check-input" 
+                    type="radio" 
+                    name="gioi_tinh" 
+                    value="1" 
+                    <?= $nguoi_dung['gioi_tinh'] == 1 ? 'checked' : '' ?>>
+                <label class="form-check-label">Nam</label>
             </div>
-        </div>
-        <!-- Mat Khau -->
-        <div class="form-section">
-            <label for="mat_khau" class="form-label">Mật Khẩu</label>
-            <div class="d-flex align-items-center">
+            <div class="form-check form-check-inline">
                 <input 
-                    type="password" 
-                    class="form-control" 
-                    id="mat_khau" 
-                    name="mat_khau" 
-                    value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>">
+                    class="form-check-input" 
+                    type="radio" 
+                    name="gioi_tinh" 
+                    value="2" 
+                    <?= $nguoi_dung['gioi_tinh'] == 2 ? 'checked' : '' ?>>
+                <label class="form-check-label">Nữ</label>
+            </div>
+        </div>  
+    </div>
+
+    <!-- Birth Date -->
+    <div class="form-section">
+        <label for="ngay_sinh" class="form-label">Ngày sinh</label>
+        <div class="row">
+            <div class="col-4">
+                <select name="day" id="day" class="form-select" required>
+                    <option value="">Ngày</option>
+                    <?php for ($i = 1; $i <= 31; $i++): ?>
+                        <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && intval(date('d', strtotime($nguoi_dung['ngay_sinh']))) == $i ? 'selected' : '' ?>>
+                            <?= $i ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="col-4">
+                <select name="month" id="month" class="form-select" required>
+                    <option value="">Tháng</option>
+                    <?php for ($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && intval(date('m', strtotime($nguoi_dung['ngay_sinh']))) == $i ? 'selected' : '' ?>>
+                            <?= $i ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="col-4">
+                <select name="year" id="year" class="form-select" required>
+                    <option value="">Năm</option>
+                    <?php for ($i = date('Y'); $i >= 1900; $i--): ?>
+                        <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && intval(date('Y', strtotime($nguoi_dung['ngay_sinh']))) == $i ? 'selected' : '' ?>>
+                            <?= $i ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
             </div>
         </div>
-        <!-- Địa chỉ -->
-        <div class="form-section">
-            <label for="dia_chi" class="form-label">Địa chỉ</label>
-            <div class="d-flex align-items-center">
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    id="dia_chi" 
-                    name="dia_chi" 
-                    value="<?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?>">
-            </div>
-        </div>
+    </div>
 
-        <!-- Phone Number -->
-        <div class="form-section">
-            <label for="so_dien_thoai" class="form-label">Số Điện Thoại</label>
-            <input 
-                type="tel" 
-                class="form-control" 
-                id="so_dien_thoai" 
-                name="so_dien_thoai" 
-                value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>">
-        </div>
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary mt-3">Lưu Thông Tin</button>
 
-        <!-- Gender -->
-        <div class="form-section">
-            <label class="form-label">Giới Tính</label>
-            <div>
-                <div class="form-check form-check-inline">
-                    <input 
-                        class="form-check-input" 
-                        type="radio" 
-                        name="gioi_tinh" 
-                        value="Nam" 
-                        <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] === 'Nam' ? 'checked' : '' ?>>
-                    <label class="form-check-label">Nam</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input 
-                        class="form-check-input" 
-                        type="radio" 
-                        name="gioi_tinh" 
-                        value="Nữ" 
-                        <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] === 'Nữ' ? 'checked' : '' ?>>
-                    <label class="form-check-label">Nữ</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input 
-                        class="form-check-input" 
-                        type="radio" 
-                        name="gioi_tinh" 
-                        value="Khác" 
-                        <?= isset($nguoi_dung['gioi_tinh']) && $nguoi_dung['gioi_tinh'] === 'Khác' ? 'checked' : '' ?>>
-                    <label class="form-check-label">Khác</label>
-                </div>
-            </div>
-        </div>
+    <!-- Back Button -->
+    <button type="button" class="btn btn-secondary mt-3" onclick="window.history.back()">Trở Về</button>
+</form>
 
-        <!-- Date of Birth -->
-        <div class="form-section">
-            <label for="ngay_sinh" class="form-label">Ngày Sinh</label>
-            <div class="row">
-                <div class="col-4">
-                    <select class="form-select" name="day">
-                        <option value="">Ngày</option>
-                        <?php for ($i = 1; $i <= 31; $i++): ?>
-                            <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && date('d', strtotime($nguoi_dung['ngay_sinh'])) == $i ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <select class="form-select" name="month">
-                        <option value="">Tháng</option>
-                        <?php for ($i = 1; $i <= 12; $i++): ?>
-                            <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && date('m', strtotime($nguoi_dung['ngay_sinh'])) == $i ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <select class="form-select" name="year">
-                        <option value="">Năm</option>
-                        <?php for ($i = 1900; $i <= date('Y'); $i++): ?>
-                            <option value="<?= $i ?>" <?= isset($nguoi_dung['ngay_sinh']) && date('Y', strtotime($nguoi_dung['ngay_sinh'])) == $i ? 'selected' : '' ?>>
-                                <?= $i ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-            </div>
-        </div>
 
-        <!-- Save Button -->
-        <button type="submit" class="btn btn-primary mt-3">Lưu Thông Tin</button>
-    </form>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

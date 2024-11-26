@@ -127,8 +127,19 @@
             .dropdown-content.show {
                 display: block;
             }
+            body, html {
+                font-family: 'Roboto', sans-serif !important;
+                }
 
-            /* Tùy chỉnh icon */
+                /* Đảm bảo các thẻ văn bản cũng dùng Roboto */
+            h1, h2, h3, h4, h5, h6, p, a, span, div, button, input, textarea {
+                font-family: 'Roboto', sans-serif !important;
+            }
+            button, input, textarea {
+                font-family: 'Roboto', sans-serif !important;
+            }
+
+            /* Tùy chỉnh icon */s
             .dropdown .icon {
                 display: flex;
                 align-items: center;
@@ -148,6 +159,149 @@
                 color: #fff; /* Màu biểu tượng đổi sang trắng */
             }
 
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000; /* Màu nền đỏ */
+            color: #fff; /* Màu chữ trắng */
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 12px; /* Bo góc */
+            z-index: 10; /* Đảm bảo hiển thị phía trên hình ảnh */
+            text-transform: uppercase; /* Viết hoa */
+        }
+
+        .badge {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        /* Tạo khoảng cách giữa các ô trong bảng */
+        .table-shopping-cart td,
+        .table-shopping-cart th {
+            padding: 10px; /* Tạo khoảng cách bên trong các ô */
+        }
+
+        /* Khoảng cách cho nút trong cột "Action" */
+        .table-shopping-cart .btn {
+            margin: 5px 0; /* Thêm khoảng cách dọc cho nút */
+        }
+        /* Khoảng cách giữa bảng giỏ hàng và form thông tin đặt hàng */
+        .table-shopping-cart {
+            margin-bottom: 30px; /* Tạo khoảng cách bên dưới bảng */
+        }
+
+        /* Tạo khoảng cách rõ ràng giữa các khối */
+        .col-lg-8, .col-lg-4 {
+            margin-bottom: 20px; /* Tạo khoảng cách giữa hai khối */
+        }
+
+        /* Padding bên trong bảng để nội dung không dính sát nhau */
+        .table-shopping-cart td,
+        .table-shopping-cart th {
+            padding: 15px; /* Tăng khoảng cách bên trong ô bảng */
+        }
+
+        /* Tạo khoảng cách trong form thông tin đặt hàng */
+        form .border {
+            margin-top: 20px; /* Tạo khoảng cách trên cùng của form */
+            padding: 20px; /* Tăng padding bên trong form */
+        }
+
+        /* Làm nổi bật các khối */
+        form .border {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng mờ */
+        }
+        /* Căn chỉnh nút + và - bên cạnh ô nhập số lượng */
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 1;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        /* Căn chỉnh ô nhập số lượng */
+        form input[name="quantity"] {
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+        }
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+            font-size: 24px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .cart-icon a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cart-icon a:hover {
+            color: #ff5722; /* Add a hover effect */
+        }
+
+        .cart-icon i {
+            font-size: 28px; /* Adjust icon size */
+        }
+
+        .cart-total-items {
+            position: absolute;
+            top: -10px; /* Position above the cart icon */
+            right: -10px; /* Position to the right of the cart icon */
+            background-color: #ff5722; /* Badge background color */
+            color: #fff; /* Badge text color */
+            font-size: 14px; /* Badge text size */
+            font-weight: bold;
+            border-radius: 50%; /* Circular badge */
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cart-total-items:empty {
+            display: none; /* Hide badge if cart is empty */
+        }
+
+        .cart-icon:hover .cart-total-items {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            background-color: #ff7043; /* Change badge color on hover */
+        }
+
+        .cart-total-items {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ff5722;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+
     </style>
 </head>
 
@@ -163,7 +317,7 @@
                 <nav class="limiter-menu-desktop container">
 
                     <!-- Logo desktop -->
-                    <a href="#" class="logo">
+                    <a href="?act=home" class="logo">
                         <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0 0 150 50">
                             <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Time New Roman" font-size="30" fill="#000">
                                 The Trend
@@ -197,10 +351,43 @@
 
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m">
-
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
-                            <a href="giohang.php"><i class="zmdi zmdi-shopping-cart"></i></a>
+<!--    nut gio hang -->
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart position-relative">
+                            <div class="cart-icon">
+                                <a href="?act=giohang"><i class="zmdi zmdi-shopping-cart"></i></a>
+                                <sup class="cart-total-items">0</sup>
+                            </div>
                         </div>
+
+                        <script>
+                            function updateCartItemCount(count) {
+                                const cartTotalItems = document.querySelector('.cart-total-items');
+                                if (count > 0) {
+                                    cartTotalItems.textContent = count; // Update the count
+                                    cartTotalItems.style.display = 'flex'; // Ensure badge is visible
+                                } else {
+                                    cartTotalItems.textContent = ''; // Clear the count
+                                    cartTotalItems.style.display = 'none'; // Hide badge if empty
+                                }
+                            }
+
+                            // Example: Fetch updated cart count from the server
+                            function fetchCartCount() {
+                                fetch('?act=getCartCount')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            updateCartItemCount(data.count);
+                                        }
+                                    })
+                                    .catch(error => console.error('Error fetching cart count:', error));
+                            }
+
+                            // Call this function after adding/removing items to/from the cart
+                            fetchCartCount();
+
+                        </script>
+
 
                         <div class="flex-c-m h-full p-lr-19">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
@@ -214,6 +401,7 @@
                                         <form action="?act=thongtinnguoidung" method="post">
                                         <div id="dropdown-menu" class="dropdown-content">
                                             <a href="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">Thông tin người dùng</a>  
+                                            <a href="?act=suamatkhau&id=<?= $_SESSION['iduser']?>">Đổi mật khẩu</a>
                                             <a href="?act=quenmatkhau">Quên mật khẩu</a>
                                         </div>
                                         </form>

@@ -72,16 +72,16 @@
 
                                 <div class="card-body">
                                     <div class="live-preview">
-                                        <form id="updateForm" action="?act=danhgia/update&id=<?= $value['id'] ?>" method="post">
+                                        <form id="updateForm" action="?act=danhgia/update&id=<?= $danh_gia['id'] ?>" method="post">
                                             <div class="mb-3">
                                                 <label for="citynameInput" class="form-label">ID đánh giá</label>
-                                                <input disabled type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="id" value="<?= $value['id'] ?>">
+                                                <input disabled type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="id" value="<?= $danh_gia['ten_san_pham'] ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="ForminputState" class="form-label">Trạng thái</label>
                                                 <select class="form-select" name="trang_thai">
-                                                    <option value="1" <?= $value['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
-                                                    <option value="0" <?= $value['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thi</option>
+                                                    <option value="1" <?= $danh_gia['trang_thai'] == 1 ? 'selected' : '' ?> >Hiển thị</option>
+                                                    <option value="0" <?= $danh_gia['trang_thai'] == 0 ? 'selected' : '' ?> >Không hiển thi</option>
                                                 </select>
                                             </div>
                                             <div class="col-lg-12">

@@ -286,7 +286,7 @@ const FgEmojiPicker = function (options) {
                     padding: 0;
                     text-decoration: none;
                     color: #666;
-                    font-family: sans-serif;
+                    font-family: 'Roboto', sans-serif;;
                 }
 
                 ${this.selectors.emojiPicker} ul {

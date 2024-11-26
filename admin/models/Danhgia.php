@@ -1,6 +1,7 @@
 <?php
 
 class Danhgia {
+    public $db;
     public $conn;
     // ket noi CSDL
     public function __construct() {
@@ -47,6 +48,8 @@ class Danhgia {
     }
 
     public function getCategory() {
+
+
         $sql = "SELECT * FROM danh_gias";
 
         $stmt = $this->conn->prepare($sql);
@@ -73,8 +76,7 @@ class Danhgia {
     public function updateData($id, $trang_thai) {
         try {
 
-            $sql = "UPDATE danh_gias SET trang_thai = :trang_thai
-                    WHERE id = :id";
+            $sql = "UPDATE danh_gias SET trang_thai = :trang_thai WHERE id = :id";
 
             $stmt = $this->conn->prepare($sql);
 
@@ -110,6 +112,19 @@ class Danhgia {
             echo 'Error: ' .$e->getMessage();
         }
     }
+            public function getProductIdByDanhgiaId($danh_gia_id)
+        {
+            $sql = "SELECT san_pham_id FROM danh_gias WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $danh_gia_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['san_pham_id'] ?? null;
+        }
+
+
+
 
     // huy ket noi CSDL
     public function __destruct() {
