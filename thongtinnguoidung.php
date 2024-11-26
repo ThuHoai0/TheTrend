@@ -236,9 +236,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary mt-3">Lưu Thông Tin</button>
+
     <!-- Back Button -->
-    <button type="button" class="btn btn-primary mt-3" onclick="window.history.back()">Trở Về</button>
+    <button type="button" class="btn btn-secondary mt-3" onclick="window.history.back()">Trở Về</button>
 </form>
+
 
 </div>
 
