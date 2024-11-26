@@ -117,71 +117,66 @@
 
     <!-- Form Container -->
     <div class="form-container">
-    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser']?>">
-<!--        --><?php //var_dump($_SESSION['iduser']); die(); ?>
-        <!-- Username -->
-        <div class="form-section">
-            <label for="name" class="form-label">Tên Đăng Nhập</label>
-            <input 
-                type="text" 
-                class="form-control" 
-                id="name"
-                name="name" 
-                value="<?= $_SESSION['name'] ?>"
-                readonly>
-            <div class="form-text">Tên đăng nhập không thể thay đổi.</div>
-        </div>
+    <form method="POST" action="?act=luuthongtin&id=<?= $_SESSION['iduser'] ?>">
+    <!-- Username -->
+    <div class="form-section">
+        <label for="name" class="form-label">Tên Đăng Nhập</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="name"
+            name="name" 
+            value="<?= $_SESSION['name'] ?>"
+            readonly>
+        <div class="form-text">Tên đăng nhập không thể thay đổi.</div>
+    </div>
 
-        <!-- Email -->
-        <div class="form-section">
-            <label for="email" class="form-label">Email</label>
-            <div class="d-flex align-items-center">
-                <input 
-                    type="email" 
-                    class="form-control" 
-                    id="email" 
-                    name="email" 
-                    value="<?= $_SESSION['email'] ?>">
-            </div>
-        </div>
-        <!-- Mat Khau -->
-        <div class="form-section">
-            <label for="mat_khau" class="form-label">Mật Khẩu</label>
-            <div class="d-flex align-items-center">
-                <input 
-                    type="password" 
-                    class="form-control" 
-                    id="mat_khau" 
-                    name="mat_khau" 
-                    value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>">
-            </div>
-        </div>
-        <!-- Địa chỉ -->
-        <div class="form-section">
-            <label for="dia_chi" class="form-label">Địa chỉ</label>
-            <div class="d-flex align-items-center">
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    id="dia_chi" 
-                    name="dia_chi" 
-                    value="<?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?>">
-            </div>
-        </div>
+    <!-- Email -->
+    <div class="form-section">
+        <label for="email" class="form-label">Email</label>
+        <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            name="email" 
+            value="<?= $_SESSION['email'] ?>">
+    </div>
 
-        <!-- Phone Number -->
-        <div class="form-section">
-            <label for="so_dien_thoai" class="form-label">Số Điện Thoại</label>
-            <input 
-                type="tel" 
-                class="form-control" 
-                id="so_dien_thoai" 
-                name="so_dien_thoai" 
-                value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>">
-        </div>
+    <!-- Password -->
+    <div class="form-section">
+        <label for="mat_khau" class="form-label">Mật Khẩu</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="mat_khau" 
+            name="mat_khau" 
+            value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>">
+    </div>
 
-        <!-- Gender -->
-            <div class="form-section">
+    <!-- Address -->
+    <div class="form-section">
+        <label for="dia_chi" class="form-label">Địa chỉ</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="dia_chi" 
+            name="dia_chi" 
+            value="<?= isset($nguoi_dung['dia_chi']) ? $nguoi_dung['dia_chi'] : '' ?>">
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-section">
+        <label for="so_dien_thoai" class="form-label">Số Điện Thoại</label>
+        <input 
+            type="tel" 
+            class="form-control" 
+            id="so_dien_thoai" 
+            name="so_dien_thoai" 
+            value="<?= isset($nguoi_dung['so_dien_thoai']) ? $nguoi_dung['so_dien_thoai'] : '' ?>">
+    </div>
+
+    <!-- Gender -->
+    <div class="form-section">
         <label class="form-label">Giới Tính</label>
         <div>
             <div class="form-check form-check-inline">
@@ -205,11 +200,10 @@
         </div>  
     </div>
 
-       <!-- Ngày sinh -->
+    <!-- Birth Date -->
     <div class="form-section">
         <label for="ngay_sinh" class="form-label">Ngày sinh</label>
         <div class="row">
-            <!-- Ngày -->
             <div class="col-4">
                 <select name="day" id="day" class="form-select" required>
                     <option value="">Ngày</option>
@@ -220,7 +214,6 @@
                     <?php endfor; ?>
                 </select>
             </div>
-            <!-- Tháng -->
             <div class="col-4">
                 <select name="month" id="month" class="form-select" required>
                     <option value="">Tháng</option>
@@ -231,7 +224,6 @@
                     <?php endfor; ?>
                 </select>
             </div>
-            <!-- Năm -->
             <div class="col-4">
                 <select name="year" id="year" class="form-select" required>
                     <option value="">Năm</option>
@@ -244,11 +236,10 @@
             </div>
         </div>
     </div>
+    <!-- Back Button -->
+    <button type="button" class="btn btn-primary mt-3" onclick="window.history.back()">Trở Về</button>
+</form>
 
-
-        <!-- Save Button -->
-        <button type="submit" class="btn btn-primary mt-3">Lưu Thông Tin</button>
-    </form>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
