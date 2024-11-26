@@ -150,96 +150,6 @@ public function thongKeTongTienCaNam() {
         }
     }
 
-    public function tongDonHangDaDat() {
-        try {
-
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_dat FROM don_hangs WHERE trang_thai_id= 11;";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $ketQua = $stmt->fetch();
-
-            return $ketQua['tong_so_don_hang_da_dat'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
-            //code...
-        } catch (PDOException $e) {
-            //throw $th;
-//            echo 'Lỗi: '. $e->getMessage();
-
-        }
-    }
-
- public function tongSoDonHangDangGiao() {
-        try {
-
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_dang_giao FROM don_hangs WHERE trang_thai_id= 13;";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $ketQua = $stmt->fetch();
-
-            return $ketQua['tong_so_don_hang_dang_giao'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
-            //code...
-        } catch (PDOException $e) {
-            //throw $th;
-//            echo 'Lỗi: '. $e->getMessage();
-
-        }
-    }
-
-    public function tongSoDonHangDaHuy() {
-        try {
-
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_huy FROM don_hangs WHERE trang_thai_id= 15;";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $ketQua = $stmt->fetch();
-
-            return $ketQua['tong_so_don_hang_da_huy'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
-            //code...
-        } catch (PDOException $e) {
-            //throw $th;
-//            echo 'Lỗi: '. $e->getMessage();
-
-        }
-    }
-
-    public function tongSoDonHangDaHoanThanh()
-    {
-        try {
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_hoan_thanh
-                    FROM don_hangs 
-                    WHERE trang_thai_id = :trangThaiXacNhan";
-    
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute(['trangThaiXacNhan' => 17]); // Sử dụng tham số để tránh lỗi injection
-            $ketQua = $stmt->fetch();
-    
-            return $ketQua['tong_so_don_hang_da_hoan_thanh'] ?? 0; // Trả về 0 nếu không có kết quả
-        } catch (PDOException $e) {
-            echo 'Lỗi: ' . $e->getMessage();
-        }
-    }
-    
-
-    public function tongSoDonHangDaDongGoi() {
-        try {
-
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_dong_goi FROM don_hangs WHERE trang_thai_id= 18;";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $ketQua = $stmt->fetch();
-
-            return $ketQua['tong_so_don_hang_da_dong_goi'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
-            //code...
-        } catch (PDOException $e) {
-            //throw $th;
-//            echo 'Lỗi: '. $e->getMessage();
-
-        }
-    }
-
     public function dangSuly() {
         try {
 
@@ -258,16 +168,16 @@ public function thongKeTongTienCaNam() {
         }
     }
 
-    public function tongSoDonHangHoanTra() {
+    public function tongDonHangDaXacNhan() {
         try {
 
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_hoan_tra FROM don_hangs WHERE trang_thai_id= 16;";
+            $sql = "SELECT COUNT(*) AS tong_don_hang_da_xac_nhan FROM don_hangs WHERE trang_thai_id= 13;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $ketQua = $stmt->fetch();
 
-            return $ketQua['tong_so_don_hang_hoan_tra'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
+            return $ketQua['tong_don_hang_da_xac_nhan'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
             //code...
         } catch (PDOException $e) {
             //throw $th;
@@ -276,16 +186,52 @@ public function thongKeTongTienCaNam() {
         }
     }
 
-    public function tongSoDonHangDaThanhToan() {
+ public function tongSoDonHangDangGiao() {
         try {
 
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_thanh_toan FROM don_hangs WHERE trang_thai_id= 19;";
+            $sql = "SELECT COUNT(*) AS tong_so_don_hang_dang_giao FROM don_hangs WHERE trang_thai_id= 14;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $ketQua = $stmt->fetch();
 
-            return $ketQua['tong_so_don_hang_da_thanh_toan'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
+            return $ketQua['tong_so_don_hang_dang_giao'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
+            //code...
+        } catch (PDOException $e) {
+            //throw $th;
+//            echo 'Lỗi: '. $e->getMessage();
+
+        }
+    }
+
+    public function tongSoDonHangDaGiaoHang() {
+        try {
+
+            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_giao FROM don_hangs WHERE trang_thai_id= 15;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $ketQua = $stmt->fetch();
+
+            return $ketQua['tong_so_don_hang_da_giao'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
+            //code...
+        } catch (PDOException $e) {
+            //throw $th;
+//            echo 'Lỗi: '. $e->getMessage();
+
+        }
+    }
+
+    public function tongSoDonHangDaHuy() {
+        try {
+
+            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_huy FROM don_hangs WHERE trang_thai_id= 16;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $ketQua = $stmt->fetch();
+
+            return $ketQua['tong_so_don_hang_da_huy'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
             //code...
         } catch (PDOException $e) {
             //throw $th;
@@ -371,30 +317,6 @@ public function thongKeTongTienCaNam() {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    // public function thongKeDanhMuc() {
-    //     try {
-             
-    //         $sql = "SELECT COUNT(*) AS tong_so_luong_danh_muc 
-    //                 FROM danh_mucs;
-    //                 ";
-            
-                    
-
-    //         $stmt = $this->conn->prepare($sql);
-    //         $stmt->execute();
-    //         $ketQua = $stmt->fetch();
-            
-    //         return $ketQua['tong_so_luong_danh_muc'] ?? 0;
-                
-
-    //     } catch (PDOException $e) {
-    //         //throw $th;
-    //         echo 'Lỗi: '. $e->getMessage();
-
-    //     }
-
-    // }
     // huy ket noi csdl
     public function  __destruct()
     {

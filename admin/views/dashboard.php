@@ -162,7 +162,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             <div class="row g-0 text-center">
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?=  $tongThuNhapNgay ?> ">0</span> VNĐ</h5>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongThuNhapNgay; ?> ">0</span> VNĐ</h5>
                                                             <p class="text-muted mb-0">Tổng Thu Nhập Ngày Hôm Nay</p>
                                                         </div>
                                                     </div>
@@ -170,7 +170,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                     <!--end col-->
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?= $soLuongDonHangHomNay ?>"></span> Đơn Hàng</h5>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $soLuongDonHangHomNay; ?>"></span> Đơn Hàng</h5>
                                                             <p class="text-muted mb-0">Đơn Hàng Hôm Nay</p>
 
                                                         </div>
@@ -199,13 +199,27 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                         </div>
                                                         </div>
                                                             <!--end col-->
-                                                    <div class="col-6 col-sm-4">
+                                                            <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongDonHangDaDat; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số đơn hàng đã đặt</p>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $dangSuLy; ?>">0</span></h5>
+                                                            <p class="text-muted mb-0">Số đơn hàng đang sử lý</p>
                                                         </div>
                                                     </div>
                                                     <!--end col-->
+
+                                                    <div class="col-6 col-sm-4">
+                                                        <div class="p-3 border border-dashed border-start-0">
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongDonHangDaXacNhan; ?>">0</span></h5>
+                                                            <p class="text-muted mb-0">Số đơn hàng đã xác nhận</p>
+                                                        </div>
+                                                    </div>
+                                                    <!--end col-->
+
+                                                    </div>
+                                                </div>
+
+                                            <div class="card-header p-0 border-0 bg-light-subtle">
+                                                <div class="row g-0 text-center">
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
                                                             <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongSoDonHangDangGiao; ?>">0</span></h5>
@@ -213,10 +227,13 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                         </div>
                                                     </div>
                                                     <!--end col-->
+                                                    <div class="col-6 col-sm-4">
+                                                        <div class="p-3 border border-dashed border-start-0">
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo  $tongSoDonHangDaGiaoHang; ?>">0</span></h5>
+                                                            <p class="text-muted mb-0">Số đơn hàng đã giao</p>
+                                                        </div>
                                                     </div>
-                                            </div>
-                                            <div class="card-header p-0 border-0 bg-light-subtle">
-                                                <div class="row g-0 text-center">
+                                                    <!--end col-->
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
                                                             <h5 class="mb-1"><span class="counter-value" data-target="<?php echo  $tongSoDonHangDaHuy; ?>">0</span></h5>
@@ -224,47 +241,8 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                         </div>
                                                     </div>
                                                     <!--end col-->
-                                            <div class="col-6 col-sm-4">
-                                                <div class="p-3 border border-dashed border-start-0">
-                                                    <h5 class="mb-1"><span class="counter-value" data-target="<?php echo  $tongSoDonHangDaHoanThanh; ?>">0</span></h5>
-                                                    <p class="text-muted mb-0">Số đơn hàng đã hoàn thành</p>
+                                           
                                                 </div>
-                                            </div>
-                                                    <!--end col-->
-                                                    <div class="col-6 col-sm-4">
-                                                        <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongSoDonHangDaDongGoi; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số đơn hàng đã đóng gói </p>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
-                                                </div>
-                                            </div>
-                                            <div class="card-header p-0 border-0 bg-light-subtle">
-                                                <div class="row g-0 text-center">
-                                                    <div class="col-6 col-sm-4">
-                                                        <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $dangSuLy; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số đơn hàng đang sử lý</p>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
-                                                    <div class="col-6 col-sm-4">
-                                                        <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongSoDonHangHoanTra; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số đơn hàng bị hoàn trả</p>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
-                                                    <div class="col-6 col-sm-4">
-                                                        <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongSoDonHangDaThanhToan; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số đơn hàng đã thanh toán</p>
-                                                        </div>
-                                                    </div>
-                                                    <!--end col-->
-                                                </div>
-                                            </div>
                                             </div>
 
                                             <div class="card-body p-0 pb-2">

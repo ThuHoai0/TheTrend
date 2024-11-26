@@ -39,7 +39,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
         'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
-        'luuthongtin' => (new NguoidungController())->update(),
+        'luuthongtin' => (new NguoidungController())->update(), 
 
         default => null, // Trường hợp không khớp
     };

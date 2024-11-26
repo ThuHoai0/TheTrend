@@ -87,8 +87,6 @@ class NguoidungController
 
                 if ($this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh))
                 {
-                    echo "<script>alert('Sửa thành công!');
-                    </script>";
                     header('Location: ?act=thongtinnguoidung&id=' . $id);
 
                 } else {
