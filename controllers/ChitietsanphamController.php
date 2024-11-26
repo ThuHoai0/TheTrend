@@ -187,7 +187,6 @@ class ChitietsanphamController
             error_reporting(E_ALL);
 
             if ($product_id > 0 && $quantity > 0) {
-                session_start();
                 if (!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = [];
                 }

@@ -196,10 +196,11 @@
                             alert("Không thể xóa sản phẩm. Vui lòng thử lại.");
                         }
                     })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                        alert("Đã xảy ra lỗi. Vui lòng thử lại.");
-                    });
+
+                    // .catch((error) => {
+                    //     console.error("Error:", error);
+                    //     alert("Đã xảy ra lỗi. Vui lòng thử lại.");
+                    // });
             }
         }
 
