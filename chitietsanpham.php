@@ -37,7 +37,7 @@
                             <!-- Hiển thị ảnh gốc -->
                             <div class="item-slick3" data-thumb="<?= '././admin/uploads/' . $hinh_anh_goc; ?>">
                                 <div class="wrap-pic-w pos-relative">
-                                    <img src="<?= '././admin/uploads/' . $hinh_anh_goc; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
+                                    <img id="img-product" src="<?= '././admin/uploads/' . $hinh_anh_goc; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 500px; object-fit: cover; object-position: center">
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                        href="<?= '././admin/uploads/' . $hinh_anh_goc; ?>">
                                         <i class="fa fa-expand"></i>
@@ -552,23 +552,24 @@
     <script>
 
         function themVao() {
+            console.log($('#img-product').attr('src'))
             $.ajax({
                 url: '?act=handleCartAjax',
                 type: 'POST',
                 data: {
                     product_id: $('[name="product_id"]').val(),
                     product_name: $('[name="product_name"]').val(),
-                    product_img: $('[name="product_img"]').val(),
+                    product_img: $('#img-product').attr('src'),
                     product_price: $('[name="product_price"]').val(),
                     quantity: $('[name="quantity"]').val(),
                 },
                 dataType: 'json',
                 success: function (response) {
                     if (response.status === 'success') {
-                        alert(response.message);
+                        // alert(response.message);
                         $('.cart-total-items').text(response.total_items);
                     } else {
-                        alert(response.message);
+                        // alert(response.message);
                     }
                 },
                 error: function () {

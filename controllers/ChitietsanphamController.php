@@ -150,42 +150,15 @@ class ChitietsanphamController
         }
     }
 
-//    public function laythongtinsp() {
-//        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-//            // Lấy dữ liệu từ form
-//            $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
-//            $product_name = isset($_POST['product_name']) ? htmlspecialchars($_POST['product_name']) : '';
-//            $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
-//            $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
-//            $product_image = 'assets/images/default.jpg'; // Ảnh mặc định (có thể thay đổi nếu cần)
-//
-////            var_dump($quantity);
-////            die();
-//
-//            // Kiểm tra dữ liệu hợp lệ
-//            if ($product_id > 0 && $quantity > 0) {
-//                // Gọi hàm addToCart để thêm sản phẩm vào giỏ hàng
-//                $this->modelChitietsanpham->addToCart($product_id, $product_name, $product_price, $quantity, $product_image);
-//
-//                // Redirect về trang giỏ hàng
-////                header("Location: ?act=giohang");
-////                exit();
-//            } else {
-//                echo "Dữ liệu không hợp lệ!";
-//            }
-//        }
-//    }
-
     public function handleCartAjax() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
             $product_name = isset($_POST['product_name']) ? htmlspecialchars($_POST['product_name']) : '';
             $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
             $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
-            $product_image = 'assets/images/default.jpg'; // Ảnh mặc định
+            $product_image = $_POST['product_img'];
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
-
             if ($product_id > 0 && $quantity > 0) {
                 if (!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = [];
@@ -209,28 +182,24 @@ class ChitietsanphamController
                 }
 
                 // Tính tổng số lượng sản phẩm trong giỏ hàng
-                $total_items = array_sum(array_column($_SESSION['cart'], 'quantity'));
+                $total_items = count($_SESSION['cart']);
 
                 echo json_encode([
                     'status' => 'success',
-                    'message' => 'Thêm vào giỏ hàng thành công!',
                     'total_items' => $total_items,
                 ]);
             } else {
                 echo json_encode([
                     'status' => 'error',
-                    'message' => 'Dữ liệu không hợp lệ!',
                 ]);
             }
         } else {
             echo json_encode([
                 'status' => 'error',
-                'message' => 'Yêu cầu không hợp lệ!',
             ]);
         }
         exit();
     }
-
 
     public function xoaSP()
     {
@@ -247,23 +216,42 @@ class ChitietsanphamController
             }
         }
         // Quay lại trang giỏ hàng
-//        header("Location: ?act=giohang");
+        header("Location: ?act=giohang");
         exit();
     }
 
-    public function getCartCount() {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            session_start(); // Ensure session is started
-            $count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
-            echo json_encode([
-                'success' => true,
-                'count' => $count
-            ]);
-        } else {
-            echo json_encode(['success' => false]);
-        }
-        exit();
-    }
+//    public function getCartCount() {
+//        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+//            session_start(); // Đảm bảo session được khởi tạo
+//
+//            // Kiểm tra giỏ hàng đã có chưa
+//            $unique_products = [];
+//
+//            if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+//                foreach ($_SESSION['cart'] as $item) {
+//                    $product_id = $item['product_id'];
+//
+//                    // Nếu sản phẩm chưa có trong giỏ hàng, thêm vào
+//                    if (!isset($unique_products[$product_id])) {
+//                        $unique_products[$product_id] = $item;
+//                    } else {
+//                        // Nếu đã có, cộng thêm số lượng vào
+//                        $unique_products[$product_id]['quantity'] += $item['quantity'];
+//                    }
+//                }
+//            }
+//
+//            // Trả về mảng sản phẩm duy nhất
+//            echo json_encode([
+//                'success' => true,
+//                'unique_products' => array_values($unique_products) // Lấy giá trị của mảng sản phẩm duy nhất
+//            ]);
+//        } else {
+//            echo json_encode(['success' => false]);
+//        }
+//        exit();
+//    }
+
 
     public function updateCart()
     {

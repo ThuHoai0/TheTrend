@@ -35,19 +35,19 @@ if (isset($_SESSION['errors'])) {
                 <form action="?act=lienhe" method="POST">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email của bạn</label>
-                        <input class="form-control" type="email" name="email" placeholder="Email của bạn" required>
+                        <input class="form-control" type="text" name="email" placeholder="Email của bạn" require >
                     </div>
                     <div class="mb-3">
                         <label for="ho_ten" class="form-label">Họ và tên của bạn</label>
-                        <input class="form-control" type="text" name="ho_ten" placeholder="Họ và tên của bạn" required>
+                        <input class="form-control" type="text" name="ho_ten" placeholder="Họ và tên của bạn" >
                     </div>
                     <div class="mb-3">
                         <label for="so_dien_thoai" class="form-label">Số điện thoại của bạn</label>
-                        <input class="form-control" type="text" name="so_dien_thoai" placeholder="Số điện thoại của bạn" required>
+                        <input class="form-control" type="number" name="so_dien_thoai" placeholder="Số điện thoại của bạn" >
                     </div>
                     <div class="mb-3">
                         <label for="noi_dung" class="form-label">Thắc mắc của bạn</label>
-                        <textarea class="form-control" name="noi_dung" rows="4" placeholder="Nhập nội dung thắc mắc của bạn" required></textarea>
+                        <textarea class="form-control" name="noi_dung" rows="4" placeholder="Nhập nội dung thắc mắc của bạn" ></textarea>
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn btn-dark" type="submit">Gửi cho chúng tôi</button>
@@ -60,16 +60,16 @@ if (isset($_SESSION['errors'])) {
                 <div class="p-4 border rounded">
                     <h5 class="mb-4">Thông Tin Liên Hệ</h5>
                     <div class="mb-3">
-                        <h6><i class="fas fa-map-marker-alt"></i> Địa chỉ</h6>
-                        <p>Ngách 112/12 Nguyên Xá Bắc Từ Liêm Hà Nội</p>
-                    </div>
+                        <h6><i class="fas fa-map-marker-alt"></i> Địa chỉ</h6> 
+                        <p class="mt-2">Cao Đẳng FPT POLYTECHNIC, Đường Trịnh Văn Bô, Quận Nam Từ Liêm, Hà Nội</p>
+                    </div> 
                     <div class="mb-3">
                         <h6><i class="fas fa-phone-alt"></i> Hotline</h6>
-                        <p><a href="tel:+18001236789" class="text-decoration-none">+1 800 1236879</a></p>
-                    </div>
+                        <p class="mt-2"><a href="tel:+18001236789" class="text-decoration-none">096 345 6879</a></p>
+                    </div> 
                     <div>
                         <h6><i class="fas fa-envelope"></i> Email</h6>
-                        <p><a href="mailto:contact@example.com" class="text-decoration-none">contact@example.com</a></p>
+                        <p class="mt-2"><a href="mailto:contact@example.com" class="text-decoration-none">contact@example.com</a></p>
                     </div>
                 </div>
             </div>

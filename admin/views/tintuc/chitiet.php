@@ -79,12 +79,12 @@
                                     <div class="mb-3">
                                         <h5 class="form-label">Ngày tạo</h5>
                                         <input type="datetime-local" class="form-control" value="<?= $tin_tuc['ngay_tao'] ?>" disabled>
-                                    </div>
+                                    </div> 
                                     <div class="mb-3">
                                         <label for="ForminputState" class="form-label">Trạng thái</label>
                                         <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($tin_tuc['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Hiển thị</option>
-                                            <option <?= ($tin_tuc['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Không hiển thị</option>
+                                            <option <?= ($tin_tuc['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Hiển thị</option>
+                                            <option <?= ($tin_tuc['trang_thai'] ==2) ? 'selected' : ''  ?> value="1">Không hiển thị</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-12">

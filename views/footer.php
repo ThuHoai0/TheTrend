@@ -72,7 +72,7 @@
                 <h4 class="stext-301 cl0 p-b-30">
                     BẢN TIN
                 </h4>
-                <form>
+                <!-- <form>
                     <div class="wrap-input1 w-full p-b-4">
                         <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
                             placeholder="Gửi email">
@@ -84,6 +84,11 @@
                             Gửi
                         </button>
                     </div>
+                </form> -->
+                <form action="sendEmail.php" method="POST">
+                    <label for="email">Nhập email của bạn:</label>
+                    <input type="email" name="email" id="email" required>
+                    <button type="submit">Gửi tin nhắn</button>
                 </form>
             </div>
         </div>
@@ -235,100 +240,12 @@ $('.js-pscroll').each(function() {
     });
 
 </script>
-<script>
-    document.querySelector('.js-addcart-detail').addEventListener('click', function (e) {
-        e.preventDefault();
-        //
-        // const formData = new FormData();
-        // formData.append('product_id', document.querySelector('[name="product_id"]').value);
-        // formData.append('product_name', document.querySelector('[name="product_name"]').value);
-        // formData.append('product_img', document.querySelector('[name="product_img"]').value);
-        // formData.append('product_price', document.querySelector('[name="product_price"]').value);
-        // formData.append('quantity', document.querySelector('[name="quantity"]').value);
-        //
-        // fetch('?act=handleCartAjax', {
-        //     method: 'POST',
-        //     body: formData,
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         if (data.status === 'success') {
-        //             alert(data.message);
-        //             document.querySelector('.cart-total-items').textContent = data.total_items;
-        //         } else {
-        //             alert(data.message);
-        //         }
-        //     })
-        //     .catch(error => console.error('Error:', error));
-    });
-</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).on('click', '.js-addcart-detail', function (e) {
         e.preventDefault();
 
-        // $.ajax({
-        //     url: '?act=handleCartAjax',
-        //     type: 'POST',
-        //     data: {
-        //         product_id: $('[name="product_id"]').val(),
-        //         product_name: $('[name="product_name"]').val(),
-        //         product_img: $('[name="product_img"]').val(),
-        //         product_price: $('[name="product_price"]').val(),
-        //         quantity: $('[name="quantity"]').val(),
-        //     },
-        //     dataType: 'json',
-        //     success: function (response) {
-        //         if (response.status === 'success') {
-        //             alert(response.message);
-        //             $('.cart-total-items').text(response.total_items);
-        //         } else {
-        //             alert(response.message);
-        //         }
-        //     },
-        //     error: function () {
-        //         alert('Có lỗi xảy ra, vui lòng thử lại!');
-        //     },
-        // });
     });
-
-    document.addEventListener("DOMContentLoaded", function () {
-        // Xử lý nút tăng giảm số lượng
-        const quantityButtons = document.querySelectorAll(".quantity-btn");
-
-        quantityButtons.forEach((button) => {
-            button.addEventListener("click", function () {
-                const input = this.parentElement.querySelector('input[name="quantity"]');
-                const currentValue = parseInt(input.value) || 1;
-                const type = this.dataset.type;
-                const min = parseInt(input.getAttribute("min")) || 1;
-                const max = parseInt(input.getAttribute("max")) || Infinity;
-
-                if (type === "increase" && currentValue < max) {
-                    input.value = currentValue + 1;
-                } else if (type === "decrease" && currentValue > min) {
-                    input.value = currentValue - 1;
-                }
-            });
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Lấy tất cả các nút xóa
-        const deleteButtons = document.querySelectorAll('.js-delete-btn');
-
-        // deleteButtons.forEach(button => {
-        //     button.addEventListener('click', function () {
-        //         // Hiển thị hộp thoại xác nhận
-        //         if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?')) {
-        //             // Gửi form nếu xác nhận
-        //             // this.closest('.delete-form').submit();
-        //         }
-        //     });
-        // });
-    });
-
-
 </script>
 
 </body>

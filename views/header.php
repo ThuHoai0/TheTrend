@@ -302,6 +302,7 @@
         }
 
 
+
     </style>
 </head>
 
@@ -355,45 +356,14 @@
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart position-relative">
                             <div class="cart-icon">
                                 <a href="?act=giohang"><i class="zmdi zmdi-shopping-cart"></i></a>
-                                <sup class="cart-total-items">0</sup>
+                                <sup class="cart-total-items"><?= $_SESSION['cart'] ? count($_SESSION['cart']) : 0 ?></sup>
                             </div>
                         </div>
-
-                        <script>
-                            function updateCartItemCount(count) {
-                                const cartTotalItems = document.querySelector('.cart-total-items');
-                                if (count > 0) {
-                                    cartTotalItems.textContent = count; // Update the count
-                                    cartTotalItems.style.display = 'flex'; // Ensure badge is visible
-                                } else {
-                                    cartTotalItems.textContent = ''; // Clear the count
-                                    cartTotalItems.style.display = 'none'; // Hide badge if empty
-                                }
-                            }
-
-                            // Example: Fetch updated cart count from the server
-                            function fetchCartCount() {
-                                fetch('?act=getCartCount')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.success) {
-                                            updateCartItemCount(data.count);
-                                        }
-                                    })
-                                    .catch(error => console.error('Error fetching cart count:', error));
-                            }
-
-                            // Call this function after adding/removing items to/from the cart
-                            fetchCartCount();
-
-                        </script>
-
 
                         <div class="flex-c-m h-full p-lr-19">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
                                 <?php if (!empty($_SESSION['iduser'])) { ?>
                                     <a id="admin" href="?act=dangxuat">Đăng xuất</a> | 
-                                    <!--  -->
                                     <div class="dropdown">
                                         <a href="javascript:void(0)" class="icon" onclick="toggleDropdown('dropdown-menu')">
                                             <i class="fa-regular fa-user"></i>
