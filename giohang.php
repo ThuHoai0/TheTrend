@@ -325,29 +325,29 @@ if (!isset($_SESSION['iduser'])) {
 
                 <!-- Địa chỉ -->
                 <div class="mb-3">
-                    <label for="address" class="form-label">Địa chỉ:</label>
-                    <textarea class="form-control" id="address" name="address" rows="3"
+                    <label for="dia_chi_nhan_hang" class="form-label">Địa chỉ:</label>
+                    <textarea class="form-control" id="dia_chi_nhan_hang" name="dia_chi_nhan_hang" rows="3"
                               placeholder="Nhập địa chỉ giao hàng..." required></textarea>
                 </div>
 
                 <!-- Ghi chú -->
                 <div class="mb-3">
-                    <label for="note" class="form-label">Ghi chú:</label>
-                    <textarea class="form-control" id="note" name="note" rows="3"
+                    <label for="ghi_chu" class="form-label">Ghi chú:</label>
+                    <textarea class="form-control" id="ghi_chu" name="ghi_chu" rows="3"
                               placeholder="Nhập ghi chú (nếu có)..."></textarea>
                 </div>
 
                 <!-- Phương thức thanh toán -->
-                <div class="mb-4">
+                <div class="mb-4 ">
                     <label class="form-label">Phương thức thanh toán:</label>
-                    <div class="form-check">
+                    <div class="form-check pl-5">
                         <input class="form-check-input" type="radio" name="payment_method" id="bankTransfer"
                                value="chuyen_khoan" required>
                         <label class="form-check-label" for="bankTransfer">Chuyển khoản</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check pl-5">
                         <input class="form-check-input" type="radio" name="payment_method" id="cashOnDelivery"
-                               value="nhan_hang">
+                               value="thanh_toan_khi_nhan_hang">
                         <label class="form-check-label" for="cashOnDelivery">Thanh toán khi nhận hàng</label>
                     </div>
                 </div>

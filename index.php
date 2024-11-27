@@ -34,10 +34,12 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'sanpham' => (new HomeController()) -> sanpham(),
         'yeuthich' => (new HomeController()) -> top8(),
 
+        'giohang' => (new GiohangController()) -> giohang(),
+        'themdonhang' => (new GiohangController()) ->store(),
+
         'chitietsanpham' => (new ChitietsanphamController()) -> chitietsanpham(),
         'danhgia' => (new ChitietsanphamController()) -> danhgia(),
         'binhluan' => (new ChitietsanphamController()) -> binhluan(),
-        'addCart' => (new ChitietsanphamController()) -> getCartCount(),
         'handleCartAjax' => (new ChitietsanphamController()) -> handleCartAjax(),
         'xoaSP' => (new ChitietsanphamController()) -> xoaSP(),
         'updateCart' => (new ChitietsanphamController()) -> updateCart(),
