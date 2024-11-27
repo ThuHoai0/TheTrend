@@ -75,7 +75,11 @@ class GiohangController
 
                 // Xoá các lỗi trước đó (nếu có) và chuyển hướng đến trang thành công
                 unset($_SESSION['errors']);
-                header('Location: ?act=giohang');
+                header('Location: ?act=donhang');
+                echo "
+                    <script>
+                        alert(' Dat hang thanh cong!');
+                    </script>";
                 exit();
             } else {
                 // Nếu có lỗi, lưu lỗi vào session và quay lại form để thông báo lỗi
