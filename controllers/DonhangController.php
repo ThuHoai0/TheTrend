@@ -24,56 +24,75 @@ class DonhangController {
     
     // Kiểm tra xem người dùng đã đăng nhập chưa
     public function ctdonhang() {
-        // Kiểm tra xem session đã được khởi tạo chưa, nếu chưa thì khởi tạo
+        // Khởi tạo session nếu chưa có
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-
-        // Kiểm tra xem người dùng đã đăng nhập chưa
+    
+        // Kiểm tra người dùng đã đăng nhập
         if (isset($_SESSION['iduser'])) {
-            $userId = $_SESSION['iduser']; // Lấy id người dùng từ session
-
-            // Kiểm tra và lấy 'don_hang_id' từ URL
+            $userId = $_SESSION['iduser']; // ID người dùng từ session
+    
+            // Kiểm tra và lấy `don_hang_id` từ URL
             if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $don_hang_id = $_GET['id']; // Lấy giá trị từ tham số 'don_hang_id' trên URL
-
-                // Gọi phương thức getOrderDetailsByDonHangId() từ model để lấy chi tiết đơn hàng
+                $don_hang_id = $_GET['id']; // Giá trị từ tham số `id` trên URL
+    
+                // Lấy thông tin đơn hàng từ model
                 $orderDetails = $this->modelDonhang->getOrderDetailsByDonHangId($don_hang_id);
-
+    
                 // Kiểm tra nếu có dữ liệu đơn hàng
                 if ($orderDetails) {
-                    // Nếu có đơn hàng, bao gồm trang hiển thị chi tiết đơn hàng
+                    // Truyền dữ liệu sang giao diện
+                    $don_hang = $orderDetails[0]; // Thông tin đơn hàng (dòng đầu tiên)
+                    $san_pham = $orderDetails;   // Chi tiết sản phẩm
                     require_once './ctdonhang.php'; // Trang hiển thị chi tiết đơn hàng
                 } else {
-                    // Nếu không tìm thấy đơn hàng, thông báo lỗi
                     echo "Không tìm thấy đơn hàng với ID: " . htmlspecialchars($don_hang_id);
                 }
             } else {
-                // Nếu không có tham số 'don_hang_id' hợp lệ trong URL, thông báo lỗi
                 echo "ID đơn hàng không hợp lệ.";
             }
         } else {
-            // Nếu người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
             header('Location: ?act=dn');
             exit();
         }
     }
+    
 
     // Hủy đơn hàng
     public function huyDonHang() {
+        // Kiểm tra phương thức request
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
+            
+            // Kiểm tra người dùng đã đăng nhập chưa
             if (isset($_SESSION['iduser'])) {
-                // Lấy id từ POST (thay vì ma_don_hang)
+                // Lấy ID đơn hàng từ request POST
                 $id = $_POST['id'];
-    
-                // Gọi phương thức xóa đơn hàng trong model, truyền vào id
-                $result = $this->modelDonhang->xoaDonHangTheoId($id);
                 
-                if ($result) {
-                    $_SESSION['message'] = 'Đơn hàng đã được xóa thành công!';
+                // Kiểm tra ID có hợp lệ không
+                if (empty($id)) {
+                    $_SESSION['error'] = 'ID đơn hàng không hợp lệ!';
+                    header('Location: ?act=donhang');
+                    exit();
+                }
+                
+                // Lấy thông tin đơn hàng từ Model
+                $order = $this->modelDonhang->getOrderById($id);
+    
+                // Kiểm tra đơn hàng tồn tại và trạng thái cho phép hủy
+                if ($order && in_array($order['trang_thai_id'], [11, 12])) { // 11: Đã đặt hàng, 12: Đang xử lý
+                    // Thực hiện xóa đơn hàng
+                    $result = $this->modelDonhang->xoaDonHangTheoId($id);
+    
+                    if ($result) {
+                        $_SESSION['message'] = 'Đơn hàng đã được hủy thành công!';
+                    } else {
+                        $_SESSION['error'] = 'Không thể hủy đơn hàng! Vui lòng thử lại.';
+                    }
                 } else {
-                    $_SESSION['error'] = 'Không thể xóa đơn hàng này!';
+                    $_SESSION['error'] = 'Đơn hàng không tồn tại hoặc không thể hủy. Chỉ có thể hủy đơn hàng ở trạng thái "Đã đặt hàng" hoặc "Đang xử lý".';
                 }
             } else {
                 $_SESSION['error'] = 'Vui lòng đăng nhập để thực hiện thao tác này!';
