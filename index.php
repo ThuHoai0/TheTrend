@@ -32,10 +32,12 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'sanpham' => (new HomeController()) -> sanpham(),
         'yeuthich' => (new HomeController()) -> top8(),
 
+        'giohang' => (new GiohangController()) -> giohang(),
+        'themdonhang' => (new GiohangController()) ->store(),
+
         'chitietsanpham' => (new ChitietsanphamController()) -> chitietsanpham(),
         'danhgia' => (new ChitietsanphamController()) -> danhgia(),
         'binhluan' => (new ChitietsanphamController()) -> binhluan(),
-        'addCart' => (new ChitietsanphamController()) -> getCartCount(),
         'handleCartAjax' => (new ChitietsanphamController()) -> handleCartAjax(),
         'xoaSP' => (new ChitietsanphamController()) -> xoaSP(),
         'updateCart' => (new ChitietsanphamController()) -> updateCart(),
@@ -48,15 +50,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
 
         'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
-        'luuthongtin' => (new NguoidungController())->editUser(),
-        'suamatkhau' => (new NguoidungController())->edit(),
-        'doimatkhau' => (new NguoidungController())->update(),
-
-        'quenmatkhau' => (new NguoidungController())->forgotPassword(),
-
-        'giohang' => (new GiohangController()) -> giohang(),
-
-
+        'luuthongtin' => (new NguoidungController())->update(), 
 
         default => null, // Trường hợp không khớp
     };

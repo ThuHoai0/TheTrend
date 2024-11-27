@@ -11,6 +11,8 @@ class LienheController
     public function lienhe()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            var_dump(123);
+            die;
             $email = $_POST['email'];
             $ho_ten = $_POST['ho_ten'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
@@ -42,7 +44,8 @@ class LienheController
         }
         if (empty($email)) {
             $errors['email'] = "Email là bắt buộc";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "Định dạng email không hợp lệ";
         }
         if (empty($so_dien_thoai)) {
