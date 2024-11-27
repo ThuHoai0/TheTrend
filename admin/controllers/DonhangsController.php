@@ -20,7 +20,7 @@ class DonhangsController
     public  function chitiet ()
     {
         $id = $_GET['id'];
-//        $don_hang = $this->modelDonhang->getDetailData($id);
+    //    $don_hang = $this->modelDonhang->getDetailData($id);
         $don_hang = $this->modelDonhang->getOrderInfo($id); // Chứa thông tin chung
         $san_phams = $this->modelDonhang->getOrderProducts($id); // Chứa danh sách sản phẩm
 
@@ -31,16 +31,29 @@ class DonhangsController
     }
     public function edit()
     {
+        // Lấy id từ URL
         $id = $_GET['id'];
+
+        // Lấy chi tiết đơn hàng từ model
         $don_hang = $this->modelDonhang->getDetailData($id);
+
+        // Kiểm tra nếu không tìm thấy đơn hàng
+        if (!$don_hang) {
+            echo "Không tìm thấy đơn hàng!";
+            return;
+        }
+
+        // Truyền dữ liệu vào view
         require_once './views/donhang/edit.php';
     }
+
+    // Phương thức update để xử lý việc cập nhật thông tin đơn hàng
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_GET['id'];
-            $don_hang = $this->modelDonhang->getDetailData($id);
             $trang_thai_don_hang = $_POST['trang_thai'];
+            $don_hang = $this->modelDonhang->getDetailData($id);
             $errors = [];
             if (empty($trang_thai_don_hang)) {
                 $errors['$trang_thai_don_hang'] = "Trạng thái đơn hàng là bắt buộc";
@@ -48,7 +61,7 @@ class DonhangsController
                 $errors['$trang_thai_don_hang'] = "Trạng thái đơn hàng không thể lùi lại";
             }
             if (empty($errors)) {
-                $this->modelDonhang->updateData($id,$trang_thai_don_hang);
+                $this->modelDonhang->updateData($id, $trang_thai_don_hang);
                 unset($_SESSION['errors']);
                 header('Location: ?act=donhang/list');
                 exit();

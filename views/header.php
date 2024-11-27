@@ -83,7 +83,7 @@
 
         #admin1 {
             color: #000;
-            font-size: 25px;
+            font-size: 15px;
             font-family: "Times New Roman";
         }
         /* Căn chỉnh chung cho dropdown */
@@ -400,7 +400,8 @@
                                         </a>
                                         <form action="?act=thongtinnguoidung" method="post">
                                         <div id="dropdown-menu" class="dropdown-content">
-                                            <a href="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">Thông tin người dùng</a>  
+                                            <a href="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">Thông tin người dùng</a> 
+                                            <a href="?act=donhang&id=<?= $_SESSION['iduser']?>">Đơn hàng</a>
                                             <a href="?act=suamatkhau&id=<?= $_SESSION['iduser']?>">Đổi mật khẩu</a>
                                             <a href="?act=quenmatkhau">Quên mật khẩu</a>
                                         </div>

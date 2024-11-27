@@ -10,6 +10,7 @@ require_once './controllers/KhuyenmaiController.php';
 require_once './controllers/NguoidungController.php';
 require_once './controllers/LienheController.php';
 require_once './controllers/TinTucController.php';
+require_once './controllers/DonhangController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Giohang.php';
@@ -18,6 +19,7 @@ require_once './models/Khuyenmai.php';
 require_once './models/Nguoidung.php';
 require_once './models/Lienhe.php';
 require_once './models/TinTuc.php';
+require_once './models/Donhang.php';
 $act = $_GET['act'] ?? '/';
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -57,8 +59,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
         'giohang' => (new GiohangController()) -> giohang(),
 
-
-
+        'donhang' => (new DonhangController())->listOrders(),
+        'ctdonhang' => (new DonhangController())->ctdonhang(),
+        'huydonhang' => (new DonhangController())->huyDonHang(),
         default => null, // Trường hợp không khớp
     };
 }
