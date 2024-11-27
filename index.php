@@ -10,6 +10,7 @@ require_once './controllers/KhuyenmaiController.php';
 require_once './controllers/NguoidungController.php';
 require_once './controllers/LienheController.php';
 require_once './controllers/TinTucController.php';
+require_once './controllers/YeuthichController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Giohang.php';
@@ -18,6 +19,7 @@ require_once './models/Khuyenmai.php';
 require_once './models/Nguoidung.php';
 require_once './models/Lienhe.php';
 require_once './models/TinTuc.php';
+require_once './models/Yeuthich.php';
 $act = $_GET['act'] ?? '/';
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -49,6 +51,11 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
         'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
         'luuthongtin' => (new NguoidungController())->update(), 
+        
+        'giohang' => (new GiohangController())->giohang(), 
+
+        'showyeuthich' => (new YeuthichController())->getDetailData(), 
+        'addyeuthich' => (new YeuthichController())->addyeuthich(), 
 
         default => null, // Trường hợp không khớp
     };
