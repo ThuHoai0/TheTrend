@@ -41,7 +41,7 @@
                                 <td><?= $order['ma_don_hang']; ?></td>
                                 <td><?= date('d/m/Y', strtotime($order['ngay_dat_hang'])) ?></td>
                                 <td>
-                                    <?= $order['phuong_thuc_thanh_toan'] == 0 ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng' ?>
+                                    <?= $order['phuong_thuc_thanh_toan'] == 1 ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng' ?>
                                 </td>
                                 <td>
                                     <!-- Trạng thái thanh toán -->

@@ -14,7 +14,6 @@ class Giohang
         }
 
         // Lấy nguoi_dung_id từ session
-        session_start(); // Khởi tạo session (nếu chưa khởi tạo)
         $order_data['nguoi_dung_id'] = isset($_SESSION['iduser']) ? $_SESSION['iduser'] : null;
 
         // Tạo mã đơn hàng ngẫu nhiên 10 ký tự (chữ và số)
@@ -76,9 +75,9 @@ class Giohang
                 $order_id = $this->conn->lastInsertId();
 
                 // Sau khi đơn hàng được thêm, thêm chi tiết đơn hàng vào bảng chi_tiet_don_hang
-                $this->saveOrderDetails($order_data['san_pham_id'], $order_id);
+                $this->saveOrderDetails($order_id);
 
-                echo "Đơn hàng đã được tạo thành công. ID đơn hàng: " . $order_id;
+                echo "Đơn hàng đã được tạo thành công.";
             } else {
                 // Xử lý lỗi
                 $errorInfo = $stmt->errorInfo();
@@ -92,7 +91,7 @@ class Giohang
     }
 
 // Hàm thêm chi tiết đơn hàng vào bảng chi_tiet_don_hang
-    private function saveOrderDetails($san_pham_id, $order_id)
+    private function saveOrderDetails($order_id)
     {
 
         foreach ($_SESSION['cart'] as $key => $value) {

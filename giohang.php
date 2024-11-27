@@ -195,6 +195,19 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (isset($_SESSION['order_success']) && $_SESSION['order_success'] == true) {
+    // Hiển thị thông báo đặt hàng thành công
+    echo "<div class='alert alert-success text-center'>Đặt hàng thành công! Cảm ơn bạn đã mua hàng.</div>";
+
+    // Sau khi hiển thị thông báo, bạn có thể reset lại session success
+    unset($_SESSION['order_success']);
+} elseif (isset($_SESSION['order_error'])) {
+    // Hiển thị thông báo lỗi nếu có
+    echo "<div class='alert alert-danger text-center'>{$_SESSION['order_error']}</div>";
+    unset($_SESSION['order_error']);
+}
+
+
 // Check if the user is logged in
 if (!isset($_SESSION['iduser'])) {
     // If not logged in, show login prompt
@@ -261,11 +274,6 @@ if (!isset($_SESSION['iduser'])) {
                                 $_SESSION['unique_products_count'] = count($unique_products);
                                 ?>
                                 </tbody>
-
-                                <!-- Hiển thị số sản phẩm trong giỏ -->
-                                <div class="cart-count">
-                                    Tổng số sản phẩm: <span id="cart-item-count"><?= count($unique_products) ?></span>
-                                </div>
 
                                 <tfoot>
                                 <tr class="text-center">
@@ -370,8 +378,6 @@ if (!isset($_SESSION['iduser'])) {
 
         <?php } ?>
     </div>
-
-
     <?php
 }
 ?>
