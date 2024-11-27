@@ -97,7 +97,15 @@
                                                             <a href="?act=donhang/chitiet&id=<?=$don_hang['id']?>"><?= $don_hang['ma_don_hang'] ?></a>
                                                         </td>
                                                         <td><?= $don_hang['ngay_dat_hang'] ?></td>
-                                                        <td><?= $don_hang['phuong_thuc_thanh_toan'] ?></td>
+                                                        <td>
+                                                        <?php
+                                                        $phuong_thuc_thanh_toan = [
+                                                            1 => "Chuyển khoản",
+                                                            0 => "Thanh toán khi nhận hàng"
+                                                        ];
+                                                        echo $phuong_thuc_thanh_toan[$don_hang['phuong_thuc_thanh_toan']] ?? "Trạng thái không xác định";
+                                                        ?>
+                                                        </td>
                                                         <td>
                                                             <?php if ($don_hang['trang_thai_thanh_toan'] == '1') : ?>
                                                                 <span class="badge bg-success">Đã Thanh Toán</span>

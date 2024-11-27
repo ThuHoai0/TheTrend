@@ -10,7 +10,7 @@ require_once './controllers/KhuyenmaiController.php';
 require_once './controllers/NguoidungController.php';
 require_once './controllers/LienheController.php';
 require_once './controllers/TinTucController.php';
-require_once './controllers/YeuthichController.php';
+require_once './controllers/DonhangController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Giohang.php';
@@ -19,7 +19,7 @@ require_once './models/Khuyenmai.php';
 require_once './models/Nguoidung.php';
 require_once './models/Lienhe.php';
 require_once './models/TinTuc.php';
-require_once './models/Yeuthich.php';
+require_once './models/Donhang.php';
 $act = $_GET['act'] ?? '/';
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -52,13 +52,17 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'khuyenmai' => (new KhuyenmaiController())->khuyenmai(),
 
         'thongtinnguoidung' => (new NguoidungController())->showEditForm(),
-        'luuthongtin' => (new NguoidungController())->update(), 
-        
-        'giohang' => (new GiohangController())->giohang(), 
+        'luuthongtin' => (new NguoidungController())->editUser(),
+        'suamatkhau' => (new NguoidungController())->edit(),
+        'doimatkhau' => (new NguoidungController())->update(),
 
-        'showyeuthich' => (new YeuthichController())->getDetailData(), 
-        'addyeuthich' => (new YeuthichController())->addyeuthich(), 
+        'quenmatkhau' => (new NguoidungController())->forgotPassword(),
 
+        'giohang' => (new GiohangController()) -> giohang(),
+
+        'donhang' => (new DonhangController())->listOrders(),
+        'ctdonhang' => (new DonhangController())->ctdonhang(),
+        'huydonhang' => (new DonhangController())->huyDonHang(),
         default => null, // Trường hợp không khớp
     };
 }

@@ -102,7 +102,7 @@
                         <p><strong>Tên:</strong> <?= $don_hang['ho_ten_nguoi_nhan'] ?></p>
                         <p><strong>Email:</strong> <?= $don_hang['email_nguoi_nhan'] ?></p>
                         <p><strong>SĐT:</strong> <?= $don_hang['so_dien_thoai_nguoi_nhan'] ?></p>
-                        <p><strong>Địa chỉ:</strong> 147 Phường Canh gà</p>
+                        <p><strong>Địa chỉ:</strong><?= $don_hang['dia_chi_nhan_hang'] ?></p>
                         </div>
                     </div>
                         <div class="table-responsive">
