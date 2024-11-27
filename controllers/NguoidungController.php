@@ -115,8 +115,9 @@ class NguoidungController
                 return;
             }
 
-            // Lấy thông tin người dùng từ database
-            $nguoi_dung = $this->modelNguoidung->getUserById($id); // Phương thức này cần lấy thông tin user theo ID
+                if ($this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh))
+                {
+                    header('Location: ?act=thongtinnguoidung&id=' . $id);
 
             if (!$nguoi_dung) {
                 echo "<script>alert('Người dùng không tồn tại.');</script>";
@@ -151,6 +152,7 @@ class NguoidungController
             exit();
         }
     }
+}
 
     public function forgotPassword()
     {

@@ -16,14 +16,13 @@ class DashboardController {
         $tongSanPham = $this->modelDashboard-> thongKeSanPham();
 
         $tongDonHang = $this->modelDashboard-> tongDonHang();
-        $tongDonHangDaDat = $this->modelDashboard-> tongDonHangDaDat();
-        $tongSoDonHangDangGiao = $this->modelDashboard-> tongSoDonHangDangGiao();
-        $tongSoDonHangDaHuy = $this->modelDashboard-> tongSoDonHangDaHuy();
-        $tongSoDonHangDaHoanThanh = $this->modelDashboard-> tongSoDonHangDaHoanThanh();
-        $tongSoDonHangDaDongGoi = $this->modelDashboard-> tongSoDonHangDaDongGoi();
         $dangSuLy = $this->modelDashboard-> dangSuLy();
-        $tongSoDonHangHoanTra = $this->modelDashboard-> tongSoDonHangHoanTra();
-        $tongSoDonHangDaThanhToan = $this->modelDashboard-> tongSoDonHangDaThanhToan();
+        $tongDonHangDaXacNhan = $this->modelDashboard-> tongDonHangDaXacNhan();
+        $tongSoDonHangDangGiao = $this->modelDashboard-> tongSoDonHangDangGiao();
+        $tongSoDonHangDaGiaoHang = $this->modelDashboard-> tongSoDonHangDaGiaoHang();
+        $tongSoDonHangDaHuy = $this->modelDashboard-> tongSoDonHangDaHuy();
+
+       
         $topSanPham = $this->modelDashboard->getTopSanPhamBanChay(5);
         if (!empty($topSanPham)) {
             foreach ($topSanPham as $index => $sanPham) {
@@ -37,8 +36,7 @@ class DashboardController {
 
         $khacHangMois = $this->modelDashboard->getKhacHangMoi();
         $sanPhamMois = $this->modelDashboard->getSanPhamMois();
-        // $danhMuc = $this->modelDashboard-> thongKeDanhMuc();
-        // var_dump($thuNhapNam);die;
+
         require_once "./views/dashboard.php";
 
     }    
