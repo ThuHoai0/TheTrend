@@ -41,7 +41,7 @@
                                 <td><?= $order['ma_don_hang']; ?></td>
                                 <td><?= date('d/m/Y', strtotime($order['ngay_dat_hang'])) ?></td>
                                 <td>
-                                    <?= $order['phuong_thuc_thanh_toan'] == 0 ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng' ?>
+                                    <?= $order['phuong_thuc_thanh_toan'] == 1 ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng' ?>
                                 </td>
                                 <td>
                                     <!-- Trạng thái thanh toán -->
@@ -69,18 +69,6 @@
                                 <a href="?act=ctdonhang&id=<?= isset($order['don_hang_id']) ? $order['don_hang_id'] : '' ?>" class="btn btn-outline-primary btn-sm">
                                     <i class="fas fa-eye"></i> Xem chi tiết
                                 </a>
-                                <?php 
-                                // Kiểm tra trạng thái đơn hàng là "Đã đặt hàng" (11) hoặc "Đang xử lý" (12)
-                                if ($order['trang_thai_don_hang'] == $trang_thai_don_hang[11] || $order['trang_thai_don_hang'] == $trang_thai_don_hang[12]): 
-                                ?>
-                                    <!-- Form hủy đơn hàng -->
-                                    <form action="?act=huydonhang" method="POST" style="display: inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?')">
-                                        <input type="hidden" name="id" value="<?= $order['don_hang_id'] ?>"/>
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">
-                                            <i class="fas fa-trash-alt"></i> Hủy
-                                        </button>
-                                    </form>
-                                <?php endif ?>
                             </td>
                             </tr>
                         <?php endforeach; ?>

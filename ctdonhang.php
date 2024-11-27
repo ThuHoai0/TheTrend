@@ -11,27 +11,33 @@
                         <div class="container mt-5">
                             <div class="card">
                                 <div class="card-header bg-primary text-white">
-                                    <h4 style="color:#fff">Quản lý danh sách đơn hàng | DH123456</h4>
+                                    <h4 style="color:#fff">Quản lý danh sách đơn hàng | <?= htmlspecialchars($don_hang['ma_don_hang']) ?></h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <span class="badge bg-success p-2">Đơn hàng: Đang xử lý</span>
-                                        <span class="badge bg-primary text-white p-2">Phương thức thanh toán: Thanh toán khi nhận hàng</span>
-                                        <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán: Chưa Thanh Toán</span>
+                                        <span class="badge bg-success p-2">Đơn hàng: <?= htmlspecialchars($don_hang['trang_thai_don_hang']) ?></span>
+                                        <span class="badge bg-primary text-white p-2">
+                                            Phương thức thanh toán: 
+                                            <?= $don_hang['phuong_thuc_thanh_toan'] == 1 ? 'Chuyển khoản' : 'Nhận hàng khi thanh toán' ?>
+                                        </span>
+                                        <span class="badge bg-warning text-dark p-2">
+                                            Trạng thái thanh toán: 
+                                            <?= $don_hang['trang_thai_thanh_toan'] == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' ?>
+                                        </span>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <h5>Thông tin người đặt </h5>
-                                            <p><strong>Tên:</strong> Nguyễn Văn A</p>
-                                            <p><strong>Email:</strong> example@example.com</p>
-                                            <p><strong>SĐT:</strong> 0123456789</p>
+                                            <p><strong>Tên:</strong> <?= htmlspecialchars($don_hang['ten_nguoi_dat']) ?></p>
+                                            <p><strong>Email:</strong> <?= htmlspecialchars($don_hang['email_nguoi_dat']) ?></p>
+                                            <p><strong>SĐT:</strong> <?= htmlspecialchars($don_hang['sdt_nguoi_dat']) ?></p>
                                         </div>
                                         <div class="col-md-6">
                                             <h5>Thông tin người nhận</h5>
-                                            <p><strong>Tên:</strong> Lê Thị B</p>
-                                            <p><strong>Email:</strong> receiver@example.com</p>
-                                            <p><strong>SĐT:</strong> 0987654321</p>
-                                            <p><strong>Địa chỉ:</strong> 123 Đường ABC, Quận 1, TP.HCM</p>
+                                            <p><strong>Tên:</strong> <?= htmlspecialchars($don_hang['ho_ten_nguoi_nhan']) ?></p>
+                                            <p><strong>Email:</strong> <?= htmlspecialchars($don_hang['email_nguoi_nhan']) ?></p>
+                                            <p><strong>SĐT:</strong> <?= htmlspecialchars($don_hang['so_dien_thoai_nguoi_nhan']) ?></p>
+                                            <p><strong>Địa chỉ:</strong> <?= htmlspecialchars($don_hang['dia_chi_nhan_hang']) ?></p>
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -45,18 +51,14 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <?php foreach ($san_pham as $sp): ?>
                                             <tr>
-                                                <td>Sản phẩm 1</td>
-                                                <td>2</td>
-                                                <td>200,000đ</td>
-                                                <td>400,000đ</td>
+                                                <td><?= htmlspecialchars($sp['ten_san_pham']) ?></td>
+                                                <td><?= htmlspecialchars($sp['so_luong']) ?></td>
+                                                <td><?= number_format($sp['don_gia'], 0, ',', '.') ?>đ</td>
+                                                <td><?= number_format($sp['thanh_tien'], 0, ',', '.') ?>đ</td>
                                             </tr>
-                                            <tr>
-                                                <td>Sản phẩm 2</td>
-                                                <td>1</td>
-                                                <td>150,000đ</td>
-                                                <td>150,000đ</td>
-                                            </tr>
+                                            <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -64,7 +66,9 @@
                                         <ul class="list-group w-50">
                                             <li class="list-group-item d-flex justify-content-between bg-light">
                                                 <span>Tổng tiền:</span>
-                                                <strong class="text-danger">550,000đ</strong>
+                                                <strong class="text-danger">
+                                                    <?= number_format(array_sum(array_column($san_pham, 'thanh_tien')), 0, ',', '.') ?>đ
+                                                </strong>
                                             </li>
                                         </ul>
                                     </div>
@@ -73,6 +77,14 @@
                                         <div class="text-end">
                                             <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
                                         </div>
+                                        <?php if ($don_hang['trang_thai_don_hang'] === 'Đã đặt hàng' || $don_hang['trang_thai_don_hang'] === 'Đang xử lý'): ?>
+                                            <form action="?act=huydonhang" method="POST" style="display: inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?')">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($don_hang['don_hang_id']) ?>" />
+                                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                    <i class="fas fa-trash-alt"></i> Hủy
+                                                </button>
+                                            </form>
+                                        <?php endif ?>
                                     </div>
                                 </div>
                             </div>
@@ -88,4 +100,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 <?php require_once "./views/footer.php"; ?>
-
