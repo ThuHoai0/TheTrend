@@ -565,10 +565,10 @@
                 dataType: 'json',
                 success: function (response) {
                     if (response.status === 'success') {
-                        alert(response.message);
+                        // alert(response.message);
                         $('.cart-total-items').text(response.total_items);
                     } else {
-                        alert(response.message);
+                        // alert(response.message);
                     }
                 },
                 error: function () {

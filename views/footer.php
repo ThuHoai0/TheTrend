@@ -236,8 +236,8 @@ $('.js-pscroll').each(function() {
 
 </script>
 <script>
-    document.querySelector('.js-addcart-detail').addEventListener('click', function (e) {
-        e.preventDefault();
+    // document.querySelector('.js-addcart-detail').addEventListener('click', function (e) {
+    //     e.preventDefault();
         //
         // const formData = new FormData();
         // formData.append('product_id', document.querySelector('[name="product_id"]').value);
@@ -260,7 +260,7 @@ $('.js-pscroll').each(function() {
         //         }
         //     })
         //     .catch(error => console.error('Error:', error));
-    });
+    // });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -292,41 +292,41 @@ $('.js-pscroll').each(function() {
         // });
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        // Xử lý nút tăng giảm số lượng
-        const quantityButtons = document.querySelectorAll(".quantity-btn");
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     // Xử lý nút tăng giảm số lượng
+    //     const quantityButtons = document.querySelectorAll(".quantity-btn");
+    //
+    //     quantityButtons.forEach((button) => {
+    //         button.addEventListener("click", function () {
+    //             const input = this.parentElement.querySelector('input[name="quantity"]');
+    //             const currentValue = parseInt(input.value) || 1;
+    //             const type = this.dataset.type;
+    //             const min = parseInt(input.getAttribute("min")) || 1;
+    //             const max = parseInt(input.getAttribute("max")) || Infinity;
+    //
+    //             if (type === "increase" && currentValue < max) {
+    //                 input.value = currentValue + 1;
+    //             } else if (type === "decrease" && currentValue > min) {
+    //                 input.value = currentValue - 1;
+    //             }
+    //         });
+    //     });
+    // });
 
-        quantityButtons.forEach((button) => {
-            button.addEventListener("click", function () {
-                const input = this.parentElement.querySelector('input[name="quantity"]');
-                const currentValue = parseInt(input.value) || 1;
-                const type = this.dataset.type;
-                const min = parseInt(input.getAttribute("min")) || 1;
-                const max = parseInt(input.getAttribute("max")) || Infinity;
-
-                if (type === "increase" && currentValue < max) {
-                    input.value = currentValue + 1;
-                } else if (type === "decrease" && currentValue > min) {
-                    input.value = currentValue - 1;
-                }
-            });
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Lấy tất cả các nút xóa
-        const deleteButtons = document.querySelectorAll('.js-delete-btn');
-
-        // deleteButtons.forEach(button => {
-        //     button.addEventListener('click', function () {
-        //         // Hiển thị hộp thoại xác nhận
-        //         if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?')) {
-        //             // Gửi form nếu xác nhận
-        //             // this.closest('.delete-form').submit();
-        //         }
-        //     });
-        // });
-    });
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     // Lấy tất cả các nút xóa
+    //     const deleteButtons = document.querySelectorAll('.js-delete-btn');
+    //
+    //     // deleteButtons.forEach(button => {
+    //     //     button.addEventListener('click', function () {
+    //     //         // Hiển thị hộp thoại xác nhận
+    //     //         if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?')) {
+    //     //             // Gửi form nếu xác nhận
+    //     //             // this.closest('.delete-form').submit();
+    //     //         }
+    //     //     });
+    //     // });
+    // });
 
 
 </script>
