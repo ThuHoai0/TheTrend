@@ -72,7 +72,7 @@
                 <h4 class="stext-301 cl0 p-b-30">
                     BẢN TIN
                 </h4>
-                <form>
+                <!-- <form>
                     <div class="wrap-input1 w-full p-b-4">
                         <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
                             placeholder="Gửi email">
@@ -84,6 +84,11 @@
                             Gửi
                         </button>
                     </div>
+                </form> -->
+                <form action="sendEmail.php" method="POST">
+                    <label for="email">Nhập email của bạn:</label>
+                    <input type="email" name="email" id="email" required>
+                    <button type="submit">Gửi tin nhắn</button>
                 </form>
             </div>
         </div>
