@@ -156,10 +156,9 @@ class ChitietsanphamController
             $product_name = isset($_POST['product_name']) ? htmlspecialchars($_POST['product_name']) : '';
             $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
             $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
-            $product_image = isset($hinh_anh_goc) && !empty($hinh_anh_goc) ? '././admin/uploads/' . $hinh_anh_goc : 'assets/images/default.jpg';
+            $product_image = $_POST['product_img'];
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
-
             if ($product_id > 0 && $quantity > 0) {
                 if (!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = [];
@@ -183,7 +182,7 @@ class ChitietsanphamController
                 }
 
                 // Tính tổng số lượng sản phẩm trong giỏ hàng
-                $total_items = array_sum(array_column($_SESSION['cart'], 'quantity'));
+                $total_items = count($_SESSION['cart']);
 
                 echo json_encode([
                     'status' => 'success',

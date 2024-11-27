@@ -70,8 +70,6 @@ class GiohangController
                     'tong_tien' => $total_price, // Tổng tiền đơn hàng
                     'trang_thai' => $order_status // Trạng thái đơn hàng
                 ];
-var_dump($order_data);
-die();
                 // Gọi phương thức lưu đơn hàng vào cơ sở dữ liệu (hãy thay đổi phần này nếu cần)
                 $this->modelGiohang->saveOrder($order_data);
 

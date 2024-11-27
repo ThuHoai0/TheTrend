@@ -232,15 +232,16 @@ if (!isset($_SESSION['iduser'])) {
                                 // Lặp qua giỏ hàng
                                 foreach ($_SESSION['cart'] as $key => $item) {
                                     // Tính tổng tiền cho từng sản phẩm
+//                                    var_dump($item);
                                     $subtotal = $item['product_price'] * $item['quantity'];
                                     $total_price += $subtotal;
-
                                     // Kiểm tra nếu sản phẩm đã được tính trong giỏ hàng
                                     if (!isset($unique_products[$item['product_id']])) {
                                         $unique_products[$item['product_id']] = $item;
+
                                         ?>
-                                        <tr>
-                                            <td><img src="<?= htmlspecialchars($item['product_image']) ?>" alt="IMG" class="img-thumbnail" style="max-width: 80px;"></td>
+                                        <tr id="<?= $item['product_id'] ?>">
+                                            <td><img src="<?= $item['product_image'] ?>" alt="IMG" class="img-thumbnail" style="max-width: 80px;"></td>
                                             <td><?= htmlspecialchars($item['product_name']) ?></td>
                                             <td><?= number_format($item['product_price'], 0, ',', '.') ?> VNĐ</td>
                                             <td>
@@ -402,7 +403,7 @@ if (!isset($_SESSION['iduser'])) {
 
                 .catch((error) => {
                     console.error("Error:", error);
-                    alert("Đã xảy ra lỗi. Vui lòng thử lại.");
+                    // alert("Đã xảy ra lỗi. Vui lòng thử lại.");
                     location.reload();
                 });
             }

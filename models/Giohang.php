@@ -94,44 +94,32 @@ class Giohang
 // Hàm thêm chi tiết đơn hàng vào bảng chi_tiet_don_hang
     private function saveOrderDetails($san_pham_id, $order_id)
     {
+
+        foreach ($_SESSION['cart'] as $key => $value) {
             $sql = "INSERT INTO chi_tiet_don_hangs (
             `don_hang_id`, 
             `san_pham_id`, 
             `so_luong`, 
-            `gia_tien`
+            `don_gia`,
+            `thanh_tien`
         ) VALUES (
             :don_hang_id, 
             :san_pham_id, 
             :so_luong, 
-            :gia_tien
+            :don_gia,
+            :thanh_tien
         )";
+            $gia_tien = (int) $value['product_price'] * (int) $value['quantity'];
+            // Chuẩn bị câu truy vấn SQL để thêm chi tiết đơn hàng
+            $stmt = $this->conn->prepare($sql);
 
-        // Chuẩn bị câu truy vấn SQL để thêm chi tiết đơn hàng
-        $stmt = $this->conn->prepare($sql);
-
-        // Giả sử bạn có thông tin số lượng và giá sản phẩm
-        $so_luong = 1; // Giá trị mẫu, bạn có thể thay đổi tùy theo dữ liệu
-        $gia_tien = 100000; // Giá trị mẫu, bạn có thể thay đổi tùy theo dữ liệu
-
-        // Gắn các tham số vào câu truy vấn
-        $stmt->bindParam(':don_hang_id', $order_id, PDO::PARAM_INT);
-        $stmt->bindParam(':san_pham_id', $san_pham_id, PDO::PARAM_INT);
-        $stmt->bindParam(':so_luong', $so_luong, PDO::PARAM_INT);
-        $stmt->bindParam(':gia_tien', $gia_tien, PDO::PARAM_STR);
-
-        // Thực thi câu truy vấn và xử lý lỗi
-        try {
-            if ($stmt->execute()) {
-                echo "Chi tiết đơn hàng đã được thêm thành công.";
-            } else {
-                // Xử lý lỗi
-                $errorInfo = $stmt->errorInfo();
-                throw new Exception("Lỗi khi thêm chi tiết đơn hàng: " . $errorInfo[2]);
-            }
-        } catch (Exception $e) {
-            // Ghi lại lỗi vào log
-            error_log($e->getMessage());
-            echo "Lỗi khi thêm chi tiết đơn hàng. Vui lòng thử lại.";
+            // Gắn các tham số vào câu truy vấn
+            $stmt->bindParam(':don_hang_id', $order_id, PDO::PARAM_INT);
+            $stmt->bindParam(':san_pham_id', $value['product_id']);
+            $stmt->bindParam(':so_luong', $value['quantity'], PDO::PARAM_INT);
+            $stmt->bindParam(':thanh_tien', $gia_tien, PDO::PARAM_STR);
+            $stmt->bindParam(':don_gia', $value['product_price'], PDO::PARAM_STR);
+            $stmt->execute();
         }
     }
 
