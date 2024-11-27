@@ -34,8 +34,8 @@ class DonhangController {
             $userId = $_SESSION['iduser']; // Lấy id người dùng từ session
 
             // Kiểm tra và lấy 'don_hang_id' từ URL
-            if (isset($_GET['don_hang_id']) && !empty($_GET['don_hang_id'])) {
-                $don_hang_id = $_GET['don_hang_id']; // Lấy giá trị từ tham số 'don_hang_id' trên URL
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $don_hang_id = $_GET['id']; // Lấy giá trị từ tham số 'don_hang_id' trên URL
 
                 // Gọi phương thức getOrderDetailsByDonHangId() từ model để lấy chi tiết đơn hàng
                 $orderDetails = $this->modelDonhang->getOrderDetailsByDonHangId($don_hang_id);
@@ -43,7 +43,7 @@ class DonhangController {
                 // Kiểm tra nếu có dữ liệu đơn hàng
                 if ($orderDetails) {
                     // Nếu có đơn hàng, bao gồm trang hiển thị chi tiết đơn hàng
-                    include './ctdonhang.php'; // Trang hiển thị chi tiết đơn hàng
+                    require_once './ctdonhang.php'; // Trang hiển thị chi tiết đơn hàng
                 } else {
                     // Nếu không tìm thấy đơn hàng, thông báo lỗi
                     echo "Không tìm thấy đơn hàng với ID: " . htmlspecialchars($don_hang_id);

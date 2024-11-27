@@ -62,11 +62,12 @@ class Donhang {
                 WHERE dh.id = :donHangId
             ";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':donHangId', $donHangId, PDO::PARAM_INT);
+            $stmt->bindParam(':donHangId', $don_hang_id, PDO::PARAM_INT); // Đảm bảo bind đúng biến
             $stmt->execute();
-    
-            // Trả về chi tiết của đơn hàng
+
+// Kiểm tra và trả về kết quả
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             echo 'Lỗi: ' . $e->getMessage();
             return [];
