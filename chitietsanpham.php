@@ -98,7 +98,8 @@
 
 
                         <div class="flex-w flex-r-m p-b-10">
-                            <form method="GET" class="size-204 flex-w flex-m respon6-next">
+                            <?php if (!empty($_SESSION['iduser'])) { ?>
+                            <form class="size-204 flex-w flex-m respon6-next" id="add-to-cart">
                                 <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                         <i class="fs-16 zmdi zmdi-minus"></i>
@@ -115,11 +116,16 @@
                                 <input type="hidden" name="product_name" value="<?= htmlspecialchars($chi_tiet['ten_san_pham']) ?>"> <!-- Tên sản phẩm -->
                                 <input type="hidden" name="product_price" value="<?= $chi_tiet['gia'] ?>"> <!-- Giá sản phẩm -->
 
-                                <button onclick="themVao()" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Thêm vào giỏ hàng
                                 </button>
-                            </form>
 
+                            </form>
+                            <?php } else { ?>
+                                <p class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                    Vui long dang nhap
+                                </p>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -551,31 +557,20 @@
 </div>
     <script>
 
-        function themVao() {
-            console.log($('#img-product').attr('src'))
-            $.ajax({
-                url: '?act=handleCartAjax',
-                type: 'POST',
-                data: {
-                    product_id: $('[name="product_id"]').val(),
-                    product_name: $('[name="product_name"]').val(),
-                    product_img: $('#img-product').attr('src'),
-                    product_price: $('[name="product_price"]').val(),
-                    quantity: $('[name="quantity"]').val(),
-                },
-                dataType: 'json',
-                success: function (response) {
-                    if (response.status === 'success') {
-                        // alert(response.message);
-                        $('.cart-total-items').text(response.total_items);
-                    } else {
-                        // alert(response.message);
-                    }
-                },
-                error: function () {
-                    alert('Có lỗi xảy ra, vui lòng thử lại!');
-                },
+        $(document).ready(function () {
+            $('#add-to-cart').submit(function (e) {
+                e.preventDefault();  // Prevent default form submission
+                const session = "<?= $_SESSION['iduser'] ?>";  // PHP session variable
+                console.log(session);
+                // Additional logic here (e.g., AJAX request)
             });
+
+        });
+
+        function themVao1(e) {
+            e.preventDefault();
+
+
         }
     </script>
 

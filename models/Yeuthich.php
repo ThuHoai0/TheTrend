@@ -26,7 +26,7 @@ class Yeuthich
     public function addYeuthich($sanPhamId, $nguoiDungId)
     {
         try {
-            $sql = "INSERT INTO danh_gias (san_pham_id, nguoi_dung_id) 
+            $sql = "INSERT INTO san_pham_yeu_thichs (san_pham_id, nguoi_dung_id) 
                     VALUES (:san_pham_id, :nguoi_dung_id)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':san_pham_id', $sanPhamId, PDO::PARAM_INT);
@@ -34,6 +34,8 @@ class Yeuthich
 
             $stmt->execute();
         } catch (PDOException $e) {
+            var_dump($e->getMessage());
+            die;
             echo 'Error: ' . $e->getMessage();
         }
     }

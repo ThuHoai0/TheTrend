@@ -311,21 +311,21 @@ if (!isset($_SESSION['iduser'])) {
                     <!-- Tên người nhận -->
                     <div class="mb-3">
                         <label for="ho_ten_nguoi_nhan" class="form-label">Tên người nhận:</label>
-                        <input type="text" class="form-control" id="ho_ten_nguoi_nhan" name="ho_ten_nguoi_nhan"
+                        <input type="text" class="form-control" value="<?= $_SESSION['name'] ?>" id="ho_ten_nguoi_nhan" name="ho_ten_nguoi_nhan"
                                placeholder="Nhập tên người nhận..." required>
                     </div>
 
                     <!-- Số điện thoại -->
                     <div class="mb-3">
                         <label for="so_dien_thoai_nguoi_nhan" class="form-label">Số điện thoại:</label>
-                        <input type="tel" class="form-control" id="so_dien_thoai_nguoi_nhan" name="so_dien_thoai_nguoi_nhan"
+                        <input type="tel" class="form-control" value="<?= $_SESSION['so_dien_thoai'] ?>" id="so_dien_thoai_nguoi_nhan" name="so_dien_thoai_nguoi_nhan"
                                placeholder="Nhập số điện thoại..." pattern="[0-9]{10,11}" required>
                     </div>
 
                     <!-- Email -->
                     <div class="mb-3">
                         <label for="email_nguoi_nhan" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email_nguoi_nhan" name="email_nguoi_nhan"
+                        <input type="email" class="form-control" value="<?= $_SESSION['email'] ?>" id="email_nguoi_nhan" name="email_nguoi_nhan"
                                placeholder="Nhập email..." required>
                     </div>
 
@@ -333,7 +333,7 @@ if (!isset($_SESSION['iduser'])) {
                     <div class="mb-3">
                         <label for="dia_chi_nhan_hang" class="form-label">Địa chỉ:</label>
                         <textarea class="form-control" id="dia_chi_nhan_hang" name="dia_chi_nhan_hang" rows="3"
-                                  placeholder="Nhập địa chỉ giao hàng..." required></textarea>
+                                  placeholder="Nhập địa chỉ giao hàng..." required><?= $_SESSION['dia_chi'] ?></textarea>
                     </div>
 
                     <!-- Ghi chú -->
@@ -347,13 +347,8 @@ if (!isset($_SESSION['iduser'])) {
                     <div class="mb-4 ">
                         <label class="form-label">Phương thức thanh toán:</label>
                         <div class="form-check pl-5">
-                            <input class="form-check-input" type="radio" name="phuong_thuc_thanh_toan" id="bankTransfer"
-                                   value="1" required>
-                            <label class="form-check-label" for="bankTransfer">Chuyển khoản</label>
-                        </div>
-                        <div class="form-check pl-5">
                             <input class="form-check-input" type="radio" name="phuong_thuc_thanh_toan" id="cashOnDelivery"
-                                   value="0">
+                                   value="0" checked>
                             <label class="form-check-label" for="cashOnDelivery">Thanh toán khi nhận hàng</label>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 <?php
 require_once 'header.php';
 ?>
-
+<!--banner-->
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
@@ -90,7 +90,7 @@ require_once 'header.php';
     <div class="container">
         <div class="p-b-10">
             <h3 class="ltext-103 cl5">
-                SẢN PHẨM NỔI BẬT
+                SẢN PHẨM BÁN CHẠY
             </h3>
             <br>
         </div>
@@ -222,12 +222,6 @@ require_once 'header.php';
                     <div class="block2">
                         <div class="block2-pic hov-img0 position-relative">
                             <img src="<?= '././admin/uploads/'. $san_pham['hinh_anh'] ?? 'default.jpg'; ?>" alt="IMG-PRODUCT" style="width: 100%; height: 300px; object-fit: cover; object-position: center">
-
-                            <?php if ($index < 3): ?>
-                                <!-- Nhãn NEW -->
-                                <span class="badge-new">NEW</span>
-                            <?php endif; ?>
-
                             <a href="?act=chitietsanpham&id=<?= $san_pham['id']; ?>"
                                class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                 Xem thêm
@@ -245,9 +239,11 @@ require_once 'header.php';
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="?act=addyeuthich&id<?= $san_pham['id']; ?>" >
+                                <?php if (!empty($_SESSION['iduser'])) { ?>
+                                <a href="?act=addyeuthich&id=<?= $san_pham['id']; ?>" >
                                     <img class="icon-heart1" src="assets/images/icons/icon-heart-01.png" alt="ICON">
                                 </a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

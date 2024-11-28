@@ -155,11 +155,11 @@ $('.gallery-lb').each(function() { // the containers for all your galleries
 <!--===============================================================================================-->
 <script src="assets/vendor/sweetalert/sweetalert.min.js"></script>
 <script>
-$('.js-addwish-b2').on('click', function(e) {
+$('.js-addwish-b1').on('click', function(e) {
     e.preventDefault();
 });
 
-$('.js-addwish-b2').each(function() {
+$('.js-addwish-b1').each(function() {
     var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
     $(this).on('click', function() {
         swal(nameProduct, "is added to wishlist !", "success");
@@ -182,11 +182,40 @@ $('.js-addwish-detail').each(function() {
 
 /*---------------------------------------------*/
 
-$('.js-addcart-detail').each(function() {
-    var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-    $(this).on('click', function() {
-        swal(nameProduct, "is added to cart !", "success");
+//$('#add-to-cart').each(function() {
+//    //    const session = "<?php ////= $_SESSION['iduser'] ?>////";
+//    //console.log(session);
+
+//});
+$('#add-to-cart').submit(function (e) {
+    e.preventDefault();
+   var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+    $.ajax({
+        url: '?act=handleCartAjax',
+        type: 'POST',
+        data: {
+            product_id: $('[name="product_id"]').val(),
+            product_name: $('[name="product_name"]').val(),
+            product_img: $('#img-product').attr('src'),
+            product_price: $('[name="product_price"]').val(),
+            quantity: $('[name="quantity"]').val(),
+        },
+        dataType: 'json',
+        success: function (response) {
+            if (response.status === 'success') {
+                // alert(response.message);
+                swal(nameProduct, "is added to cart !", "success");
+                $('.cart-total-items').text(response.total_items);
+            } else {
+                // alert(response.message);
+            }
+        },
+        error: function () {
+            alert('Có lỗi xảy ra, vui lòng thử lại!');
+        },
     });
+
+   // Additional logic here (e.g., AJAX request)
 });
 </script>
 <!--===============================================================================================-->
@@ -242,10 +271,10 @@ $('.js-pscroll').each(function() {
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).on('click', '.js-addcart-detail', function (e) {
-        e.preventDefault();
-
-    });
+    // $(document).on('click', '.js-addcart-detail', function (e) {
+    //     e.preventDefault();
+    //
+    // });
 </script>
 
 </body>

@@ -77,6 +77,7 @@ class GiohangController
 //                die();
                 // Kiểm tra kết quả lưu đơn hàng
                 if ($orderId) {
+
                     // Nếu đơn hàng được lưu thành công, xoá giỏ hàng và thêm thông báo thành công vào session
                     unset($_SESSION['cart']); // Xóa giỏ hàng
                     $_SESSION['cart'] = []; // Đảm bảo giỏ hàng trống
@@ -87,14 +88,14 @@ class GiohangController
                     header('Location: ?act=donhang');
                     exit();
                     }
-//                } else {
-//                    // Nếu lưu đơn hàng thất bại, thông báo lỗi
-//                    $_SESSION['order_error'] = 'Đặt hàng thất bại, vui lòng thử lại.';
-//                    header('Location: ?act=giohang');
-////                    $_SESSION['order_success'] = "Đặt hàng thành công! Cảm ơn bạn đã mua hàng."; // Thông báo thành công
-////                    header('Location: ?act=donhang');
-//                    exit();
-//                }
+                } else {
+                    // Nếu lưu đơn hàng thất bại, thông báo lỗi
+                    $_SESSION['order_error'] = 'Đặt hàng thất bại, vui lòng thử lại.';
+                    header('Location: ?act=donhang');
+//                    $_SESSION['order_success'] = "Đặt hàng thành công! Cảm ơn bạn đã mua hàng."; // Thông báo thành công
+//                    header('Location: ?act=donhang');
+                    exit();
+                }
             } else {
                 // Nếu có lỗi, lưu lỗi vào session và quay lại form giỏ hàng
                 $_SESSION['errors'] = $errors;
@@ -107,5 +108,3 @@ class GiohangController
 
 
 
-
-}

@@ -76,8 +76,7 @@ class Giohang
 
                 // Sau khi đơn hàng được thêm, thêm chi tiết đơn hàng vào bảng chi_tiet_don_hang
                 $this->saveOrderDetails($order_id);
-
-                echo "Đơn hàng đã được tạo thành công.";
+                return true;
             } else {
                 // Xử lý lỗi
                 $errorInfo = $stmt->errorInfo();
@@ -86,6 +85,7 @@ class Giohang
         } catch (Exception $e) {
             // Ghi lại lỗi vào log
             error_log($e->getMessage());
+            echo $e->getMessage();
             echo "Lỗi khi tạo đơn hàng. Vui lòng thử lại.";
         }
     }
@@ -111,6 +111,7 @@ class Giohang
             $gia_tien = (int) $value['product_price'] * (int) $value['quantity'];
             // Chuẩn bị câu truy vấn SQL để thêm chi tiết đơn hàng
             $stmt = $this->conn->prepare($sql);
+            $this->updateProductQty($value);
 
             // Gắn các tham số vào câu truy vấn
             $stmt->bindParam(':don_hang_id', $order_id, PDO::PARAM_INT);
@@ -120,6 +121,24 @@ class Giohang
             $stmt->bindParam(':don_gia', $value['product_price'], PDO::PARAM_STR);
             $stmt->execute();
         }
+    }
+
+    private function updateProductQty($data)
+    {
+        $sqlProduct = "SELECT so_luong FROM san_phams WHERE id = :id";
+        $stmt = $this->conn->prepare($sqlProduct);
+        $stmt->bindParam(':id', $data['product_id']);
+        $stmt->execute();
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($product['so_luong'] > 0) {
+            $quantity = (int)$product['so_luong'] - (int)$data['quantity'];
+            $sql= "UPDATE san_phams SET so_luong = :so_luong WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':so_luong', $quantity, PDO::PARAM_INT);
+            $stmt->bindParam(':id', $data['product_id']);
+            $stmt->execute();
+        }
+
     }
 
 // Hàm tạo mã đơn hàng ngẫu nhiên 10 ký tự gồm số và chữ

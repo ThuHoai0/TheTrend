@@ -74,6 +74,7 @@ class HomeController
         unset($_SESSION['email']);
         unset($_SESSION['name']);
         unset($_SESSION['vai_tro']);
+        unset($_SESSION['cart']);
         header("Location: ?act=home");
         exit();
         echo "<script>alert('Đăng xuất thành công!');
@@ -175,6 +176,11 @@ class HomeController
         require_once './views/main.php';
     }
 
+    public function spyeuthich()
+    {
+        $san_pham_yeu_thich = $this->modelHome->listYeuThich();
+        require_once './spyeuthich.php';
+    }
 
 
 }

@@ -22,7 +22,8 @@ class YeuthichController
 
     public function addYeuthich()
 {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id'])) {
+
+    if (isset($_GET['id'])) {
         // Thiết lập múi giờ
         date_default_timezone_set('Asia/Ho_Chi_Minh');
 
@@ -36,6 +37,7 @@ class YeuthichController
             header('Location: ?act=login');
             exit();
         }
+
 
         // Kiểm tra nếu sản phẩm đã nằm trong danh sách yêu thích
 

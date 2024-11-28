@@ -11,6 +11,7 @@ require_once './controllers/NguoidungController.php';
 require_once './controllers/LienheController.php';
 require_once './controllers/TinTucController.php';
 require_once './controllers/DonhangController.php';
+require_once './controllers/YeuthichController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Giohang.php';
@@ -20,6 +21,7 @@ require_once './models/Nguoidung.php';
 require_once './models/Lienhe.php';
 require_once './models/TinTuc.php';
 require_once './models/Donhang.php';
+require_once './models/Yeuthich.php';
 $act = $_GET['act'] ?? '/';
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -33,6 +35,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'login' => (new HomeController())->formDangNhap(),
         'sanpham' => (new HomeController()) -> sanpham(),
         'yeuthich' => (new HomeController()) -> top8(),
+        'spyeuthich' => (new HomeController()) -> spyeuthich(),
 
         'giohang' => (new GiohangController()) -> giohang(),
         'themdonhang' => (new GiohangController()) ->store(),
@@ -63,6 +66,14 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'donhang' => (new DonhangController())->listOrders(),
         'ctdonhang' => (new DonhangController())->ctdonhang(),
         'huydonhang' => (new DonhangController())->huyDonHang(),
+
+        'addyeuthich' => (new YeuthichController())->addYeuthich(),
+
+
+
+
+
+
         default => null, // Trường hợp không khớp
     };
 }

@@ -17,6 +17,8 @@ class Home
                 $_SESSION['iduser'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['name'] = $user['ten'];
+                $_SESSION['so_dien_thoai'] = $user['so_dien_thoai'];
+                $_SESSION['dia_chi'] = $user['dia_chi'];
                 $_SESSION['vai_tro'] = $user['vai_tro'];
                 return $user;
             }
@@ -109,6 +111,19 @@ class Home
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
+    }
+
+    public function listYeuThich()
+    {
+        if (!empty($_SESSION['iduser'])) {
+            $sql = "SELECT * FROM san_pham_yeu_thichs as yt JOIN san_phams as s 
+    ON yt.san_pham_id = s.id 
+         WHERE s.trang_thai = 1 AND yt.nguoi_dung_id = :nguoi_dung_id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':nguoi_dung_id', $_SESSION['iduser']);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 
 
