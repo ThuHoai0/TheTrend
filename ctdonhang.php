@@ -1,7 +1,63 @@
 <?php require_once "./views/header.php"; ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="styles.css" rel="stylesheet"> <!-- Thêm đường dẫn tới file CSS của bạn -->
+<style>
+    /* styles.css */
+    body {
+        background-color: #f8f9fa; /* Nền sáng */
+        color: #333; /* Màu chữ mặc định */
+    }
 
+    /* Xóa gạch chân cho các liên kết */
+    a {
+        text-decoration: none !important;
+    }
+
+    /* Thêm kiểu cho các tiêu đề và phần tử trong card */
+    .card-header {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .card-body h5 {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .table th, .table td {
+        padding: 0.75rem;
+        text-align: center;
+    }
+
+    /* Định dạng badge */
+    .badge {
+        padding: 0.5rem 1rem;
+    }
+
+    /* Các nút và danh sách */
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-outline-danger {
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+
+    /* Thêm các kiểu cho button "Trở Về" */
+    .text-end {
+        text-align: right;
+    }
+
+    /* Kiểu danh sách tổng tiền */
+    .list-group-item {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+    }
+
+</style>
 <body>
     <div class="container-fluid">
         <div class="row" style="margin-bottom: 50px">
@@ -10,17 +66,17 @@
                     <div class="card" style="padding-bottom: 50px">
                         <div class="container mt-5">
                             <div class="card">
-                                <div class="card-header bg-primary text-white">
-                                    <h4 style="color:#fff">Quản lý danh sách đơn hàng | <?= htmlspecialchars($don_hang['ma_don_hang']) ?></h4>
+                                <div class="card-header">
+                                    <h4>Quản lý danh sách đơn hàng | <?= htmlspecialchars($don_hang['ma_don_hang']) ?></h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <span class="badge bg-success p-2">Đơn hàng: <?= htmlspecialchars($don_hang['trang_thai_don_hang']) ?></span>
-                                        <span class="badge bg-primary text-white p-2">
+                                        <span class="badge bg-success">Đơn hàng: <?= htmlspecialchars($don_hang['trang_thai_don_hang']) ?></span>
+                                        <span class="badge bg-primary text-white">
                                             Phương thức thanh toán: 
                                             <?= $don_hang['phuong_thuc_thanh_toan'] == 1 ? 'Chuyển khoản' : 'Nhận hàng khi thanh toán' ?>
                                         </span>
-                                        <span class="badge bg-warning text-dark p-2">
+                                        <span class="badge bg-warning text-dark">
                                             Trạng thái thanh toán: 
                                             <?= $don_hang['trang_thai_thanh_toan'] == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' ?>
                                         </span>
@@ -41,7 +97,7 @@
                                         </div>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered text-center">
+                                        <table class="table table-bordered">
                                             <thead class="table-light">
                                             <tr>
                                                 <th>Tên sản phẩm</th>
@@ -64,7 +120,7 @@
                                     </div>
                                     <div class="d-flex justify-content-end mt-4">
                                         <ul class="list-group w-50">
-                                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                            <li class="list-group-item d-flex justify-content-between">
                                                 <span>Tổng tiền:</span>
                                                 <strong class="text-danger">
                                                     <?= number_format(array_sum(array_column($san_pham, 'thanh_tien')), 0, ',', '.') ?>đ
@@ -88,14 +144,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- end card -->
-                    </div> <!-- end card -->
-                </div> <!-- end .h-100-->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-<!-- Link đến Bootstrap JS và Popper.js -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
