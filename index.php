@@ -61,8 +61,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
         'quenmatkhau' => (new NguoidungController())->forgotPassword(),
 
-        'giohang' => (new GiohangController()) -> giohang(),
-
         'donhang' => (new DonhangController())->listOrders(),
         'ctdonhang' => (new DonhangController())->ctdonhang(),
         'huydonhang' => (new DonhangController())->huyDonHang(),

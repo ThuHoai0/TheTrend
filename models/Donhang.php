@@ -53,6 +53,7 @@ class Donhang {
                     dh.ngay_dat_hang, 
                     dh.phuong_thuc_thanh_toan,
                     dh.trang_thai_thanh_toan,
+                    dh.ghi_chu,
                     ttdh.ten_trang_thai AS trang_thai_don_hang,
                     sp.ten_san_pham, 
                     sp.hinh_anh, 
