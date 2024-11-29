@@ -1,11 +1,16 @@
 <?php
+
 class Home
 {
     public $conn;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->conn = connectDB();
     }
-    public function check($ten, $mat_khau) {
+
+    public function check($ten, $mat_khau)
+    {
         try {
             $sql = "SELECT * FROM nguoi_dungs WHERE email = :email AND mat_khau = :mat_khau";
             $stmt = $this->conn->prepare($sql);
@@ -24,10 +29,12 @@ class Home
             }
             return false;
         } catch (PDOException $e) {
-            echo 'Error: ' .$e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
     }
-    public function dangky($ten, $mat_khau, $email) {
+
+    public function dangky($ten, $mat_khau, $email)
+    {
         try {
             $sql = "INSERT INTO nguoi_dungs (`ten`, `mat_khau`, `email`) VALUES (:ten, :mat_khau, :email)";
             $stmt = $this->conn->prepare($sql);
@@ -39,9 +46,10 @@ class Home
             $_SESSION['name'] = $ten;
             return $user_id;
         } catch (PDOException $e) {
-            echo 'Error: ' .$e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
     }
+
     public function checkEmailExists($email)
     {
         $sql = "SELECT * FROM nguoi_dungs WHERE email = :email";
@@ -50,17 +58,21 @@ class Home
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
-    public function getAllCategory() {
+
+    public function getAllCategory()
+    {
         try {
             $sql = "SELECT * FROM `danh_mucs`";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo 'Error: ' .$e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
     }
-    public function getByCategory($danh_muc_id, $offset, $limit) {
+
+    public function getByCategory($danh_muc_id, $offset, $limit)
+    {
         $sql = "SELECT * FROM san_phams WHERE danh_muc_id = :danh_muc_id LIMIT :offset, :limit";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':danh_muc_id', $danh_muc_id, PDO::PARAM_INT);
@@ -69,7 +81,9 @@ class Home
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getAllProduct($offset, $limit, $ord) {
+
+    public function getAllProduct($offset, $limit, $ord)
+    {
         try {
             $orderDirection = ($ord === 1) ? 'ASC' : 'DESC'; // Xác định thứ tự sắp xếp
             $sql = "SELECT san_phams.*, danh_mucs.ten_danh_muc 
@@ -89,13 +103,15 @@ class Home
         }
     }
 
-    public function getBySearch($search) {
+    public function getBySearch($search)
+    {
         $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE :search";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function getTotalProducts()
     {
         $sql = "SELECT COUNT(*) AS total FROM san_phams";
@@ -103,6 +119,7 @@ class Home
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
     }
+
     public function getTotalByCategory($danh_muc_id)
     {
         $sql = "SELECT COUNT(*) AS total FROM san_phams WHERE danh_muc_id = :danh_muc_id";
@@ -124,6 +141,14 @@ class Home
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+    }
+
+    public function getTopProduct()
+    {
+        $sql = "SELECT p.*, SUM(ct.so_luong) as tong_so_luong FROM chi_tiet_don_hangs as ct JOIN san_phams as p ON ct.san_pham_id = p.id GROUP BY san_pham_id ORDER BY tong_so_luong DESC LIMIT 4";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

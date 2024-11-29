@@ -111,7 +111,7 @@
                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                     </div>
                                 </div>
-
+                                <input type="hidden" name="so_luong" value="<?= $chi_tiet['so_luong'] ?>">
                                 <input type="hidden" name="product_id" value="<?= $chi_tiet['id'] ?>"> <!-- ID sản phẩm -->
                                 <input type="hidden" name="product_name" value="<?= htmlspecialchars($chi_tiet['ten_san_pham']) ?>"> <!-- Tên sản phẩm -->
                                 <input type="hidden" name="product_price" value="<?= $chi_tiet['gia'] ?>"> <!-- Giá sản phẩm -->

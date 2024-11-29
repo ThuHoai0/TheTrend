@@ -31,7 +31,7 @@ class HomeController
             $san_phams = $this->modelHome->getAllProduct($offset, $limit, $ord);
             $total_products = $this->modelHome->getTotalProducts(); // Tổng số sản phẩm
         }
-
+        $top_products = $this->modelHome->getTopProduct();
         // Tính tổng số trang
         $total_pages = ceil($total_products / $limit);
 

@@ -190,30 +190,38 @@ $('.js-addwish-detail').each(function() {
 $('#add-to-cart').submit(function (e) {
     e.preventDefault();
    var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-    $.ajax({
-        url: '?act=handleCartAjax',
-        type: 'POST',
-        data: {
-            product_id: $('[name="product_id"]').val(),
-            product_name: $('[name="product_name"]').val(),
-            product_img: $('#img-product').attr('src'),
-            product_price: $('[name="product_price"]').val(),
-            quantity: $('[name="quantity"]').val(),
-        },
-        dataType: 'json',
-        success: function (response) {
-            if (response.status === 'success') {
-                // alert(response.message);
-                swal(nameProduct, "is added to cart !", "success");
-                $('.cart-total-items').text(response.total_items);
-            } else {
-                // alert(response.message);
-            }
-        },
-        error: function () {
-            alert('Có lỗi xảy ra, vui lòng thử lại!');
-        },
-    });
+   const currentQty = $('[name="so_luong"]').val();
+   const qty = $('[name="quantity"]').val();
+   console.log(currentQty);
+   if (parseInt(qty) > parseInt(currentQty)) {
+       swal("Cảnh báo", "Số lượng nhập vào không được lớn hơn số lượng còn lại của sản phẩm", "error");
+   } else {
+       $.ajax({
+           url: '?act=handleCartAjax',
+           type: 'POST',
+           data: {
+               product_id: $('[name="product_id"]').val(),
+               product_name: $('[name="product_name"]').val(),
+               product_img: $('#img-product').attr('src'),
+               product_price: $('[name="product_price"]').val(),
+               quantity: qty,
+           },
+           dataType: 'json',
+           success: function (response) {
+               if (response.status === 'success') {
+                   // alert(response.message);
+                   swal(nameProduct, "is added to cart !", "success");
+                   $('.cart-total-items').text(response.total_items);
+               } else {
+                   // alert(response.message);
+               }
+           },
+           error: function () {
+               alert('Có lỗi xảy ra, vui lòng thử lại!');
+           },
+       });
+   }
+
 
    // Additional logic here (e.g., AJAX request)
 });
