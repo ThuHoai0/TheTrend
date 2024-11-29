@@ -100,25 +100,41 @@
                         <div class="flex-w flex-r-m p-b-10">
                             <?php if (!empty($_SESSION['iduser'])) { ?>
                             <form class="size-204 flex-w flex-m respon6-next" id="add-to-cart">
-                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                    </div>
-
-                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" value="1" min="1">
-
-                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                    </div>
-                                </div>
+                                <?php
+                                    if ($chi_tiet['so_luong'] == 0) {
+                                    } else {
+                                        ?>
+                                        <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                <i class="fs-16 zmdi zmdi-minus"></i>
+                                            </div>
+                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity" value="1" min="1">
+                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                <i class="fs-16 zmdi zmdi-plus"></i>
+                                            </div>
+                                        </div>
+                                <?php
+                                    }
+                                ?>
                                 <input type="hidden" name="so_luong" value="<?= $chi_tiet['so_luong'] ?>">
                                 <input type="hidden" name="product_id" value="<?= $chi_tiet['id'] ?>"> <!-- ID sản phẩm -->
                                 <input type="hidden" name="product_name" value="<?= htmlspecialchars($chi_tiet['ten_san_pham']) ?>"> <!-- Tên sản phẩm -->
                                 <input type="hidden" name="product_price" value="<?= $chi_tiet['gia'] ?>"> <!-- Giá sản phẩm -->
 
-                                <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                    Thêm vào giỏ hàng
-                                </button>
+                                <?php
+                                    if ($chi_tiet['so_luong'] == 0) {
+                                        ?>
+                                        <p class="text-danger">Sản phẩm đã hết hàng</p>
+                                            <?php
+                                    } else {
+                                        ?>
+                                        <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                            Thêm vào giỏ hàng
+                                        </button>
+                                <?php
+                                    }
+                                    ?>
+
 
                             </form>
                             <?php } else { ?>
