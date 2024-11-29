@@ -16,6 +16,7 @@ class HomeController
         $offset = ($page > 1) ? ($page - 1) * $limit : 0;
 
         // Lấy danh mục và sản phẩm
+        $banners = $this->modelHome->getActiveBanners();
         $danh_mucs = $this->modelHome->getAllCategory();
         $san_phams = null;
         $total_products = 0;

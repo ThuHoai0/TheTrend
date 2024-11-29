@@ -8,9 +8,20 @@ class Home
     {
         $this->conn = connectDB();
     }
-
-    public function check($ten, $mat_khau)
+    public function getActiveBanners()
     {
+        try {
+            $sql = "SELECT * FROM banners WHERE trang_thai = 1 ORDER BY id DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+            return [];
+        }
+    }
+    public function check($ten, $mat_khau) {
         try {
             $sql = "SELECT * FROM nguoi_dungs WHERE email = :email AND mat_khau = :mat_khau";
             $stmt = $this->conn->prepare($sql);
