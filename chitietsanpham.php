@@ -138,9 +138,9 @@
 
                             </form>
                             <?php } else { ?>
-                                <p class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                <a href="http://localhost/TheTrend/?act=dangnhap" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     Vui long dang nhap
-                                </p>
+                                </a>
                             <?php } ?>
                         </div>
                     </div>
@@ -162,9 +162,7 @@
                     <li class="nav-item p-b-10">
                         <a class="nav-link" data-toggle="tab" href="#binhluan" role="tab">Bình luận</a>
                     </li>
-                    <li class="nav-item p-b-10">
-                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh giá</a>
-                    </li>
+
                 </ul>
 
                 <!-- Tab panes -->
@@ -288,44 +286,6 @@
                                             </div>
                                         </div>
                                     <?php endif; ?>
-
-                                    <!-- Add or Update Review -->
-<!--                                    --><?php //if (isset($_SESSION['iduser'])): ?>
-<!--                                        --><?php //if ($hasPurchased): ?>
-<!--                                            <!-- Hiển thị form thêm hoặc chỉnh sửa đánh giá -->-->
-<!--                                            --><?php //if (empty($danh_gias)): ?>
-<!--                                                <form class="w-full mt-5" action="?act=danhgia&id=--><?php //= $chi_tiet['id']; ?><!--" method="post">-->
-<!--                                                    <h5 class="mtext-108 cl2 p-b-7">Thêm đánh giá</h5>-->
-<!---->
-<!--                                                    <div class="flex-w flex-m p-t-50 p-b-23">-->
-<!--                                                        <span class="stext-102 cl3 m-r-16">Đánh giá</span>-->
-<!--                                                        <span class="wrap-rating fs-18 cl11 pointer">-->
-<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="1"></i>-->
-<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="2"></i>-->
-<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="3"></i>-->
-<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="4"></i>-->
-<!--                                                            <i class="item-rating pointer zmdi zmdi-star-outline" data-value="5"></i>-->
-<!--                                                            <input class="dis-none" type="number" name="rating" id="rating" required>-->
-<!--                                                        </span>-->
-<!--                                                    </div>-->
-<!---->
-<!--                                                    <div class="row p-b-25">-->
-<!--                                                        <div class="col-12 p-b-5">-->
-<!--                                                            <label class="stext-102 cl3 mt-3" for="noi_dung">Viết đánh giá</label>-->
-<!--                                                            <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="noi_dung" name="noi_dung" required></textarea>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">Gửi</button>-->
-<!--                                                </form>-->
-<!--                                            --><?php //endif; ?>
-<!--                                        --><?php //else: ?>
-<!--                                            <p class="text-warning text-center">Bạn cần mua sản phẩm này để được đánh giá.</p>-->
-<!--                                        --><?php //endif; ?>
-<!--                                    --><?php //else: ?>
-                                        <p class="mt-4">
-                                            Bạn cần <a href="?act=dangnhap" class="font-weight-bold">mua hàng</a> để thêm đánh giá.
-                                        </p>
-<!--                                    --><?php //endif; ?>
                                 </div>
 
 

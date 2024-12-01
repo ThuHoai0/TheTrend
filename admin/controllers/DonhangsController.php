@@ -62,6 +62,11 @@ class DonhangsController
             }
             if (empty($errors)) {
                 $this->modelDonhang->updateData($id, $trang_thai_don_hang);
+                if($trang_thai_don_hang==16) {
+                    $this->modelDonhang->updateData1($id, 1);
+
+                }
+
                 unset($_SESSION['errors']);
                 header('Location: ?act=donhang/list');
                 exit();

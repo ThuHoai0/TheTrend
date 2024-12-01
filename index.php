@@ -34,7 +34,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'dangxuat' => (new HomeController())->dangxuat(),
         'login' => (new HomeController())->formDangNhap(),
         'sanpham' => (new HomeController()) -> sanpham(),
-        'yeuthich' => (new HomeController()) -> top8(),
         'spyeuthich' => (new HomeController()) -> spyeuthich(),
 
         'giohang' => (new GiohangController()) -> giohang(),

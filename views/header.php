@@ -159,28 +159,8 @@
                 color: #fff; /* Màu biểu tượng đổi sang trắng */
             }
 
-        .badge-new {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff0000; /* Màu nền đỏ */
-            color: #fff; /* Màu chữ trắng */
-            padding: 5px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 12px; /* Bo góc */
-            z-index: 10; /* Đảm bảo hiển thị phía trên hình ảnh */
-            text-transform: uppercase; /* Viết hoa */
-        }
 
-        .badge {
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: 3px 6px;
-            font-size: 12px;
-            font-weight: bold;
-        }
+
         /* Tạo khoảng cách giữa các ô trong bảng */
         .table-shopping-cart td,
         .table-shopping-cart th {
@@ -335,6 +315,9 @@
 
                             <li>
                                 <a href="?act=sanpham">Sản Phẩm</a>
+                            </li>
+                            <li>
+                                <a href="?act=spyeuthich">Yêu Thích</a>
                             </li>
                             <li>
                                 <a href="?act=khuyenmai">Khuyến mại</a>

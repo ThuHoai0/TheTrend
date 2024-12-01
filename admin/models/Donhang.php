@@ -105,6 +105,26 @@ class Donhang
             echo 'Error: ' . $e->getMessage();
             return false;
         }
+    }public function updateData1($id, $trang_thai_don_hang) {
+        try {
+            $sql = "UPDATE don_hangs SET
+                        trang_thai_thanh_toan = :trang_thai_don_hang
+                    WHERE id = :id";
+
+            // Chuẩn bị câu lệnh SQL
+            $stmt = $this->conn->prepare($sql);
+
+            // Bind dữ liệu từ các tham số vào câu SQL
+            $stmt->bindParam(':trang_thai_don_hang', $trang_thai_don_hang);
+            $stmt->bindParam(':id', $id); // Tham số id
+
+            // Thực thi câu lệnh SQL và trả về kết quả
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            // Nếu có lỗi trong quá trình thực thi câu lệnh, hiển thị thông báo lỗi
+            echo 'Error: ' . $e->getMessage();
+            return false;
+        }
     }
     
     

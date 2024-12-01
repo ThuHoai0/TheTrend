@@ -212,12 +212,16 @@ $('#add-to-cart').submit(function (e) {
                    // alert(response.message);
                    swal(nameProduct, "is added to cart !", "success");
                    $('.cart-total-items').text(response.total_items);
-               } else {
+               } else if (response.status === 'fix') {
+                   swal(nameProduct, "Thêm vào giỏ hàng thất bại", "error");
+               }
+               else {
                    // alert(response.message);
                }
-           },
-           error: function () {
-               alert('Có lỗi xảy ra, vui lòng thử lại!');
+           },error: function(xhr, status, error) {
+               console.error("Status: " + status);
+               console.error("Error: " + error);
+               console.error("Response Text: " + xhr.responseText);
            },
        });
    }

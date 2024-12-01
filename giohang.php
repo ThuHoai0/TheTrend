@@ -258,7 +258,7 @@ if (!isset($_SESSION['iduser'])) {
                                             <td><?= htmlspecialchars($item['product_name']) ?></td>
                                             <td><?= number_format($item['product_price'], 0, ',', '.') ?> VNĐ</td>
                                             <td>
-                                                <input type="number" name="quantity[<?= $item['product_id'] ?>]" value="<?= $item['quantity'] ?>" min="1" max="99" class="form-control text-center">
+                                                <input type="number" name="quantity[<?= $item['product_id'] ?>]" value="<?= $item['quantity'] ?>" min="1" max="10" class="form-control text-center">
                                             </td>
                                             <td><?= number_format($subtotal, 0, ',', '.') ?> VNĐ</td>
                                             <td>
