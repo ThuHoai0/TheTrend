@@ -1,4 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 class GiohangController
 {
     public $modelGiohang;
@@ -54,6 +61,48 @@ class GiohangController
             } elseif ($phuong_thuc_thanh_toan == 2) {
                 $trang_thai_thanh_toan = "2"; // Payment status for method 2
             }
+
+            $noiDungEmail = "
+            <h2>Thông tin đơn hàng</h2>
+            <p><strong>Họ tên:</strong> $ho_ten_nguoi_nhan</p>
+            <p><strong>Số điện thoại:</strong> $so_dien_thoai_nguoi_nhan</p>
+            <p><strong>Email người nhận:</strong> $email_nguoi_nhan</p>
+            <p><strong>Địa chỉ nhận hàng:</strong> $dia_chi_nhan_hang</p>
+            <p><strong>Ghi chú:</strong> $ghi_chu</p>
+            <p><strong>Tổng tiền:</strong> " . number_format($total_price, 0, '.', '.') . " VNĐ</p>
+            <a href='http://localhost/TheTrend/?act=donhang' style='background-color: #4CAF50; color: white; padding: 10px 15px;'>Vui lòng bấm vào đây để kiểm tra lại đơn hàng</a>
+            <p>Đây là email tự động vui lòng không trả lời email này</p>
+            ";
+
+
+        
+
+        $mail = new PHPMailer(true);
+        try {
+        // Cấu hình gửi email
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // SMTP server của Gmail
+        $mail->SMTPAuth = true;
+        $mail->Username = 'oduongo123@gmail.com'; // Email của bạn
+        $mail->Password = 'gkbv rjnf fbef gvwg'; // Mật khẩu email
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Người gửi và người nhận
+        $mail->setFrom('oduongo123@gmail.com', 'TheTrend');
+        $mail->addAddress($email_nguoi_nhan, $ho_ten_nguoi_nhan); // Gửi đến email của người nhận
+        // Nội dung email
+        $mail->isHTML(true);
+        $mail->Subject = 'ORDER CONFIRMATION';
+        $mail->Body = $noiDungEmail;
+
+        // Gửi email
+        $mail->send();
+        echo "<script>alert('Đơn hàng đã được gửi và email xác nhận đã được gửi!');</script>";
+    } catch (Exception $e) {
+        echo "<script>alert('Có lỗi xảy ra khi gửi email: {$mail->ErrorInfo}');</script>";
+    }
+       
 
             // Nếu không có lỗi, tiến hành lưu đơn hàng
             if (empty($errors)) {

@@ -87,6 +87,7 @@
                                             <p><strong>Tên:</strong> <?= htmlspecialchars($don_hang['ten_nguoi_dat']) ?></p>
                                             <p><strong>Email:</strong> <?= htmlspecialchars($don_hang['email_nguoi_dat']) ?></p>
                                             <p><strong>SĐT:</strong> <?= htmlspecialchars($don_hang['sdt_nguoi_dat']) ?></p>
+                                            <p><strong>Ghi chú:</strong> <?= htmlspecialchars($don_hang['ghi_chu']) ?></p>
                                         </div>
                                         <div class="col-md-6">
                                             <h5>Thông tin người nhận</h5>
