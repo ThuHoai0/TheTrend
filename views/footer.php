@@ -262,25 +262,25 @@ $('.js-pscroll').each(function() {
         if (searchQuery) {
             searchInput.value = searchQuery;
         } else {
-            // fetchUserData();  // Call the function that loads the full list
+            fetchUserData();  // Call the function that loads the full list
         }
     });
 
-    // searchInput.addEventListener('keydown', function(event) {
-    //     if (event.key === 'Enter') {  // Check if the key pressed is Enter
-    //         event.preventDefault();  // Prevent the default form action (no immediate reload)
-    //         const query = searchInput.value.trim();
-    //         if (query) {
-    //             const currentUrl = new URL(window.location.href);
-    //             currentUrl.searchParams.set('search', query);
-    //             window.location.href = currentUrl.href;
-    //         } else {
-    //             const currentUrl = new URL(window.location.href);
-    //             currentUrl.searchParams.delete('search');
-    //             window.location.href = currentUrl.href;  // Reload to show the full list
-    //         }
-    //     }
-    // });
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {  // Check if the key pressed is Enter
+            event.preventDefault();  // Prevent the default form action (no immediate reload)
+            const query = searchInput.value.trim();
+            if (query) {
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', query);
+                window.location.href = currentUrl.href;
+            } else {
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.delete('search');
+                window.location.href = currentUrl.href;  // Reload to show the full list
+            }
+        }
+    });
 
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -73,6 +73,7 @@ class DathangController
 
             // Gọi model Dathang để lưu thông tin vào cơ sở dữ liệu
             $this->modelDathang->saveOrder($order_data);
+
             // Redirect đến trang cảm ơn hoặc trang theo ý muốn
             header('Location: ?act=donhang&id=');  // Ví dụ, điều hướng đến trang cảm ơn
         }
