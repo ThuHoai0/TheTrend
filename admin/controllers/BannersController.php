@@ -27,6 +27,9 @@ class BannersController
             if (empty($load_duong_dan_hinh_anh)) {
                 $errors['duong_dan_hinh_anh'] = "Hình ảnh là bắt buộc";
             }
+            // if (empty($mo_ta)) {
+            //     $errors['mo_ta'] = "Vui lòng nhập mô tả";
+            // }
             if (empty($errors)) {
                 $this->modelBanner->postData($load_duong_dan_hinh_anh,$mo_ta,$trang_thai);
                 unset($_SESSION['errors']);

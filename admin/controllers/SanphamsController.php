@@ -49,6 +49,9 @@ class SanphamsController
             } elseif (!is_numeric($gia) || $gia <= 0) {
                 $errors['gia'] = "Giá sản phẩm phải là số dương";
             }
+            if (empty($load_hinh_anh)) {
+                $errors['load_hinh_anh'] = "Vui lòng nhập hình ảnh";
+            }
             if (empty($gia_nhap)) {
                 $errors['gia_nhap'] = "Giá nhập là bắt buộc";
             } elseif (!is_numeric($gia_nhap) || $gia_nhap <= 0) {
@@ -61,6 +64,9 @@ class SanphamsController
                 $errors['so_luong'] = "Số lượng là bắt buộc";
             } elseif (!is_numeric($so_luong) || $so_luong < 0) {
                 $errors['so_luong'] = "Số lượng phải là số không âm";
+            }
+            if (empty($danh_muc_id)) {
+                $errors['danh_muc_id'] = "Vui lòng chọn danh mục";
             }
             if (empty($errors)) {
                 $this->modelSanpham->postData($ten_san_pham, $mo_ta, $gia, $load_hinh_anh, $gia_nhap, $so_luong, $danh_muc_id, $trang_thai, $ngay_tao,$anh);
