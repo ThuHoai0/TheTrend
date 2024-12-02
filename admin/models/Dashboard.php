@@ -59,10 +59,8 @@ class Dashboard
         try {
             
                 $sql = "SELECT COUNT(*) AS so_luong_khach_hang
-FROM nguoi_dungs
-WHERE trang_thai = 1 AND vai_tro = 1;
-
-    ";
+                FROM nguoi_dungs
+                WHERE trang_thai = 1 AND vai_tro = 1; ";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
@@ -150,16 +148,16 @@ public function thongKeTongTienCaNam() {
         }
     }
 
-    public function dangSuly() {
+    public function thanhcong() {
         try {
 
-            $sql = "SELECT COUNT(*) AS don_dang_su_ly FROM don_hangs WHERE trang_thai_id= 12;";
+            $sql = "SELECT COUNT(*) AS don_hang_thanh_cong FROM don_hangs WHERE trang_thai_id= 16;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $ketQua = $stmt->fetch();
 
-            return $ketQua['don_dang_su_ly'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
+            return $ketQua['don_hang_thanh_cong'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
             //code...
         } catch (PDOException $e) {
             //throw $th;
@@ -225,7 +223,7 @@ public function thongKeTongTienCaNam() {
     public function tongSoDonHangDaHuy() {
         try {
 
-            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_huy FROM don_hangs WHERE trang_thai_id= 16;";
+            $sql = "SELECT COUNT(*) AS tong_so_don_hang_da_huy FROM don_hangs WHERE trang_thai_id= 18;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();

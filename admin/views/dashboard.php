@@ -161,7 +161,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                             <div class="row g-0 text-center">
                                                     <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongThuNhapNgay; ?> ">0</span> VNĐ</h5>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $tongThuNhapNgay; ?>">0</span> VNĐ</h5>
                                                             <p class="text-muted mb-0">Tổng Thu Nhập Ngày Hôm Nay</p>
                                                         </div>
                                                     </div>
@@ -200,8 +200,8 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                                             <!--end col-->
                                                             <div class="col-6 col-sm-4">
                                                         <div class="p-3 border border-dashed border-start-0">
-                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $dangSuLy; ?>">0</span></h5>
-                                                            <p class="text-muted mb-0">Số đơn hàng đang sử lý</p>
+                                                            <h5 class="mb-1"><span class="counter-value" data-target="<?php echo $thanhcong; ?>">0</span></h5>
+                                                            <p class="text-muted mb-0">Số đơn hàng thành công</p>
                                                         </div>
                                                     </div>
                                                     <!--end col-->
@@ -288,7 +288,7 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
                                     <div class="col-xl-6">
                                         <div class="card card-height-100">
                                             <div class="card-header align-items-center d-flex">
-                                                <h4 class="card-title mb-0 flex-grow-1">Khuyến mại</h4>2
+                                                <h4 class="card-title mb-0 flex-grow-1">Khuyến mại</h4>
                                             </div><!-- end card header -->
 
                                             <div class="card-body">
