@@ -140,17 +140,9 @@
             id="email" 
             name="email" 
             value="<?= $_SESSION['email'] ?>">
-    </div>
-
-    <!-- Password -->
-    <div class="form-section">
-        <label for="mat_khau" class="form-label">Mật Khẩu</label>
-        <input 
-            type="password" 
-            class="form-control" 
-            id="mat_khau" 
-            name="mat_khau" 
-            value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>">
+            <span class="text-danger">
+            <?= !empty($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : '' ?>
+        </span>
     </div>
 
     <!-- Address -->

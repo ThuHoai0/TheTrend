@@ -217,9 +217,9 @@ if (!isset($_SESSION['iduser'])) {
                                                        min="1" max="" onkeydown="return false;"/>
                                             </td>
                                             <td>
-                        <span class="total-price" id="total-price-<?= $item['product_id'] ?>">
-                            <?= number_format($subtotal, 0, ',', '.') ?> VNĐ
-                        </span>
+                                            <span class="total-price" id="total-price-<?= $item['product_id'] ?>">
+                                                <?= number_format($subtotal, 0, ',', '.') ?> VNĐ
+                                            </span>
                                             </td>
                                             <td>
                                                 <button type="button" class="btn-danger js-delete-btn"
