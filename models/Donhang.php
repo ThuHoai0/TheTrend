@@ -37,7 +37,54 @@ class Donhang {
             return [];
         }
     }
-
+    // xem chi tiet
+    public function getOrderDetailsByDonHangId($don_hang_id) {
+        try {
+            // SQL để lấy chi tiết đơn hàng kết hợp thông tin người dùng
+            $sql = "
+                SELECT 
+                    dh.id AS don_hang_id,
+                    dh.ma_don_hang, 
+                    dh.ngay_dat_hang, 
+                    dh.phuong_thuc_thanh_toan,
+                    dh.trang_thai_thanh_toan,
+                    dh.ho_ten_nguoi_nhan,
+                    dh.email_nguoi_nhan,
+                    dh.so_dien_thoai_nguoi_nhan,
+                    dh.dia_chi_nhan_hang,
+                    ttdh.ten_trang_thai AS trang_thai_don_hang,
+                    sp.ten_san_pham, 
+                    sp.hinh_anh, 
+                    ctdh.so_luong, 
+                    ctdh.don_gia, 
+                    (ctdh.so_luong * ctdh.don_gia) AS thanh_tien,
+                    
+                    -- Thông tin người đặt hàng
+                    nd.ten AS ten_nguoi_dat,
+                    nd.email AS email_nguoi_dat,
+                    nd.so_dien_thoai AS sdt_nguoi_dat,
+                    dh.ghi_chu AS ghi_chu
+    
+                FROM don_hangs dh
+                JOIN chi_tiet_don_hangs ctdh ON dh.id = ctdh.don_hang_id
+                JOIN san_phams sp ON ctdh.san_pham_id = sp.id
+                LEFT JOIN trang_thai_don_hangs ttdh ON dh.trang_thai_id = ttdh.id
+                LEFT JOIN nguoi_dungs nd ON dh.nguoi_dung_id = nd.id -- JOIN bảng nguoi_dungs
+    
+                WHERE dh.id = :donHangId
+            ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':donHangId', $don_hang_id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Trả về chi tiết của đơn hàng
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+            return [];
+        }
+    }
+    
     // Tính tổng tiền của một đơn hàng
     public function getTongTienByDonHangId($don_hang_id) {
         try {
