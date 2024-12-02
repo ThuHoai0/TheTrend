@@ -176,43 +176,60 @@ class Donhang {
         try {
             // Bắt đầu giao dịch
             $this->conn->beginTransaction();
-
+    
+            // Lấy danh sách chi tiết đơn hàng để xử lý trả sản phẩm
+            $sqlGetChiTiet = "SELECT san_pham_id, so_luong FROM chi_tiet_don_hangs WHERE don_hang_id = :id";
+            $stmtGetChiTiet = $this->conn->prepare($sqlGetChiTiet);
+            $stmtGetChiTiet->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtGetChiTiet->execute();
+            $chiTietDonHang = $stmtGetChiTiet->fetchAll(PDO::FETCH_ASSOC);
+    
+            // Trả lại sản phẩm vào kho
+            foreach ($chiTietDonHang as $chiTiet) {
+                $sqlUpdateKho = "UPDATE san_phams SET so_luong = so_luong + :so_luong WHERE id = :san_pham_id";
+                $stmtUpdateKho = $this->conn->prepare($sqlUpdateKho);
+                $stmtUpdateKho->bindParam(':so_luong', $chiTiet['so_luong'], PDO::PARAM_INT);
+                $stmtUpdateKho->bindParam(':san_pham_id', $chiTiet['san_pham_id'], PDO::PARAM_INT);
+                $stmtUpdateKho->execute();
+    
+                // Kiểm tra nếu không thể cập nhật kho
+                if ($stmtUpdateKho->rowCount() <= 0) {
+                    throw new Exception("Không thể trả sản phẩm vào kho.");
+                }
+            }
+    
             // Xóa chi tiết đơn hàng
             $sqlChiTiet = "DELETE FROM chi_tiet_don_hangs WHERE don_hang_id = :id";
             $stmtChiTiet = $this->conn->prepare($sqlChiTiet);
             $stmtChiTiet->bindParam(':id', $id, PDO::PARAM_INT);
             $stmtChiTiet->execute();
-
+    
             // Kiểm tra nếu có lỗi trong việc xóa chi tiết đơn hàng
             if ($stmtChiTiet->rowCount() <= 0) {
                 throw new Exception("Không thể xóa chi tiết đơn hàng.");
             }
-
+    
             // Xóa đơn hàng chính
             $sqlDonHang = "DELETE FROM don_hangs WHERE id = :id";
             $stmtDonHang = $this->conn->prepare($sqlDonHang);
             $stmtDonHang->bindParam(':id', $id, PDO::PARAM_INT);
             $stmtDonHang->execute();
-
+    
             // Kiểm tra nếu có lỗi trong việc xóa đơn hàng
             if ($stmtDonHang->rowCount() <= 0) {
                 throw new Exception("Không thể xóa đơn hàng.");
             }
-
+    
             // Commit giao dịch
             $this->conn->commit();
             return true;
-
+    
         } catch (Exception $e) {
             // Rollback nếu có lỗi
             $this->conn->rollBack();
             echo 'Lỗi: ' . $e->getMessage();
             return false; // Trả về false nếu có lỗi
         }
-    }
-
-
-
-
+    }    
 }
 ?>

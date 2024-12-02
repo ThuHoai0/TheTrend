@@ -12,46 +12,46 @@ class Dashboard
 
 
 
-     public function layTongThuNhapHomNay() {
-
+    public function layTongThuNhapHomNay(): mixed {
         try {
-            $ngayHienTai = date('Y-m-d'); // Lấy ngày hiện tại
-            $sql = "SELECT SUM(tong_tien) AS tong_thu_nhap 
-                    FROM don_hangs 
-                    WHERE date(ngay_dat_hang) = :ngay_hien_tai ";
-            
-
+            $sql = "SELECT SUM(tong_tien) AS tong_thu_nhap
+                    FROM don_hangs
+                    WHERE ngay_dat_hang >= CURDATE()
+                      AND ngay_dat_hang < CURDATE() + INTERVAL 1 DAY;";
+    
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute(['ngay_hien_tai' => $ngayHienTai]);
-
-            $ketQua = $stmt->fetch(); 
-         
+            $stmt->execute();
+            $ketQua = $stmt->fetch();
+    
             return $ketQua['tong_thu_nhap'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
         } catch (PDOException $e) {
-            //throw $th;
-//            echo 'Lỗi: '. $e->getMessage();
+            // Log lỗi thay vì hiển thị trực tiếp (nếu cần)
+            // echo 'Lỗi: ' . $e->getMessage();
         }
-        
     }
 
 
-    public function demSoLuongDonHangHomNay() {
+    public function demSoLuongDonHangHomNay(): mixed {
         try {
-            
-            $ngayHienTai = date('Y-m-d'); // Ngày hiện tại
-            // echo $ngayHienTai;die;
-            $sql = "SELECT COUNT(*) AS so_luong_don_hang FROM don_hangs WHERE DATE(ngay_dat_hang) = :ngay_hien_tai";
-
+            // Câu truy vấn sử dụng phạm vi thời gian để tránh dùng hàm DATE()
+            $sql = "SELECT COUNT(*) AS so_luong_don_hang
+                    FROM don_hangs
+                    WHERE ngay_dat_hang >= CURDATE()
+                      AND ngay_dat_hang < CURDATE() + INTERVAL 1 DAY;";
+    
+            // Chuẩn bị và thực thi truy vấn
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute(['ngay_hien_tai' => $ngayHienTai]);
+            $stmt->execute();
+    
+            // Lấy kết quả
             $ketQua = $stmt->fetch();
-
-            return $ketQua['so_luong_don_hang'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
-            //code...
+    
+            // Trả về số lượng đơn hàng, mặc định là 0 nếu không có đơn hàng
+            return $ketQua['so_luong_don_hang'] ?? 0;
         } catch (PDOException $e) {
-            //throw $th;
-//            echo 'Lỗi: '. $e->getMessage();
-
+            // Xử lý lỗi, log lỗi nếu cần
+            echo 'Lỗi: ' . $e->getMessage();
+            return 0;
         }
     }
     
