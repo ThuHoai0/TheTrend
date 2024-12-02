@@ -105,9 +105,6 @@
              if (empty($ten_khuyen_mai)) {
                  $errors['ten_khuyen_mai'] = "Tên khuyến mại là bắt buộc";
              }
-             if (empty($ma_khuyen_mai)) {
-                $errors['ma_khuyen_mai'] = "Mã khuyến mại là bắt buộc";
-            }
              if (empty($phan_tram_giam)) {
                  $errors['phan_tram_giam'] = "Phần trăm giảm giá là bắt buộc";
              } elseif (!is_numeric($phan_tram_giam) || $phan_tram_giam < 0 || $phan_tram_giam > 100) {

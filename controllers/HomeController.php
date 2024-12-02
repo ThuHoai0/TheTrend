@@ -120,13 +120,6 @@ class HomeController
                 echo "<script>alert('Email đã được sử dụng, vui lòng chọn email khác.'); window.location = '?act=dangky';</script>";
                 exit();
             }
-            if ($this->modelHome->validateEmailWithRegex($email)) {
-                echo "<script>window.location = '?act=dangnhap';</script>";
-               exit();
-            }else{
-                echo "<script>alert('Email không hợp lệ.'); window.location = '?act=dangky';</script>";
-                exit();
-            }
 
             $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
             $_SESSION['iduser'] = $this->modelHome->dangky($name, $hashed_pass, $email);

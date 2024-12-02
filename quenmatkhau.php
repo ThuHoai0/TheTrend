@@ -19,7 +19,16 @@
             color: #333;
         }
 
-
+        /* Banner */
+        .banner {
+            text-align: center;
+            background-color: rgba(0, 123, 255, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: -5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
         .banner h1 {
             font-size: 28px;
@@ -61,9 +70,12 @@
             margin-bottom: 0;
         }
 
+        /* Gender and Date Inputs */
+        .form-check-input {
+            margin-right: 8px;
+        }
 
-
-        .row  {
+        .row .form-select {
             font-size: 14px;
         }
 
@@ -82,6 +94,17 @@
             transform: scale(1.03);
         }
 
+        /* Link Styling */
+        .btn-link {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            padding-left: 10px;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>

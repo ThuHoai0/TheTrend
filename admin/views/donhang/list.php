@@ -113,16 +113,19 @@
                                                                 <span class="badge bg-danger">Chưa Thanh Toán</span>
                                                             <?php endif; ?>
                                                         </td>
+
+
+
                                                         <td>
                                                             <?php
                                                             $trang_thai = [
-                                                                11 => "Chờ xử lý",
-                                                                12 => "Đã xác nhận",
-                                                                13 => "Đang giao hàng",
-                                                                14 => "Đã giao hàng",
-                                                                15 => "Đơn hàng thành công",
-                                                                16 => "Đơn hàng thất bại",
-                                                                17 => "Đã hủy"
+                                                                11 => "Đã đặt hàng",
+                                                                13 => "Đã xác nhận",
+                                                                14 => "Đang giao hàng",
+                                                                15 => "Đã giao hàng",
+                                                                16 => "Đơn hàng thành công",
+                                                                17 => "Đơn hàng thất bại",
+                                                                18 => "Đã hủy"
                                                             ];
 
                                                             echo $trang_thai[$don_hang['trang_thai_id']] ?? "Trạng thái không xác định";
@@ -221,32 +224,32 @@ require_once "views/layouts/libs_js.php";
             // Load the search results, e.g., searchUsers(searchQuery);
         } else {
             // If there's no search query, load the full list
-            fetchUserData();  // Call the function that loads the full list
+            // fetchUserData();  // Call the function that loads the full list
         }
     });
 
     // Listen for the Enter key press in the input field
-    searchInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {  // Check if the key pressed is Enter
-            event.preventDefault();  // Prevent the default form action (no immediate reload)
-
-            // Get the value from the input field
-            const query = searchInput.value.trim();
-
-            // Check if the input field has a value
-            if (query) {
-                // Update the URL with the search parameter and reload the page
-                const currentUrl = new URL(window.location.href);
-                currentUrl.searchParams.set('search', query);
-                window.location.href = currentUrl.href;
-            } else {
-                // If the input is empty, clear the search parameter and reload the full list
-                const currentUrl = new URL(window.location.href);
-                currentUrl.searchParams.delete('search');
-                window.location.href = currentUrl.href;  // Reload to show the full list
-            }
-        }
-    });
+    // searchInput.addEventListener('keydown', function(event) {
+    //     if (event.key === 'Enter') {  // Check if the key pressed is Enter
+    //         event.preventDefault();  // Prevent the default form action (no immediate reload)
+    //
+    //         // Get the value from the input field
+    //         const query = searchInput.value.trim();
+    //
+    //         // Check if the input field has a value
+    //         if (query) {
+    //             // Update the URL with the search parameter and reload the page
+    //             const currentUrl = new URL(window.location.href);
+    //             currentUrl.searchParams.set('search', query);
+    //             window.location.href = currentUrl.href;
+    //         } else {
+    //             // If the input is empty, clear the search parameter and reload the full list
+    //             const currentUrl = new URL(window.location.href);
+    //             currentUrl.searchParams.delete('search');
+    //             window.location.href = currentUrl.href;  // Reload to show the full list
+    //         }
+    //     }
+    // });
 </script>
 
 
