@@ -171,11 +171,6 @@ class HomeController
 
         require_once './sanpham.php';
     }
-    public function top8()
-    {
-        $top8 = $this->modelHome->getTop8Products();
-        require_once './views/main.php';
-    }
 
     public function spyeuthich()
     {

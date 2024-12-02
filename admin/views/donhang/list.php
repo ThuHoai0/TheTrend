@@ -116,11 +116,14 @@
                                                         <td>
                                                             <?php
                                                             $trang_thai = [
-                                                                12 => "Đang xử lý",
+                                                                11 => "Đã đặt hàng",
+                                                                12 => "Chờ xác nhận",
                                                                 13 => "Đã xác nhận",
                                                                 14 => "Đang giao hàng",
                                                                 15 => "Đã giao hàng",
-                                                                16 => "Đã hủy"
+                                                                16 => "Giao hàng thành công",
+                                                                17 => "Giao hàng thất bại",
+                                                                18 => "Đã hủy"
                                                             ];
 
                                                             echo $trang_thai[$don_hang['trang_thai_id']] ?? "Trạng thái không xác định";
@@ -130,12 +133,6 @@
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
                                                                 <a href="?act=donhang/edit&id=<?= $don_hang['id'] ?>" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                                <form action="?act=donhang/delete" method="POST" onsubmit="return confirm('Bạn có muốn xóa không?')">
-                                                                    <input type="hidden" name="id" value="<?= $don_hang['id'] ?>">
-                                                                    <button type="submit" class="link-danger fs-15" style="border: none; background: none;">
-                                                                        <i class="ri-delete-bin-line"></i>
-                                                                    </button>
-                                                                </form>
                                                             </div>
                                                         </td>
                                                     </tr>

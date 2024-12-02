@@ -74,7 +74,7 @@
                                         <span class="badge bg-success">Đơn hàng: <?= htmlspecialchars($don_hang['trang_thai_don_hang']) ?></span>
                                         <span class="badge bg-primary text-white">
                                             Phương thức thanh toán: 
-                                            <?= $don_hang['phuong_thuc_thanh_toan'] == 1 ? 'Chuyển khoản' : 'Nhận hàng khi thanh toán' ?>
+                                            <?= $don_hang['phuong_thuc_thanh_toan'] == 1 ? 'Chuyển khoản' : 'Thanh toán khi nhận hàng' ?>
                                         </span>
                                         <span class="badge bg-warning text-dark">
                                             Trạng thái thanh toán: 
@@ -132,10 +132,17 @@
                                     <br>
                                     <div class="col-lg-12">
                                         <div class="text-end">
+                                            <?php
+                                            if ($don_hang['trang_thai_don_hang'] === 'Đã giao hàng'):
+                                            ?>
+                                            <button type="button" class="btn btn-primary" onclick="">Đã nhận hàng</button>
+                                            <?php
+                                            endif;
+                                            ?>
                                             <button type="button" class="btn btn-primary" onclick="history.back()">Trở Về</button>
                                         </div>
-                                        <?php if ($don_hang['trang_thai_don_hang'] === 'Đã đặt hàng' || $don_hang['trang_thai_don_hang'] === 'Đang xử lý'): ?>
-                                            <form action="?act=huydonhang" method="POST" style="display: inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?')">
+                                        <?php if ($don_hang['trang_thai_don_hang'] === 'Đã đặt hàng'): ?>
+                                            <form action="?act=huydonhang" method="POST" style="display: inline;" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')">
                                                 <input type="hidden" name="id" value="<?= htmlspecialchars($don_hang['don_hang_id']) ?>" />
                                                 <button type="submit" class="btn btn-outline-danger btn-sm">
                                                     <i class="fas fa-trash-alt"></i> Hủy

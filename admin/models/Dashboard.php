@@ -91,7 +91,7 @@ WHERE trang_thai = 1 AND vai_tro = 1;
     
             return $ketQua['tong_so_luong_don_hang'] ?? 0; // Trả về 0 nếu không có đơn hàng nào
         } catch (PDOException $e) {
-            echo 'Lỗi: ' . $e->getMessage();
+//            echo 'Lỗi: ' . $e->getMessage();
         }
     }
    
@@ -108,7 +108,7 @@ public function thongKeTongTienCaNam() {
 
         return $ketQua['tong_thu_nhap_nam'] ?? 0; // Trả về 0 nếu không có kết quả
     } catch (PDOException $e) {
-        echo 'Lỗi: ' . $e->getMessage();
+//        echo 'Lỗi: ' . $e->getMessage();
     }
 }
 
@@ -127,7 +127,7 @@ public function thongKeTongTienCaNam() {
 
         } catch (PDOException $e) {
             //throw $th;
-            echo 'Lỗi: '. $e->getMessage();
+//            echo 'Lỗi: '. $e->getMessage();
 
         }
     }  

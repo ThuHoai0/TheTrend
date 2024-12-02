@@ -127,12 +127,13 @@
                                             <label for="ForminputState" class="form-label">Trạng thái đơn hàng</label>
                                             <select class="form-select" name="trang_thai">
                                                 <option value="11" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 11 ? 'selected' : '' ?>>Đã đặt hàng</option>
-                                                <option value="12" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 12 ? 'selected' : '' ?>>Đang xử lý</option>
+                                                <option value="12" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 12 ? 'selected' : '' ?>>Chờ xác nhận</option>
                                                 <option value="13" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 13 ? 'selected' : '' ?>>Đã xác nhận</option>
                                                 <option value="14" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 14 ? 'selected' : '' ?>>Đang giao hàng</option>
                                                 <option value="15" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 15 ? 'selected' : '' ?>>Đã giao hàng</option>
-                                                <option value="16" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 16 ? 'selected' : '' ?>>Đã hủy</option>
-                                                <option value="17" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 17 ? 'selected' : '' ?>>Hoàn đơn</option>
+                                                <option value="16" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 16 ? 'selected' : '' ?>>Giao hàng thành công</option>
+                                                <option value="17" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 17 ? 'selected' : '' ?>>Giao hàng thất bại</option>
+                                                <option value="17" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 18 ? 'selected' : '' ?>>Đã hủy</option>
                                             </select>
                                             <span class="text-danger">
                                                 <?= htmlspecialchars($_SESSION['errors']['$trang_thai_don_hang'] ?? '') ?>

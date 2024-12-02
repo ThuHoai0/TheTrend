@@ -5,6 +5,7 @@ require_once './commons/function.php';
 // controller
 require_once './controllers/HomeController.php';
 require_once './controllers/GiohangController.php';
+require_once './controllers/DathangController.php';
 require_once './controllers/ChitietsanphamController.php';
 require_once './controllers/KhuyenmaiController.php';
 require_once './controllers/NguoidungController.php';
@@ -15,6 +16,7 @@ require_once './controllers/YeuthichController.php';
 // model
 require_once './models/Home.php';
 require_once './models/Giohang.php';
+require_once './models/Dathang.php';
 require_once './models/Chitietsanpham.php';
 require_once './models/Khuyenmai.php';
 require_once './models/Nguoidung.php';
@@ -34,11 +36,14 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'dangxuat' => (new HomeController())->dangxuat(),
         'login' => (new HomeController())->formDangNhap(),
         'sanpham' => (new HomeController()) -> sanpham(),
-        'yeuthich' => (new HomeController()) -> top8(),
         'spyeuthich' => (new HomeController()) -> spyeuthich(),
 
         'giohang' => (new GiohangController()) -> giohang(),
+        'removeFromCart' => (new GiohangController()) -> removeFromCart(),
         'themdonhang' => (new GiohangController()) ->store(),
+
+        'dathang' => (new DathangController()) -> dathang(),
+
 
         'chitietsanpham' => (new ChitietsanphamController()) -> chitietsanpham(),
         'danhgia' => (new ChitietsanphamController()) -> danhgia(),
