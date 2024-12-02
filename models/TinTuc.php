@@ -12,7 +12,7 @@ class TinTuc
     public function get3TinTuc()
     {
         try {
-            $sql = "SELECT * FROM `tin_tucs` WHERE trang_thai != 0 ORDER BY id DESC LIMIT 2;";
+            $sql = "SELECT * FROM `tin_tucs` WHERE trang_thai = 1 ORDER BY id DESC LIMIT 2;";
 
             $stmt = $this->conn->prepare($sql);
 

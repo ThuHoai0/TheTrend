@@ -115,9 +115,9 @@ class NguoidungController
                 return;
             }
 
-                if ($this->modelNguoidung->updateUser($id, $email, $hashed_password, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh))
+                if ($this->modelNguoidung->updatePassword($id, $new_password))
                 {
-                    header('Location: ?act=thongtinnguoidung&id=' . $id);
+                    header('Location: ?act=home');
 
             if (!$nguoi_dung) {
                 echo "<script>alert('Người dùng không tồn tại.');</script>";
@@ -138,7 +138,7 @@ class NguoidungController
 
             // Cập nhật mật khẩu trong cơ sở dữ liệu
             // Không mã hóa mật khẩu mới, chỉ lưu trực tiếp vào cơ sở dữ liệu
-            $update_status = $this->modelNguoidung->updatePassword($id, $new_password);
+            $update_status = $this->modelNguoidung->updatePass($id, $new_password);
 
             if ($update_status) {
                 echo "<script>alert('Đổi mật khẩu thành công.'); window.location.href='?act=home';</script>";

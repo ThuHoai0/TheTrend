@@ -81,6 +81,10 @@ class Home
             echo 'Error: ' . $e->getMessage();
         }
     }
+    function validateEmailWithRegex($email) {
+        $pattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+        return preg_match($pattern, $email) === 1;
+    }
 
     public function getByCategory($danh_muc_id, $offset, $limit)
     {
@@ -145,8 +149,8 @@ class Home
     {
         if (!empty($_SESSION['iduser'])) {
             $sql = "SELECT * FROM san_pham_yeu_thichs as yt JOIN san_phams as s 
-    ON yt.san_pham_id = s.id 
-         WHERE s.trang_thai = 1 AND yt.nguoi_dung_id = :nguoi_dung_id";
+            ON yt.san_pham_id = s.id 
+            WHERE s.trang_thai = 1 AND yt.nguoi_dung_id = :nguoi_dung_id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nguoi_dung_id', $_SESSION['iduser']);
             $stmt->execute();

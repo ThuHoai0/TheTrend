@@ -116,14 +116,13 @@
                                                         <td>
                                                             <?php
                                                             $trang_thai = [
-                                                                11 => "Đã đặt hàng",
-                                                                12 => "Chờ xác nhận",
-                                                                13 => "Đã xác nhận",
-                                                                14 => "Đang giao hàng",
-                                                                15 => "Đã giao hàng",
-                                                                16 => "Giao hàng thành công",
-                                                                17 => "Giao hàng thất bại",
-                                                                18 => "Đã hủy"
+                                                                11 => "Chờ xử lý",
+                                                                12 => "Đã xác nhận",
+                                                                13 => "Đang giao hàng",
+                                                                14 => "Đã giao hàng",
+                                                                15 => "Đơn hàng thành công",
+                                                                16 => "Đơn hàng thất bại",
+                                                                17 => "Đã hủy"
                                                             ];
 
                                                             echo $trang_thai[$don_hang['trang_thai_id']] ?? "Trạng thái không xác định";
