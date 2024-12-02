@@ -121,4 +121,39 @@ class Donhang {
         }
     }
 
+    public function getOrderDetailsByDonHangId($donHangId) {
+        try {
+            // SQL để lấy chi tiết đơn hàng theo don_hang_id
+            $sql = "
+                SELECT 
+                    dh.id AS don_hang_id,
+                    dh.ma_don_hang, 
+                    dh.ngay_dat_hang, 
+                    dh.phuong_thuc_thanh_toan,
+                    dh.trang_thai_thanh_toan,
+                    ttdh.ten_trang_thai AS trang_thai_don_hang,
+                    sp.ten_san_pham, 
+                    sp.hinh_anh, 
+                    ctdh.so_luong, 
+                    ctdh.don_gia, 
+                    (ctdh.so_luong * ctdh.don_gia) AS thanh_tien
+                FROM don_hangs dh
+                JOIN chi_tiet_don_hangs ctdh ON dh.id = ctdh.don_hang_id
+                JOIN san_phams sp ON ctdh.san_pham_id = sp.id
+                LEFT JOIN trang_thai_don_hangs ttdh ON dh.trang_thai_id = ttdh.id
+                WHERE dh.id = :donHangId
+            ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':donHangId', $donHangId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Trả về chi tiết của đơn hàng
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+            return [];
+        }
+    }
+
+
 }
