@@ -96,13 +96,30 @@
                                         <h5 class="form-label">Ngày tạo</h5>
                                         <input type="datetime-local" class="form-control" value="<?= $khuyen_mai['ngay_tao'] ?>" disabled>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="ForminputState" class="form-label">Trạng thái</label>
-                                        <select class="form-select" name="trang_thai" disabled>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 1) ? 'selected' : ''  ?> value="1">Sắp diễn ra</option>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 2) ? 'selected' : ''  ?> value="0">Đang diễn ra</option>
-                                            <option <?= ($khuyen_mai['trang_thai'] == 0) ? 'selected' : ''  ?> value="0">Kết thúc</option>
-                                        </select>
+                                    <div class="mb-3">      
+                                        <?php
+                                            // Lấy ngày hiện tại
+                                            $current_date = date('Y-m-d');
+                                            $ngay_bat_dau = $khuyen_mai['ngay_bat_dau'];
+                                            $ngay_ket_thuc = $khuyen_mai['ngay_ket_thuc'];
+
+                                            // Xác định trạng thái
+                                            if ($current_date < $ngay_bat_dau) {
+                                                $trang_thai = 'Sắp diễn ra';
+                                                $badge_class = '';
+                                            } elseif ($current_date >= $ngay_bat_dau && $current_date <= $ngay_ket_thuc) {
+                                                $trang_thai = 'Đang diễn ra';
+                                                $badge_class = '';
+                                            } else {
+                                                $trang_thai = 'Kết thúc';
+                                                $badge_class = '';
+                                            }
+                                        ?>
+                                        <div class="mb-3">
+                                            <label for="ForminputState" class="form-label">Trạng thái</label>
+                                            <input type="text" class="form-control <?= $badge_class ?>" value="<?= $trang_thai ?>" disabled>
+                                        </div>
+
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="text-end">
