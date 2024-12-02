@@ -158,20 +158,11 @@ class ChitietsanphamController
                 foreach ($_SESSION['cart'] as $item) {
                     if ($item['product_id'] == $id && $item['quantity'] >= $spajax['so_luong']) {
                         echo json_encode([
-                            'status' => 'fix',
+                            'status' => 'qty-error',
                         ]);
-                        die;
                     }
                 }
-
             }
-
-
-
-
-
-
-
             $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
             $product_name = isset($_POST['product_name']) ? htmlspecialchars($_POST['product_name']) : '';
             $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
@@ -183,16 +174,18 @@ class ChitietsanphamController
                 if (!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = [];
                 }
-                $product_found = false;
-                foreach ($_SESSION['cart'] as &$item) {
-                    if ($item['product_id'] == $product_id) {
-                        $item['quantity'] += $quantity; // Tăng số lượng sản phẩm
-                        $product_found = true;
-                        break;
+                if ($_SESSION['cart'][$product_id]) {
+                    $newQty = $_SESSION['cart'][$product_id]['quantity'] + $quantity;
+                    if ($newQty <= $spajax['so_luong']) {
+                        $_SESSION['cart'][$product_id]['quantity'] += $quantity;
+                    } else {
+                        echo json_encode([
+                            'status' => 'qty-error',
+                        ]);
                     }
-                }
-                if (!$product_found) {
-                    $_SESSION['cart'][] = [
+
+                } else {
+                    $_SESSION['cart'][$product_id] = [
                         'product_id' => $product_id,
                         'product_name' => $product_name,
                         'product_price' => $product_price,

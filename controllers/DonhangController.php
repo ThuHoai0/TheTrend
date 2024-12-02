@@ -39,7 +39,6 @@ class DonhangController {
     
                 // Lấy thông tin đơn hàng từ model
                 $orderDetails = $this->modelDonhang->getOrderDetailsByDonHangId($don_hang_id);
-    
                 // Kiểm tra nếu có dữ liệu đơn hàng
                 if ($orderDetails) {
                     // Truyền dữ liệu sang giao diện

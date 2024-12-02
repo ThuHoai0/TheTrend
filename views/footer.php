@@ -214,6 +214,8 @@ $('#add-to-cart').submit(function (e) {
                    $('.cart-total-items').text(response.total_items);
                } else if (response.status === 'fix') {
                    swal(nameProduct, "Thêm vào giỏ hàng thất bại", "error");
+               } else if (response.status === 'qty-error') {
+                   swal("Cảnh báo", "Số lượng nhập vào không được lớn hơn số lượng còn lại của sản phẩm", "error");
                }
                else {
                    // alert(response.message);

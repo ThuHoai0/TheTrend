@@ -75,56 +75,6 @@
         }
 
         /* Cart Action Buttons */
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        /* Discount Code Section */
-        #discountCode {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            width: 300px;
-        }
-
-        .btn-success {
-            background-color: #28a745;
-            border-color: #28a745;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-            border-color: #218838;
-        }
-
-        /* Order Info Section */
-        .border {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 30px;
-            background-color: #fff;
-        }
-
-        .mb-3 {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            font-weight: 600;
-        }
 
         .form-control {
             border-radius: 5px;
@@ -138,38 +88,8 @@
             resize: none;
         }
 
-        /* Radio Button Styles */
-        .form-check-input {
-            width: 20px;
-            height: 20px;
-        }
 
-        .form-check-label {
-            font-size: 1rem;
-            color: #333;
-        }
 
-        /* Payment Section */
-        .d-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Checkout Button */
-        .btn-success.w-100 {
-            background-color: #28a745;
-            border-color: #28a745;
-            padding: 15px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-success.w-100:hover {
-            background-color: #218838;
-            border-color: #218838;
-        }
 
 
     </style>
@@ -212,7 +132,40 @@ if (isset($_SESSION['order_success']) && $_SESSION['order_success'] == true) {
 if (!isset($_SESSION['iduser'])) {
     // If not logged in, show login prompt
     echo "<p class='text-center text-warning' style='margin: 153px 0'>Vui lòng <a href='?act=dangnhap'>đăng nhập</a> để xem giỏ hàng.</p>";
+
 } else {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['act']) && $_GET['act'] === 'removeFromCart') {
+        header('Content-Type: application/json'); // Đảm bảo trả về JSON
+
+        // Lấy dữ liệu từ client
+        $input = json_decode(file_get_contents('php://input'), true);
+        $productId = $input['productId'] ?? null;
+
+        // Kiểm tra nếu sản phẩm tồn tại trong giỏ hàng
+        if ($productId !== null && isset($_SESSION['cart'][$productId])) {
+            // Xóa sản phẩm khỏi giỏ hàng
+            unset($_SESSION['cart'][$productId]);
+
+            // Tính lại tổng tiền sau khi xóa sản phẩm
+            $totalPrice = 0;
+            foreach ($_SESSION['cart'] as $item) {
+                $totalPrice += $item['product_price'] * $item['quantity'];
+            }
+
+            // Trả về kết quả JSON
+            echo json_encode([
+                'success' => true,
+                'totalPrice' => $totalPrice,
+                'cart' => $_SESSION['cart']
+            ]);
+        } else {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Không tìm thấy sản phẩm trong giỏ hàng.'
+            ]);
+        }
+        exit;
+    }
     ?>
     <div class="container-fluid mt-5 mb-5">
         <!-- Danh sách sản phẩm trong giỏ hàng -->
@@ -224,7 +177,7 @@ if (!isset($_SESSION['iduser'])) {
             ?>
             <div class="col-12 col-lg-12 full-screen m-lr-auto m-b-50 mb-4">
                 <div class="m-l-25 m-r--38 m-lr-0-xl pr-5">
-                    <form action="?act=updateCart" method="POST">
+                    <form action="?act=updateCart" method="POST" id="cart-form">
                         <div class="wrap-table-shopping-cart">
                             <table class="table-shopping-cart table table-bordered text-center align-middle mb-4 table-striped shadow-sm rounded">
                                 <thead class="table-light">
@@ -245,175 +198,128 @@ if (!isset($_SESSION['iduser'])) {
                                 // Lặp qua giỏ hàng
                                 foreach ($_SESSION['cart'] as $key => $item) {
                                     // Tính tổng tiền cho từng sản phẩm
-//                                    var_dump($item);
                                     $subtotal = $item['product_price'] * $item['quantity'];
                                     $total_price += $subtotal;
+
                                     // Kiểm tra nếu sản phẩm đã được tính trong giỏ hàng
                                     if (!isset($unique_products[$item['product_id']])) {
                                         $unique_products[$item['product_id']] = $item;
-
                                         ?>
-                                        <tr id="<?= $item['product_id'] ?>">
+                                        <tr id="product-<?= $item['product_id'] ?>">
                                             <td><img src="<?= $item['product_image'] ?>" alt="IMG" class="img-thumbnail" style="max-width: 80px;"></td>
                                             <td><?= htmlspecialchars($item['product_name']) ?></td>
-                                            <td><?= number_format($item['product_price'], 0, ',', '.') ?> VNĐ</td>
+                                            <td id="price-<?= $item['product_id'] ?>"><?= number_format($item['product_price'], 0, ',', '.') ?> VNĐ</td>
                                             <td>
-                                                <input type="number" name="quantity[<?= $item['product_id'] ?>]" value="<?= $item['quantity'] ?>" min="1" max="10" class="form-control text-center">
+                                                <input type="number" name="quantity[<?= $item['product_id'] ?>]"
+                                                       value="<?= $item['quantity'] ?>" class="form-control quantity-input"
+                                                       id="quantity-<?= $item['product_id'] ?>"
+                                                       data-product-id="<?= $item['product_id'] ?>"
+                                                       min="1" max="" onkeydown="return false;"/>
                                             </td>
-                                            <td><?= number_format($subtotal, 0, ',', '.') ?> VNĐ</td>
                                             <td>
-                                                <button type="button" class="btn btn-danger btn-sm js-delete-btn" onclick="deleteSp(<?= $item['product_id'] ?>)">
-                                                    <i class="fas fa-trash"></i>
+                        <span class="total-price" id="total-price-<?= $item['product_id'] ?>">
+                            <?= number_format($subtotal, 0, ',', '.') ?> VNĐ
+                        </span>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn-danger js-delete-btn"
+                                                        name="delete_item[<?= $item['product_id'] ?>]"
+                                                        value="1" onclick="deleteItem(<?= $item['product_id'] ?>)">
+                                                    <i class="fas fa-trash"></i> <!-- Icon xóa -->
                                                 </button>
                                             </td>
                                         </tr>
                                         <?php
                                     }
                                 }
-                                // Cập nhật số sản phẩm trong giỏ
-                                $_SESSION['unique_products_count'] = count($unique_products);
                                 ?>
                                 </tbody>
-
-                                <tfoot>
-                                <tr class="text-center">
-                                    <td colspan="3" class="fw-bold">
-                                        <div class="row align-items-center justify-content-center">
-                                            <div class="col-md-8">
-                                                <input type="text" id="discountCode" name="discountCode" class="form-control" placeholder="Nhập mã ở đây">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button type="button" class="btn btn-success w-100">Áp dụng mã</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td colspan="2" class="fw-bold pt-4">Tổng tiền:</td>
-                                    <td colspan="2" class="text-success fw-bold pt-4">
-                                        <?= number_format($total_price, 0, ',', '.') ?> VNĐ
-                                    </td>
-                                </tr>
-                                </tfoot>
                             </table>
-                            <div class="text-end mb-3 pr-5">
-                                <button type="submit" class="btn btn-primary">Cập nhật giỏ hàng</button>
-                            </div>
+                        </div>
+
+                        <!-- Tổng tiền -->
+                        <div class="text-end">
+                            <p><strong>Tổng Tiền: </strong><span id="total-price"><?= number_format($total_price, 0, ',', '.') ?> VNĐ</span></p>
+                        </div>
+
+                        <!-- Nút Thanh toán -->
+                        <div class="cart-action-buttons">
+                            <a href="?act=dathang" class="btn btn-secondary">Thanh Toán</a>
                         </div>
                     </form>
+
+                    <!-- JavaScript để tự động tính toán thành tiền và tổng tiền -->
+                    <script>
+                        // Hàm xóa sản phẩm khỏi giỏ
+                        function deleteItem(productId) {
+                            const isConfirmed = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?");
+                            if (isConfirmed) {
+                                fetch('?act=removeFromCart', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ productId }),
+                                })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data.success) {
+                                            // Cập nhật giao diện sau khi xóa thành công
+                                            const row = document.getElementById('product-' + productId);
+                                            if (row) row.remove();
+
+                                            // Cập nhật tổng tiền
+                                            document.getElementById('total-price').innerText =
+                                                new Intl.NumberFormat().format(data.totalPrice) + ' VNĐ';
+
+                                            alert("Sản phẩm đã được xóa thành công khỏi giỏ hàng.");
+
+                                            // Kiểm tra nếu giỏ hàng trống
+                                            if (Object.keys(data.cart).length === 0) {
+                                                document.querySelector('.wrap-table-shopping-cart').innerHTML =
+                                                    "<p class='text-center text-danger' style='margin: 153px 0'>Giỏ hàng của bạn đang trống!</p>";
+                                            }
+                                        } else {
+                                            alert(data.message || "Đã xảy ra lỗi khi xóa sản phẩm.");
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                        alert("Đã xảy ra lỗi khi xóa sản phẩm.");
+                                    });
+                            }
+                        }
+
+                        const quantityInputs = document.querySelectorAll('.quantity-input');
+                        quantityInputs.forEach(input => {
+                            input.addEventListener('input', updateCart);
+                        });
+                        function updateCart() {
+                            let totalPrice = 0;
+                            const quantityInputs = document.querySelectorAll('.quantity-input');
+                            quantityInputs.forEach(input => {
+                                const productId = input.getAttribute('data-product-id');
+                                const quantity = parseInt(input.value);
+                                const price = parseInt(document.getElementById('price-' + productId).innerText.replace(/[^\d]/g, ''));
+                                const subtotal = quantity * price;
+                                document.getElementById('total-price-' + productId).innerText =
+                                    new Intl.NumberFormat().format(subtotal) + ' VNĐ';
+                                totalPrice += subtotal;
+                            });
+
+                            document.getElementById('total-price').innerText =
+                                new Intl.NumberFormat().format(totalPrice) + ' VNĐ';
+                        }
+                        updateCart();
+                    </script>
                 </div>
             </div>
-
-            <hr>
-            <!-- Thông tin đặt hàng -->
-            <form class="col-12 col-lg-12 full-screen m-lr-auto m-b-50 mb-4" method="post" action="?act=themdonhang">
-                <div class="border rounded p-5">
-                    <h2 class="mb-4 text-center">Thông tin đặt hàng</h2>
-
-                    <!-- Tên người nhận -->
-                    <div class="mb-3">
-                        <label for="ho_ten_nguoi_nhan" class="form-label">Tên người nhận:</label>
-                        <input type="text" class="form-control" value="<?= $_SESSION['name'] ?>" id="ho_ten_nguoi_nhan" name="ho_ten_nguoi_nhan"
-                               placeholder="Nhập tên người nhận..." required>
-                    </div>
-
-                    <!-- Số điện thoại -->
-                    <div class="mb-3">
-                        <label for="so_dien_thoai_nguoi_nhan" class="form-label">Số điện thoại:</label>
-                        <input type="tel" class="form-control" value="<?= $_SESSION['so_dien_thoai'] ?>" id="so_dien_thoai_nguoi_nhan" name="so_dien_thoai_nguoi_nhan"
-                               placeholder="Nhập số điện thoại..." pattern="[0-9]{10,11}" required>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="mb-3">
-                        <label for="email_nguoi_nhan" class="form-label">Email:</label>
-                        <input type="email" class="form-control" value="<?= $_SESSION['email'] ?>" id="email_nguoi_nhan" name="email_nguoi_nhan"
-                               placeholder="Nhập email..." required>
-                    </div>
-
-                    <!-- Địa chỉ -->
-                    <div class="mb-3">
-                        <label for="dia_chi_nhan_hang" class="form-label">Địa chỉ:</label>
-                        <textarea class="form-control" id="dia_chi_nhan_hang" name="dia_chi_nhan_hang" rows="3"
-                                  placeholder="Nhập địa chỉ giao hàng..." required><?= $_SESSION['dia_chi'] ?></textarea>
-                    </div>
-
-                    <!-- Ghi chú -->
-                    <div class="mb-3">
-                        <label for="ghi_chu" class="form-label">Ghi chú:</label>
-                        <textarea class="form-control" id="ghi_chu" name="ghi_chu" rows="3"
-                                  placeholder="Nhập ghi chú (nếu có)..."></textarea>
-                    </div>
-
-                    <!-- Phương thức thanh toán -->
-                    <div class="mb-4 ">
-                        <label class="form-label">Phương thức thanh toán:</label>
-                        <div class="form-check pl-5">
-                            <input class="form-check-input" type="radio" name="phuong_thuc_thanh_toan" id="cashOnDelivery"
-                                   value="0" checked>
-                            <label class="form-check-label" for="cashOnDelivery">Thanh toán khi nhận hàng</label>
-                        </div>
-                    </div>
-
-                    <!-- Tổng tiền hiển thị -->
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">Tổng tiền:</span>
-                            <span >
-                                <input type="hidden" class="text-success fw-bold" id="totalPrice" name="tong_tien" value="<?= $total_price ?>">
-                                <?= isset($total_price) && $total_price > 0 ? number_format($total_price, 0, ',', '.') . ' VNĐ' : '0 VNĐ' ?>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nút xác nhận đặt hàng -->
-                <div class="text-end">
-                    <button type="submit" class="btn btn-success w-100">Đặt hàng</button>
-                </div>
-            </form>
 
         <?php } ?>
     </div>
     <?php
 }
 ?>
-
-
-    <script>
-        function deleteSp(productId) {
-            if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
-                fetch("?act=xoaSP", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `action=remove&product_id=${productId}`,
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        if (data.success) {
-                            document.getElementById(productId).closest("tr").remove();
-                            const totalElement = document.querySelector(".fw-bold.text-success");
-                            if (data.total_price) {
-                                totalElement.textContent = `${new Intl.NumberFormat("vi-VN").format(data.total_price)} VNĐ`;
-                            }
-                            // Tải lại trang sau khi xóa
-                        } else {
-                            alert("Không thể xóa sản phẩm. Vui lòng thử lại.");
-                        }
-                    })
-
-                .catch((error) => {
-                    console.error("Error:", error);
-                    // alert("Đã xảy ra lỗi. Vui lòng thử lại.");
-                    location.reload();
-                });
-            }
-        }
-
-
-
-    </script>
-
 
 <?php
 	include "./views/footer.php";
