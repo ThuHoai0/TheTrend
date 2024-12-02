@@ -7,25 +7,20 @@ class DonhangController {
     }
 
     public function listOrders() {
-        // Kiểm tra session
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     
         if (isset($_SESSION['iduser'])) {
-            $userId = $_SESSION['iduser']; // Lấy ID người dùng từ session
-    
+            $userId = $_SESSION['iduser'];  // Lấy ID người dùng từ session
             // Gọi model để lấy danh sách đơn hàng
             $orders = $this->modelDonhang->getAllDH($userId);
-    
-            // Bao gồm trang hiển thị danh sách đơn hàng
-            require_once './donhang.php';
+            include './donhang.php';  // Bao gồm trang hiển thị danh sách đơn hàng
         } else {
-            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-            header('Location: login.php');
+            header('Location: login.php');  // Nếu chưa đăng nhập thì chuyển hướng đến trang đăng nhập
             exit();
         }
-    }    
+    }
     
     // Kiểm tra xem người dùng đã đăng nhập chưa
     public function ctdonhang() {
@@ -65,21 +60,64 @@ class DonhangController {
     
 
     // Hủy đơn hàng
+//    public function huyDonHang() {
+//        // Kiểm tra phương thức request
+//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//            session_start();
+//
+//            // Kiểm tra người dùng đã đăng nhập chưa
+//            if (isset($_SESSION['iduser'])) {
+//                // Lấy ID đơn hàng từ request POST
+//                $id = $_POST['id'];
+//
+//                // Kiểm tra ID có hợp lệ không
+//                if (empty($id)) {
+//                    $_SESSION['error'] = 'ID đơn hàng không hợp lệ!';
+//                    header('Location: ?act=donhang');
+//                    exit();
+//                }
+//
+//                // Lấy thông tin đơn hàng từ Model
+//                $order = $this->modelDonhang->getOrderById($id);
+//
+//                // Kiểm tra đơn hàng tồn tại và trạng thái cho phép hủy
+//                if ($order && in_array($order['trang_thai_id'], [11, 12])) { // 11: Đã đặt hàng, 12: Đang xử lý
+//                    // Thực hiện xóa đơn hàng
+//                    $result = $this->modelDonhang->xoaDonHangTheoId($id);
+//
+//                    if ($result) {
+//                        $_SESSION['message'] = 'Đơn hàng đã được hủy thành công!';
+//                    } else {
+//                        $_SESSION['error'] = 'Không thể hủy đơn hàng! Vui lòng thử lại.';
+//                    }
+//                } else {
+//                    $_SESSION['error'] = 'Đơn hàng không tồn tại hoặc không thể hủy. Chỉ có thể hủy đơn hàng ở trạng thái "Đã đặt hàng" hoặc "Đang xử lý".';
+//                }
+//            } else {
+//                $_SESSION['error'] = 'Vui lòng đăng nhập để thực hiện thao tác này!';
+//            }
+//
+//            // Quay lại trang danh sách đơn hàng
+//            header('Location: ?act=donhang');
+//            exit();
+//        }
+//    }
+
     public function huyDonHang() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
-    
+
             // Kiểm tra người dùng đã đăng nhập chưa
             if (isset($_SESSION['iduser'])) {
                 $id = $_POST['id'];
-    
+
                 // Kiểm tra ID có hợp lệ không
                 if (empty($id)) {
                     $_SESSION['error'] = 'ID đơn hàng không hợp lệ!';
                     header('Location: ?act=donhang');
                     exit();
                 }
-    
+
                 // Lấy thông tin đơn hàng
                 $order = $this->modelDonhang->getOrderById($id);
                 if (!$order) {
@@ -87,10 +125,10 @@ class DonhangController {
                     header('Location: ?act=donhang');
                     exit();
                 }
-    
+
                 // Gọi phương thức xóa đơn hàng trong model
                 $result = $this->modelDonhang->xoaDonHangTheoId($id);
-    
+
                 if ($result) {
                     $_SESSION['message'] = 'Đơn hàng và chi tiết đơn hàng đã được xóa thành công!';
                 } else {
@@ -99,10 +137,11 @@ class DonhangController {
             } else {
                 $_SESSION['error'] = 'Vui lòng đăng nhập để thực hiện thao tác này!';
             }
-    
+
             // Quay lại trang danh sách đơn hàng
             header('Location: ?act=donhang');
             exit();
         }
-    }       
+    }
 }
+

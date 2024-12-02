@@ -72,9 +72,6 @@
                                 <div class="mb-3">
                                         <h5 class="form-label">Hình ảnh</h5>
                                         <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="duong_dan_hinh_anh">
-                                        <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['duong_dan_hinh_anh']) ? $_SESSION['errors']['duong_dan_hinh_anh'] : '' ?>
-                                        </span>
                                 </div>   
                                 <div class="mb-3">
                                         <label for="citynameInput" class="form-label">Mô tả</label>

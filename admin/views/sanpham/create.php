@@ -94,9 +94,6 @@
                                     <div class="mb-3">
                                         <h5 class="form-label">Hình ảnh</h5>
                                         <input type="file" class="form-control" placeholder="Nhập hình ảnh..." name="anh">
-                                        <span class="text-danger">
-                                        <?= !empty($_SESSION['errors']['load_hinh_anh']) ? $_SESSION['errors']['load_hinh_anh'] : '' ?>
-                                        </span>
                                     </div>
                                     <div class="mb-3">
                                         <h5 class="form-label">Anh phu</h5>
@@ -132,7 +129,7 @@
                                             ?>
                                         </select>
                                         <span class="text-danger">
-                                            <?= !empty($_SESSION['errors']['danh_muc_id']) ? $_SESSION['errors']['danh_muc_id'] : '' ?>
+                                            <?= !empty($_SESSION['errors']['danh_muc']) ? $_SESSION['errors']['danh_muc'] : '' ?>
                                         </span>
                                     </div>
                                     <div class="mb-3">

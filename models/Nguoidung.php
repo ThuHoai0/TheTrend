@@ -38,7 +38,7 @@ class Nguoidung
 
     
 
-    public function updatePassword($id, $new_password)
+    public function updatePassword($id, $password)
 {
     try {
         // Xác định câu truy vấn SQL
@@ -51,7 +51,7 @@ class Nguoidung
 
         // Gán giá trị cho các tham số truy vấn
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':mat_khau', $new_password, PDO::PARAM_STR);  // Không mã hóa mật khẩu
+        $stmt->bindParam(':mat_khau', $password, PDO::PARAM_STR);  // Không mã hóa mật khẩu
 
         // Thực thi truy vấn
         if ($stmt->execute()) {
