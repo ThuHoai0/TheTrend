@@ -120,8 +120,8 @@
                                                                 12 => "Đã xác nhận",
                                                                 13 => "Đang giao hàng",
                                                                 14 => "Đã giao hàng",
-                                                                15 => "Giao hàng thành công",
-                                                                16 => "Giao hàng thất bại",
+                                                                15 => "Đơn hàng thành công",
+                                                                16 => "Đơn hàng thất bại",
                                                                 17 => "Đã hủy"
                                                             ];
 

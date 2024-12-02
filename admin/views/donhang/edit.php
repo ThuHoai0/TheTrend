@@ -130,8 +130,8 @@
                                                 <option value="12" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 12 ? 'selected' : '' ?>>Đã xác nhận</option>
                                                 <option value="14" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 13 ? 'selected' : '' ?>>Đang giao hàng</option>
                                                 <option value="15" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 14 ? 'selected' : '' ?>>Đã giao hàng</option>
-                                                <option value="16" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 15 ? 'selected' : '' ?>>Giao hàng thành công</option>
-                                                <option value="17" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 16 ? 'selected' : '' ?>>Giao hàng thất bại</option>
+                                                <option value="16" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 15 ? 'selected' : '' ?>>Đơn hàng thành công</option>
+                                                <option value="17" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 16 ? 'selected' : '' ?>>Đơn hàng thất bại</option>
                                                 <option value="17" <?= isset($don_hang['trang_thai_id']) && $don_hang['trang_thai_id'] == 17 ? 'selected' : '' ?>>Đã hủy</option>
                                             </select>
                                             <span class="text-danger">
