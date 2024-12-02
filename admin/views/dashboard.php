@@ -26,7 +26,6 @@ if (isset($_SESSION['iduser']) &&  (isset($_SESSION['vai_tro']) && ($_SESSION['v
 }
 ?>
 
-?>
 <body>
 
     <!-- Begin page -->
