@@ -213,7 +213,7 @@ if (!isset($_SESSION['iduser'])) {
     // If not logged in, show login prompt
     echo "<p class='text-center text-warning' style='margin: 153px 0'>Vui lòng <a href='?act=dangnhap'>đăng nhập</a> để xem giỏ hàng.</p>";
 } else {
-//    require_once 'Donhang.php';
+    require_once 'Donhang.php';
 
 // Tạo đối tượng Donhang
     $donhang = new Donhang();
@@ -273,7 +273,6 @@ if (!isset($_SESSION['iduser'])) {
                 <!-- Phương thức thanh toán -->
                 <div class="mb-3">
                     <label for="phuong_thuc_thanh_toan" class="form-label">Phương thức thanh toán:</label>
-                    <input type="hidden" name="phuong_thuc_thanh_toan" value="0"/>
                     <div class="d-flex align-items-center">
                         <input type="radio" id="trang_thai_thanh_toan" name="trang_thai_thanh_toan" checked class="form-check-input">
                         <label for="trang_thai_thanh_toan" class="ms-2">Thanh toán khi nhận hàng</label>
@@ -282,11 +281,7 @@ if (!isset($_SESSION['iduser'])) {
 
                 <!-- Tổng tiền -->
                 <div class="mb-3">
-                    <?php $totalPriceCart = array_sum(array_map(function ($item) {
-                        return $item['product_price'] * $item['quantity'];
-                    }, $_SESSION['cart'])); ?>
-                    <input name="tong_tien" type="hidden" value="<?= $totalPriceCart ?>"/>
-                    <p><strong>Tổng tiền đơn hàng: </strong><?= number_format($totalPriceCart, 0, ',', '.') ?> VNĐ</p>
+                    <p><strong>Tổng tiền đơn hàng: </strong><?= number_format($_SESSION['cart_total_price'], 0, ',', '.') ?> VNĐ</p>
                 </div>
 
                 <!-- Nút gửi đơn hàng -->
