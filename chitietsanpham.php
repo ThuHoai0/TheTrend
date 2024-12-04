@@ -533,15 +533,15 @@
 </div>
     <script>
 
-        $(document).ready(function () {
-            $('#add-to-cart').submit(function (e) {
-                e.preventDefault();  // Prevent default form submission
-                const session = "<?= $_SESSION['iduser'] ?>";  // PHP session variable
-                console.log(session);
-                // Additional logic here (e.g., AJAX request)
-            });
-
-        });
+        //$(document).ready(function () {
+        //    $('#add-to-cart').submit(function (e) {
+        //        e.preventDefault();  // Prevent default form submission
+        //        const session = "<?php //= $_SESSION['iduser'] ?>//";  // PHP session variable
+        //        console.log(session);
+        //        // Additional logic here (e.g., AJAX request)
+        //    });
+        //
+        //});
 
         function themVao1(e) {
             e.preventDefault();

@@ -179,4 +179,48 @@ class GiohangController
             exit();
         }
     }
+
+    public function updateProductQuantity()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $productId = $_POST['productId'];
+            $productQuantity = $_POST['productQuantity'];
+            $product = $this->modelGiohang->getProductById($productId);
+            $response = [
+                'status' => true,
+                'message' => '',
+            ];
+
+            if ($productQuantity < 1) {
+                $response = [
+                    'status' => false,
+                    'message' => 'Số lượng sản phẩm không hợp lệ.',
+                ];
+            }
+
+            if (isset($_SESSION['cart'], $_SESSION['cart'][$productId], $_SESSION['cart'][$productId]['quantity'])) {
+                if ($product['so_luong'] === 0) {
+                    $response = [
+                        'status' => false,
+                        'message' => 'Sản phẩm ' . $product['ten_san_pham'] . ' đã hết.',
+                    ];
+                    unset($_SESSION['cart'][$productId]);
+                } elseif ($productQuantity > $product['so_luong']) {
+                    $response = [
+                        'status' => false,
+                        'message' => 'Nhập quá số lươợng sản phẩm.',
+                        'data' => [
+                            'productId' => $productId,
+                            'quantity' => $productQuantity
+                        ]
+                    ];
+                    $_SESSION['cart'][$productId]['quantity'] = $product['so_luong'];
+                } else {
+                    $_SESSION['cart'][$productId]['quantity'] = $productQuantity;
+                }
+
+            }
+            echo json_encode($response);
+        }
+    }
 }

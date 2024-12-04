@@ -174,10 +174,10 @@
     <script>
         function thayDoiTrangThaiDonHang(donHangId) {
             if (confirm("Bạn có chắc chắn muốn cập nhật trạng thái đơn hàng?")) {
-                fetch('?act=thayDoiTrangThaiDonHang', {
+                fetch('?act=dalayhang', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'don_hang_id=' + encodeURIComponent(donHangId)
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({don_hang_id: donHangId})
                 })
                     .then(response => {
                         if (!response.ok) {
@@ -185,8 +185,9 @@
                         }
                         return response.text();
                     })
-                    .then(data => {
-                        alert(data);
+                    .then(response => {
+                        const data = JSON.parse(response);
+                        alert(data.message);
                         location.reload(); // Tải lại trang để cập nhật giao diện
                     })
                     .catch(error => {

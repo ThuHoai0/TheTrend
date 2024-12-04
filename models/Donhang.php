@@ -26,7 +26,6 @@ class Donhang {
                 FROM don_hangs dh
                 LEFT JOIN trang_thai_don_hangs ttdh 
                 ON dh.trang_thai_id = ttdh.id
-                WHERE dh.trang_thai_id != 16  -- Lọc bỏ đơn hàng có trạng thái 'Đã hủy'
                 ORDER BY dh.id DESC
             ";
             $stmt = $this->conn->prepare($sql);
@@ -184,7 +183,7 @@ class Donhang {
             // Kiểm tra xem đơn hàng có tồn tại hay không
             $sqlCheck = "SELECT id FROM don_hangs WHERE id = :don_hang_id";
             $stmtCheck = $this->conn->prepare($sqlCheck);
-            $stmtCheck->bindParam(':don_hang_id', $don_hang_id, PDO::PARAM_INT);
+            $stmtCheck->bindParam(':don_hang_id', $don_hang_id);
             $stmtCheck->execute();
 
             // Nếu không tìm thấy đơn hàng
@@ -194,12 +193,12 @@ class Donhang {
                     'message' => 'Đơn hàng không tồn tại.'
                 ];
             }
-
+            $trang_thai_id = $this->layIdTrangThai($trang_thai_moi);
             // Cập nhật trạng thái đơn hàng với tên trạng thái thay vì ID
             $sqlUpdate = "UPDATE don_hangs SET trang_thai_id = :trang_thai_id WHERE id = :don_hang_id"; // Chỉnh sửa theo tên cột trang_thai
             $stmtUpdate = $this->conn->prepare($sqlUpdate);
-            $stmtUpdate->bindParam(':trang_thai', $trang_thai_moi, PDO::PARAM_STR); // Đảm bảo bind đúng kiểu dữ liệu là string
-            $stmtUpdate->bindParam(':don_hang_id', $don_hang_id, PDO::PARAM_INT);
+            $stmtUpdate->bindParam(':trang_thai_id', $trang_thai_id); // Đảm bảo bind đúng kiểu dữ liệu là string
+            $stmtUpdate->bindParam(':don_hang_id', $don_hang_id);
             $stmtUpdate->execute();
 
             // Kiểm tra xem có thực sự cập nhật không
@@ -223,25 +222,22 @@ class Donhang {
     }
 
 
-//    public function layTenTrangThai($trang_thai_id) {
-//        try {
-//            // Lấy tên trạng thái từ bảng trang_thai
-//            $sql = "SELECT ten_trang_thai FROM trang_thai WHERE id = :trang_thai_id";
-//            $stmt = $this->conn->prepare($sql);
-//            $stmt->bindParam(':trang_thai_id', $trang_thai_id, PDO::PARAM_INT);
-//            $stmt->execute();
-//
-//            // Kiểm tra kết quả và trả về tên trạng thái
-//            if ($stmt->rowCount() > 0) {
-//                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-//                return $row['ten_trang_thai']; // Trả về tên trạng thái
-//            } else {
-//                return null; // Nếu không tìm thấy trạng thái
-//            }
-//        } catch (PDOException $e) {
-//            return null; // Nếu có lỗi
-//        }
-//    }
+    public function layIdTrangThai($ten_trang_thai) {
+        try {
+            $sql = "SELECT * FROM `trang_thai_don_hangs` WHERE ten_trang_thai = :ten_trang_thai";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':ten_trang_thai', $ten_trang_thai);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $row['id'];
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
 
 
 

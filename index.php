@@ -39,6 +39,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'spyeuthich' => (new HomeController()) -> spyeuthich(),
 
         'giohang' => (new GiohangController()) -> giohang(),
+        'updateProductQuantity' => (new GiohangController()) -> updateProductQuantity(),
         'removeFromCart' => (new GiohangController()) -> removeFromCart(),
         'themdonhang' => (new GiohangController()) ->store(),
         'dathang' => (new DathangController()) -> dathang(),

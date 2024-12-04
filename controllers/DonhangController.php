@@ -101,14 +101,14 @@ class DonhangController {
 
     public function thayDoiTrangThaiDonHang() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = json_decode(file_get_contents('php://input'), true);
             // Kiểm tra và lấy `don_hang_id` từ POST
-            if (isset($_POST['don_hang_id']) && !empty($_POST['don_hang_id'])) {
-                $don_hang_id = intval($_POST['don_hang_id']);
+            if (isset($data['don_hang_id']) && !empty($data['don_hang_id'])) {
+                $don_hang_id = intval($data['don_hang_id']);
 
                 // Cập nhật trạng thái đơn hàng
                 $new_status = 'Đơn hàng thành công'; // Thay vì dùng ID trạng thái, sử dụng tên trạng thái
                 $result = $this->modelDonhang->capNhatTrangThaiDonHang($don_hang_id, $new_status);
-
                 // Kiểm tra kết quả trả về
                 if ($result['success']) {
                     // Trả về JSON để cập nhật giao diện

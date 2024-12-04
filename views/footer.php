@@ -205,6 +205,7 @@ $('#add-to-cart').submit(function (e) {
                product_img: $('#img-product').attr('src'),
                product_price: $('[name="product_price"]').val(),
                quantity: qty,
+               total_products: $('[name="so_luong"]').val(),
            },
            dataType: 'json',
            success: function (response) {

@@ -168,13 +168,14 @@ class ChitietsanphamController
             $product_price = isset($_POST['product_price']) ? floatval($_POST['product_price']) : 0;
             $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
             $product_image = $_POST['product_img'];
+            $total_products = $_POST['total_products'];
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
             if ($product_id > 0 && $quantity > 0) {
                 if (!isset($_SESSION['cart'])) {
                     $_SESSION['cart'] = [];
                 }
-                if ($_SESSION['cart'][$product_id]) {
+                if (isset($_SESSION['cart'][$product_id])) {
                     $newQty = $_SESSION['cart'][$product_id]['quantity'] + $quantity;
                     if ($newQty <= $spajax['so_luong']) {
                         $_SESSION['cart'][$product_id]['quantity'] += $quantity;
@@ -191,6 +192,7 @@ class ChitietsanphamController
                         'product_price' => $product_price,
                         'quantity' => $quantity,
                         'product_image' => $product_image,
+                        'total_products' => $total_products,
                     ];
                 }
 

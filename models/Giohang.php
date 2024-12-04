@@ -201,4 +201,19 @@ class Giohang
         }
     }
 
+    public function getProductById($productId)
+    {
+        try {
+            $sql = "SELECT * 
+                FROM san_phams 
+                WHERE id = :productId";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':productId', $productId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
 }
