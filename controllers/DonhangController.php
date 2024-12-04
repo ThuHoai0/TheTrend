@@ -57,51 +57,6 @@ class DonhangController {
             exit();
         }
     }
-    
-
-    // Hủy đơn hàng
-//    public function huyDonHang() {
-//        // Kiểm tra phương thức request
-//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//            session_start();
-//
-//            // Kiểm tra người dùng đã đăng nhập chưa
-//            if (isset($_SESSION['iduser'])) {
-//                // Lấy ID đơn hàng từ request POST
-//                $id = $_POST['id'];
-//
-//                // Kiểm tra ID có hợp lệ không
-//                if (empty($id)) {
-//                    $_SESSION['error'] = 'ID đơn hàng không hợp lệ!';
-//                    header('Location: ?act=donhang');
-//                    exit();
-//                }
-//
-//                // Lấy thông tin đơn hàng từ Model
-//                $order = $this->modelDonhang->getOrderById($id);
-//
-//                // Kiểm tra đơn hàng tồn tại và trạng thái cho phép hủy
-//                if ($order && in_array($order['trang_thai_id'], [11, 12])) { // 11: Đã đặt hàng, 12: Đang xử lý
-//                    // Thực hiện xóa đơn hàng
-//                    $result = $this->modelDonhang->xoaDonHangTheoId($id);
-//
-//                    if ($result) {
-//                        $_SESSION['message'] = 'Đơn hàng đã được hủy thành công!';
-//                    } else {
-//                        $_SESSION['error'] = 'Không thể hủy đơn hàng! Vui lòng thử lại.';
-//                    }
-//                } else {
-//                    $_SESSION['error'] = 'Đơn hàng không tồn tại hoặc không thể hủy. Chỉ có thể hủy đơn hàng ở trạng thái "Đã đặt hàng" hoặc "Đang xử lý".';
-//                }
-//            } else {
-//                $_SESSION['error'] = 'Vui lòng đăng nhập để thực hiện thao tác này!';
-//            }
-//
-//            // Quay lại trang danh sách đơn hàng
-//            header('Location: ?act=donhang');
-//            exit();
-//        }
-//    }
 
     public function huyDonHang() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -143,5 +98,43 @@ class DonhangController {
             exit();
         }
     }
+
+    public function thayDoiTrangThaiDonHang() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Kiểm tra và lấy `don_hang_id` từ POST
+            if (isset($_POST['don_hang_id']) && !empty($_POST['don_hang_id'])) {
+                $don_hang_id = intval($_POST['don_hang_id']);
+
+                // Cập nhật trạng thái đơn hàng
+                $new_status = 'Đơn hàng thành công'; // Thay vì dùng ID trạng thái, sử dụng tên trạng thái
+                $result = $this->modelDonhang->capNhatTrangThaiDonHang($don_hang_id, $new_status);
+
+                // Kiểm tra kết quả trả về
+                if ($result['success']) {
+                    // Trả về JSON để cập nhật giao diện
+                    echo json_encode([
+                        'success' => true,
+                        'message' => $result['message'],
+                        'new_status' => $new_status // Trả về tên trạng thái mới
+                    ]);
+                } else {
+                    // Trả về lỗi nếu không cập nhật được
+                    echo json_encode([
+                        'success' => false,
+                        'message' => $result['message']
+                    ]);
+                }
+            } else {
+                echo json_encode([
+                    'success' => false,
+                    'message' => "ID đơn hàng không hợp lệ."
+                ]);
+            }
+        }
+    }
+
+
+
+
 }
 
