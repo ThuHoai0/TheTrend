@@ -38,7 +38,7 @@ class Nguoidung
 
     
 
-    public function updatePassword($id, $password)
+    public function updatePassword($id, $new_password)
 {
     try {
         // Xác định câu truy vấn SQL
@@ -51,7 +51,7 @@ class Nguoidung
 
         // Gán giá trị cho các tham số truy vấn
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':mat_khau', $password, PDO::PARAM_STR);  // Không mã hóa mật khẩu
+        $stmt->bindParam(':mat_khau', $new_password, PDO::PARAM_STR);  // Không mã hóa mật khẩu
 
         // Thực thi truy vấn
         if ($stmt->execute()) {
@@ -80,14 +80,14 @@ class Nguoidung
         }
     }
 
-    public function updatePass($id, $newPassword)
+    public function updatePass($id, $new_password)
     {
         try {
             // Cập nhật mật khẩu mới (không mã hóa)
             $sql = "UPDATE nguoi_dungs SET mat_khau = :mat_khau WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':mat_khau', $newPassword, PDO::PARAM_STR); // Lưu trực tiếp mật khẩu
+            $stmt->bindParam(':mat_khau', $new_password, PDO::PARAM_STR); // Lưu trực tiếp mật khẩu
             return $stmt->execute(); // Cập nhật mật khẩu mới
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
