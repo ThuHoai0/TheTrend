@@ -7,7 +7,7 @@ class Donhang {
     }
 
     // Lấy tất cả các đơn hàng (ngoại trừ trạng thái "Đã hủy")
-    public function getAllDH() {
+    public function getAllDH($userId) {
         try {
             $sql = "
                 SELECT 
@@ -27,9 +27,11 @@ class Donhang {
                 LEFT JOIN trang_thai_don_hangs ttdh 
                 ON dh.trang_thai_id = ttdh.id
                 WHERE dh.trang_thai_id != 16  -- Lọc bỏ đơn hàng có trạng thái 'Đã hủy'
+                AND dh.nguoi_dung_id = :userId      -- Chỉ hiển thị đơn hàng của tài khoản đó
                 ORDER BY dh.id DESC
             ";
             $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT); // Truyền tham số userId
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -37,6 +39,7 @@ class Donhang {
             return [];
         }
     }
+    
 
     // Tính tổng tiền của một đơn hàng
     public function getTongTienByDonHangId($don_hang_id) {

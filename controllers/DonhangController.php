@@ -12,15 +12,16 @@ class DonhangController {
         }
     
         if (isset($_SESSION['iduser'])) {
-            $userId = $_SESSION['iduser'];  // Lấy ID người dùng từ session
+            $userId = $_SESSION['iduser']; // Lấy ID người dùng từ session
             // Gọi model để lấy danh sách đơn hàng
-            $orders = $this->modelDonhang->getAllDH($userId);
-            include './donhang.php';  // Bao gồm trang hiển thị danh sách đơn hàng
+            $orders = $this->modelDonhang->getAllDH($userId); // Truyền userId vào
+            include './donhang.php'; // Bao gồm trang hiển thị danh sách đơn hàng
         } else {
-            header('Location: login.php');  // Nếu chưa đăng nhập thì chuyển hướng đến trang đăng nhập
+            header('Location: login.php'); // Nếu chưa đăng nhập thì chuyển hướng đến trang đăng nhập
             exit();
         }
     }
+    
     
     // Kiểm tra xem người dùng đã đăng nhập chưa
     public function ctdonhang() {
