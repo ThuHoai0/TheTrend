@@ -85,20 +85,20 @@ class HomeController
     public function dangky()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = trim($_POST['ten']);
-            $pass = trim($_POST['mat_khau']);
+            $ten = trim($_POST['ten']);
+            $mat_khau = trim($_POST['mat_khau']);
             $email = trim($_POST['email']);
 
             // Validate tên đăng nhập
-            if (empty($name)) {
+            if (empty($ten)) {
                 echo "<script>alert('Tên đăng nhập không được để trống.'); window.location = '?act=dangky';</script>";
                 exit();
             }
-            if (strlen($name) < 3 || strlen($name) > 20) {
+            if (strlen($ten) < 3 || strlen($ten) > 20) {
                 echo "<script>alert('Tên đăng nhập phải có độ dài từ 3 đến 20 ký tự.'); window.location = '?act=dangky';</script>";
                 exit();
             }
-            if (!preg_match('/^[a-zA-Z0-9_]+$/', $name)) {
+            if (!preg_match('/^[a-zA-Z0-9_]+$/', $ten)) {
                 echo "<script>alert('Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới.'); window.location = '?act=dangky';</script>";
                 exit();
             }
@@ -120,15 +120,15 @@ class HomeController
 
        
             // Validate mật khẩu
-            if (empty($pass)) {
+            if (empty($mat_khau)) {
                 echo "<script>alert('Mật khẩu không được để trống.'); window.location = '?act=dangky';</script>";
                 exit();
             }
-            if (strlen($pass) < 6 || strlen($pass) > 50) {
+            if (strlen($mat_khau) < 6 || strlen($mat_khau) > 50) {
                 echo "<script>alert('Mật khẩu phải có độ dài từ 6 đến 50 ký tự.'); window.location = '?act=dangky';</script>";
                 exit();
             }
-            if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/', $pass)) {
+            if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/', $mat_khau)) {
                 echo "<script>alert('Mật khẩu phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường và 1 số.'); window.location = '?act=dangky';</script>";
                 exit();
             }
@@ -137,8 +137,8 @@ class HomeController
                 exit();
             }
 
-            $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
-            $_SESSION['iduser'] = $this->modelHome->dangky($name, $hashed_pass, $email);
+            // $hashed_pass = password_hash($pass, PASSWORD_BCRYPT);
+            $_SESSION['iduser'] = $this->modelHome->dangky($ten, $mat_khau, $email);
             $_SESSION['vai_tro'] = 1; // 1 là người thường
 
             echo "<script>alert('Đăng ký thành công!'); window.location = '?act=home';</script>";

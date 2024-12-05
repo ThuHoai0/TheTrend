@@ -39,9 +39,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'spyeuthich' => (new HomeController()) -> spyeuthich(),
 
         'giohang' => (new GiohangController()) -> giohang(),
+        'updateProductQuantity' => (new GiohangController()) -> updateProductQuantity(),
         'removeFromCart' => (new GiohangController()) -> removeFromCart(),
         'themdonhang' => (new GiohangController()) ->store(),
-
         'dathang' => (new DathangController()) -> dathang(),
 
 
@@ -69,6 +69,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         'donhang' => (new DonhangController())->listOrders(),
         'ctdonhang' => (new DonhangController())->ctdonhang(),
         'huydonhang' => (new DonhangController())->huyDonHang(),
+        'dalayhang' => (new DonhangController())->thayDoiTrangThaiDonHang(),
 
         'addyeuthich' => (new YeuthichController())->addYeuthich(),
 

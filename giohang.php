@@ -217,7 +217,8 @@ if (!isset($_SESSION['iduser'])) {
                                                        value="<?= $item['quantity'] ?>" class="form-control quantity-input"
                                                        id="quantity-<?= $item['product_id'] ?>"
                                                        data-product-id="<?= $item['product_id'] ?>"
-                                                       min="1" max="" onkeydown="return false;"/>
+                                                       min="1" max="<?= $item['total_products'] ?>" onkeydown="return false;"
+                                                       onchange="numberOfProductsChange(this.value, <?= $item['product_id'] ?>)"/>
                                             </td>
                                             <td>
                         <span class="total-price" id="total-price-<?= $item['product_id'] ?>">
@@ -316,6 +317,24 @@ if (!isset($_SESSION['iduser'])) {
                                 new Intl.NumberFormat().format(totalPrice) + ' VNĐ';
                         }
                         updateCart();
+
+                        function numberOfProductsChange(value, productId) {
+                            $.ajax({
+                                url: "?act=updateProductQuantity",
+                                method: 'POST',
+                                data: {productQuantity: value, productId: productId},
+                                success: function(response) {
+                                    const data = JSON.parse(response);
+                                    if (!data.status) {
+                                        alert(data.message);
+                                        window.location.reload();
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error("Error: " + error);
+                                }
+                            });
+                        }
                     </script>
                 </div>
             </div>
