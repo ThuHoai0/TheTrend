@@ -24,13 +24,7 @@ class DashboardController {
 
        
         $topSanPham = $this->modelDashboard->getTopSanPhamBanChay(5);
-        if (!empty($topSanPham)) {
-            foreach ($topSanPham as $index => $sanPham) {
-                echo ($index + 1) . '. ' . $sanPham['ten_san_pham'] . ' - ' . $sanPham['tong_so_luong'] . ' sản phẩm<br>';
-            }
-        } else {
-            echo 'Không có sản phẩm nào được bán.';
-        }
+        
         $khuyenMais = $this->modelDashboard->getTop5KhuyenMai();
         $khachHangs = $this->modelDashboard->getKhachHangThanThiet();
 

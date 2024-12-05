@@ -61,42 +61,35 @@ class DonhangController {
 
     public function huyDonHang() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            session_start();
+            $data = json_decode(file_get_contents('php://input'), true);
+            // Kiểm tra và lấy `don_hang_id` từ POST
+            if (isset($data['don_hang_id']) && !empty($data['don_hang_id'])) {
+                $don_hang_id = intval($data['don_hang_id']);
 
-            // Kiểm tra người dùng đã đăng nhập chưa
-            if (isset($_SESSION['iduser'])) {
-                $id = $_POST['id'];
-
-                // Kiểm tra ID có hợp lệ không
-                if (empty($id)) {
-                    $_SESSION['error'] = 'ID đơn hàng không hợp lệ!';
-                    header('Location: ?act=donhang');
-                    exit();
-                }
-
-                // Lấy thông tin đơn hàng
-                $order = $this->modelDonhang->getOrderById($id);
-                if (!$order) {
-                    $_SESSION['error'] = 'Đơn hàng không tồn tại!';
-                    header('Location: ?act=donhang');
-                    exit();
-                }
-
-                // Gọi phương thức xóa đơn hàng trong model
-                $result = $this->modelDonhang->xoaDonHangTheoId($id);
-
-                if ($result) {
-                    $_SESSION['message'] = 'Đơn hàng và chi tiết đơn hàng đã được xóa thành công!';
+                // Cập nhật trạng thái đơn hàng
+                $new_status = 'Đã hủy'; // Thay vì dùng ID trạng thái, sử dụng tên trạng thái
+                $result = $this->modelDonhang->capNhatTrangThaiDonHang($don_hang_id, $new_status);
+                // Kiểm tra kết quả trả về
+                if ($result['success']) {
+                    // Trả về JSON để cập nhật giao diện
+                    echo json_encode([
+                        'success' => true,
+                        'message' => $result['message'],
+                        'new_status' => $new_status // Trả về tên trạng thái mới
+                    ]);
                 } else {
-                    $_SESSION['error'] = 'Không thể xóa đơn hàng này! Vui lòng thử lại.';
+                    // Trả về lỗi nếu không cập nhật được
+                    echo json_encode([
+                        'success' => false,
+                        'message' => $result['message']
+                    ]);
                 }
             } else {
-                $_SESSION['error'] = 'Vui lòng đăng nhập để thực hiện thao tác này!';
+                echo json_encode([
+                    'success' => false,
+                    'message' => "ID đơn hàng không hợp lệ."
+                ]);
             }
-
-            // Quay lại trang danh sách đơn hàng
-            header('Location: ?act=donhang');
-            exit();
         }
     }
 
@@ -133,9 +126,5 @@ class DonhangController {
             }
         }
     }
-
-
-
-
 }
 

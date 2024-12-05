@@ -8,19 +8,31 @@ class Donhang
     }
     public function getAll() {
         try {
-            $sql = "SELECT don_hangs.*, nguoi_dungs.ten AS ten_nguoi_dung, trang_thai_don_hangs.ten_trang_thai FROM 
-            `don_hangs` INNER JOIN nguoi_dungs ON nguoi_dungs.id = don_hangs.nguoi_dung_id
-            			INNER JOIN trang_thai_don_hangs ON trang_thai_don_hangs.id = don_hangs.trang_thai_id";
-
+            $sql = "
+                SELECT 
+                    don_hangs.*, 
+                    nguoi_dungs.ten AS ten_nguoi_dung, 
+                    trang_thai_don_hangs.ten_trang_thai,
+                    CASE 
+                        WHEN don_hangs.trang_thai_id = 16 THEN 1 
+                        ELSE don_hangs.trang_thai_thanh_toan 
+                    END AS trang_thai_thanh_toan
+                FROM don_hangs
+                INNER JOIN nguoi_dungs 
+                    ON nguoi_dungs.id = don_hangs.nguoi_dung_id
+                INNER JOIN trang_thai_don_hangs 
+                    ON trang_thai_don_hangs.id = don_hangs.trang_thai_id
+            ";
+    
             $stmt = $this->conn->prepare($sql);
-
             $stmt->execute();
-
+    
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo 'Error: ' .$e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
     }
+    
 
     public function getBySearch($search) {
         // Chuẩn bị câu lệnh SQL với dấu phần trăm bao quanh biến tìm kiếm
@@ -58,22 +70,33 @@ class Donhang
 
     public function getDetailData($id) {
         try {
-            $sql = "SELECT dhs.*,
-                        nguoi_dungs.ten AS ten_nguoi_dung,
-                        dhs.dia_chi_nhan_hang,
-                        san_phams.ten_san_pham,
-                        chi_tiet_don_hangs.so_luong,
-                        chi_tiet_don_hangs.don_gia,
-                        nguoi_dungs.email,
-                        nguoi_dungs.so_dien_thoai,
-                        trang_thai_don_hangs.ten_trang_thai
-                    FROM
-                        `don_hangs` AS dhs
-                    LEFT JOIN chi_tiet_don_hangs ON chi_tiet_don_hangs.don_hang_id = dhs.id
-                    LEFT JOIN san_phams ON san_phams.id = chi_tiet_don_hangs.san_pham_id
-                    LEFT JOIN nguoi_dungs ON nguoi_dungs.id = dhs.nguoi_dung_id
-                    LEFT JOIN trang_thai_don_hangs ON trang_thai_don_hangs.id = dhs.trang_thai_id
-                    WHERE dhs.id = :id";
+            $sql = "
+                SELECT 
+                    dhs.*,
+                    nguoi_dungs.ten AS ten_nguoi_dung,
+                    dhs.dia_chi_nhan_hang,
+                    san_phams.ten_san_pham,
+                    chi_tiet_don_hangs.so_luong,
+                    chi_tiet_don_hangs.don_gia,
+                    nguoi_dungs.email,
+                    nguoi_dungs.so_dien_thoai,
+                    trang_thai_don_hangs.ten_trang_thai,
+                    CASE 
+                        WHEN dhs.trang_thai_id = 16 THEN 1 
+                        ELSE dhs.trang_thai_thanh_toan 
+                    END AS trang_thai_thanh_toan
+                FROM
+                    `don_hangs` AS dhs
+                LEFT JOIN chi_tiet_don_hangs 
+                    ON chi_tiet_don_hangs.don_hang_id = dhs.id
+                LEFT JOIN san_phams 
+                    ON san_phams.id = chi_tiet_don_hangs.san_pham_id
+                LEFT JOIN nguoi_dungs 
+                    ON nguoi_dungs.id = dhs.nguoi_dung_id
+                LEFT JOIN trang_thai_don_hangs 
+                    ON trang_thai_don_hangs.id = dhs.trang_thai_id
+                WHERE dhs.id = :id
+            ";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -83,7 +106,7 @@ class Donhang
             return null;
         }
     }
-
+    
     // Cập nhật thông tin đơn hàng
     public function updateData($id, $trang_thai_don_hang) {
         try {
@@ -130,57 +153,68 @@ class Donhang
     
     public function getOrderInfo($id) {
         try {
-            $sql = "SELECT dhs.ma_don_hang,
-               dhs.phuong_thuc_thanh_toan,
-               dhs.trang_thai_thanh_toan,
-               dhs.dia_chi_nhan_hang,
-               dhs.ngay_dat_hang,
-               dhs.ghi_chu,
-               dhs.tong_tien,
-               dhs.trang_thai_id,
-               nguoi_dungs.ten AS ten_nguoi_dung,
-               nguoi_dungs.email,
-               nguoi_dungs.so_dien_thoai,
-               dhs.ho_ten_nguoi_nhan,
-               dhs.so_dien_thoai_nguoi_nhan,
-               dhs.email_nguoi_nhan,
-               trang_thai_don_hangs.ten_trang_thai
-        FROM `don_hangs` AS dhs
-        LEFT JOIN nguoi_dungs ON nguoi_dungs.id = dhs.nguoi_dung_id
-        LEFT JOIN trang_thai_don_hangs ON trang_thai_don_hangs.id = dhs.trang_thai_id
-        WHERE dhs.id = :id";
+            $sql = "
+                SELECT 
+                    dhs.ma_don_hang,
+                    dhs.phuong_thuc_thanh_toan,
+                    CASE 
+                        WHEN dhs.trang_thai_id = 16 THEN 1 
+                        ELSE dhs.trang_thai_thanh_toan 
+                    END AS trang_thai_thanh_toan,
+                    dhs.dia_chi_nhan_hang,
+                    dhs.ngay_dat_hang,
+                    dhs.ghi_chu,
+                    dhs.tong_tien,
+                    dhs.trang_thai_id,
+                    nguoi_dungs.ten AS ten_nguoi_dung,
+                    nguoi_dungs.email,
+                    nguoi_dungs.so_dien_thoai,
+                    dhs.ho_ten_nguoi_nhan,
+                    dhs.so_dien_thoai_nguoi_nhan,
+                    dhs.email_nguoi_nhan,
+                    trang_thai_don_hangs.ten_trang_thai
+                FROM 
+                    `don_hangs` AS dhs
+                LEFT JOIN 
+                    nguoi_dungs ON nguoi_dungs.id = dhs.nguoi_dung_id
+                LEFT JOIN 
+                    trang_thai_don_hangs ON trang_thai_don_hangs.id = dhs.trang_thai_id
+                WHERE 
+                    dhs.id = :id
+            ";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về một dòng thông tin đơn hàng
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
-
+    
     public function getOrderProducts($id) {
         try {
-            $sql = "SELECT san_phams.ten_san_pham,
-                       chi_tiet_don_hangs.so_luong,
-                       chi_tiet_don_hangs.don_gia
-                FROM `chi_tiet_don_hangs`
-                LEFT JOIN san_phams ON san_phams.id = chi_tiet_don_hangs.san_pham_id
-                WHERE chi_tiet_don_hangs.don_hang_id = :id";
+            $sql = "
+                SELECT 
+                    san_phams.ten_san_pham,
+                    chi_tiet_don_hangs.so_luong,
+                    chi_tiet_don_hangs.don_gia,
+                    (chi_tiet_don_hangs.so_luong * chi_tiet_don_hangs.don_gia) AS thanh_tien
+                FROM 
+                    `chi_tiet_don_hangs`
+                LEFT JOIN 
+                    san_phams ON san_phams.id = chi_tiet_don_hangs.san_pham_id
+                WHERE 
+                    chi_tiet_don_hangs.don_hang_id = :id
+            ";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC); // Trả về danh sách sản phẩm
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
-
-
-
-
-
-
-
+    
     public function __destruct() {
         $this->conn = null;
     }

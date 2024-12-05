@@ -149,9 +149,9 @@
                                             endif;
                                             ?>
                                             <?php if ($don_hang['trang_thai_don_hang'] === 'Đã đặt hàng'): ?>
-                                                <form action="?act=huydonhang" method="POST" style="display: inline;" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')">
+                                                <form action="?act=huydonhang" method="POST" style="display: inline;">
                                                     <input type="hidden" name="id" value="<?= htmlspecialchars($don_hang['don_hang_id']) ?>" />
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="huyDonHang(<?= $don_hang['don_hang_id'] ?>)">
                                                         <i class="fas fa-trash-alt"></i> Hủy
                                                     </button>
                                                 </form>
@@ -175,6 +175,30 @@
         function thayDoiTrangThaiDonHang(donHangId) {
             if (confirm("Bạn có chắc chắn muốn cập nhật trạng thái đơn hàng?")) {
                 fetch('?act=dalayhang', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({don_hang_id: donHangId})
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Có lỗi xảy ra khi gửi yêu cầu.");
+                        }
+                        return response.text();
+                    })
+                    .then(response => {
+                        const data = JSON.parse(response);
+                        alert(data.message);
+                        location.reload(); // Tải lại trang để cập nhật giao diện
+                    })
+                    .catch(error => {
+                        console.error('Lỗi:', error);
+                        alert("Không thể cập nhật trạng thái. Vui lòng thử lại sau!");
+                    });
+            }
+        }
+        function huyDonHang(donHangId) {
+            if (confirm("Bạn có chắc chắn muốn cập nhật trạng thái đơn hàng?")) {
+                fetch('?act=huydonhang', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({don_hang_id: donHangId})
