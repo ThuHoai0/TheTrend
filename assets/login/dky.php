@@ -14,17 +14,17 @@
         <form action="../index.php">
             <h1>Đăng Ký</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <input type="text" placeholder="Username" >
                 <box-icon type='solid' name='user'></box-icon>
             </div>
 
             <div class="input-box">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" >
                 <box-icon type='solid' name='envelope'></box-icon>
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" >
                 <box-icon type='solid' name='lock-alt'></box-icon>
             </div>
 

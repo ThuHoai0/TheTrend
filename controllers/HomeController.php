@@ -103,6 +103,22 @@ class HomeController
                 exit();
             }
 
+            // Validate email
+            if (empty($email)) {
+                echo "<script>alert('Email không được để trống!'); window.location.href = '?act=dangky';</script>";
+                exit();
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo "<script>alert('Định dạng email không hợp lệ!'); window.location.href = '?act=dangky';</script>";
+                exit();
+            }
+            if ($this->modelHome->checkEmailExists($email)) {
+                echo "<script>alert('Email đã được sử dụng, vui lòng chọn email khác!'); window.location.href = '?act=dangky';</script>";
+                exit();
+            }
+
+
+       
             // Validate mật khẩu
             if (empty($pass)) {
                 echo "<script>alert('Mật khẩu không được để trống.'); window.location = '?act=dangky';</script>";
