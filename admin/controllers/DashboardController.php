@@ -7,16 +7,17 @@ class DashboardController {
         $this->modelDashboard = new Dashboard();
     }
     public function index() {
-        $tongThuNhapNgay = $this->modelDashboard->layTongThuNhapHomNay();
-        $soLuongDonHangHomNay = $this->modelDashboard->demSoLuongDonHangHomNay();
-        $soLuongKhachHang = $this->modelDashboard->demSoLuongKhachHang();
-        
+
         $tongDonHangCaNam = $this->modelDashboard->thongKeTongDonHangCaNam();
         $tongTienCaNam = $this->modelDashboard->thongKeTongTienCaNam();
+        $soLuongKhachHang = $this->modelDashboard->demSoLuongKhachHang();
+
+        $tongThuNhapNgay = $this->modelDashboard->layTongThuNhapHomNay();
+        $soLuongDonHangHomNay = $this->modelDashboard->demSoLuongDonHangHomNay();
         $tongSanPham = $this->modelDashboard-> thongKeSanPham();
 
         $tongDonHang = $this->modelDashboard-> tongDonHang();
-        $dangSuLy = $this->modelDashboard-> dangSuLy();
+        $thanhcong = $this->modelDashboard-> thanhcong();
         $tongDonHangDaXacNhan = $this->modelDashboard-> tongDonHangDaXacNhan();
         $tongSoDonHangDangGiao = $this->modelDashboard-> tongSoDonHangDangGiao();
         $tongSoDonHangDaGiaoHang = $this->modelDashboard-> tongSoDonHangDaGiaoHang();
@@ -24,13 +25,7 @@ class DashboardController {
 
        
         $topSanPham = $this->modelDashboard->getTopSanPhamBanChay(5);
-        if (!empty($topSanPham)) {
-            foreach ($topSanPham as $index => $sanPham) {
-                echo ($index + 1) . '. ' . $sanPham['ten_san_pham'] . ' - ' . $sanPham['tong_so_luong'] . ' sản phẩm<br>';
-            }
-        } else {
-            echo 'Không có sản phẩm nào được bán.';
-        }
+      
         $khuyenMais = $this->modelDashboard->getTop5KhuyenMai();
         $khachHangs = $this->modelDashboard->getKhachHangThanThiet();
 

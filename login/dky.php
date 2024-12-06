@@ -52,19 +52,19 @@
 
         <!-- Input cho Username -->
         <div class="mb-3 input-box">
-            <input type="text" class="form-control" name="ten" placeholder="Username" required>
+            <input type="text" class="form-control" name="ten" placeholder="Username" >
             <box-icon type='solid' name='user'></box-icon>
         </div>
 
         <!-- Input cho Email -->
         <div class="mb-3 input-box">
-            <input type="email" class="form-control" name="email" placeholder="Email" required>
+            <input type="email" class="form-control" name="email" placeholder="Email" >
             <box-icon type='solid' name='envelope'></box-icon>
         </div>
 
         <!-- Input cho Password -->
         <div class="mb-3 input-box">
-            <input type="password" class="form-control" name="mat_khau" placeholder="Password" required>
+            <input type="password" class="form-control" name="mat_khau" placeholder="Password" >
             <box-icon type='solid' name='lock-alt'></box-icon>
         </div>
 
