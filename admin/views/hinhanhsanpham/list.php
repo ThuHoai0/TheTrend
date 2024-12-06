@@ -179,27 +179,27 @@ require_once "views/layouts/libs_js.php";
     });
 
     // Listen for the Enter key press in the input field
-    // searchInput.addEventListener('keydown', function(event) {
-    //     if (event.key === 'Enter') {  // Check if the key pressed is Enter
-    //         event.preventDefault();  // Prevent the default form action (no immediate reload)
-    //
-    //         // Get the value from the input field
-    //         const query = searchInput.value.trim();
-    //
-    //         // Check if the input field has a value
-    //         if (query) {
-    //             // Update the URL with the search parameter and reload the page
-    //             const currentUrl = new URL(window.location.href);
-    //             currentUrl.searchParams.set('search', query);
-    //             window.location.href = currentUrl.href;
-    //         } else {
-    //             // If the input is empty, clear the search parameter and reload the full list
-    //             const currentUrl = new URL(window.location.href);
-    //             currentUrl.searchParams.delete('search');
-    //             window.location.href = currentUrl.href;  // Reload to show the full list
-    //         }
-    //     }
-    // });
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {  // Check if the key pressed is Enter
+            event.preventDefault();  // Prevent the default form action (no immediate reload)
+
+            // Get the value from the input field
+            const query = searchInput.value.trim();
+
+            // Check if the input field has a value
+            if (query) {
+                // Update the URL with the search parameter and reload the page
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('search', query);
+                window.location.href = currentUrl.href;
+            } else {
+                // If the input is empty, clear the search parameter and reload the full list
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.delete('search');
+                window.location.href = currentUrl.href;  // Reload to show the full list
+            }
+        }
+    });
 </script>
 
 
