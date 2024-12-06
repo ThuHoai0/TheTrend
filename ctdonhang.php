@@ -173,7 +173,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script>
         function thayDoiTrangThaiDonHang(donHangId) {
-            if (confirm("Bạn có chắc chắn muốn cập nhật trạng thái đơn hàng?")) {
+            if (confirm("Xác nhận đã nhận hàng?")) {
                 fetch('?act=dalayhang', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

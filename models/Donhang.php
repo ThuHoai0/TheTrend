@@ -209,7 +209,7 @@ class Donhang {
             if ($stmtUpdate->rowCount() > 0) {
                 return [
                     'success' => true,
-                    'message' => 'Cập nhật trạng thái đơn hàng thành công.'
+                    'message' => 'Đã nhận hàng.'
                 ];
             } else {
                 return [
