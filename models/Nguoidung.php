@@ -23,20 +23,23 @@ class Nguoidung
     }
     
     
-    public function updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh)
-    {
-        // Cập nhật thông tin người dùng vào cơ sở dữ liệu
-        $sql = "UPDATE nguoi_dungs
-                SET email = ?, dia_chi = ?, so_dien_thoai = ?, gioi_tinh = ?, ngay_sinh = ?
-                WHERE id = ?";
-        $stmt = $this->conn->prepare($sql);
-        
-        // Thực thi câu lệnh cập nhật với các tham số
-        return $stmt->execute([$email, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh, $id]);
+    public function updateUser($id, $email, $dia_chi, $so_dien_thoai, $gioi_tinh, $ngay_sinh = null)
+{
+    // Kiểm tra nếu không có ngày sinh, giữ nguyên giá trị cũ trong cơ sở dữ liệu
+    $sql = "UPDATE nguoi_dungs
+            SET email = ?, dia_chi = ?, so_dien_thoai = ?, gioi_tinh = ?" . 
+            ($ngay_sinh ? ", ngay_sinh = ?" : "") . "
+            WHERE id = ?";
+    $stmt = $this->conn->prepare($sql);
+
+    $params = [$email, $dia_chi, $so_dien_thoai, $gioi_tinh];
+    if ($ngay_sinh) {
+        $params[] = $ngay_sinh;
     }
+    $params[] = $id;
 
-
-    
+    return $stmt->execute($params);
+}
 
     public function updatePassword($id, $new_password)
 {
