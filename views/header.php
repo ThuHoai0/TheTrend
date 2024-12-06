@@ -356,7 +356,6 @@
                                             <a href="?act=thongtinnguoidung&id=<?= $_SESSION['iduser']?>">Thông tin người dùng</a> 
                                             <a href="?act=donhang&id=<?= $_SESSION['iduser']?>">Đơn hàng</a>
                                             <a href="?act=suamatkhau&id=<?= $_SESSION['iduser']?>">Đổi mật khẩu</a>
-                                            <a href="?act=quenmatkhau">Quên mật khẩu</a>
                                         </div>
                                         </form>
                                     </div>

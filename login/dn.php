@@ -64,7 +64,7 @@
 
         <!-- Link Quên mật khẩu -->
         <div class="d-flex justify-content-end mb-3">
-            <a href="#" class="text-decoration-none">Quên mật khẩu?</a>
+            <a href="?act=quenmatkhau" class="text-decoration-none">Quên mật khẩu?</a>
         </div>
 
         <!-- Nút Đăng Nhập -->

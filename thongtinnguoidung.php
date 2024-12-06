@@ -139,7 +139,7 @@
             class="form-control" 
             id="email" 
             name="email" 
-            value="<?= $_SESSION['email'] ?>">
+            value="<?= $_SESSION['email'] ?>" readonly>
     </div>
 
     <!-- Password -->
@@ -150,7 +150,7 @@
             class="form-control" 
             id="mat_khau" 
             name="mat_khau" 
-            value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>">
+            value="<?= isset($nguoi_dung['mat_khau']) ? $nguoi_dung['mat_khau'] : '' ?>" readonly>
     </div>
 
     <!-- Address -->
