@@ -11,8 +11,6 @@ class LienheController
     public function lienhe()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump(123);
-            die;
             $email = $_POST['email'];
             $ho_ten = $_POST['ho_ten'];
             $so_dien_thoai = $_POST['so_dien_thoai'];

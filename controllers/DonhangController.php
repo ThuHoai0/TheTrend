@@ -65,10 +65,23 @@ class DonhangController {
             // Kiểm tra và lấy `don_hang_id` từ POST
             if (isset($data['don_hang_id']) && !empty($data['don_hang_id'])) {
                 $don_hang_id = intval($data['don_hang_id']);
-
-                // Cập nhật trạng thái đơn hàng
+        
+                // Bước 1: Kiểm tra trạng thái hiện tại của đơn hàng bằng trang_thai_id
+                $current_status_id = $this->modelDonhang->getTrangThaiDonHangId($don_hang_id);
+                    
+                if ($current_status_id !== 11) {
+                    // Nếu trang_thai_id không phải là 11, không cho phép hủy
+                    echo json_encode([
+                        'success' => false,
+                        'message' => "Chỉ có thể hủy đơn hàng khi trạng thái đơn hàng là 'Đã đặt hàng'."
+                    ]);
+                    return;
+                }
+        
+                // Bước 2: Cập nhật trạng thái đơn hàng thành 'Đã hủy'
                 $new_status = 'Đã hủy'; // Thay vì dùng ID trạng thái, sử dụng tên trạng thái
-                $result = $this->modelDonhang->capNhatTrangThaiDonHang($don_hang_id, $new_status);
+                $result = $this->modelDonhang->capNhatTrangThaiDonHangHuy($don_hang_id, $new_status);
+        
                 // Kiểm tra kết quả trả về
                 if ($result['success']) {
                     // Trả về JSON để cập nhật giao diện
@@ -92,6 +105,8 @@ class DonhangController {
             }
         }
     }
+    
+    
 
     public function thayDoiTrangThaiDonHang() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

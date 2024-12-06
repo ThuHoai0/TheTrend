@@ -126,6 +126,69 @@ class Donhang {
         }
     }
 
+    public function getTrangThaiDonHangId($don_hang_id) {
+        try {
+            // Truy vấn trang_thai_id của đơn hàng
+            $sql = "SELECT trang_thai_id FROM don_hangs WHERE id = :don_hang_id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':don_hang_id', $don_hang_id);
+            $stmt->execute();
+    
+            // Nếu tìm thấy đơn hàng, trả về trang_thai_id
+            if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $row['trang_thai_id'];
+            } else {
+                return null; // Không tìm thấy đơn hàng
+            }
+        } catch (PDOException $e) {
+            return null; // Trả về null trong trường hợp có lỗi
+        }
+    }
+
+    public function capNhatTrangThaiDonHangHuy($don_hang_id, $trang_thai_moi) {
+        try {
+            // Kiểm tra xem đơn hàng có tồn tại hay không
+            $sqlCheck = "SELECT id FROM don_hangs WHERE id = :don_hang_id";
+            $stmtCheck = $this->conn->prepare($sqlCheck);
+            $stmtCheck->bindParam(':don_hang_id', $don_hang_id);
+            $stmtCheck->execute();
+
+            // Nếu không tìm thấy đơn hàng
+            if ($stmtCheck->rowCount() === 0) {
+                return [
+                    'success' => false,
+                    'message' => 'Đơn hàng không tồn tại.'
+                ];
+            }
+            $trang_thai_id = $this->layIdTrangThai($trang_thai_moi);
+            // Cập nhật trạng thái đơn hàng với tên trạng thái thay vì ID
+            $sqlUpdate = "UPDATE don_hangs SET trang_thai_id = :trang_thai_id WHERE id = :don_hang_id"; // Chỉnh sửa theo tên cột trang_thai
+            $stmtUpdate = $this->conn->prepare($sqlUpdate);
+            $stmtUpdate->bindParam(':trang_thai_id', $trang_thai_id); // Đảm bảo bind đúng kiểu dữ liệu là string
+            $stmtUpdate->bindParam(':don_hang_id', $don_hang_id);
+            $stmtUpdate->execute();
+
+            // Kiểm tra xem có thực sự cập nhật không
+            if ($stmtUpdate->rowCount() > 0) {
+                return [
+                    'success' => true,
+                    'message' => 'Đã hủy.'
+                ];
+            } else {
+                return [
+                    'success' => false,
+                    'message' => 'Không có thay đổi trạng thái nào được thực hiện.'
+                ];
+            }
+        } catch (PDOException $e) {
+            return [
+                'success' => false,
+                'message' => 'Lỗi: ' . $e->getMessage()
+            ];
+        }
+    }
+
     public function capNhatTrangThaiDonHang($don_hang_id, $trang_thai_moi) {
         try {
             // Kiểm tra xem đơn hàng có tồn tại hay không

@@ -197,7 +197,7 @@
             }
         }
         function huyDonHang(donHangId) {
-            if (confirm("Bạn có chắc chắn muốn cập nhật trạng thái đơn hàng?")) {
+            if (confirm("Bạn có chắc chắn muốn hủy đơn hàng?")) {
                 fetch('?act=huydonhang', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -216,7 +216,7 @@
                     })
                     .catch(error => {
                         console.error('Lỗi:', error);
-                        alert("Không thể cập nhật trạng thái. Vui lòng thử lại sau!");
+                        alert("Không thể hủy đơn. Vui lòng thử lại sau!");
                     });
             }
         }
