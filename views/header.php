@@ -317,9 +317,6 @@
                                 <a href="?act=sanpham">Sản Phẩm</a>
                             </li>
                             <li>
-                                <a href="?act=spyeuthich">Yêu Thích</a>
-                            </li>
-                            <li>
                                 <a href="?act=khuyenmai">Khuyến mại</a>
                             </li>
 

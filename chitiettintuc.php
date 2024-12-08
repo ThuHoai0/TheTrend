@@ -30,7 +30,7 @@
                 <div class="p-r-45 p-r-0-lg">
                     <!--  -->
                     <div class="wrap-pic-w how-pos5-parent">
-                        <img src="images/blog-04.jpg" alt="IMG-BLOG">
+                        <img src="assets/images/blog-05.jpg" alt="IMG-BLOG">
 
                         <!-- <div class="flex-col-c-m size-123 bg9 how-pos5">
                             <span class="ltext-107 cl2 txt-center">

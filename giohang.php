@@ -260,38 +260,6 @@ if (!isset($_SESSION['iduser'])) {
                             if (isConfirmed) {
                                 document.getElementById('productId').value = productId;
                                 document.getElementById('removeProductForm').submit();
-                                // fetch('?act=removeFromCart', {
-                                //     method: 'POST',
-                                //     headers: {
-                                //         'Content-Type': 'application/json',
-                                //     },
-                                //     body: JSON.stringify({ id: 123 }),
-                                // })
-                                //     .then(data => {
-                                //         if (data.success) {
-                                //             // Cập nhật giao diện sau khi xóa thành công
-                                //             const row = document.getElementById('product-' + productId);
-                                //             if (row) row.remove();
-                                //
-                                //             // Cập nhật tổng tiền
-                                //             document.getElementById('total-price').innerText =
-                                //                 new Intl.NumberFormat().format(data.totalPrice) + ' VNĐ';
-                                //
-                                //             alert("Sản phẩm đã được xóa thành công khỏi giỏ hàng.");
-                                //
-                                //             // Kiểm tra nếu giỏ hàng trống
-                                //             if (Object.keys(data.cart).length === 0) {
-                                //                 document.querySelector('.wrap-table-shopping-cart').innerHTML =
-                                //                     "<p class='text-center text-danger' style='margin: 153px 0'>Giỏ hàng của bạn đang trống!</p>";
-                                //             }
-                                //         } else {
-                                //             alert(data.message || "Đã xảy ra lỗi khi xóa sản phẩm.");
-                                //         }
-                                //     })
-                                //     .catch(error => {
-                                //         console.log('Error:', error.message);
-                                //         alert("Đã xảy ra lỗi khi xóa sản phẩm.");
-                                //     });
                             }
                         }
 

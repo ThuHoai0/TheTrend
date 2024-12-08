@@ -77,7 +77,7 @@
                         <span class="badge bg-success p-2">Đơn hàng: <?= $don_hang['ten_trang_thai'] ?>
 
                         </span>
-                        <span class="badge bg-primary text-white p-2">Phương thức thanh toán: <?= $don_hang['phuong_thuc_thanh_toan'] ?></span>
+                        <span class="badge bg-primary text-white p-2">Phương thức thanh toán: Thanh toán khi nhận hàng</span>
                         <span class="badge bg-warning text-dark p-2">Trạng thái thanh toán:
                         <?php
                         // Check the 'status' field instead of 'category_name'
